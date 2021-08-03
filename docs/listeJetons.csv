@@ -1,0 +1,53 @@
+﻿ADMR,Administrateur
+ADR,Adresse
+AER,Aéronef
+ANN,Année
+ANNU,Annulation
+BTE,Boîte
+CON,Concerner
+COTI,Cotisation
+CP,Code postal
+DEB,Début
+DER,Dernière
+DES,Description textuelle d'un objet ou d'un évènement
+DISPO,Disponible
+DTE,Date
+EMI,Emission
+EXP,Expiration
+FIN,Fin
+GSM,Téléphone portable
+ID,Identifiant généralement non significatif
+IMA,Immatriculation
+IMM,Immeuble
+IND,Indisponibilité
+INS,Inscription
+LIC,Licence
+LOC,Localité belge
+MAIL,Courriel électronique
+MBR,Membre
+MONT,Montant
+MOTIF,Motif
+NAI,Naissance
+NOM,Nom d'un objet ou d'une personne physique
+NUM,Numéro
+OBT,Obtention
+PAI,Paiement
+PAY,Pays
+PIL,Pilote
+PIST,Piste
+PRN,Prénom d'une personne physique
+PSD,Pseudo
+PWD,Mot de passe
+QUAL,Qualifier
+RES,Résidence
+RES,Réservation
+RET,Retrait
+RUE,Rue d'une adresse
+SEX,Sexe
+SOU,Souscrire
+SUB,Subir
+SUS,Suspension
+SUS,Suspendre
+TEL,Téléphone
+TYP,Type
+USR,Utilisateur du système
