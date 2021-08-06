@@ -1,42 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dapper;
+using ULMClubManager.DapperIntegration.Repositories;
 
 namespace ULMClubManager.DapperIntegration
 {
-
-    public class Loc
-    {
-        public int LOC_ID { get; set; }
-        public string LOC_CP { get; set; }
-        public string LOC_NOM { get; set; }
-    }
-
-
     public class Program
     {
-        private static string connectionString;
 
         static void Main(string[] args)
         {
-            connectionString = "Data Source=localhost;Initial Catalog=ULMClubManager;Persist Security Info=True;User ID=sa;Password=<YourStrong@Passw0rd>";
+            string connectionString = "Data Source=localhost;Initial Catalog=ULMClubManager;Persist Security Info=True;User ID=sa;Password=<YourStrong@Passw0rd>";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                IEnumerable<Loc> localites = connection.Query<Loc>("select * from LOC");
+            LocRepository locRepository = new LocRepository(connectionString);
 
-                foreach (var item in localites)
-                {
-                    Console.WriteLine(item.LOC_NOM);
-                }
+            //ReadAll(locRepository);
+            //ReadOne(locRepository);
+            //CreateOne(locRepository);
+            //UpdateOne(locRepository);
+            //DeleteOne(locRepository);
 
-            }
-            
+            Console.WriteLine("ok");
+
             Console.ReadLine();
         }
+
+        private static void DeleteOne(LocRepository locRepository)
+        {
+            locRepository.DeleteOne(7);
+        }
+
+        private static void UpdateOne(LocRepository locRepository)
+        {
+            TModel updatedLoc = new TModel() { LOC_ID = 7, LOC_CP = "4020", LOC_NOM = "Longdoz" };
+
+            locRepository.UpdateOne(updatedLoc);
+        }
+
+        private static void CreateOne(LocRepository locRepository)
+        {
+            TModel newLoc = new TModel() { LOC_CP = "4020", LOC_NOM = "Longdoz" };
+
+            locRepository.CreateOne(newLoc);
+        }
+
+        private static void ReadAll(LocRepository locRepository)
+        {
+            IEnumerable<TModel> localites = locRepository.ReadAll();
+
+            foreach (var item in localites)
+            {
+                Console.WriteLine(item.LOC_NOM);
+            }
+        }
+
+        private static void ReadOne(LocRepository locRepository)
+        {
+            TModel localite = locRepository.ReadOne(3);
+
+            Console.WriteLine(localite.LOC_NOM);
+        }
+
     }
 }
