@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ULMClubManager.DapperIntegration.Repositories;
+using ULMClubManager.DAL.Models;
+using ULMClubManager.DAL.Repositories;
 
 namespace ULMClubManager.DapperIntegration
 {
@@ -16,7 +17,7 @@ namespace ULMClubManager.DapperIntegration
 
             LocRepository locRepository = new LocRepository(connectionString);
 
-            //ReadAll(locRepository);
+            ReadAll(locRepository);
             //ReadOne(locRepository);
             //CreateOne(locRepository);
             //UpdateOne(locRepository);
@@ -34,21 +35,21 @@ namespace ULMClubManager.DapperIntegration
 
         private static void UpdateOne(LocRepository locRepository)
         {
-            TModel updatedLoc = new TModel() { LOC_ID = 7, LOC_CP = "4020", LOC_NOM = "Longdoz" };
+            Loc updatedLoc = new Loc() { LOC_ID = 7, LOC_CP = "4020", LOC_NOM = "Longdoz" };
 
             locRepository.UpdateOne(updatedLoc);
         }
 
         private static void CreateOne(LocRepository locRepository)
         {
-            TModel newLoc = new TModel() { LOC_CP = "4020", LOC_NOM = "Longdoz" };
+            Loc newLoc = new Loc() { LOC_CP = "4020", LOC_NOM = "Longdoz" };
 
             locRepository.CreateOne(newLoc);
         }
 
         private static void ReadAll(LocRepository locRepository)
         {
-            IEnumerable<TModel> localites = locRepository.ReadAll();
+            IEnumerable<Loc> localites = locRepository.ReadAll();
 
             foreach (var item in localites)
             {
@@ -58,7 +59,7 @@ namespace ULMClubManager.DapperIntegration
 
         private static void ReadOne(LocRepository locRepository)
         {
-            TModel localite = locRepository.ReadOne(3);
+            Loc localite = locRepository.ReadOne(3);
 
             Console.WriteLine(localite.LOC_NOM);
         }

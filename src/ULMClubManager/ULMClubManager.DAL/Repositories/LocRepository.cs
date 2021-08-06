@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dapper;
-using ULMClubManager.DapperIntegration.Models;
+using ULMClubManager.DAL.Abstractions;
+using ULMClubManager.DAL.Models;
 
-namespace ULMClubManager.DapperIntegration.Repositories
+namespace ULMClubManager.DAL.Repositories
 {
 
     // CRUD = Create, Read, Update, Delete

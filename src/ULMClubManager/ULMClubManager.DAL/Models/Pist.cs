@@ -1,4 +1,4 @@
-﻿namespace ULMClubManager.DapperIntegration.Models
+﻿namespace ULMClubManager.DAL.Models
 {
     public class Pist
     {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using ULMClubManager.DapperIntegration.Models;
+using ULMClubManager.DAL.Abstractions;
+using ULMClubManager.DAL.Models;
 
-namespace ULMClubManager.DapperIntegration.Repositories
+namespace ULMClubManager.DAL.Repositories
 {
     public class PistRepository : IRepository<Pist, int>
     {

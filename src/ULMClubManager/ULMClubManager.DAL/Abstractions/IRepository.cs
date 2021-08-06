@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ULMClubManager.DapperIntegration.Repositories
+namespace ULMClubManager.DAL.Abstractions
 {
     public interface IRepository<TModel, TKey>
     {
