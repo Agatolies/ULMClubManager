@@ -12,3 +12,11 @@
 * Créer une nouvelle base de données avec le nom "**ULMClubManager**".
 * Exécuter le script [creationDB](./scripts/creationDB.sql).
 * Exécuter le script [insertionDB](./scripts/insertionDB.sql).
+
+## Information de connexion locale
+
+* Source de données = Microsoft SQL Server (SqlClient)
+* Nom du serveur = localhost
+* Authentification = Authentification SQL Server
+  * Nom d'utilisateur = sa
+  * Mot de passe = <YourStrong@Passw0rd>
