@@ -45,13 +45,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\GenericRepository.cs" />
+    <Compile Include="Abstractions\IDomainMapper.cs" />
+    <Compile Include="Abstractions\IDomainModel.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="Models\Loc.cs" />
-    <Compile Include="Models\Pist.cs" />
+    <Compile Include="DBRowModels\IndDBRow.cs" />
+    <Compile Include="DBRowModels\LocDBRow.cs" />
+    <Compile Include="DBRowModels\PistDBRow.cs" />
+    <Compile Include="DomainModels\Locality.cs" />
+    <Compile Include="DomainModels\Unavailability.cs" />
+    <Compile Include="Mappers\LocalityMapper.cs" />
+    <Compile Include="Mappers\UnavailabilityMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Abstractions\IGenericRepository.cs" />
-    <Compile Include="Repositories\LocRepository.cs" />
-    <Compile Include="Repositories\PistRepository.cs" />
+    <Compile Include="Repositories\UnavailabilityRepository.cs" />
+    <Compile Include="Repositories\LocalityRepository.cs" />
+    <Compile Include="Repositories\RunwayRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

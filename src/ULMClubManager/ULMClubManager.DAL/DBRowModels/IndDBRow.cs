@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ULMClubManager.DAL.Models
+namespace ULMClubManager.DAL.DBRowModels
 {
-    public class Ind
+    public class IndDBRow
     {
         public int IND_ID { get; set; }
         public DateTime IND_DTE_DEB { get; set; }

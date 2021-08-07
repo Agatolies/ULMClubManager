@@ -1,11 +1,11 @@
 ﻿using ULMClubManager.DAL.Abstractions;
-using ULMClubManager.DAL.Models;
+using ULMClubManager.DAL.DBRowModels;
 
 namespace ULMClubManager.DAL.Repositories
 {
-    public class PistRepository : GenericRepository<Pist, int>
+    public class RunwayRepository : GenericRepository<PistDBRow, int>
     {
-        public PistRepository(string connectionString) 
+        public RunwayRepository(string connectionString) 
             : base(connectionString, "PIST")
         {
         }

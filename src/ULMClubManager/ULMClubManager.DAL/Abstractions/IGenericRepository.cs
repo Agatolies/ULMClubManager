@@ -3,13 +3,14 @@
 namespace ULMClubManager.DAL.Abstractions
 {
 
-    public interface IGenericRepository<TModel, TKey>
+    public interface IGenericRepository<TDomain, TKey>
     {
-        void CreateOne(TModel model);
-        int CreateMany(IEnumerable<TModel> models);
+        TDomain CreateOne(TDomain domainModel);
+        int CreateMany(IEnumerable<TDomain> domainModels);
         void DeleteOne(TKey id);
-        IEnumerable<TModel> ReadAll();
-        TModel ReadOne(TKey id);
-        void UpdateOne(TModel loc);
+        IEnumerable<TDomain> ReadAll();
+        TDomain ReadOne(TKey id);
+        TDomain ReadLast();
+        void UpdateOne(TDomain loc);
     }
 }

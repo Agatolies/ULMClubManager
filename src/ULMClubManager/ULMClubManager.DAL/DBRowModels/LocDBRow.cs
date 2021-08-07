@@ -1,6 +1,6 @@
-﻿namespace ULMClubManager.DAL.Models
+﻿namespace ULMClubManager.DAL.DBRowModels
 {
-    public class Loc
+    public class LocDBRow
     {
         public int LOC_ID { get; set; }
         public string LOC_CP { get; set; }
