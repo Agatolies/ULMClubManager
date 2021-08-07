@@ -44,11 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\GenericRepository.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Models\Loc.cs" />
     <Compile Include="Models\Pist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Abstractions\IRepository.cs" />
+    <Compile Include="Abstractions\IGenericRepository.cs" />
     <Compile Include="Repositories\LocRepository.cs" />
     <Compile Include="Repositories\PistRepository.cs" />
   </ItemGroup>

@@ -17,11 +17,11 @@ namespace ULMClubManager.DapperIntegration
 
             LocRepository locRepository = new LocRepository(connectionString);
 
-            ReadAll(locRepository);
+            //ReadAll(locRepository);
             //ReadOne(locRepository);
             //CreateOne(locRepository);
             //UpdateOne(locRepository);
-            //DeleteOne(locRepository);
+            DeleteOne(locRepository);
 
             Console.WriteLine("ok");
 
@@ -30,14 +30,16 @@ namespace ULMClubManager.DapperIntegration
 
         private static void DeleteOne(LocRepository locRepository)
         {
-            locRepository.DeleteOne(7);
+            locRepository.DeleteOne(8);
         }
 
         private static void UpdateOne(LocRepository locRepository)
         {
-            Loc updatedLoc = new Loc() { LOC_ID = 7, LOC_CP = "4020", LOC_NOM = "Longdoz" };
+            Loc loc = locRepository.ReadOne(8);
 
-            locRepository.UpdateOne(updatedLoc);
+            loc.LOC_NOM = "Longdoz";
+
+            locRepository.UpdateOne(loc);
         }
 
         private static void CreateOne(LocRepository locRepository)
