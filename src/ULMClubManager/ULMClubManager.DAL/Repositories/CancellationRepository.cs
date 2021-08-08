@@ -5,10 +5,10 @@ using ULMClubManager.DAL.Mappers;
 
 namespace ULMClubManager.DAL.Repositories
 {
-    public class RunwayRepository : GenericRepository<PistDBRow, int, Runway>
+    public class CancellationRepository : GenericRepository<AnnDBRow, int, Cancellation>
     {
-        public RunwayRepository(string connectionString, RunwayMapper mapper) 
-            : base(connectionString, "PIST", mapper)
+        public CancellationRepository(string connectionString, CancellationMapper mapper)
+            : base(connectionString, "ANN", mapper)
         {
         }
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Dapper;
+using ULMClubManager.DAL.Mappers;
 
 namespace ULMClubManager.DAL.Abstractions
 {
@@ -25,9 +26,9 @@ namespace ULMClubManager.DAL.Abstractions
 
         private readonly string _connectionString;
         private readonly string _tableName;
-        private readonly IDomainMapper<TDBRow, TDomain> _mapper;
+        private readonly GenericMapper<TDBRow, TDomain> _mapper;
 
-        public GenericRepository(string connectionString, string tableName, IDomainMapper<TDBRow, TDomain> mapper)
+        public GenericRepository(string connectionString, string tableName, GenericMapper<TDBRow, TDomain> mapper)
         {
             _connectionString = connectionString;
             _tableName = tableName;

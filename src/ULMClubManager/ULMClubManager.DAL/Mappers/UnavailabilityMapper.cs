@@ -9,26 +9,28 @@ using ULMClubManager.DAL.DomainModels;
 
 namespace ULMClubManager.DAL.Mappers
 {
-    public class UnavailabilityMapper : IDomainMapper<IndDBRow, Unavailability>
+    public class UnavailabilityMapper : GenericMapper<IndDBRow, Unavailability>
     {
-        public Unavailability From(IndDBRow model)
+        public override Unavailability From(IndDBRow ind)
         {
-            throw new NotImplementedException();
+            return new Unavailability(ind.IND_ID, ind.IND_DTE_DEB, ind.IND_HEU_DEB, ind.IND_DTE_FIN, ind.IND_HEU_FIN, ind.IND_DES, ind.AER_ID);
         }
 
-        public List<Unavailability> From(IEnumerable<IndDBRow> models)
+        public override IndDBRow To(Unavailability ind)
         {
-            throw new NotImplementedException();
-        }
+            IndDBRow result = new IndDBRow();
 
-        public IndDBRow To(Unavailability domainModel)
-        {
-            throw new NotImplementedException();
-        }
+            if (ind.ID.HasValue)
+                result.IND_ID = ind.ID.Value;
 
-        public List<IndDBRow> To(IEnumerable<Unavailability> domainModels)
-        {
-            throw new NotImplementedException();
+            result.IND_DTE_DEB = ind.StartDate;
+            result.IND_HEU_DEB = ind.StartHour;
+            result.IND_DTE_FIN = ind.EndDate;
+            result.IND_HEU_FIN = ind.EndHour;
+            result.IND_DES = ind.Description;
+            result.AER_ID = ind.AircraftID;
+
+            return result;
         }
     }
 }

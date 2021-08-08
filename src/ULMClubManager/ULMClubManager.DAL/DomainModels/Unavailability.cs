@@ -32,7 +32,7 @@ namespace ULMClubManager.DAL.DomainModels
 
         public override string ToString()
         {
-            return $"Du {StartDate:d} {StartHour} au {EndDate:d} {EndHour}";
+            return $"Du {StartDate:d} {StartHour} au {EndDate:d} {EndHour} pour l'aéronef {AircraftID}";
         }
     }
 }
