@@ -26,13 +26,20 @@ namespace ULMClubManager.DAL.Abstractions
 
         private readonly string _connectionString;
         private readonly string _tableName;
+        private readonly string _keyPrefix;
         private readonly GenericMapper<TDBRow, TDomain> _mapper;
 
-        public GenericRepository(string connectionString, string tableName, GenericMapper<TDBRow, TDomain> mapper)
-        {
+        public GenericRepository(string connectionString, string tableName, string keyPrefix, GenericMapper<TDBRow, TDomain> mapper)
+        { 
             _connectionString = connectionString;
             _tableName = tableName;
+            _keyPrefix = keyPrefix;
             _mapper = mapper;
+        }
+
+        public GenericRepository(string connectionString, string tableName, GenericMapper<TDBRow, TDomain> mapper)
+            : this(connectionString, tableName, tableName, mapper)
+        {
         }
 
         private SqlConnection SqlConnection()
@@ -53,7 +60,7 @@ namespace ULMClubManager.DAL.Abstractions
             return type.GetProperties();
         }
 
-        public TDomain CreateOne(TDomain domainModel)
+        public virtual TDomain CreateOne(TDomain domainModel)
         {
             string query = GenerateInsertQuery();
 
@@ -65,7 +72,7 @@ namespace ULMClubManager.DAL.Abstractions
             }
         }
 
-        public int CreateMany(IEnumerable<TDomain> domainModels)
+        public virtual int CreateMany(IEnumerable<TDomain> domainModels)
         {
             int inserted = 0;
             string query = GenerateInsertQuery();
@@ -79,9 +86,9 @@ namespace ULMClubManager.DAL.Abstractions
             return inserted;
         }
 
-        public void DeleteOne(TKey id)
+        public virtual void DeleteOne(TKey id)
         {
-            string sql = $"DELETE FROM {_tableName} WHERE {_tableName}_ID = @ID";
+            string sql = $"DELETE FROM {_tableName} WHERE {_keyPrefix}_ID = @ID";
 
             using (SqlConnection connection = CreateConnection())
             {
@@ -91,7 +98,7 @@ namespace ULMClubManager.DAL.Abstractions
             }
         }
 
-        public IEnumerable<TDomain> ReadAll()
+        public virtual IEnumerable<TDomain> ReadAll()
         {
             string query = $"SELECT * FROM {_tableName}";
 
@@ -102,9 +109,9 @@ namespace ULMClubManager.DAL.Abstractions
             }
         }
 
-        public TDomain ReadOne(TKey id)
+        public virtual TDomain ReadOne(TKey id)
         {
-            string query = $"SELECT * FROM {_tableName} WHERE {_tableName}_ID = @ID";
+            string query = $"SELECT * FROM {_tableName} WHERE {_keyPrefix}_ID = @ID";
 
             using (SqlConnection connection = CreateConnection())
             {
@@ -116,7 +123,7 @@ namespace ULMClubManager.DAL.Abstractions
             }
         }
 
-        public TDomain ReadLast()
+        public virtual TDomain ReadLast()
         {
             string query = $"SELECT TOP 1 * FROM {_tableName} ORDER BY unique_column DESC";
 
@@ -127,7 +134,7 @@ namespace ULMClubManager.DAL.Abstractions
             }
         }
 
-        public void UpdateOne(TDomain domainModel)
+        public virtual void UpdateOne(TDomain domainModel)
         {
             string query = GenerateUpdateQuery();
 
@@ -140,7 +147,7 @@ namespace ULMClubManager.DAL.Abstractions
             }
         }
 
-        private string GenerateInsertQuery()
+        protected virtual string GenerateInsertQuery()
         {
             StringBuilder query = new StringBuilder($"INSERT INTO {_tableName}");
 
@@ -150,7 +157,7 @@ namespace ULMClubManager.DAL.Abstractions
 
             foreach (string prop in properties)
             {
-                if (!prop.Equals($"{_tableName}_ID"))
+                if (!prop.Equals($"{_keyPrefix}_ID"))
                     query.Append($"[{prop}],");
             }
 
@@ -159,7 +166,7 @@ namespace ULMClubManager.DAL.Abstractions
 
             foreach (string prop in properties)
             {
-                if (!prop.Equals($"{_tableName}_ID")) 
+                if (!prop.Equals($"{_keyPrefix}_ID")) 
                     query.Append($"@{prop},");
             }
 
@@ -169,19 +176,19 @@ namespace ULMClubManager.DAL.Abstractions
             return query.ToString();
         }
 
-        private string GenerateUpdateQuery()
+        protected virtual string GenerateUpdateQuery()
         {
             StringBuilder query = new StringBuilder($"UPDATE {_tableName} SET ");
             List<string> properties = GenerateListOfProperties(GetProperties());
 
             foreach (string prop in properties)
             {
-                if (!prop.Equals($"{_tableName}_ID"))
+                if (!prop.Equals($"{_keyPrefix}_ID"))
                     query.Append($"{prop}=@{prop},");
             }
 
             query.Remove(query.Length - 1, 1);
-            query.Append($" WHERE {_tableName}_ID=@{_tableName}_ID");
+            query.Append($" WHERE {_keyPrefix}_ID=@{_keyPrefix}_ID");
 
             return query.ToString();
         }
