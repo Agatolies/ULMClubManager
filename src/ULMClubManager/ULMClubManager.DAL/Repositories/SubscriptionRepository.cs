@@ -7,8 +7,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class SubscriptionRepository : GenericRepository<CotiDBRow, int, Subscription>
     {
-        public SubscriptionRepository(string connectionString, SubscriptionMapper mapper)
-            : base(connectionString, "COTI", mapper)
+        public SubscriptionRepository(IUnitOfWork unitOfWork, SubscriptionMapper mapper)
+            : base(unitOfWork, "COTI", mapper)
         {
         }
     }

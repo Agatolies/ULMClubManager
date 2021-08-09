@@ -7,8 +7,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class UnavailabilityRepository : GenericRepository<IndDBRow, int, Unavailability>
     {
-        public UnavailabilityRepository(string connectionString, UnavailabilityMapper mapper)
-            : base(connectionString, "IND", mapper)
+        public UnavailabilityRepository(IUnitOfWork unitOfWork, UnavailabilityMapper mapper)
+            : base(unitOfWork, "IND", mapper)
         {
         }
     }

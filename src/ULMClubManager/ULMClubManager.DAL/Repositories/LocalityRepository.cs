@@ -7,8 +7,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class LocalityRepository : GenericRepository<LocDBRow, int, Locality>
     {
-        public LocalityRepository(string connectionString, LocalityMapper mapper)
-            : base(connectionString, "LOC", mapper)
+        public LocalityRepository(IUnitOfWork unitOfWork, LocalityMapper mapper)
+            : base(unitOfWork, "LOC", mapper)
         {
         }
     }

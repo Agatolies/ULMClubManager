@@ -7,8 +7,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class RunwayRepository : GenericRepository<PistDBRow, int, Runway>
     {
-        public RunwayRepository(string connectionString, RunwayMapper mapper) 
-            : base(connectionString, "PIST", mapper)
+        public RunwayRepository(IUnitOfWork unitOfWork, RunwayMapper mapper) 
+            : base(unitOfWork, "PIST", mapper)
         {
         }
     }

@@ -7,8 +7,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class CategoryRepository : GenericRepository<TypDBRow, int, Category>
     {
-        public CategoryRepository(string connectionString, CategoryMapper mapper)
-            : base(connectionString, "TYP", mapper)
+        public CategoryRepository(IUnitOfWork unitOfWork, CategoryMapper mapper)
+            : base(unitOfWork, "TYP", mapper)
         {
         }
     }

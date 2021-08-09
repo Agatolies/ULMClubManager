@@ -7,8 +7,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class CancellationRepository : GenericRepository<AnnDBRow, int, Cancellation>
     {
-        public CancellationRepository(string connectionString, CancellationMapper mapper)
-            : base(connectionString, "ANN", mapper)
+        public CancellationRepository(IUnitOfWork unitOfWork, CancellationMapper mapper)
+            : base(unitOfWork, "ANN", mapper)
         {
         }
     }

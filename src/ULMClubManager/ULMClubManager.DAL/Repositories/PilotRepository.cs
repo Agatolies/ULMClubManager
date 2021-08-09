@@ -7,8 +7,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class PilotRepository : GenericRepository<PilDBRow, int, Pilot>
     {
-        public PilotRepository(string connectionString, PilotMapper mapper)
-            : base(connectionString, "PIL", "MBR", mapper)
+        public PilotRepository(IUnitOfWork unitOfWork, PilotMapper mapper)
+            : base(unitOfWork, "PIL", "MBR", mapper)
         {
         }
     }

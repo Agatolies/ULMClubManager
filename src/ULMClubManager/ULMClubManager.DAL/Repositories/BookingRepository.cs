@@ -12,8 +12,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class BookingRepository : GenericRepository<ResDBRow, int, Booking>
     {
-        public BookingRepository(string connectionString, BookingMapper mapper)
-            : base(connectionString, "RES", mapper)
+        public BookingRepository(IUnitOfWork unitOfWork, BookingMapper mapper)
+            : base(unitOfWork, "RES", mapper)
         {
         }
     }

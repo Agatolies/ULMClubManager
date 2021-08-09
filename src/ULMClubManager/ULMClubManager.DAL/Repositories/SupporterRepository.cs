@@ -10,8 +10,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class SupporterRepository : GenericRepository<SymDBRow, int, Supporter>
     {
-        public SupporterRepository(string connectionString, SupporterMapper mapper)
-            : base(connectionString, "PIL", "SYM", mapper)
+        public SupporterRepository(IUnitOfWork unitOfWork, SupporterMapper mapper)
+            : base(unitOfWork, "PIL", "SYM", mapper)
         {
         }
     }

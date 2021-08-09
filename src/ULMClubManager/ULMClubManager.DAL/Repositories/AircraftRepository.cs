@@ -6,8 +6,8 @@ namespace ULMClubManager.DAL.Mappers
 {
     public class AircraftRepository : GenericRepository<AerDBRow, int, Aircraft>
     {
-        public AircraftRepository(string connectionString, AircraftMapper mapper)
-            : base(connectionString, "AER", mapper)
+        public AircraftRepository(IUnitOfWork unitOfWork, AircraftMapper mapper)
+            : base(unitOfWork, "AER", mapper)
         {
         }
     }

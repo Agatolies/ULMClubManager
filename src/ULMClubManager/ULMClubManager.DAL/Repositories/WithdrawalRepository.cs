@@ -12,8 +12,8 @@ namespace ULMClubManager.DAL.Repositories
 {
     public class WithdrawalRepository : GenericRepository<RetDBRow, int, Withdrawal>
     {
-        public WithdrawalRepository(string connectionString, WithdrawalMapper mapper)
-            : base(connectionString, "RET", mapper)
+        public WithdrawalRepository(IUnitOfWork unitOfWork, WithdrawalMapper mapper)
+            : base(unitOfWork, "RET", mapper)
         {
         }
     }
