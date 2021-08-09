@@ -15,6 +15,8 @@ namespace ULMClubManager.DAL
     {
         private IDbConnection _connection;
         private IUnitOfWork _unitOfWork;
+        private LocalityRepository _localities;
+        private AircraftRepository _aircrafts;
 
         public DalSession()
         {
@@ -23,12 +25,6 @@ namespace ULMClubManager.DAL
             _connection = new SqlConnection(connectionString);
             _connection.Open();
             _unitOfWork = new UnitOfWork(_connection);
-
-            LocalityMapper localityMapper = new LocalityMapper();
-            AircraftMapper aircraftMapper = new AircraftMapper();
-
-            Localities = new LocalityRepository(_unitOfWork, localityMapper);
-            Aircrafts = new AircraftRepository(_unitOfWork, aircraftMapper);
         }
 
         public IUnitOfWork UnitOfWork
@@ -36,8 +32,32 @@ namespace ULMClubManager.DAL
             get { return _unitOfWork; }
         }
 
-        public LocalityRepository Localities { get; }
-        public AircraftRepository Aircrafts { get; }
+        public LocalityRepository Localities 
+        { 
+            get
+            {
+                if (_localities == null)
+                {
+                    LocalityMapper localityMapper = new LocalityMapper();
+                    _localities = new LocalityRepository(_unitOfWork, localityMapper);
+                }
+
+                return _localities;
+            }
+        }
+        public AircraftRepository Aircrafts 
+        { 
+            get
+            {
+                if (_aircrafts == null)
+                {
+                    AircraftMapper aircraftMapper = new AircraftMapper();
+                    _aircrafts = new AircraftRepository(_unitOfWork, aircraftMapper);
+                }
+
+                return _aircrafts;
+            }
+        }
 
         public void Dispose()
         {
