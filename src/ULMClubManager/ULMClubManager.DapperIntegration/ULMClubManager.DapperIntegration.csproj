@@ -54,6 +54,10 @@
       <Project>{55203555-09b9-44b7-ba75-20922f7f4a33}</Project>
       <Name>ULMClubManager.BL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ULMClubManager.DAL\ULMClubManager.DAL.csproj">
+      <Project>{4cdc1a68-b04e-48e5-aeef-512b9b45df07}</Project>
+      <Name>ULMClubManager.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,6 +42,7 @@ namespace ULMClubManager.DAL.DomainModels
                   administrator, userName, userPWD, localityID)
         {
         }
+
         public int? ID { get; }
         public string LastName { get; set; }
         public string FirstName { get; set; }

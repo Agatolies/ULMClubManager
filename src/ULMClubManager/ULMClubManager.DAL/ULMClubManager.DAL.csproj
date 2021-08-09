@@ -46,8 +46,10 @@
   <ItemGroup>
     <Compile Include="Abstractions\GenericRepository.cs" />
     <Compile Include="Abstractions\IDomainModel.cs" />
+    <Compile Include="Abstractions\IMember.cs" />
     <Compile Include="Abstractions\IUnitOfWork.cs" />
     <Compile Include="DalSession.cs" />
+    <Compile Include="DBRowModels\MbrDBRow.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="DBRowModels\AerDBRow.cs" />
     <Compile Include="DBRowModels\AnnDBRow.cs" />

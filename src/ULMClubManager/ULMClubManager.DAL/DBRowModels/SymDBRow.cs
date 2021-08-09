@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ULMClubManager.DAL.DBRowModels
 {
-    public class SymDBRow
+    public class SymDBRow : MbrDBRow
     {
-        public int MRB_ID { get; set; }
     }
 }

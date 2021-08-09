@@ -24,10 +24,10 @@ namespace ULMClubManager.DAL.Abstractions
                     select prop.Name).ToList();
         }
 
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly string _tableName;
-        private readonly string _keyPrefix;
-        private readonly GenericMapper<TDBRow, TDomain> _mapper;
+        protected readonly IUnitOfWork _unitOfWork;
+        protected readonly string _tableName;
+        protected readonly string _keyPrefix;
+        protected readonly GenericMapper<TDBRow, TDomain> _mapper;
 
         public GenericRepository(IUnitOfWork unitOfWork, string tableName, string keyPrefix, GenericMapper<TDBRow, TDomain> mapper)
         {
@@ -97,7 +97,7 @@ namespace ULMClubManager.DAL.Abstractions
 
         public virtual TDomain ReadLast()
         {
-            string query = $"SELECT TOP 1 * FROM {_tableName} ORDER BY unique_column DESC";
+            string query = $"SELECT TOP 1 * FROM {_tableName} ORDER BY {_keyPrefix}_ID DESC";
             TDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<TDBRow>(query);
             return _mapper.From(result);
         }
@@ -114,7 +114,7 @@ namespace ULMClubManager.DAL.Abstractions
 
         protected virtual string GenerateInsertQuery()
         {
-            StringBuilder query = new StringBuilder($"INSERT INTO {_tableName}");
+            StringBuilder query = new StringBuilder($"INSERT INTO {_tableName} ");
 
             query.Append("(");
 

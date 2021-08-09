@@ -7,12 +7,15 @@ namespace ULMClubManager.DapperIntegration
     {
         static void Main(string[] args)
         {
-            LocalityService localityService = new LocalityService();
+            SupporterService supporterService = new SupporterService();
 
-            localityService.ReadAll();
+            foreach (var supporter in supporterService.ReadAll())
+            {
+                Console.WriteLine(supporter);
+            }
             //localityService.ReadOne();
-            //localityService.CreateOne();
-            //localityService.UpdateOne();
+            //Console.WriteLine(pilotService.CreateOne());
+            //pilotService.UpdateOne();
             //localityService.DeleteOne();
 
             Console.WriteLine("ok");
