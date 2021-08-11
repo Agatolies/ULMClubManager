@@ -76,5 +76,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ULMClubManager.BL\ULMClubManager.BL.csproj">
+      <Project>{55203555-09b9-44b7-ba75-20922f7f4a33}</Project>
+      <Name>ULMClubManager.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj">
+      <Project>{30e75ab0-a051-41d1-b602-880535c65da7}</Project>
+      <Name>ULMClubManager.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

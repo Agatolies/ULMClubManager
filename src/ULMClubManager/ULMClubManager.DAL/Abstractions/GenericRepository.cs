@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using Dapper;
 using ULMClubManager.DAL.Mappers;
+using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DAL.Abstractions
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ULMClubManager.DAL;
 using ULMClubManager.DAL.Abstractions;
-using ULMClubManager.DAL.DomainModels;
+using ULMClubManager.DTO;
 
 namespace ULMClubManager.BL.Services
 {

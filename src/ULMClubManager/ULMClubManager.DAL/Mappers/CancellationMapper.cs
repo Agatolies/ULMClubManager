@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ULMClubManager.DAL.Abstractions;
 using ULMClubManager.DAL.DBRowModels;
-using ULMClubManager.DAL.DomainModels;
+using ULMClubManager.DTO;
 
 namespace ULMClubManager.DAL.Mappers
 {

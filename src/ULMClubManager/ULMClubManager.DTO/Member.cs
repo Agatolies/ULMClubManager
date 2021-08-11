@@ -1,19 +1,17 @@
 ﻿using System;
-using ULMClubManager.DAL.Abstractions;
+using ULMClubManager.DTO.Abstractions;
 
-namespace ULMClubManager.DAL.DomainModels
+namespace ULMClubManager.DTO
 {
-    public class Supporter : IMember
+    public class Member : IDomainModel
     {
-        public Supporter(
-            int? memberID, string lastName,
-            string firstName, string sex, DateTime dateOfBirth, 
-            DateTime registrationDate, string street, string residenceName,
-            string buildingNumber, string boxNumber, string phoneNumber,
-            string cellphoneNumber, string emailAddress, bool administrator,
-            string userName, string userPWD, int localityID)
+        public Member(int? id, string lastName, string firstName, string sex, 
+            DateTime dateOfBirth, DateTime registrationDate, string street, 
+            string residenceName, string buildingNumber, string boxNumber, 
+            string phoneNumber, string cellphoneNumber, string emailAddress, 
+            bool administrator, string userName, string userPWD, int localityID)
         {
-            ID = memberID;
+            ID = id;
             LastName = lastName;
             FirstName = firstName;
             Sex = sex;
@@ -32,17 +30,16 @@ namespace ULMClubManager.DAL.DomainModels
             LocalityID = localityID;
         }
 
-        public Supporter(
-           string lastName,
-            string firstName, string sex, DateTime dateOfBirth,
-            DateTime registrationDate, string street, string residenceName,
-            string buildingNumber, string boxNumber, string phoneNumber,
-            string cellphoneNumber, string emailAddress, bool administrator,
-            string userName, string userPWD, int localityID)
-            : this(
-                  null, lastName, firstName, sex, dateOfBirth, registrationDate,
-                  street, residenceName, buildingNumber, boxNumber, phoneNumber,
-                  cellphoneNumber, emailAddress, administrator, userName, userPWD, localityID)
+        public Member(string lastName, string firstName, string sex,
+            DateTime dateOfBirth, DateTime registrationDate, string street,
+            string residenceName, string buildingNumber, string boxNumber,
+            string phoneNumber, string cellphoneNumber, string emailAddress,
+            bool administrator, string userName, string userPWD, int localityID)
+            : this(null, lastName, firstName, sex, 
+                  dateOfBirth, registrationDate, street, 
+                  residenceName, buildingNumber, boxNumber,
+                  phoneNumber, cellphoneNumber, emailAddress,
+                  administrator, userName, userPWD, localityID)
         {
         }
 
@@ -63,15 +60,17 @@ namespace ULMClubManager.DAL.DomainModels
         public string UserName { get; set; }
         public string UserPWD { get; set; }
         public int LocalityID { get; set; }
-
         public string FullName
         {
-            get { return $"{FirstName} {LastName}"; }
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
         }
 
         public override string ToString()
         {
-            return $"Le sympathisant {FullName}";
+            return $"L'utilisateur {FullName}";
         }
     }
 }

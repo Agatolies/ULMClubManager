@@ -7,6 +7,10 @@ using ULMClubManager.DAL.Repositories;
 
 namespace ULMClubManager.DAL
 {
+    /// <summary>
+    /// Responsable d'instancier la connexion à la DB et de fournir 
+    /// un point d'accès unique à tous les Respositories de la DAL.
+    /// </summary>
     public class DalSession : IDisposable
     {
         private IDbConnection _connection;

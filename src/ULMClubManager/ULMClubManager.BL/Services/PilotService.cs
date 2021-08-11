@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ULMClubManager.DAL;
-using ULMClubManager.DAL.DomainModels;
+using ULMClubManager.DTO;
 
 namespace ULMClubManager.BL.Services
 {

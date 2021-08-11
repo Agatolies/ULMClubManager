@@ -1,5 +1,5 @@
 ﻿using ULMClubManager.DAL.DBRowModels;
-using ULMClubManager.DAL.DomainModels;
+using ULMClubManager.DTO;
 
 namespace ULMClubManager.DAL.Mappers
 {

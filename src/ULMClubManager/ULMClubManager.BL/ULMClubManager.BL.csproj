@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocalityService.cs" />
     <Compile Include="Services\PilotService.cs" />
@@ -51,6 +50,10 @@
     <ProjectReference Include="..\ULMClubManager.DAL\ULMClubManager.DAL.csproj">
       <Project>{4cdc1a68-b04e-48e5-aeef-512b9b45df07}</Project>
       <Name>ULMClubManager.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj">
+      <Project>{30e75ab0-a051-41d1-b602-880535c65da7}</Project>
+      <Name>ULMClubManager.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

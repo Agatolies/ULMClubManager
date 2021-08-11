@@ -1,7 +1,7 @@
 ﻿using System;
-using ULMClubManager.DAL.Abstractions;
+using ULMClubManager.DTO.Abstractions;
 
-namespace ULMClubManager.DAL.DomainModels
+namespace ULMClubManager.DTO
 {
     public class Cancellation : IDomainModel
     {

@@ -45,8 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\GenericRepository.cs" />
-    <Compile Include="Abstractions\IDomainModel.cs" />
-    <Compile Include="Abstractions\IMember.cs" />
     <Compile Include="Abstractions\IUnitOfWork.cs" />
     <Compile Include="DalSession.cs" />
     <Compile Include="DBRowModels\MbrDBRow.cs" />
@@ -62,19 +60,6 @@
     <Compile Include="DBRowModels\RetDBRow.cs" />
     <Compile Include="DBRowModels\SymDBRow.cs" />
     <Compile Include="DBRowModels\TypDBRow.cs" />
-    <Compile Include="DomainModels\Aircraft.cs" />
-    <Compile Include="DomainModels\Booking.cs" />
-    <Compile Include="DomainModels\Cancellation.cs" />
-    <Compile Include="DomainModels\IDomainModels.cs" />
-    <Compile Include="DomainModels\Member.cs" />
-    <Compile Include="DomainModels\Type.cs" />
-    <Compile Include="DomainModels\Withdrawal.cs" />
-    <Compile Include="DomainModels\Locality.cs" />
-    <Compile Include="DomainModels\Pilot.cs" />
-    <Compile Include="DomainModels\Runway.cs" />
-    <Compile Include="DomainModels\Subscription.cs" />
-    <Compile Include="DomainModels\Supporter.cs" />
-    <Compile Include="DomainModels\Unavailability.cs" />
     <Compile Include="Mappers\AircraftMapper.cs" />
     <Compile Include="Mappers\BookingMapper.cs" />
     <Compile Include="Mappers\CancellationMapper.cs" />
@@ -103,6 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj">
+      <Project>{30e75ab0-a051-41d1-b602-880535c65da7}</Project>
+      <Name>ULMClubManager.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

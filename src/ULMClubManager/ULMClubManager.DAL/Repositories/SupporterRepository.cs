@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using ULMClubManager.DAL.Abstractions;
 using ULMClubManager.DAL.DBRowModels;
-using ULMClubManager.DAL.DomainModels;
 using ULMClubManager.DAL.Mappers;
+using ULMClubManager.DTO;
 
 namespace ULMClubManager.DAL.Repositories
 {

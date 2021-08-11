@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ULMClubManager.DAL.Abstractions;
+using ULMClubManager.DTO.Abstractions;
 
-namespace ULMClubManager.DAL.DomainModels
+namespace ULMClubManager.DTO
 {
     public class Withdrawal : IDomainModel
     {

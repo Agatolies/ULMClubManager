@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{28C5E98D-8798-4669-A294-1D16BCB05724}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ULMClubManager.DapperIntegration</RootNamespace>
-    <AssemblyName>ULMClubManager.DapperIntegration</AssemblyName>
+    <ProjectGuid>{30E75AB0-A051-41D1-B602-880535C65DA7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ULMClubManager.DTO</RootNamespace>
+    <AssemblyName>ULMClubManager.DTO</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,21 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Abstractions\IDomainModel.cs" />
+    <Compile Include="Abstractions\IMember.cs" />
+    <Compile Include="Aircraft.cs" />
+    <Compile Include="Booking.cs" />
+    <Compile Include="Cancellation.cs" />
+    <Compile Include="Locality.cs" />
+    <Compile Include="Member.cs" />
+    <Compile Include="Pilot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ULMClubManager.BL\ULMClubManager.BL.csproj">
-      <Project>{55203555-09b9-44b7-ba75-20922f7f4a33}</Project>
-      <Name>ULMClubManager.BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj">
-      <Project>{30e75ab0-a051-41d1-b602-880535c65da7}</Project>
-      <Name>ULMClubManager.DTO</Name>
-    </ProjectReference>
+    <Compile Include="Runway.cs" />
+    <Compile Include="Subscription.cs" />
+    <Compile Include="Supporter.cs" />
+    <Compile Include="Type.cs" />
+    <Compile Include="Unavailability.cs" />
+    <Compile Include="Withdrawal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

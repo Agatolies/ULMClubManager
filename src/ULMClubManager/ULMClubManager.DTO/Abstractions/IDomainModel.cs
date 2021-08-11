@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ULMClubManager.DAL.Abstractions
+namespace ULMClubManager.DTO.Abstractions
 {
     public interface IDomainModel
     {

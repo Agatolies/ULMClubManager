@@ -10,6 +10,10 @@ using ULMClubManager.DAL.Repositories;
 
 namespace ULMClubManager.DAL
 {
+    /// <summary>
+    /// Design pattern standard responsable de la gestion des transactions DB. 
+    /// Expose une transaction et permet de démarrer, de valider ou d'annuler une transaction.
+    /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
         private IDbConnection _connection;

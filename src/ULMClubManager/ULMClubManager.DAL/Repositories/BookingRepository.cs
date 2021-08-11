@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ULMClubManager.DAL.Abstractions;
+﻿using ULMClubManager.DAL.Abstractions;
 using ULMClubManager.DAL.DBRowModels;
-using ULMClubManager.DAL.DomainModels;
 using ULMClubManager.DAL.Mappers;
+using ULMClubManager.DTO;
 
 namespace ULMClubManager.DAL.Repositories
 {
