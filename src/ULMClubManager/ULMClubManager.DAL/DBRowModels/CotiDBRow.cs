@@ -12,6 +12,6 @@ namespace ULMClubManager.DAL.DBRowModels
         public DateTime COTI_DTE_EMI { get; set; }
         public DateTime COTI_DTE_PAI { get; set; }
         public decimal COTI_MONT { get; set; }
-        public int MBR_ID { get; set; }
+        public int MBR_FK_ID { get; set; }
     }
 }

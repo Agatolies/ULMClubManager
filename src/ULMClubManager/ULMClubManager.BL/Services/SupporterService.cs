@@ -8,9 +8,9 @@ using ULMClubManager.DTO;
 
 namespace ULMClubManager.BL.Services
 {
-    public class SupporterService
+    public static class SupporterService
     {
-        public List<Supporter> ReadAll()
+        public static List<Supporter> ReadAll()
         {
             using (DalSession dalSession = new DalSession())
             {

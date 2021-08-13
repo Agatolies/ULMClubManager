@@ -12,7 +12,7 @@ namespace ULMClubManager.DAL.Mappers
     {
         public override Withdrawal From(RetDBRow ret)
         {
-            return new Withdrawal(ret.RET_ID, ret.RET_DTE_DEB, ret.RET_DTE_FIN, ret.RET_MOTIF, ret.MBR_ID);
+            return new Withdrawal(ret.RET_ID, ret.RET_DTE_DEB, ret.RET_DTE_FIN, ret.RET_MOTIF, ret.MBR_FK_ID);
         }
 
         public override RetDBRow To(Withdrawal ret)
@@ -25,7 +25,7 @@ namespace ULMClubManager.DAL.Mappers
             result.RET_DTE_DEB = ret.StartDate;
             result.RET_DTE_FIN = ret.EndDate;
             result.RET_MOTIF = ret.Reason;
-            result.MBR_ID = ret.MbrID;
+            result.MBR_FK_ID = ret.MbrID;
 
             return result;
         }

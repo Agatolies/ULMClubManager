@@ -8,9 +8,9 @@ using ULMClubManager.DTO;
 
 namespace ULMClubManager.BL.Services
 {
-    public class PilotService
+    public static class PilotService
     {
-        public Pilot CreateOne()
+        public static Pilot CreateOne()
         {
             using (DalSession dalSession = new DalSession())
             {
@@ -39,7 +39,8 @@ namespace ULMClubManager.BL.Services
                 return dalSession.Pilots.CreateOne(newPil);
             }
         }
-        public List<Pilot> ReadAll()
+
+        public static List<Pilot> ReadAll()
         {
             using (DalSession dalSession = new DalSession())
             {
@@ -47,7 +48,23 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public void UpdateOne()
+        public static List<Pilot> ReadAllBy(string filterName)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Pilots.ReadAllBy(filterName).ToList();
+            }
+        }
+
+        public static Pilot ReadOne(int id)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Pilots.ReadOne(id);
+            }
+        }
+
+        public static void UpdateOne()
         {
             using (DalSession dalSession = new DalSession())
             {

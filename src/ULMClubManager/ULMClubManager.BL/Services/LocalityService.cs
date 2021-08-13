@@ -6,9 +6,9 @@ using ULMClubManager.DTO;
 
 namespace ULMClubManager.BL.Services
 {
-    public class LocalityService
+    public static class LocalityService
     {
-        public void DeleteOne()
+        public static void DeleteOne()
         {
             using (DalSession dalSession = new DalSession())
             {
@@ -16,7 +16,7 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public void UpdateOne()
+        public static void UpdateOne()
         {
             using (DalSession dalSession = new DalSession())
             {
@@ -26,7 +26,7 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public void CreateOne()
+        public static void CreateOne()
         {
             using (DalSession dalSession = new DalSession())
             {
@@ -35,7 +35,7 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public void CreateOneWithTransaction()
+        public static void CreateOneWithTransaction()
         {
             using (DalSession dalSession = new DalSession())
             {
@@ -55,7 +55,7 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public void ReadAll()
+        public static void ReadAll()
         {
             using (DalSession dalSession = new DalSession())
             {
@@ -68,7 +68,7 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public void ReadOne()
+        public static void ReadOne()
         {
             using (DalSession dalSession = new DalSession())
             {

@@ -33,7 +33,7 @@ namespace ULMClubManager.DAL.Mappers
                 pil.MBR_ADM,
                 pil.MBR_USR_PSD,
                 pil.MBR_USR_PWD,
-                pil.LOC_ID
+                pil.LOC_FK_ID
             ) ;
         }
 
@@ -63,7 +63,7 @@ namespace ULMClubManager.DAL.Mappers
             result.MBR_ADM = pil.Administrator;
             result.MBR_USR_PSD = pil.UserName;
             result.MBR_USR_PWD = pil.UserPWD;
-            result.LOC_ID = pil.LocalityID;
+            result.LOC_FK_ID = pil.LocalityID;
 
             return result;
         }

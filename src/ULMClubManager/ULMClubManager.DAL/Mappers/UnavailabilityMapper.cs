@@ -13,7 +13,7 @@ namespace ULMClubManager.DAL.Mappers
     {
         public override Unavailability From(IndDBRow ind)
         {
-            return new Unavailability(ind.IND_ID, ind.IND_DTE_DEB, ind.IND_HEU_DEB, ind.IND_DTE_FIN, ind.IND_HEU_FIN, ind.IND_DES, ind.AER_ID);
+            return new Unavailability(ind.IND_ID, ind.IND_DTE_DEB, ind.IND_HEU_DEB, ind.IND_DTE_FIN, ind.IND_HEU_FIN, ind.IND_DES, ind.AER_FK_ID);
         }
 
         public override IndDBRow To(Unavailability ind)
@@ -28,7 +28,7 @@ namespace ULMClubManager.DAL.Mappers
             result.IND_DTE_FIN = ind.EndDate;
             result.IND_HEU_FIN = ind.EndHour;
             result.IND_DES = ind.Description;
-            result.AER_ID = ind.AircraftID;
+            result.AER_FK_ID = ind.AircraftID;
 
             return result;
         }

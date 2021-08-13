@@ -10,6 +10,6 @@ namespace ULMClubManager.DAL.DBRowModels
         public DateTime IND_DTE_FIN { get; set; }
         public string IND_HEU_FIN { get; set; }
         public string IND_DES { get; set; }
-        public int AER_ID { get; set; }
+        public int AER_FK_ID { get; set; }
     }
 }

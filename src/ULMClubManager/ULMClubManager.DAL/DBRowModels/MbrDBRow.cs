@@ -24,6 +24,6 @@ namespace ULMClubManager.DAL.DBRowModels
         public bool MBR_ADM { get; set; }
         public string MBR_USR_PSD { get; set; }
         public string MBR_USR_PWD { get; set; }
-        public int LOC_ID { get; set; }
+        public int LOC_FK_ID { get; set; }
     }
 }

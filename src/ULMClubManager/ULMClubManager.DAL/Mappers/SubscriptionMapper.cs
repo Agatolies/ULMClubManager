@@ -13,7 +13,7 @@ namespace ULMClubManager.DAL.Mappers
     {
         public override Subscription From(CotiDBRow coti)
         {
-            return new Subscription(coti.COTI_ID, coti.COTI_DTE_EMI, coti.COTI_DTE_PAI, coti.COTI_MONT, coti.MBR_ID);
+            return new Subscription(coti.COTI_ID, coti.COTI_DTE_EMI, coti.COTI_DTE_PAI, coti.COTI_MONT, coti.MBR_FK_ID);
         }
 
         public override CotiDBRow To(Subscription coti)
@@ -26,7 +26,7 @@ namespace ULMClubManager.DAL.Mappers
             result.COTI_DTE_EMI = coti.IssueDate;
             result.COTI_DTE_PAI = coti.PaymentDate;
             result.COTI_MONT = coti.Fee;
-            result.MBR_ID = coti.MemberID;
+            result.MBR_FK_ID = coti.MemberID;
 
             return result;
         }

@@ -14,28 +14,15 @@ namespace ULMClubManger.Forms
 {
     public partial class Form1 : Form
     {
-        private readonly PilotService _pilotService;
-
         public Form1()
         {
             InitializeComponent();
-
-            _pilotService = new PilotService();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btCharger_Click(object sender, EventArgs e)
         {
-            List<Pilot> pilots = _pilotService.ReadAll();
-
-            //var query = pilots.Select(pilot => new { Fullname = pilot.FullName }).ToList();
-
-            _dgvMembers.DataSource = pilots;
-            _dgvMembers.Columns["ID"].Visible = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _splitContainerLayout.SplitterDistance = 900;
+            Pilot pilot = PilotService.ReadOne(Convert.ToInt32(tbDEB_NOM.Text));
+            _dgvPIL.DataSource = new List<Pilot>() { pilot };
         }
     }
 }

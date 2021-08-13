@@ -12,6 +12,6 @@ namespace ULMClubManager.DAL.DBRowModels
         public DateTime RES_DTE { get; set; }
         public string RES_HEU_DEB { get; set; }
         public string RES_HEU_FIN { get; set; }
-        public int MBR_ID { get; set; }
+        public int MBR_FK_ID { get; set; }
     }
 }

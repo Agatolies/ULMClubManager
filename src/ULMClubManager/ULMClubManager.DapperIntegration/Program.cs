@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using ULMClubManager.BL.Services;
+using ULMClubManager.DTO;
+using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DapperIntegration
 {

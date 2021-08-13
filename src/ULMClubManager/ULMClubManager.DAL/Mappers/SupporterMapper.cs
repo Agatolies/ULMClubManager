@@ -29,7 +29,7 @@ namespace ULMClubManager.DAL.Mappers
                  sym.MBR_ADM,
                  sym.MBR_USR_PSD,
                  sym.MBR_USR_PWD,
-                 sym.LOC_ID
+                 sym.LOC_FK_ID
             );
         }
 
@@ -55,7 +55,7 @@ namespace ULMClubManager.DAL.Mappers
             result.MBR_ADM = sym.Administrator;
             result.MBR_USR_PSD = sym.UserName;
             result.MBR_USR_PWD = sym.UserPWD;
-            result.LOC_ID = sym.LocalityID;
+            result.LOC_FK_ID = sym.LocalityID;
 
             return result;
         }

@@ -13,7 +13,8 @@ using ULMClubManager.DTO.Abstractions;
 namespace ULMClubManager.DAL.Abstractions
 {
     public abstract class GenericRepository<TDBRow, TKey, TDomain> 
-        : IGenericRepository<TDomain, TKey> where TDomain : class, IDomainModel
+        : IGenericRepository<TDomain, TKey> 
+        where TDomain : class, IDomainModel
     {
         private static List<string> GenerateListOfProperties(IEnumerable<PropertyInfo> listOfProperties)
         {
