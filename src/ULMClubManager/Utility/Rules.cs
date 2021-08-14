@@ -37,7 +37,8 @@ namespace Utility
             {
                 { "CHK_RES_DTE", "La date de réservation ne peut pas être supérieure à la date d'encodage plus trois mois." },
                 { "CHK_RES_DTE_NOT_IN_PAST", "La date de réservation ne peut pas être passée." },
-                { "CHK_RES_HEU_FIN", "La durée d'une réservation doit être comprise entre 1 et 6 heures." }
+                { "CHK_RES_HEU_FIN", "La durée d'une réservation doit être comprise entre 1 et 6 heures." },
+                { "CHK_RES_IS_VALID_LICENCE", "La date de réservation doit être antérieure à la date d'expiration de la licence + 1 mois." }
             };
         }
 

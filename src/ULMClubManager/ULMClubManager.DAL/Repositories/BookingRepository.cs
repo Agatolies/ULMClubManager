@@ -5,6 +5,7 @@ using ULMClubManager.DTO;
 using Dapper;
 using System.Data;
 using System.Collections.Generic;
+using System;
 
 namespace ULMClubManager.DAL.Repositories
 {
@@ -74,6 +75,15 @@ namespace ULMClubManager.DAL.Repositories
             return _mapper.From(models);
         }
 
+        public List<Booking> ReadAllInFuture()
+        {
+            IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(
+                "sp_select_RES_IN_FUTURE",
+                commandType: CommandType.StoredProcedure);
+
+            return _mapper.From(models);
+        }
+
         public override Booking ReadOne(int id)
         {
             ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
@@ -96,12 +106,29 @@ namespace ULMClubManager.DAL.Repositories
 
         public override void UpdateOne(Booking domainModel)
         {
-            ResDBRow model = _mapper.To(domainModel);
-
             _unitOfWork.Connection.Execute(
                 "sp_update_RES",
-                param: model,
+                param: new
+                {
+                    RES_ID = domainModel.ID.Value,
+                    RES_DTE = domainModel.Date,
+                    RES_HEU_DEB = domainModel.StartHour,
+                    RES_HEU_FIN = domainModel.EndHour,
+                    MBR_FK_ID = domainModel.MemberID,
+                    AER_FK_ID = domainModel.AircraftID,
+                    PIST_FK_ID = domainModel.RunwayID
+                },
                 commandType: CommandType.StoredProcedure);
+        }
+
+        public Booking CreateOneCancellation(Cancellation cancellation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Booking DeleteCancellation(int bookingID)
+        {
+            throw new NotImplementedException();
         }
     }
 }

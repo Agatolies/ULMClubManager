@@ -1,24 +1,21 @@
 ﻿using System;
-using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {
-    public class Cancellation : IDomainModel
+    public class Cancellation
     {
-        public Cancellation(int? id, string reason, DateTime date, string hour)
+        public Cancellation(int id, string reason, DateTime date, string hour)
         {
-
+            ID = id;
+            Reason = reason;
+            Date = date;
+            Hour = hour;
         }
 
-        public Cancellation(string reason, DateTime date, string hour)
-            : this(null, reason, date, hour)
-        {
-        }
-
-        public int? ID { get; set; }
-        public string Reason { get; set; }
-        public DateTime Date { get; set; }
-        public string Hour { get; set; }
+        public int ID { get; }
+        public string Reason { get; }
+        public DateTime Date { get; }
+        public string Hour { get; }
 
         public override string ToString()
         {

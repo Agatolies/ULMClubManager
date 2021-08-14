@@ -60,6 +60,9 @@ namespace ULMClubManager.BL.Services
                     new DateTime(2021, 9, 2), 
                     new TimeSpan(13, 0, 0), 
                     new TimeSpan(14, 30, 0), 
+                    null,
+                    null,
+                    null,
                     23,
                     2,
                     2);

@@ -52,11 +52,6 @@ namespace ULMClubManager.DAL.Repositories
             return ReadLast();
         }
 
-        public override int CreateMany(IEnumerable<Pilot> domainModels)
-        {
-            throw new NotImplementedException("On ne créera jamais plusieurs pilotes à la fois.");
-        }
-
         public override List<Pilot> ReadAll()
         {
             IEnumerable<PilDBRow> models = _unitOfWork.Connection.Query<PilDBRow>("sp_select_PIL");
@@ -100,6 +95,14 @@ namespace ULMClubManager.DAL.Repositories
                 "sp_update_PIL", 
                 param: model,
                 commandType: CommandType.StoredProcedure);
+        }
+
+        public override void DeleteOne(int id)
+        {
+            _unitOfWork.Connection.Execute(
+                "sp_delete_PIL",
+                param: new { PIL_ID = id },
+                commandType: CommandType.StoredProcedure); ;
         }
     }
 }

@@ -24,7 +24,6 @@ namespace ULMClubManager.DAL
 
         private AircraftRepository _aircrafts;
         private BookingRepository _bookings;
-        private CancellationRepository _cancellations;
         private CategoryRepository _categories;
         private LocalityRepository _localities;
         private PilotRepository _pilots;
@@ -66,14 +65,6 @@ namespace ULMClubManager.DAL
             get
             {
                 return _bookings ?? (_bookings = new BookingRepository(_unitOfWork, new BookingMapper()));
-            }
-        }
-
-        public CancellationRepository Cancellations
-        {
-            get
-            {
-                return _cancellations ?? (_cancellations = new CancellationRepository(_unitOfWork, new CancellationMapper()));
             }
         }
 
@@ -145,7 +136,6 @@ namespace ULMClubManager.DAL
         {
             _aircrafts = null;
             _bookings = null;
-            _cancellations = null;
             _categories = null;
             _localities = null;
             _pilots = null;
