@@ -14,28 +14,6 @@ namespace ULMClubManager.BL.Services
         {
             using (DalSession dalSession = new DalSession())
             {
-                //Pilot newPil = new Pilot(
-                //    "713673960028620",
-                //    new DateTime(2021, 07, 03),
-                //    new DateTime(2024, 07, 01),
-                //    "BE",
-                //    "Malek",
-                //    "Rami",
-                //    "M",
-                //    new DateTime(1981, 05, 12),
-                //    new DateTime(2021,07,01),
-                //    "Rue de la Reine",
-                //    null,
-                //    null,
-                //    "91",
-                //    null,
-                //    "0478525232",
-                //    "malek.rami@gmail.com",
-                //    false,
-                //    "ramimi",
-                //    "12198105",
-                //    4);
-
                 return dalSession.Pilots.CreateOne(pilot);
             }
         }
@@ -71,6 +49,80 @@ namespace ULMClubManager.BL.Services
                 Pilot rami = dalSession.Pilots.ReadOne(23);
                 rami.FirstName = "Ramoudamour";
                 dalSession.Pilots.UpdateOne(rami);
+            }
+        }
+
+        public static void CreateBooking()
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                Booking newbooking = new Booking(
+                    new DateTime(2021, 9, 2), 
+                    new TimeSpan(13, 0, 0), 
+                    new TimeSpan(14, 30, 0), 
+                    23,
+                    2,
+                    2);
+
+                dalSession.Bookings.CreateOne(newbooking);
+            }
+        }
+
+        public static List<Booking> ReadAllBooking()
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Bookings.ReadAll().ToList();
+            }
+        }
+
+        public static List<Booking> ReadAllBookingByPilotID(int pilotID)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Bookings.ReadAllByPilotID(pilotID).ToList();
+            }
+        }
+
+        public static List<Booking> ReadAllBookingByAircraftID(int aircraftID)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Bookings.ReadAllByAircraftID(aircraftID).ToList();
+            }
+        }
+
+        public static List<Booking> ReadAllBookingByRunwayID(int runwayID)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Bookings.ReadAllByRunwayID(runwayID).ToList();
+            }
+        }
+
+        public static List<Booking> ReadAllBookingInFuture()
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Bookings.ReadAllInFuture().ToList();
+            }
+        }
+
+        public static Booking ReadOneBooking(int id)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Bookings.ReadOne(id);
+            }
+        }
+
+        public static void UpdateOneBooking()
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                Booking booking = dalSession.Bookings.ReadOne(29);
+                booking.AircraftID = 3;
+                dalSession.Bookings.UpdateOne(booking);
             }
         }
     }

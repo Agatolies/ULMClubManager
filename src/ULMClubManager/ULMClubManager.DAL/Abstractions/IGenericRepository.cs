@@ -6,7 +6,6 @@ namespace ULMClubManager.DAL.Abstractions
     public interface IGenericRepository<TDomain, TKey>
     {
         TDomain CreateOne(TDomain domainModel);
-        int CreateMany(IEnumerable<TDomain> domainModels);
         void DeleteOne(TKey id);
         List<TDomain> ReadAll();
         TDomain ReadOne(TKey id);

@@ -74,6 +74,10 @@ namespace ULMClubManger.Forms
             this._tboxUserPWD = new System.Windows.Forms.TextBox();
             this._btnInsertPilot = new System.Windows.Forms.Button();
             this._tboxSex = new System.Windows.Forms.TextBox();
+            this._labelISPilot = new System.Windows.Forms.Label();
+            this._chekPilotYes = new System.Windows.Forms.CheckBox();
+            this._checkPilotNo = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._dgvPIL)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -169,6 +173,10 @@ namespace ULMClubManger.Forms
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this._checkPilotNo);
+            this.tabPage2.Controls.Add(this._chekPilotYes);
+            this.tabPage2.Controls.Add(this._labelISPilot);
             this.tabPage2.Controls.Add(this._tboxSex);
             this.tabPage2.Controls.Add(this._btnInsertPilot);
             this.tabPage2.Controls.Add(this._tboxUserPWD);
@@ -495,7 +503,7 @@ namespace ULMClubManger.Forms
             // 
             // _btnInsertPilot
             // 
-            this._btnInsertPilot.Location = new System.Drawing.Point(483, 731);
+            this._btnInsertPilot.Location = new System.Drawing.Point(802, 739);
             this._btnInsertPilot.Name = "_btnInsertPilot";
             this._btnInsertPilot.Size = new System.Drawing.Size(75, 23);
             this._btnInsertPilot.TabIndex = 32;
@@ -509,6 +517,46 @@ namespace ULMClubManger.Forms
             this._tboxSex.Name = "_tboxSex";
             this._tboxSex.Size = new System.Drawing.Size(226, 22);
             this._tboxSex.TabIndex = 33;
+            // 
+            // _labelISPilot
+            // 
+            this._labelISPilot.AutoSize = true;
+            this._labelISPilot.Location = new System.Drawing.Point(28, 669);
+            this._labelISPilot.Name = "_labelISPilot";
+            this._labelISPilot.Size = new System.Drawing.Size(236, 17);
+            this._labelISPilot.TabIndex = 34;
+            this._labelISPilot.Text = "Avez-vous une licence de pilotage ?";
+            // 
+            // _chekPilotYes
+            // 
+            this._chekPilotYes.AutoSize = true;
+            this._chekPilotYes.Location = new System.Drawing.Point(308, 669);
+            this._chekPilotYes.Name = "_chekPilotYes";
+            this._chekPilotYes.Size = new System.Drawing.Size(52, 21);
+            this._chekPilotYes.TabIndex = 35;
+            this._chekPilotYes.Text = "Oui";
+            this._chekPilotYes.UseVisualStyleBackColor = true;
+            this._chekPilotYes.Click += new System.EventHandler(this._chekPilotYes_Click);
+            // 
+            // _checkPilotNo
+            // 
+            this._checkPilotNo.AutoSize = true;
+            this._checkPilotNo.Location = new System.Drawing.Point(432, 668);
+            this._checkPilotNo.Name = "_checkPilotNo";
+            this._checkPilotNo.Size = new System.Drawing.Size(56, 21);
+            this._checkPilotNo.TabIndex = 36;
+            this._checkPilotNo.Text = "Non";
+            this._checkPilotNo.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1355, 179);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -576,5 +624,9 @@ namespace ULMClubManger.Forms
         private System.Windows.Forms.Label _labelUserPWD;
         private System.Windows.Forms.TextBox _tboxUserPSD;
         private System.Windows.Forms.TextBox _tboxSex;
+        private System.Windows.Forms.CheckBox _checkPilotNo;
+        private System.Windows.Forms.CheckBox _chekPilotYes;
+        private System.Windows.Forms.Label _labelISPilot;
+        private System.Windows.Forms.Button button1;
     }
 }

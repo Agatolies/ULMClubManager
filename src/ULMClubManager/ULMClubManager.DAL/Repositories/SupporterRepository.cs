@@ -32,10 +32,10 @@ namespace ULMClubManager.DAL.Repositories
                     MBR_DTE_NAI = domainModel.DateOfBirth,
                     MBR_DTE_INS = domainModel.RegistrationDate,
                     MBR_RUE = domainModel.Street,
-                    MBR_NOM_RES = domainModel.ResidenceName,
-                    MBR_NUM_IMM = domainModel.BuildingNumber,
+                    MBR_NOM_RES = string.IsNullOrEmpty(domainModel.ResidenceName) ? null : domainModel.ResidenceName,
+                    MBR_NUM_IMM = string.IsNullOrEmpty(domainModel.BuildingNumber) ? null : domainModel.BuildingNumber,
                     MBR_NUM_BTE = domainModel.BoxNumber,
-                    MBR_NUM_TEL = domainModel.PhoneNumber,
+                    MBR_NUM_TEL = string.IsNullOrEmpty(domainModel.PhoneNumber) ? null : domainModel.PhoneNumber,
                     MBR_NUM_GSM = domainModel.CellphoneNumber,
                     MBR_ADR_MAIL = domainModel.EmailAddress,
                     MBR_ADM = domainModel.Administrator,
@@ -46,11 +46,6 @@ namespace ULMClubManager.DAL.Repositories
                 commandType: CommandType.StoredProcedure);
 
             return ReadLast();
-        }
-
-        public override int CreateMany(IEnumerable<Supporter> domainModels)
-        {
-            throw new NotImplementedException("On ne créera jamais plusieurs sympathisants à la fois.");
         }
 
         public override List<Supporter> ReadAll()

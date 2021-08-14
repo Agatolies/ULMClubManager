@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
+using Utility;
 
 namespace ULMClubManger.Forms
 {
@@ -84,6 +85,27 @@ namespace ULMClubManger.Forms
             catch (Exception ex)
             {
                 throw new Exception("blabla");
+            }
+        }
+
+        private void _chekPilotYes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PilotService.CreateBooking();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    Rules.MessageDecoder(ContextError.RES, ex.Message),
+                    "Erreur",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }

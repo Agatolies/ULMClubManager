@@ -12,7 +12,7 @@ namespace ULMClubManager.DAL.Mappers
     {
         public override Booking From(ResDBRow res)
         {
-            return new Booking(res.RES_ID, res.RES_DTE, res.RES_HEU_DEB, res.RES_HEU_FIN, res.MBR_FK_ID);
+            return new Booking(res.RES_ID, res.RES_DTE, res.RES_HEU_DEB, res.RES_HEU_FIN, res.MBR_FK_ID, res.AER_FK_ID, res.PIST_FK_ID);
         }
 
         public override ResDBRow To(Booking res)
@@ -25,7 +25,9 @@ namespace ULMClubManager.DAL.Mappers
             result.RES_DTE = res.Date;
             result.RES_HEU_DEB = res.StartHour;
             result.RES_HEU_FIN = res.EndHour;
-            result.MBR_FK_ID = res.MbrID;
+            result.MBR_FK_ID = res.MemberID;
+            result.AER_FK_ID = res.AircraftID;
+            result.PIST_FK_ID = res.RunwayID;
 
             return result;
         }

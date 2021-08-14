@@ -59,17 +59,6 @@ namespace ULMClubManager.DAL.Abstractions
             return ReadLast();
         }
 
-        public virtual int CreateMany(IEnumerable<TDomain> domainModels)
-        {
-            int inserted = 0;
-            string query = GenerateInsertQuery();
-
-            List<TDBRow> models = _mapper.To(domainModels);
-            inserted += _unitOfWork.Connection.Execute(query, models);
-
-            return inserted;
-        }
-
         public virtual void DeleteOne(TKey id)
         {
             string sql = $"DELETE FROM {_tableName} WHERE {_keyPrefix}_ID = @ID";

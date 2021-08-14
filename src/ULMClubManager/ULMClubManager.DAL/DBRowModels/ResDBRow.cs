@@ -10,8 +10,10 @@ namespace ULMClubManager.DAL.DBRowModels
     {
         public int RES_ID { get; set; }
         public DateTime RES_DTE { get; set; }
-        public string RES_HEU_DEB { get; set; }
-        public string RES_HEU_FIN { get; set; }
+        public TimeSpan RES_HEU_DEB { get; set; }
+        public TimeSpan RES_HEU_FIN { get; set; }
         public int MBR_FK_ID { get; set; }
+        public int AER_FK_ID { get; set; }
+        public int PIST_FK_ID { get; set; }
     }
 }

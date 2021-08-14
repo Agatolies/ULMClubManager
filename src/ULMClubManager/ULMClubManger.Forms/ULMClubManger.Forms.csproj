@@ -88,6 +88,10 @@
       <Project>{30e75ab0-a051-41d1-b602-880535c65da7}</Project>
       <Name>ULMClubManager.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{2ef82e24-8b05-4839-a3a6-ed47a546a4dd}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
