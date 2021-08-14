@@ -13,7 +13,7 @@ using ULMClubManager.DTO.Abstractions;
 namespace ULMClubManager.DAL.Abstractions
 {
     public abstract class GenericRepository<TDBRow, TKey, TDomain> 
-        : IGenericRepository<TDomain, TKey> 
+        :  IGenericRepository<TDomain, TKey> 
         where TDomain : class, IDomainModel
     {
         private static List<string> GenerateListOfProperties(IEnumerable<PropertyInfo> listOfProperties)
@@ -79,7 +79,7 @@ namespace ULMClubManager.DAL.Abstractions
                 throw new KeyNotFoundException($"La table {_tableName} avec l'id [{id}] n'existe pas.");
         }
 
-        public virtual IEnumerable<TDomain> ReadAll()
+        public virtual List<TDomain> ReadAll()
         {
             string query = $"SELECT * FROM {_tableName}";
             IEnumerable<TDBRow> models = _unitOfWork.Connection.Query<TDBRow>(query);

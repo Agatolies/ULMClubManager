@@ -8,7 +8,7 @@ namespace ULMClubManager.DAL.Abstractions
         TDomain CreateOne(TDomain domainModel);
         int CreateMany(IEnumerable<TDomain> domainModels);
         void DeleteOne(TKey id);
-        IEnumerable<TDomain> ReadAll();
+        List<TDomain> ReadAll();
         TDomain ReadOne(TKey id);
         TDomain ReadLast();
         void UpdateOne(TDomain loc);

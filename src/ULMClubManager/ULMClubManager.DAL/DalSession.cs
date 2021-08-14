@@ -13,8 +13,14 @@ namespace ULMClubManager.DAL
     /// </summary>
     public class DalSession : IDisposable
     {
-        private IDbConnection _connection;
-        private IUnitOfWork _unitOfWork;
+        private static IDbConnection GetConnection()
+        {
+            string connectionString = "Data Source=localhost;Initial Catalog=ULMClubManager;Persist Security Info=True;User ID=sa;Password=<YourStrong@Passw0rd>";
+            return new SqlConnection(connectionString);
+        }
+
+        private readonly IDbConnection _connection;
+        private readonly IUnitOfWork _unitOfWork;
 
         private AircraftRepository _aircrafts;
         private BookingRepository _bookings;
@@ -30,9 +36,7 @@ namespace ULMClubManager.DAL
 
         public DalSession()
         {
-            string connectionString = "Data Source=localhost;Initial Catalog=ULMClubManager;Persist Security Info=True;User ID=sa;Password=<YourStrong@Passw0rd>";
-
-            _connection = new SqlConnection(connectionString);
+            _connection = DalSession.GetConnection();
             _connection.Open();
             _unitOfWork = new UnitOfWork(_connection);
         }
