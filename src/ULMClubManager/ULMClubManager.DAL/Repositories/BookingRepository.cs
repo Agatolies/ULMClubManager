@@ -123,7 +123,7 @@ namespace ULMClubManager.DAL.Repositories
 
         public Booking CreateOneCancellation(Cancellation domainModel)
         {
-            ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
+            _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
                 "sp_insert_ANN",
                 param: new { 
                     RES_FK_ID = domainModel.BookingID,
@@ -131,17 +131,17 @@ namespace ULMClubManager.DAL.Repositories
                 },
                 commandType: CommandType.StoredProcedure);
 
-            return _mapper.From(result);
+            return ReadOne(domainModel.BookingID);
         }
 
         public Booking DeleteOneCancellation(int bookingID)
         {
-            ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
+            _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
                 "sp_delete_ANN",
                 param: new { bookingID },
                 commandType: CommandType.StoredProcedure);
 
-            return _mapper.From(result);
+            return ReadOne(bookingID);
         }
     }
 }
