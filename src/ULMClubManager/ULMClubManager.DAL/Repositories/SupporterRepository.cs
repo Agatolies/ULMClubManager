@@ -82,5 +82,13 @@ namespace ULMClubManager.DAL.Repositories
                 param: model,
                 commandType: CommandType.StoredProcedure);
         }
+
+        public override void DeleteOne(int id)
+        {
+            _unitOfWork.Connection.Execute(
+                "sp_delete_SYM",
+                param: new { SYM_ID = id },
+                commandType: CommandType.StoredProcedure);
+        }
     }
 }

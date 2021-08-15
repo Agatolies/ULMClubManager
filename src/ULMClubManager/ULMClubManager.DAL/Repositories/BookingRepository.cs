@@ -121,14 +121,27 @@ namespace ULMClubManager.DAL.Repositories
                 commandType: CommandType.StoredProcedure);
         }
 
-        public Booking CreateOneCancellation(Cancellation cancellation)
+        public Booking CreateOneCancellation(Cancellation domainModel)
         {
-            throw new NotImplementedException();
+            ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
+                "sp_insert_ANN",
+                param: new { 
+                    RES_FK_ID = domainModel.BookingID,
+                    ANN_MOTIF = domainModel.Reason
+                },
+                commandType: CommandType.StoredProcedure);
+
+            return _mapper.From(result);
         }
 
-        public Booking DeleteCancellation(int bookingID)
+        public Booking DeleteOneCancellation(int bookingID)
         {
-            throw new NotImplementedException();
+            ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
+                "sp_delete_ANN",
+                param: new { bookingID },
+                commandType: CommandType.StoredProcedure);
+
+            return _mapper.From(result);
         }
     }
 }

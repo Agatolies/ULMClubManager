@@ -4,18 +4,14 @@ namespace ULMClubManager.DTO
 {
     public class Cancellation
     {
-        public Cancellation(int id, string reason, DateTime date, string hour)
+        public Cancellation(int bookingID, string reason)
         {
-            ID = id;
+            BookingID = bookingID;
             Reason = reason;
-            Date = date;
-            Hour = hour;
         }
 
-        public int ID { get; }
+        public int BookingID { get; }
         public string Reason { get; }
-        public DateTime Date { get; }
-        public string Hour { get; }
 
         public override string ToString()
         {

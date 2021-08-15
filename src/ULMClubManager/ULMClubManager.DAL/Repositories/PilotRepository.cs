@@ -102,7 +102,7 @@ namespace ULMClubManager.DAL.Repositories
             _unitOfWork.Connection.Execute(
                 "sp_delete_PIL",
                 param: new { PIL_ID = id },
-                commandType: CommandType.StoredProcedure); ;
+                commandType: CommandType.StoredProcedure);
         }
     }
 }
