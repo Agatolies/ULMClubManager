@@ -52,10 +52,10 @@ namespace ULMClubManager.DAL.Abstractions
 
         public virtual TDomain CreateOne(TDomain domainModel)
         {
-            string query = GenerateInsertQuery();
+            string sql = GenerateInsertQuery();
 
             TDBRow model = _mapper.To(domainModel);
-            _unitOfWork.Connection.Execute(query, model);
+            _unitOfWork.Connection.Execute(sql, model);
             return ReadLast();
         }
 

@@ -32,6 +32,7 @@ namespace ULMClubManager.DAL
         private SupporterRepository _supporters;
         private UnavailabilityRepository _unavailabilities;
         private WithdrawalRepository _withdrawals;
+        private MemberRepository _members;
 
         public DalSession()
         {
@@ -132,6 +133,13 @@ namespace ULMClubManager.DAL
             }
         }
 
+        public MemberRepository Members
+        {
+            get
+            {
+                return _members ?? (_members = new MemberRepository(_unitOfWork));
+            }
+        }
         public void Dispose()
         {
             _aircrafts = null;

@@ -45,6 +45,7 @@
     <Compile Include="Services\LocalityService.cs" />
     <Compile Include="Services\PilotService.cs" />
     <Compile Include="Services\SupporterService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ULMClubManager.DAL\ULMClubManager.DAL.csproj">

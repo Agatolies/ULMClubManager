@@ -111,11 +111,11 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static Booking ReadOneBooking(int id)
+        public static Booking ReadOneBooking(int bookingID)
         {
             using (DalSession dalSession = new DalSession())
             {
-                return dalSession.Bookings.ReadOne(id);
+                return dalSession.Bookings.ReadOne(bookingID);
             }
         }
 
@@ -128,5 +128,25 @@ namespace ULMClubManager.BL.Services
                 dalSession.Bookings.UpdateOne(booking);
             }
         }
+
+        public static void DeleteOne(int pilotID)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    dalSession.Pilots.DeleteOne(pilotID);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
+            }
+        }
     }
+
+   
 }

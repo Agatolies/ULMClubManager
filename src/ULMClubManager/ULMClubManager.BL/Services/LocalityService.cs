@@ -8,6 +8,7 @@ namespace ULMClubManager.BL.Services
 {
     public static class LocalityService
     {
+        // Sans doute à supprimer
         public static void DeleteOne()
         {
             using (DalSession dalSession = new DalSession())
