@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ULMClubManager.DTO.Enums;
+using ULMClubManager.DTO.Exceptions;
 
-namespace Utility
+namespace ULMClubManager.BL
 {
-    public enum ContextError { MBR, RES }
 
     public static class Rules
     {
@@ -27,7 +25,8 @@ namespace Utility
             {
                 { "CHK_MBR_DTE_NAI", "Un membre doit avoir au moins 18 ans." },
                 { "CHK_MBR_NOM", "Le nom de famille doit avoir au minimum 3 caractères." },
-                { "CHK_MBR_PRN", "Le prénom doit avoir au minimum 3 caractères." }
+                { "CHK_MBR_PRN", "Le prénom doit avoir au minimum 3 caractères." },
+                { "ERR_LOGIN", "Administrateur ? Le nom d'utilisateur ou le mot de passe est incorrect." }
             };
         }
 
@@ -54,6 +53,16 @@ namespace Utility
                 }
 
             return msg;
+        }
+
+        public static string MessageDecoder(BusinessException businessException)
+        {
+            return MessageDecoder(businessException.Context, businessException.TokenError);
+        }
+
+        public static string MessageDecoder(DataAccessException dataAccessException)
+        {
+            return MessageDecoder(dataAccessException.Context, dataAccessException.TokenError);
         }
     }
 }

@@ -7,9 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ULMClubManager.BL;
 using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
-using Utility;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManger.Forms
 {

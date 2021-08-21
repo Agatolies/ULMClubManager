@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ULMClubManager.BL;
 using ULMClubManager.BL.Services;
+using ULMClubManager.DTO.Exceptions;
 
 namespace ULMClubManger.Forms.UserControls
 {
@@ -23,17 +25,17 @@ namespace ULMClubManger.Forms.UserControls
             string userName = _tboxUserName.Text.Trim();
             string password = _tboxPassword.Text.Trim();
 
-            bool isLoggedIn = UserService.Login(userName, password);
-
-            if (isLoggedIn)
+            try
             {
-                // Il faut récupérer le PIL ou le SYM sauf qu'on sait pas quelle requête appeler
-
-                // Il faut stocker le MBR dans une propriété statique de notre UserService
+                UserService.Login(userName, password);
             }
-            else
+            catch (LoginException ex)
             {
-                // Afficher un message d'erreur
+                MessageBox.Show(
+                    Rules.MessageDecoder(ex),
+                    "Erreur",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }

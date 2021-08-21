@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ULMClubManager.DAL.Abstractions;
+using ULMClubManager.DTO.Exceptions;
 
 namespace ULMClubManager.DAL.Repositories
 {
@@ -17,15 +18,30 @@ namespace ULMClubManager.DAL.Repositories
             _unitOfWork = unitOfWork;
         }
 
-        public bool Match(string userName, string password)
+        public int Match(string userName, string password)
         {
             string sql = $"SELECT * FROM MBR WHERE MBR_USR_PSD = @USERNAME";
 
-            var member = _unitOfWork.Connection.Query(sql, new { USERNAME = userName }).FirstOrDefault();
+            var member = _unitOfWork.Connection
+                .Query(sql, new { USERNAME = userName })
+                .FirstOrDefault();
 
-            string queryPWD = member.MBR_USR_PWD;
+            if (member != null)
+            {
+                int memberID = member.MBR_ID;
 
-            return queryPWD == password;
+                bool isMatch = member.MBR_USR_PWD == password;
+
+                if (isMatch)
+                    return memberID;
+                else
+                    throw new LoginException();
+            }
+            else
+            {
+                throw new LoginException();
+            }
+
         }
     }
 }
