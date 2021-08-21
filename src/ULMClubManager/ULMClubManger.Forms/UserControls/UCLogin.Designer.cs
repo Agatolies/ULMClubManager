@@ -29,78 +29,99 @@ namespace ULMClubManger.Forms.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this._labelUserName = new System.Windows.Forms.Label();
+            this._labelPassword = new System.Windows.Forms.Label();
             this._tboxUserName = new System.Windows.Forms.TextBox();
             this._tboxPassword = new System.Windows.Forms.TextBox();
             this._btnLogin = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // _labelUserName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(80, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nom d\'utilisateur";
+            this._labelUserName.AutoSize = true;
+            this._labelUserName.Location = new System.Drawing.Point(38, 35);
+            this._labelUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._labelUserName.Name = "_labelUserName";
+            this._labelUserName.Size = new System.Drawing.Size(84, 13);
+            this._labelUserName.TabIndex = 0;
+            this._labelUserName.Text = "Nom d\'utilisateur";
             // 
-            // label2
+            // _labelPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(80, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Mot de passe";
+            this._labelPassword.AutoSize = true;
+            this._labelPassword.Location = new System.Drawing.Point(38, 74);
+            this._labelPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this._labelPassword.Name = "_labelPassword";
+            this._labelPassword.Size = new System.Drawing.Size(71, 13);
+            this._labelPassword.TabIndex = 1;
+            this._labelPassword.Text = "Mot de passe";
             // 
             // _tboxUserName
             // 
-            this._tboxUserName.Location = new System.Drawing.Point(210, 44);
+            this._tboxUserName.Location = new System.Drawing.Point(136, 32);
+            this._tboxUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._tboxUserName.Name = "_tboxUserName";
-            this._tboxUserName.Size = new System.Drawing.Size(182, 22);
+            this._tboxUserName.Size = new System.Drawing.Size(138, 20);
             this._tboxUserName.TabIndex = 2;
             // 
             // _tboxPassword
             // 
-            this._tboxPassword.Location = new System.Drawing.Point(210, 92);
+            this._tboxPassword.Location = new System.Drawing.Point(136, 72);
+            this._tboxPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._tboxPassword.Name = "_tboxPassword";
             this._tboxPassword.PasswordChar = '*';
-            this._tboxPassword.Size = new System.Drawing.Size(182, 22);
+            this._tboxPassword.Size = new System.Drawing.Size(138, 20);
             this._tboxPassword.TabIndex = 3;
             // 
             // _btnLogin
             // 
-            this._btnLogin.Location = new System.Drawing.Point(228, 145);
+            this._btnLogin.Location = new System.Drawing.Point(136, 109);
+            this._btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnLogin.Name = "_btnLogin";
-            this._btnLogin.Size = new System.Drawing.Size(141, 23);
+            this._btnLogin.Size = new System.Drawing.Size(136, 19);
             this._btnLogin.TabIndex = 4;
             this._btnLogin.Text = "Se connecter";
             this._btnLogin.UseVisualStyleBackColor = true;
             this._btnLogin.Click += new System.EventHandler(this._btnLogin_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this._labelUserName);
+            this.panel1.Controls.Add(this._labelPassword);
+            this.panel1.Controls.Add(this._tboxUserName);
+            this.panel1.Controls.Add(this._tboxPassword);
+            this.panel1.Controls.Add(this._btnLogin);
+            this.panel1.Location = new System.Drawing.Point(76, 122);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 162);
+            this.panel1.TabIndex = 5;
+            // 
             // UCLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this._btnLogin);
-            this.Controls.Add(this._tboxPassword);
-            this.Controls.Add(this._tboxUserName);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UCLogin";
-            this.Size = new System.Drawing.Size(555, 255);
+            this.Size = new System.Drawing.Size(450, 406);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label _labelUserName;
+        private System.Windows.Forms.Label _labelPassword;
         private System.Windows.Forms.TextBox _tboxUserName;
         private System.Windows.Forms.TextBox _tboxPassword;
         private System.Windows.Forms.Button _btnLogin;
+        private System.Windows.Forms.Panel panel1;
     }
 }

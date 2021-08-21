@@ -77,12 +77,12 @@ namespace ULMClubManager.DTO
 
         public string FullName 
         { 
-            get { return $"{FirstName} {LastName}"; } 
+            get { return $"{LastName.ToUpper()} {FirstName}"; } 
         }
 
         public override string ToString()
         {
-            return $"Le pilote {FullName} avec numéro de licence {LicenceNumber} délivré dans le pays {Country}";
+            return $"{FullName} (Pilote)";
         }
     }
 }

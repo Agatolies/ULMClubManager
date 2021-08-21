@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ULMClubManager.DAL;
 using ULMClubManager.DTO;
 using ULMClubManager.DTO.Abstractions;
+using ULMClubManager.DTO.Exceptions;
 
 namespace ULMClubManager.BL.Services
 {
@@ -16,22 +17,40 @@ namespace ULMClubManager.BL.Services
             using (DalSession dalSession = new DalSession())
             {
                 int memberID = dalSession.Members.Match(userName, password);
+                IMember member = null;
 
                 try
                 {
-                    Pilot pilot = dalSession.Pilots.ReadOne(memberID);
-                    State.User = pilot;
-                    State.IsPilot = true;
-                    State.IsSupporter = false;
+                    member = dalSession.Pilots.ReadOne(memberID);
                 }
                 catch (KeyNotFoundException)
                 {
-                    Supporter supporter = dalSession.Supporters.ReadOne(memberID);
-                    State.User = supporter;
-                    State.IsSupporter = true;
-                    State.IsPilot = false;
+                    member = dalSession.Supporters.ReadOne(memberID);
+                }
+                finally
+                {
+                    if (member.Administrator)
+                        State.User = member;
+                    else
+                        throw new LoginAdminException();
                 }
             }
+        }
+
+        public static List<IMember> ReadAll()
+        {
+            List<IMember> members = new List<IMember>();
+
+            using (DalSession dalSession = new DalSession())
+            {
+                List<Pilot> pilots = dalSession.Pilots.ReadAll();
+                List<Supporter> supporters = dalSession.Supporters.ReadAll();
+
+                members.AddRange(pilots);
+                members.AddRange(supporters);
+            }
+
+            return members.OrderBy(member => member.LastName).ToList();
         }
     }
 }
