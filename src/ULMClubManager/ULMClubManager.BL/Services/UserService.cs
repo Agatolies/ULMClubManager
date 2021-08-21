@@ -52,5 +52,24 @@ namespace ULMClubManager.BL.Services
 
             return members.OrderBy(member => member.LastName).ToList();
         }
+
+        public static IMember ReadOne(int memberID)
+        {
+            IMember member;
+
+            using (DalSession dalSession = new DalSession())
+            {
+                try
+                {
+                    member = dalSession.Pilots.ReadOne(memberID);
+                }
+                catch (Exception)
+                {
+                    member = dalSession.Supporters.ReadOne(memberID);
+                }
+            }
+
+            return member;
+        }
     }
 }

@@ -70,6 +70,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIDelegates.cs" />
+    <Compile Include="UserControls\UCMemberCRUD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCMemberCRUD.Designer.cs">
+      <DependentUpon>UCMemberCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCMemberPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCMemberPicker.Designer.cs">
+      <DependentUpon>UCMemberPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +116,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\UCMemberCRUD.resx">
+      <DependentUpon>UCMemberCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCMemberPicker.resx">
+      <DependentUpon>UCMemberPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCLayout.resx">
       <DependentUpon>UCLayout.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +132,7 @@
       <DependentUpon>UCSideBar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Abstractions.IMember.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,9 +155,6 @@
       <Project>{30e75ab0-a051-41d1-b602-880535c65da7}</Project>
       <Name>ULMClubManager.DTO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MetroFramework.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

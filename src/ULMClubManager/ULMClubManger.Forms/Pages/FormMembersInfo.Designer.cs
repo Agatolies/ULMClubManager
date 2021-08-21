@@ -29,38 +29,27 @@ namespace ULMClubManger.Forms.Pages
         /// </summary>
         private void InitializeComponent()
         {
-            this._lbMembers = new System.Windows.Forms.ListBox();
-            this._tboxSearchMember = new System.Windows.Forms.TextBox();
-            this._labelSearchName = new System.Windows.Forms.Label();
+            this._ucMemberPicker = new ULMClubManger.Forms.UserControls.UCMemberPicker();
+            this._ucMemberCRUD = new ULMClubManger.Forms.UserControls.UCMemberCRUD();
             this.SuspendLayout();
             // 
-            // _lbMembers
+            // _ucMemberPicker
             // 
-            this._lbMembers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this._lbMembers.FormattingEnabled = true;
-            this._lbMembers.Location = new System.Drawing.Point(9, 38);
-            this._lbMembers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this._lbMembers.Name = "_lbMembers";
-            this._lbMembers.Size = new System.Drawing.Size(229, 550);
-            this._lbMembers.TabIndex = 0;
+            this._ucMemberPicker.Dock = System.Windows.Forms.DockStyle.Left;
+            this._ucMemberPicker.Location = new System.Drawing.Point(0, 0);
+            this._ucMemberPicker.Name = "_ucMemberPicker";
+            this._ucMemberPicker.Size = new System.Drawing.Size(234, 600);
+            this._ucMemberPicker.TabIndex = 0;
+            this._ucMemberPicker.SelectMember += new ULMClubManger.Forms.delSelect(this._ucMemberPicker_SelectMember);
             // 
-            // _tboxSearchMember
+            // _ucMemberCRUD
             // 
-            this._tboxSearchMember.Location = new System.Drawing.Point(47, 12);
-            this._tboxSearchMember.Name = "_tboxSearchMember";
-            this._tboxSearchMember.Size = new System.Drawing.Size(191, 20);
-            this._tboxSearchMember.TabIndex = 2;
-            this._tboxSearchMember.TextChanged += new System.EventHandler(this._tboxSearchMember_TextChanged);
-            // 
-            // _labelSearchName
-            // 
-            this._labelSearchName.AutoSize = true;
-            this._labelSearchName.Location = new System.Drawing.Point(12, 15);
-            this._labelSearchName.Name = "_labelSearchName";
-            this._labelSearchName.Size = new System.Drawing.Size(29, 13);
-            this._labelSearchName.TabIndex = 3;
-            this._labelSearchName.Text = "Nom";
+            this._ucMemberCRUD.BackColor = System.Drawing.Color.Gainsboro;
+            this._ucMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ucMemberCRUD.Location = new System.Drawing.Point(234, 0);
+            this._ucMemberCRUD.Name = "_ucMemberCRUD";
+            this._ucMemberCRUD.Size = new System.Drawing.Size(554, 600);
+            this._ucMemberCRUD.TabIndex = 1;
             // 
             // FormMembersInfo
             // 
@@ -68,22 +57,19 @@ namespace ULMClubManger.Forms.Pages
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(788, 600);
-            this.Controls.Add(this._labelSearchName);
-            this.Controls.Add(this._tboxSearchMember);
-            this.Controls.Add(this._lbMembers);
+            this.Controls.Add(this._ucMemberCRUD);
+            this.Controls.Add(this._ucMemberPicker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMembersInfo";
             this.Text = "FormMembersInfo";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox _lbMembers;
-        private System.Windows.Forms.TextBox _tboxSearchMember;
-        private System.Windows.Forms.Label _labelSearchName;
+        private UserControls.UCMemberPicker _ucMemberPicker;
+        private UserControls.UCMemberCRUD _ucMemberCRUD;
     }
 }
