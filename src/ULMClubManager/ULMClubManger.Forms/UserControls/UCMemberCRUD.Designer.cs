@@ -53,7 +53,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRLocality = new System.Windows.Forms.Label();
             this._tboxMBRZipCode = new System.Windows.Forms.TextBox();
             this._labelMRBRegistrationDate = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this._dtpMRBRegistrationDate = new System.Windows.Forms.DateTimePicker();
             this._cboxMBRLocality = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this._btnMBRCreate = new System.Windows.Forms.Button();
@@ -61,22 +61,22 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRUpdate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this._gboxPIL = new System.Windows.Forms.GroupBox();
-            this._cboxMBRQual2 = new System.Windows.Forms.CheckBox();
-            this._cboxMBRQual1 = new System.Windows.Forms.CheckBox();
-            this._cboxMBRQual3 = new System.Windows.Forms.CheckBox();
-            this._cboxMBRQual4 = new System.Windows.Forms.CheckBox();
-            this._cboxMBRQual5 = new System.Windows.Forms.CheckBox();
+            this._tboxLICCountry = new System.Windows.Forms.TextBox();
+            this._labelLICCountry = new System.Windows.Forms.Label();
+            this._dtpLICExpirationDte = new System.Windows.Forms.DateTimePicker();
+            this._labelLICExpirationDte = new System.Windows.Forms.Label();
+            this._dtpLICObtentionDte = new System.Windows.Forms.DateTimePicker();
+            this._labelLICObtentionDte = new System.Windows.Forms.Label();
+            this._tboxLICNum = new System.Windows.Forms.TextBox();
+            this._labelLICNum = new System.Windows.Forms.Label();
             this._cboxMBRQual6 = new System.Windows.Forms.CheckBox();
+            this._cboxMBRQual5 = new System.Windows.Forms.CheckBox();
+            this._cboxMBRQual4 = new System.Windows.Forms.CheckBox();
+            this._cboxMBRQual3 = new System.Windows.Forms.CheckBox();
+            this._cboxMBRQual1 = new System.Windows.Forms.CheckBox();
+            this._cboxMBRQual2 = new System.Windows.Forms.CheckBox();
             this._bsMember = new System.Windows.Forms.BindingSource(this.components);
             this.iMemberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._labelLICNum = new System.Windows.Forms.Label();
-            this._tboxLICNum = new System.Windows.Forms.TextBox();
-            this._labelLICObtentionDte = new System.Windows.Forms.Label();
-            this._dtpLICObtentionDte = new System.Windows.Forms.DateTimePicker();
-            this._labelLICExpirationDte = new System.Windows.Forms.Label();
-            this._dtpLICExpirationDte = new System.Windows.Forms.DateTimePicker();
-            this._labelLICCountry = new System.Windows.Forms.Label();
-            this._tboxLICCountry = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this._gboxPIL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
@@ -140,7 +140,6 @@ namespace ULMClubManger.Forms.UserControls
             // 
             this._tboxMBRID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._tboxMBRID.BackColor = System.Drawing.SystemColors.Control;
             this._tboxMBRID.Location = new System.Drawing.Point(164, 75);
             this._tboxMBRID.MaximumSize = new System.Drawing.Size(75, 20);
             this._tboxMBRID.MinimumSize = new System.Drawing.Size(75, 20);
@@ -316,14 +315,14 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMRBRegistrationDate.TabIndex = 24;
             this._labelMRBRegistrationDate.Text = "Date d\'inscription au club";
             // 
-            // dateTimePicker1
+            // _dtpMRBRegistrationDate
             // 
-            this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "RegistrationDate", true));
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(164, 387);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(240, 20);
-            this.dateTimePicker1.TabIndex = 25;
+            this._dtpMRBRegistrationDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "RegistrationDate", true));
+            this._dtpMRBRegistrationDate.Enabled = false;
+            this._dtpMRBRegistrationDate.Location = new System.Drawing.Point(164, 387);
+            this._dtpMRBRegistrationDate.Name = "_dtpMRBRegistrationDate";
+            this._dtpMRBRegistrationDate.Size = new System.Drawing.Size(240, 20);
+            this._dtpMRBRegistrationDate.TabIndex = 25;
             // 
             // _cboxMBRLocality
             // 
@@ -358,6 +357,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRCreate.TabIndex = 29;
             this._btnMBRCreate.Text = "Ajouter";
             this._btnMBRCreate.UseVisualStyleBackColor = false;
+            this._btnMBRCreate.Click += new System.EventHandler(this._btnMBRCreate_Click);
             // 
             // _btnMBRDelete
             // 
@@ -372,6 +372,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRDelete.TabIndex = 30;
             this._btnMBRDelete.Text = "Supprimer";
             this._btnMBRDelete.UseVisualStyleBackColor = false;
+            this._btnMBRDelete.Click += new System.EventHandler(this._btnMBRDelete_Click);
             // 
             // _btnMBRUpdate
             // 
@@ -386,6 +387,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRUpdate.TabIndex = 31;
             this._btnMBRUpdate.Text = "Modifier";
             this._btnMBRUpdate.UseVisualStyleBackColor = false;
+            this._btnMBRUpdate.Click += new System.EventHandler(this._btnMBRUpdate_Click);
             // 
             // panel1
             // 
@@ -423,142 +425,15 @@ namespace ULMClubManger.Forms.UserControls
             this._gboxPIL.TabStop = false;
             this._gboxPIL.Text = "LICENCE ET QUALIFICATIONS";
             // 
-            // _cboxMBRQual2
+            // _tboxLICCountry
             // 
-            this._cboxMBRQual2.AutoSize = true;
-            this._cboxMBRQual2.Enabled = false;
-            this._cboxMBRQual2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._cboxMBRQual2.Location = new System.Drawing.Point(334, 65);
-            this._cboxMBRQual2.Name = "_cboxMBRQual2";
-            this._cboxMBRQual2.Size = new System.Drawing.Size(130, 17);
-            this._cboxMBRQual2.TabIndex = 0;
-            this._cboxMBRQual2.Text = "Classe 2 : Pendulaires";
-            this._cboxMBRQual2.UseVisualStyleBackColor = true;
-            // 
-            // _cboxMBRQual1
-            // 
-            this._cboxMBRQual1.AutoSize = true;
-            this._cboxMBRQual1.Enabled = false;
-            this._cboxMBRQual1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._cboxMBRQual1.Location = new System.Drawing.Point(334, 35);
-            this._cboxMBRQual1.Name = "_cboxMBRQual1";
-            this._cboxMBRQual1.Size = new System.Drawing.Size(134, 17);
-            this._cboxMBRQual1.TabIndex = 1;
-            this._cboxMBRQual1.Text = "Classe 1 : Paramoteurs";
-            this._cboxMBRQual1.UseVisualStyleBackColor = true;
-            // 
-            // _cboxMBRQual3
-            // 
-            this._cboxMBRQual3.AutoSize = true;
-            this._cboxMBRQual3.Enabled = false;
-            this._cboxMBRQual3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._cboxMBRQual3.Location = new System.Drawing.Point(334, 95);
-            this._cboxMBRQual3.Name = "_cboxMBRQual3";
-            this._cboxMBRQual3.Size = new System.Drawing.Size(152, 17);
-            this._cboxMBRQual3.TabIndex = 2;
-            this._cboxMBRQual3.Text = "Classe 3 : Appareils 3 axes";
-            this._cboxMBRQual3.UseVisualStyleBackColor = true;
-            // 
-            // _cboxMBRQual4
-            // 
-            this._cboxMBRQual4.AutoSize = true;
-            this._cboxMBRQual4.Enabled = false;
-            this._cboxMBRQual4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._cboxMBRQual4.Location = new System.Drawing.Point(334, 125);
-            this._cboxMBRQual4.Name = "_cboxMBRQual4";
-            this._cboxMBRQual4.Size = new System.Drawing.Size(119, 17);
-            this._cboxMBRQual4.TabIndex = 3;
-            this._cboxMBRQual4.Text = "Classe 4 : Autogires";
-            this._cboxMBRQual4.UseVisualStyleBackColor = true;
-            // 
-            // _cboxMBRQual5
-            // 
-            this._cboxMBRQual5.AutoSize = true;
-            this._cboxMBRQual5.Enabled = false;
-            this._cboxMBRQual5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._cboxMBRQual5.Location = new System.Drawing.Point(334, 155);
-            this._cboxMBRQual5.Name = "_cboxMBRQual5";
-            this._cboxMBRQual5.Size = new System.Drawing.Size(119, 17);
-            this._cboxMBRQual5.TabIndex = 4;
-            this._cboxMBRQual5.Text = "Classe 5 : Aérostats";
-            this._cboxMBRQual5.UseVisualStyleBackColor = true;
-            // 
-            // _cboxMBRQual6
-            // 
-            this._cboxMBRQual6.AutoSize = true;
-            this._cboxMBRQual6.Enabled = false;
-            this._cboxMBRQual6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._cboxMBRQual6.Location = new System.Drawing.Point(334, 185);
-            this._cboxMBRQual6.Name = "_cboxMBRQual6";
-            this._cboxMBRQual6.Size = new System.Drawing.Size(134, 17);
-            this._cboxMBRQual6.TabIndex = 5;
-            this._cboxMBRQual6.Text = "Classe 6 : Hélicoptères";
-            this._cboxMBRQual6.UseVisualStyleBackColor = true;
-            // 
-            // _bsMember
-            // 
-            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
-            // 
-            // iMemberBindingSource
-            // 
-            this.iMemberBindingSource.DataSource = typeof(ULMClubManager.DTO.Member);
-            // 
-            // _labelLICNum
-            // 
-            this._labelLICNum.AutoSize = true;
-            this._labelLICNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelLICNum.Location = new System.Drawing.Point(9, 25);
-            this._labelLICNum.Name = "_labelLICNum";
-            this._labelLICNum.Size = new System.Drawing.Size(102, 13);
-            this._labelLICNum.TabIndex = 6;
-            this._labelLICNum.Text = "Numéro de licence :";
-            // 
-            // _tboxLICNum
-            // 
-            this._tboxLICNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._tboxLICNum.Location = new System.Drawing.Point(11, 41);
-            this._tboxLICNum.Name = "_tboxLICNum";
-            this._tboxLICNum.ReadOnly = true;
-            this._tboxLICNum.Size = new System.Drawing.Size(201, 20);
-            this._tboxLICNum.TabIndex = 7;
-            // 
-            // _labelLICObtentionDte
-            // 
-            this._labelLICObtentionDte.AutoSize = true;
-            this._labelLICObtentionDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelLICObtentionDte.Location = new System.Drawing.Point(9, 69);
-            this._labelLICObtentionDte.Name = "_labelLICObtentionDte";
-            this._labelLICObtentionDte.Size = new System.Drawing.Size(91, 13);
-            this._labelLICObtentionDte.TabIndex = 8;
-            this._labelLICObtentionDte.Text = "Date d\'obtention :";
-            // 
-            // _dtpLICObtentionDte
-            // 
-            this._dtpLICObtentionDte.Enabled = false;
-            this._dtpLICObtentionDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._dtpLICObtentionDte.Location = new System.Drawing.Point(11, 85);
-            this._dtpLICObtentionDte.Name = "_dtpLICObtentionDte";
-            this._dtpLICObtentionDte.Size = new System.Drawing.Size(200, 20);
-            this._dtpLICObtentionDte.TabIndex = 9;
-            // 
-            // _labelLICExpirationDte
-            // 
-            this._labelLICExpirationDte.AutoSize = true;
-            this._labelLICExpirationDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelLICExpirationDte.Location = new System.Drawing.Point(9, 119);
-            this._labelLICExpirationDte.Name = "_labelLICExpirationDte";
-            this._labelLICExpirationDte.Size = new System.Drawing.Size(92, 13);
-            this._labelLICExpirationDte.TabIndex = 10;
-            this._labelLICExpirationDte.Text = "Date d\'expiration :";
-            // 
-            // _dtpLICExpirationDte
-            // 
-            this._dtpLICExpirationDte.Enabled = false;
-            this._dtpLICExpirationDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._dtpLICExpirationDte.Location = new System.Drawing.Point(11, 135);
-            this._dtpLICExpirationDte.Name = "_dtpLICExpirationDte";
-            this._dtpLICExpirationDte.Size = new System.Drawing.Size(200, 20);
-            this._dtpLICExpirationDte.TabIndex = 11;
+            this._tboxLICCountry.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "LicenceCountry", true));
+            this._tboxLICCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._tboxLICCountry.Location = new System.Drawing.Point(10, 186);
+            this._tboxLICCountry.Name = "_tboxLICCountry";
+            this._tboxLICCountry.ReadOnly = true;
+            this._tboxLICCountry.Size = new System.Drawing.Size(201, 20);
+            this._tboxLICCountry.TabIndex = 13;
             // 
             // _labelLICCountry
             // 
@@ -570,14 +445,152 @@ namespace ULMClubManger.Forms.UserControls
             this._labelLICCountry.TabIndex = 12;
             this._labelLICCountry.Text = "Pays d\'obtention :";
             // 
-            // _tboxLICCountry
+            // _dtpLICExpirationDte
             // 
-            this._tboxLICCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._tboxLICCountry.Location = new System.Drawing.Point(10, 186);
-            this._tboxLICCountry.Name = "_tboxLICCountry";
-            this._tboxLICCountry.ReadOnly = true;
-            this._tboxLICCountry.Size = new System.Drawing.Size(201, 20);
-            this._tboxLICCountry.TabIndex = 13;
+            this._dtpLICExpirationDte.DataBindings.Add(new System.Windows.Forms.Binding("Value", this._bsMember, "LicenceExpirationDate", true));
+            this._dtpLICExpirationDte.Enabled = false;
+            this._dtpLICExpirationDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._dtpLICExpirationDte.Location = new System.Drawing.Point(11, 135);
+            this._dtpLICExpirationDte.Name = "_dtpLICExpirationDte";
+            this._dtpLICExpirationDte.Size = new System.Drawing.Size(200, 20);
+            this._dtpLICExpirationDte.TabIndex = 11;
+            // 
+            // _labelLICExpirationDte
+            // 
+            this._labelLICExpirationDte.AutoSize = true;
+            this._labelLICExpirationDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelLICExpirationDte.Location = new System.Drawing.Point(9, 119);
+            this._labelLICExpirationDte.Name = "_labelLICExpirationDte";
+            this._labelLICExpirationDte.Size = new System.Drawing.Size(92, 13);
+            this._labelLICExpirationDte.TabIndex = 10;
+            this._labelLICExpirationDte.Text = "Date d\'expiration :";
+            // 
+            // _dtpLICObtentionDte
+            // 
+            this._dtpLICObtentionDte.Checked = false;
+            this._dtpLICObtentionDte.DataBindings.Add(new System.Windows.Forms.Binding("Value", this._bsMember, "LicenceObtentionDate", true));
+            this._dtpLICObtentionDte.Enabled = false;
+            this._dtpLICObtentionDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._dtpLICObtentionDte.Location = new System.Drawing.Point(11, 85);
+            this._dtpLICObtentionDte.Name = "_dtpLICObtentionDte";
+            this._dtpLICObtentionDte.Size = new System.Drawing.Size(200, 20);
+            this._dtpLICObtentionDte.TabIndex = 9;
+            // 
+            // _labelLICObtentionDte
+            // 
+            this._labelLICObtentionDte.AutoSize = true;
+            this._labelLICObtentionDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelLICObtentionDte.Location = new System.Drawing.Point(9, 69);
+            this._labelLICObtentionDte.Name = "_labelLICObtentionDte";
+            this._labelLICObtentionDte.Size = new System.Drawing.Size(91, 13);
+            this._labelLICObtentionDte.TabIndex = 8;
+            this._labelLICObtentionDte.Text = "Date d\'obtention :";
+            // 
+            // _tboxLICNum
+            // 
+            this._tboxLICNum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "LicenceNumber", true));
+            this._tboxLICNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._tboxLICNum.Location = new System.Drawing.Point(11, 41);
+            this._tboxLICNum.Name = "_tboxLICNum";
+            this._tboxLICNum.ReadOnly = true;
+            this._tboxLICNum.Size = new System.Drawing.Size(201, 20);
+            this._tboxLICNum.TabIndex = 7;
+            // 
+            // _labelLICNum
+            // 
+            this._labelLICNum.AutoSize = true;
+            this._labelLICNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelLICNum.Location = new System.Drawing.Point(9, 25);
+            this._labelLICNum.Name = "_labelLICNum";
+            this._labelLICNum.Size = new System.Drawing.Size(102, 13);
+            this._labelLICNum.TabIndex = 6;
+            this._labelLICNum.Text = "Numéro de licence :";
+            // 
+            // _cboxMBRQual6
+            // 
+            this._cboxMBRQual6.AutoSize = true;
+            this._cboxMBRQual6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this._bsMember, "QualificationType6", true));
+            this._cboxMBRQual6.Enabled = false;
+            this._cboxMBRQual6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._cboxMBRQual6.Location = new System.Drawing.Point(334, 188);
+            this._cboxMBRQual6.Name = "_cboxMBRQual6";
+            this._cboxMBRQual6.Size = new System.Drawing.Size(134, 17);
+            this._cboxMBRQual6.TabIndex = 5;
+            this._cboxMBRQual6.Text = "Classe 6 : Hélicoptères";
+            this._cboxMBRQual6.UseVisualStyleBackColor = true;
+            // 
+            // _cboxMBRQual5
+            // 
+            this._cboxMBRQual5.AutoSize = true;
+            this._cboxMBRQual5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this._bsMember, "QualificationType5", true));
+            this._cboxMBRQual5.Enabled = false;
+            this._cboxMBRQual5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._cboxMBRQual5.Location = new System.Drawing.Point(334, 159);
+            this._cboxMBRQual5.Name = "_cboxMBRQual5";
+            this._cboxMBRQual5.Size = new System.Drawing.Size(119, 17);
+            this._cboxMBRQual5.TabIndex = 4;
+            this._cboxMBRQual5.Text = "Classe 5 : Aérostats";
+            this._cboxMBRQual5.UseVisualStyleBackColor = true;
+            // 
+            // _cboxMBRQual4
+            // 
+            this._cboxMBRQual4.AutoSize = true;
+            this._cboxMBRQual4.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this._bsMember, "QualificationType4", true));
+            this._cboxMBRQual4.Enabled = false;
+            this._cboxMBRQual4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._cboxMBRQual4.Location = new System.Drawing.Point(334, 130);
+            this._cboxMBRQual4.Name = "_cboxMBRQual4";
+            this._cboxMBRQual4.Size = new System.Drawing.Size(119, 17);
+            this._cboxMBRQual4.TabIndex = 3;
+            this._cboxMBRQual4.Text = "Classe 4 : Autogires";
+            this._cboxMBRQual4.UseVisualStyleBackColor = true;
+            // 
+            // _cboxMBRQual3
+            // 
+            this._cboxMBRQual3.AutoSize = true;
+            this._cboxMBRQual3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this._bsMember, "QualificationType3", true));
+            this._cboxMBRQual3.Enabled = false;
+            this._cboxMBRQual3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._cboxMBRQual3.Location = new System.Drawing.Point(334, 101);
+            this._cboxMBRQual3.Name = "_cboxMBRQual3";
+            this._cboxMBRQual3.Size = new System.Drawing.Size(152, 17);
+            this._cboxMBRQual3.TabIndex = 2;
+            this._cboxMBRQual3.Text = "Classe 3 : Appareils 3 axes";
+            this._cboxMBRQual3.UseVisualStyleBackColor = true;
+            // 
+            // _cboxMBRQual1
+            // 
+            this._cboxMBRQual1.AutoSize = true;
+            this._cboxMBRQual1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this._bsMember, "QualificationType1", true));
+            this._cboxMBRQual1.Enabled = false;
+            this._cboxMBRQual1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._cboxMBRQual1.Location = new System.Drawing.Point(334, 42);
+            this._cboxMBRQual1.Name = "_cboxMBRQual1";
+            this._cboxMBRQual1.Size = new System.Drawing.Size(134, 17);
+            this._cboxMBRQual1.TabIndex = 1;
+            this._cboxMBRQual1.Text = "Classe 1 : Paramoteurs";
+            this._cboxMBRQual1.UseVisualStyleBackColor = true;
+            // 
+            // _cboxMBRQual2
+            // 
+            this._cboxMBRQual2.AutoSize = true;
+            this._cboxMBRQual2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this._bsMember, "QualificationType2", true));
+            this._cboxMBRQual2.Enabled = false;
+            this._cboxMBRQual2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._cboxMBRQual2.Location = new System.Drawing.Point(334, 72);
+            this._cboxMBRQual2.Name = "_cboxMBRQual2";
+            this._cboxMBRQual2.Size = new System.Drawing.Size(130, 17);
+            this._cboxMBRQual2.TabIndex = 0;
+            this._cboxMBRQual2.Text = "Classe 2 : Pendulaires";
+            this._cboxMBRQual2.UseVisualStyleBackColor = true;
+            // 
+            // _bsMember
+            // 
+            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
+            // 
+            // iMemberBindingSource
+            // 
+            this.iMemberBindingSource.DataSource = typeof(ULMClubManager.DTO.Member);
             // 
             // UCMemberCRUD
             // 
@@ -588,7 +601,7 @@ namespace ULMClubManger.Forms.UserControls
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._cboxMBRLocality);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this._dtpMRBRegistrationDate);
             this.Controls.Add(this._labelMRBRegistrationDate);
             this.Controls.Add(this._tboxMBRZipCode);
             this.Controls.Add(this._labelMBRLocality);
@@ -650,7 +663,7 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Label _labelMBRLocality;
         private System.Windows.Forms.TextBox _tboxMBRZipCode;
         private System.Windows.Forms.Label _labelMRBRegistrationDate;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker _dtpMRBRegistrationDate;
         private System.Windows.Forms.ComboBox _cboxMBRLocality;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button _btnMBRCreate;

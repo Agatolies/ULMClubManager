@@ -29,6 +29,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _cboxMBRSex.DataSource = Gender.GetGenders();
             _localities = LocalityService.ReadAll();
+
         }
 
         public Member Member
@@ -40,36 +41,23 @@ namespace ULMClubManger.Forms.UserControls
 
                 if (_member != null)
                 {
-                    _tboxMBRID.Text = _member.ID.Value.ToString();
-
                     _bsMember.DataSource = _member;
 
-                    Locality locality = _localities.FirstOrDefault(l => l.ID == _member.LocalityID);
-                    _tboxMBRZipCode.Text = locality.ZipCode;
-
-                    _gboxPIL.Visible = _member.IsPilot;
-
-                    if (_member.IsPilot)
+                    if (_member.ID.HasValue)
                     {
-                        _tboxLICNum.Text = _member.LicenceNumber;
-                        _dtpLICObtentionDte.Value = _member.LicenceObtentionDate;
-                        _dtpLICExpirationDte.Value = _member.LicenceExpirationDate;
-                        _tboxLICCountry.Text = _member.LicenceCountry;
+                        Locality locality = _localities
+                            .FirstOrDefault(l => l.ID == _member.LocalityID);
+
+                        _tboxMBRZipCode.Text = locality.ZipCode;
+                        _tboxMBRID.Text = _member.ID.Value.ToString();
+                        _gboxPIL.Visible = _member.IsPilot;
                     }
                     else
                     {
-                        _tboxLICNum.Text = null;
-                        _dtpLICObtentionDte.Value = DateTime.Now;
-                        _dtpLICExpirationDte.Value = DateTime.Now;
-                        _tboxLICCountry.Text = null;
+                        _tboxMBRZipCode.Text = "";
+                        _tboxMBRID.Text = "";
+                        _gboxPIL.Visible = true;
                     }
-
-                    _cboxMBRQual1.Checked = _member.Qualification.Type1;
-                    _cboxMBRQual2.Checked = _member.Qualification.Type2;
-                    _cboxMBRQual3.Checked = _member.Qualification.Type3;
-                    _cboxMBRQual4.Checked = _member.Qualification.Type4;
-                    _cboxMBRQual5.Checked = _member.Qualification.Type5;
-                    _cboxMBRQual6.Checked = _member.Qualification.Type6;
                 }
             }
         }
@@ -109,6 +97,68 @@ namespace ULMClubManger.Forms.UserControls
             Locality locality = (Locality)((ComboBox)sender).SelectedItem;
 
             _tboxMBRZipCode.Text = locality.ZipCode;
+        }
+
+        private void ClearControls()
+        {
+            Member = new Member();
+        }
+
+        private void LockControls()
+        {
+            
+        }
+
+        private void UnlockControls(bool unlockID)
+        {
+            if (unlockID)
+                _tboxMBRID.ReadOnly = false;
+
+            _tboxMBRLastName.ReadOnly = false;
+            _tboxMBRFirstName.ReadOnly = false;
+            _cboxMBRSex.Enabled = true;
+            _dtpMBRDteOfBirth.Enabled = true;
+            _tboxMBREmailAddress.ReadOnly = false;
+            _tboxMBRPostalAddress.ReadOnly = false; 
+            _tboxMBRBoxNumber.ReadOnly = false;
+            _tboxMBRResidenceName.ReadOnly = false;
+            _tboxMBRBuildingNumber.ReadOnly = false;
+            _tboxMBRZipCode.ReadOnly = false;
+            _cboxMBRLocality.Enabled = true;
+            _dtpMRBRegistrationDate.Enabled = true;
+
+            _tboxLICNum.ReadOnly = false;
+            _dtpLICObtentionDte.Enabled = true;
+            _dtpLICExpirationDte.Enabled = true;
+            _tboxLICCountry.ReadOnly = false;
+
+            _cboxMBRQual1.Enabled = true;
+            _cboxMBRQual2.Enabled = true;
+            _cboxMBRQual3.Enabled = true;
+            _cboxMBRQual4.Enabled = true;
+            _cboxMBRQual5.Enabled = true;
+            _cboxMBRQual6.Enabled = true;
+        }
+
+        private void _btnMBRCreate_Click(object sender, EventArgs e)
+        {
+            UnlockControls(true);
+
+            ClearControls();
+
+            //LockControls();
+        }
+
+        private void _btnMBRUpdate_Click(object sender, EventArgs e)
+        {
+            UnlockControls(false);
+
+            //LockControls();
+        }
+
+        private void _btnMBRDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

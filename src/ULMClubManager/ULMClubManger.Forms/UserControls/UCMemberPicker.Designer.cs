@@ -72,6 +72,7 @@ namespace ULMClubManger.Forms.UserControls
             this.Controls.Add(this._lbMembers);
             this.Name = "UCMemberPicker";
             this.Size = new System.Drawing.Size(234, 600);
+            this.Load += new System.EventHandler(this.UCMemberPicker_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

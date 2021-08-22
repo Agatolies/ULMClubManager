@@ -22,7 +22,6 @@ namespace ULMClubManger.Forms.UserControls
         public UCMemberPicker()
         {
             InitializeComponent();
-            InitializeData();
         }
 
         public void InitializeData()
@@ -36,6 +35,11 @@ namespace ULMClubManger.Forms.UserControls
             {
                 MessageBox.Show(this, ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void UCMemberPicker_Load(object sender, EventArgs e)
+        {
+            InitializeData();
         }
 
         private void _tboxSearchMember_TextChanged(object sender, EventArgs e)

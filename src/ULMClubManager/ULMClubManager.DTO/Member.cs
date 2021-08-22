@@ -12,7 +12,8 @@ namespace ULMClubManager.DTO
             string residenceName, string buildingNumber, string boxNumber, 
             string phoneNumber, string cellphoneNumber, string emailAddress, 
             bool administrator, string userName, string userPWD, int localityID,
-            Qualification qualification)
+            bool qualificationType1, bool qualificationType2, bool qualificationType3,
+            bool qualificationType4, bool qualificationType5, bool qualificationType6)
         {
             ID = id;
             LicenceNumber = licenceNumber;
@@ -35,7 +36,12 @@ namespace ULMClubManager.DTO
             UserName = userName;
             UserPWD = userPWD;
             LocalityID = localityID;
-            Qualification = qualification;
+            QualificationType1 = qualificationType1;
+            QualificationType2 = qualificationType2;
+            QualificationType3 = qualificationType3;
+            QualificationType4 = qualificationType4;
+            QualificationType5 = qualificationType5;
+            QualificationType6 = qualificationType6;
         }
 
         public Member(string licenceNumber, DateTime licenceObtentionDate,
@@ -44,14 +50,22 @@ namespace ULMClubManager.DTO
             DateTime dateOfBirth, DateTime registrationDate, string street,
             string residenceName, string buildingNumber, string boxNumber,
             string phoneNumber, string cellphoneNumber, string emailAddress,
-            bool administrator, string userName, string userPWD, int localityID, Qualification qualification)
+            bool administrator, string userName, string userPWD, int localityID,
+            bool qualificationType1, bool qualificationType2, bool qualificationType3,
+            bool qualificationType4, bool qualificationType5, bool qualificationType6)
             : this(null, licenceNumber, licenceObtentionDate,
                 licenceExpirationDate, licenceCountry, 
                 lastName, firstName, sex, 
                 dateOfBirth, registrationDate, street, 
                 residenceName, buildingNumber, boxNumber,
                 phoneNumber, cellphoneNumber, emailAddress,
-                administrator, userName, userPWD, localityID, qualification)
+                administrator, userName, userPWD, localityID, 
+                qualificationType1, qualificationType2, qualificationType3,
+                qualificationType4, qualificationType5, qualificationType6)
+        {
+        }
+
+        public Member()
         {
         }
 
@@ -77,9 +91,15 @@ namespace ULMClubManager.DTO
         public DateTime LicenceObtentionDate { get; set; }
         public DateTime LicenceExpirationDate { get; set; }
         public string LicenceCountry { get; set; }
-        public Qualification Qualification { get; set; }
 
-        public bool IsPilot => LicenceNumber != null && Qualification != null;
+        public bool QualificationType1 { get; set; }
+        public bool QualificationType2 { get; set; }
+        public bool QualificationType3 { get; set; }
+        public bool QualificationType4 { get; set; }
+        public bool QualificationType5 { get; set; }
+        public bool QualificationType6 { get; set; }
+
+        public bool IsPilot => LicenceNumber != null;
         public bool IsSupporter => !IsPilot;
 
         public string FullName

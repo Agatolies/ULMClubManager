@@ -11,14 +11,6 @@ namespace ULMClubManager.DAL.Mappers
     public class MemberMapper
     {
         public Member From(MbrDBRow mbr) {
-            Qualification qualification = new Qualification(
-                mbr.MBR_QUAL_TYP_1 == 1,
-                mbr.MBR_QUAL_TYP_2 == 1,
-                mbr.MBR_QUAL_TYP_3 == 1,
-                mbr.MBR_QUAL_TYP_4 == 1,
-                mbr.MBR_QUAL_TYP_5 == 1,
-                mbr.MBR_QUAL_TYP_6 == 1);
-
             return new Member(
                 mbr.MBR_ID,
                 mbr.PIL_NUM_LIC,
@@ -41,7 +33,12 @@ namespace ULMClubManager.DAL.Mappers
                 mbr.MBR_USR_PSD,
                 mbr.MBR_USR_PWD,
                 mbr.LOC_FK_ID,
-                qualification
+                mbr.MBR_QUAL_TYP_1 == 1,
+                mbr.MBR_QUAL_TYP_2 == 1,
+                mbr.MBR_QUAL_TYP_3 == 1,
+                mbr.MBR_QUAL_TYP_4 == 1,
+                mbr.MBR_QUAL_TYP_5 == 1,
+                mbr.MBR_QUAL_TYP_6 == 1
             );
         }
 
@@ -79,12 +76,12 @@ namespace ULMClubManager.DAL.Mappers
             result.MBR_USR_PSD = member.UserName;
             result.MBR_USR_PWD = member.UserPWD;
             result.LOC_FK_ID = member.LocalityID;
-            result.MBR_QUAL_TYP_1 = member.Qualification.Type1 ? 1 : 0;
-            result.MBR_QUAL_TYP_2 = member.Qualification.Type2 ? 1 : 0;
-            result.MBR_QUAL_TYP_3 = member.Qualification.Type3 ? 1 : 0;
-            result.MBR_QUAL_TYP_4 = member.Qualification.Type4 ? 1 : 0;
-            result.MBR_QUAL_TYP_5 = member.Qualification.Type5 ? 1 : 0;
-            result.MBR_QUAL_TYP_6 = member.Qualification.Type6 ? 1 : 0;
+            result.MBR_QUAL_TYP_1 = member.QualificationType1 ? 1 : 0;
+            result.MBR_QUAL_TYP_2 = member.QualificationType2 ? 1 : 0;
+            result.MBR_QUAL_TYP_3 = member.QualificationType3 ? 1 : 0;
+            result.MBR_QUAL_TYP_4 = member.QualificationType4 ? 1 : 0;
+            result.MBR_QUAL_TYP_5 = member.QualificationType5 ? 1 : 0;
+            result.MBR_QUAL_TYP_6 = member.QualificationType6 ? 1 : 0;
 
             return result;
         }
