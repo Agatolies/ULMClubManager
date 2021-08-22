@@ -5,13 +5,20 @@ namespace ULMClubManager.DTO
 {
     public class Member : IDomainModel
     {
-        public Member(int? id, string lastName, string firstName, string sex, 
+        public Member(int? id, string licenceNumber, DateTime licenceObtentionDate,
+            DateTime licenceExpirationDate, string licenceCountry, 
+            string lastName, string firstName, string sex, 
             DateTime dateOfBirth, DateTime registrationDate, string street, 
             string residenceName, string buildingNumber, string boxNumber, 
             string phoneNumber, string cellphoneNumber, string emailAddress, 
-            bool administrator, string userName, string userPWD, int localityID)
+            bool administrator, string userName, string userPWD, int localityID,
+            Qualification qualification)
         {
             ID = id;
+            LicenceNumber = licenceNumber;
+            LicenceObtentionDate = licenceObtentionDate;
+            LicenceExpirationDate = licenceExpirationDate;
+            LicenceCountry = licenceCountry;
             LastName = lastName;
             FirstName = firstName;
             Sex = sex;
@@ -28,18 +35,23 @@ namespace ULMClubManager.DTO
             UserName = userName;
             UserPWD = userPWD;
             LocalityID = localityID;
+            Qualification = qualification;
         }
 
-        public Member(string lastName, string firstName, string sex,
+        public Member(string licenceNumber, DateTime licenceObtentionDate,
+            DateTime licenceExpirationDate, string licenceCountry, 
+            string lastName, string firstName, string sex,
             DateTime dateOfBirth, DateTime registrationDate, string street,
             string residenceName, string buildingNumber, string boxNumber,
             string phoneNumber, string cellphoneNumber, string emailAddress,
-            bool administrator, string userName, string userPWD, int localityID)
-            : this(null, lastName, firstName, sex, 
-                  dateOfBirth, registrationDate, street, 
-                  residenceName, buildingNumber, boxNumber,
-                  phoneNumber, cellphoneNumber, emailAddress,
-                  administrator, userName, userPWD, localityID)
+            bool administrator, string userName, string userPWD, int localityID, Qualification qualification)
+            : this(null, licenceNumber, licenceObtentionDate,
+                licenceExpirationDate, licenceCountry, 
+                lastName, firstName, sex, 
+                dateOfBirth, registrationDate, street, 
+                residenceName, buildingNumber, boxNumber,
+                phoneNumber, cellphoneNumber, emailAddress,
+                administrator, userName, userPWD, localityID, qualification)
         {
         }
 
@@ -60,17 +72,39 @@ namespace ULMClubManager.DTO
         public string UserName { get; set; }
         public string UserPWD { get; set; }
         public int LocalityID { get; set; }
+        public string LicenceNumber { get; set; }
+
+        public DateTime LicenceObtentionDate { get; set; }
+        public DateTime LicenceExpirationDate { get; set; }
+        public string LicenceCountry { get; set; }
+        public Qualification Qualification { get; set; }
+
+        public bool IsPilot => LicenceNumber != null && Qualification != null;
+        public bool IsSupporter => !IsPilot;
+
         public string FullName
+        {
+            get { return $"{LastName.ToUpper()} {FirstName}"; }
+        }
+
+        public string MemberCategory
         {
             get
             {
-                return $"{FirstName} {LastName}";
+                string memberCategory = "Autre";
+
+                if (IsPilot)
+                    memberCategory = "Pilote";
+                if (IsSupporter)
+                    memberCategory = "Sympathisant";
+
+                return memberCategory;
             }
         }
 
         public override string ToString()
         {
-            return $"L'utilisateur {FullName}";
+            return $"{FullName} / {MemberCategory}";
         }
     }
 }

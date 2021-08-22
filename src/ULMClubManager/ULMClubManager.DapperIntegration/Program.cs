@@ -10,12 +10,11 @@ namespace ULMClubManager.DapperIntegration
     {
         static void Main(string[] args)
         {
-            SupporterService supporterService = new SupporterService();
-
-            foreach (var supporter in supporterService.ReadAll())
+            foreach (Member member in MemberService.ReadAll())
             {
-                Console.WriteLine(supporter);
+                Console.WriteLine(member);
             }
+
             //localityService.ReadOne();
             //Console.WriteLine(pilotService.CreateOne());
             //pilotService.UpdateOne();

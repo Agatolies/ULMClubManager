@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ULMClubManager.BL.Services;
+using ULMClubManager.DTO;
 using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManger.Forms.UserControls
@@ -16,7 +17,7 @@ namespace ULMClubManger.Forms.UserControls
     {
         public event delSelect SelectMember;
 
-        private List<IMember> _allMembers;
+        private List<Member> _allMembers;
 
         public UCMemberPicker()
         {
@@ -28,7 +29,7 @@ namespace ULMClubManger.Forms.UserControls
         {
             try
             {
-                _allMembers = UserService.ReadAll();
+                _allMembers = MemberService.ReadAll();
                 _lbMembers.DataSource = _allMembers;
             }
             catch (Exception ex)
@@ -41,7 +42,7 @@ namespace ULMClubManger.Forms.UserControls
         {
             string searchLetters = _tboxSearchMember.Text;
 
-            List<IMember> filteredMembers = _allMembers
+            List<Member> filteredMembers = _allMembers
                 .Where(member => member.FullName.Contains(searchLetters))
                 .ToList();
 
@@ -51,7 +52,7 @@ namespace ULMClubManger.Forms.UserControls
         private void _lbMembers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_lbMembers.DataSource != null && this.SelectMember != null)
-                this.SelectMember(((IMember)_lbMembers.SelectedItem).ID.Value);
+                this.SelectMember(((Member)_lbMembers.SelectedItem).ID.Value);
         }
     }
 }

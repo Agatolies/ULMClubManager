@@ -26,10 +26,8 @@ namespace ULMClubManager.DAL
         private BookingRepository _bookings;
         private CategoryRepository _categories;
         private LocalityRepository _localities;
-        private PilotRepository _pilots;
         private RunwayRepository _runways;
         private SubscriptionRepository _subscriptions;
-        private SupporterRepository _supporters;
         private UnavailabilityRepository _unavailabilities;
         private WithdrawalRepository _withdrawals;
         private MemberRepository _members;
@@ -85,14 +83,6 @@ namespace ULMClubManager.DAL
             }
         }
 
-        public PilotRepository Pilots
-        {
-            get
-            {
-                return _pilots ?? (_pilots = new PilotRepository(_unitOfWork, new PilotMapper()));
-            }
-        }
-
         public RunwayRepository Runways
         {
             get
@@ -106,14 +96,6 @@ namespace ULMClubManager.DAL
             get
             {
                 return _subscriptions ?? (_subscriptions = new SubscriptionRepository(_unitOfWork, new SubscriptionMapper()));
-            }
-        }
-
-        public SupporterRepository Supporters
-        {
-            get
-            {
-                return _supporters ?? (_supporters = new SupporterRepository(_unitOfWork, new SupporterMapper()));
             }
         }
 
@@ -146,10 +128,9 @@ namespace ULMClubManager.DAL
             _bookings = null;
             _categories = null;
             _localities = null;
-            _pilots = null;
+            _members = null;
             _runways = null;
             _subscriptions = null;
-            _supporters = null;
             _unavailabilities = null;
             _withdrawals = null;
 

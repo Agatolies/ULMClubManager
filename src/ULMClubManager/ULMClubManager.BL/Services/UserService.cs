@@ -17,59 +17,48 @@ namespace ULMClubManager.BL.Services
             using (DalSession dalSession = new DalSession())
             {
                 int memberID = dalSession.Members.Match(userName, password);
-                IMember member = null;
+                Member member = dalSession.Members.ReadOne(memberID); 
 
-                try
-                {
-                    member = dalSession.Pilots.ReadOne(memberID);
-                }
-                catch (KeyNotFoundException)
-                {
-                    member = dalSession.Supporters.ReadOne(memberID);
-                }
-                finally
-                {
-                    if (member.Administrator)
-                        State.User = member;
-                    else
-                        throw new LoginAdminException();
-                }
+                if (member.Administrator)
+                    State.User = member;
+                else
+                    throw new LoginAdminException();
             }
         }
 
-        public static List<IMember> ReadAll()
-        {
-            List<IMember> members = new List<IMember>();
+        //public static List<IMember> ReadAll()
+        //{
+        //    List<IMember> members = new List<IMember>();
 
-            using (DalSession dalSession = new DalSession())
-            {
-                List<Pilot> pilots = dalSession.Pilots.ReadAll();
-                List<Supporter> supporters = dalSession.Supporters.ReadAll();
+        //    using (DalSession dalSession = new DalSession())
+        //    {
+        //        List<Pilot> pilots = dalSession.Pilots.ReadAll();
+        //        List<Supporter> supporters = dalSession.Supporters.ReadAll();
 
-                members.AddRange(pilots);
-                members.AddRange(supporters);
-            }
+        //        members.AddRange(pilots);
+        //        members.AddRange(supporters);
+        //    }
 
-            return members.OrderBy(member => member.LastName).ToList();
-        }
+        //    return members.OrderBy(member => member.LastName).ToList();
+        //}
 
-        public static IMember ReadOne(int memberID)
-        {
-            IMember member;
+        //public static IMember ReadOne(int memberID)
+        //{
+        //    IMember member;
 
-            using (DalSession dalSession = new DalSession())
-            {
-                try
-                {
-                    member = dalSession.Pilots.ReadOne(memberID);
-                }
-                catch (Exception)
-                {
-                    member = dalSession.Supporters.ReadOne(memberID);
-                }
-            }
+        //    using (DalSession dalSession = new DalSession())
+        //    {
+        //        try
+        //        {
+        //            member = dalSession.Pilots.ReadOne(memberID);
+        //        }
+        //        catch (Exception)
+        //        {
+        //            member = dalSession.Supporters.ReadOne(memberID);
+        //        }
+        //    }
 
-            return member;
-        }
+        //    return member;
+        //}
     }
 }

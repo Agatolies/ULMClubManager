@@ -8,37 +8,29 @@ using ULMClubManager.DTO;
 
 namespace ULMClubManager.BL.Services
 {
-    public static class PilotService
+    public static class MemberService
     {
-        public static Pilot CreateOne(Pilot pilot)
+        public static Member CreateOne(Member pilot)
         {
             using (DalSession dalSession = new DalSession())
             {
-                return dalSession.Pilots.CreateOne(pilot);
+                return dalSession.Members.CreateOne(pilot);
             }
         }
 
-        public static List<Pilot> ReadAll()
+        public static List<Member> ReadAll()
         {
             using (DalSession dalSession = new DalSession())
             {
-                return dalSession.Pilots.ReadAll().ToList();
+                return dalSession.Members.ReadAll().ToList();
             }
         }
 
-        public static List<Pilot> ReadAllByNameBegin(string filterName)
+        public static Member ReadOne(int id)
         {
             using (DalSession dalSession = new DalSession())
             {
-                return dalSession.Pilots.ReadAllByNameBegin(filterName).ToList();
-            }
-        }
-
-        public static Pilot ReadOne(int id)
-        {
-            using (DalSession dalSession = new DalSession())
-            {
-                return dalSession.Pilots.ReadOne(id);
+                return dalSession.Members.ReadOne(id);
             }
         }
 
@@ -46,9 +38,9 @@ namespace ULMClubManager.BL.Services
         {
             using (DalSession dalSession = new DalSession())
             {
-                Pilot rami = dalSession.Pilots.ReadOne(23);
+                Member rami = dalSession.Members.ReadOne(23);
                 rami.FirstName = "Ramoudamour";
-                dalSession.Pilots.UpdateOne(rami);
+                dalSession.Members.UpdateOne(rami);
             }
         }
 
@@ -129,14 +121,14 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static void DeleteOne(int pilotID)
+        public static void DeleteOne(int memberID)
         {
             using (DalSession dalSession = new DalSession())
             {
                 try
                 {
                     dalSession.UnitOfWork.Begin();
-                    dalSession.Pilots.DeleteOne(pilotID);
+                    dalSession.Members.DeleteOne(memberID);
                     dalSession.UnitOfWork.Commit();
                 }
                 catch (Exception)

@@ -497,11 +497,11 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _bsMember
             // 
-            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Abstractions.IMember);
+            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
             // 
             // iMemberBindingSource
             // 
-            this.iMemberBindingSource.DataSource = typeof(ULMClubManager.DTO.Abstractions.IMember);
+            this.iMemberBindingSource.DataSource = typeof(ULMClubManager.DTO.Member);
             // 
             // _labelLICNum
             // 

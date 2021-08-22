@@ -16,7 +16,7 @@ namespace ULMClubManger.Forms.UserControls
     public partial class UCMemberCRUD : UserControl
     {
         private List<Locality> _localities;
-        private IMember _member;
+        private Member _member;
 
         public UCMemberCRUD()
         {
@@ -31,7 +31,7 @@ namespace ULMClubManger.Forms.UserControls
             _localities = LocalityService.ReadAll();
         }
 
-        public IMember Member
+        public Member Member
         {
             get { return _member; }
             private set 
@@ -47,15 +47,14 @@ namespace ULMClubManger.Forms.UserControls
                     Locality locality = _localities.FirstOrDefault(l => l.ID == _member.LocalityID);
                     _tboxMBRZipCode.Text = locality.ZipCode;
 
-                    _gboxPIL.Visible = IsPilot;
+                    _gboxPIL.Visible = _member.IsPilot;
 
-                    if (IsPilot)
+                    if (_member.IsPilot)
                     {
-                        Pilot pilot = (Pilot)_member;
-                        _tboxLICNum.Text = pilot.LicenceNumber;
-                        _dtpLICObtentionDte.Value = pilot.ObtentionDate;
-                        _dtpLICExpirationDte.Value = pilot.ExpirationDate;
-                        _tboxLICCountry.Text = pilot.Country;
+                        _tboxLICNum.Text = _member.LicenceNumber;
+                        _dtpLICObtentionDte.Value = _member.LicenceObtentionDate;
+                        _dtpLICExpirationDte.Value = _member.LicenceExpirationDate;
+                        _tboxLICCountry.Text = _member.LicenceCountry;
                     }
                     else
                     {
@@ -75,11 +74,9 @@ namespace ULMClubManger.Forms.UserControls
             }
         }
 
-        public bool IsPilot => Member is Pilot;
-
         public void RefreshData(int memberID)
         {
-            Member = UserService.ReadOne(memberID);
+            Member = MemberService.ReadOne(memberID);
         }
 
         public void ClearData()
