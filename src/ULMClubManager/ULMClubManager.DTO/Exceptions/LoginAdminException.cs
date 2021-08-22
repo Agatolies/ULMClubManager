@@ -7,6 +7,7 @@ using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
+
     public class LoginAdminException : BusinessException
     {
         public LoginAdminException() 

@@ -33,6 +33,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRLastName = new System.Windows.Forms.Label();
             this._labelMBRFirstName = new System.Windows.Forms.Label();
             this._tboxMBRLastName = new System.Windows.Forms.TextBox();
+            this._bsMember = new System.Windows.Forms.BindingSource(this.components);
             this._tboxMBRFirstName = new System.Windows.Forms.TextBox();
             this._labelMBRID = new System.Windows.Forms.Label();
             this._tboxMBRID = new System.Windows.Forms.TextBox();
@@ -75,16 +76,22 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual3 = new System.Windows.Forms.CheckBox();
             this._cboxMBRQual1 = new System.Windows.Forms.CheckBox();
             this._cboxMBRQual2 = new System.Windows.Forms.CheckBox();
-            this._bsMember = new System.Windows.Forms.BindingSource(this.components);
-            this.iMemberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._panelMBR_Update_btn = new System.Windows.Forms.Panel();
             this._btnMRBUpdateConfirm = new System.Windows.Forms.Button();
             this._btnMBRUpdateCancel = new System.Windows.Forms.Button();
+            this._panelMBR_Create_btn = new System.Windows.Forms.Panel();
+            this._btnMRBCreateConfirm = new System.Windows.Forms.Button();
+            this._btnMRBCreateCancel = new System.Windows.Forms.Button();
+            this._labelMBRPhoneNumber = new System.Windows.Forms.Label();
+            this._tboxMBRPhoneNumber = new System.Windows.Forms.TextBox();
+            this._labelMBRCellphoneNumber = new System.Windows.Forms.Label();
+            this._tboxMBRCellphoneNumber = new System.Windows.Forms.TextBox();
+            this._labelError = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
             this._panelMBR_CRUD_btn.SuspendLayout();
             this._gboxPIL.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMemberBindingSource)).BeginInit();
             this._panelMBR_Update_btn.SuspendLayout();
+            this._panelMBR_Create_btn.SuspendLayout();
             this.SuspendLayout();
             // 
             // _labelMBRLastName
@@ -117,6 +124,10 @@ namespace ULMClubManger.Forms.UserControls
             this._tboxMBRLastName.ReadOnly = true;
             this._tboxMBRLastName.Size = new System.Drawing.Size(240, 20);
             this._tboxMBRLastName.TabIndex = 2;
+            // 
+            // _bsMember
+            // 
+            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
             // 
             // _tboxMBRFirstName
             // 
@@ -195,9 +206,9 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBREmailAddress.AutoSize = true;
             this._labelMBREmailAddress.Location = new System.Drawing.Point(23, 219);
             this._labelMBREmailAddress.Name = "_labelMBREmailAddress";
-            this._labelMBREmailAddress.Size = new System.Drawing.Size(72, 13);
+            this._labelMBREmailAddress.Size = new System.Drawing.Size(78, 13);
             this._labelMBREmailAddress.TabIndex = 10;
-            this._labelMBREmailAddress.Text = "Adresse email";
+            this._labelMBREmailAddress.Text = "Adresse email :";
             // 
             // _tboxMBREmailAddress
             // 
@@ -215,7 +226,7 @@ namespace ULMClubManger.Forms.UserControls
             // _labelMBRStreet
             // 
             this._labelMBRStreet.AutoSize = true;
-            this._labelMBRStreet.Location = new System.Drawing.Point(23, 249);
+            this._labelMBRStreet.Location = new System.Drawing.Point(23, 298);
             this._labelMBRStreet.Name = "_labelMBRStreet";
             this._labelMBRStreet.Size = new System.Drawing.Size(33, 13);
             this._labelMBRStreet.TabIndex = 12;
@@ -226,18 +237,18 @@ namespace ULMClubManger.Forms.UserControls
             this._tboxMBRPostalAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._tboxMBRPostalAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "Street", true));
-            this._tboxMBRPostalAddress.Location = new System.Drawing.Point(164, 246);
+            this._tboxMBRPostalAddress.Location = new System.Drawing.Point(164, 295);
             this._tboxMBRPostalAddress.MaximumSize = new System.Drawing.Size(240, 20);
             this._tboxMBRPostalAddress.MinimumSize = new System.Drawing.Size(240, 20);
             this._tboxMBRPostalAddress.Name = "_tboxMBRPostalAddress";
             this._tboxMBRPostalAddress.ReadOnly = true;
             this._tboxMBRPostalAddress.Size = new System.Drawing.Size(240, 20);
-            this._tboxMBRPostalAddress.TabIndex = 13;
+            this._tboxMBRPostalAddress.TabIndex = 12;
             // 
             // _labelMBRResidenceName
             // 
             this._labelMBRResidenceName.AutoSize = true;
-            this._labelMBRResidenceName.Location = new System.Drawing.Point(23, 305);
+            this._labelMBRResidenceName.Location = new System.Drawing.Point(23, 354);
             this._labelMBRResidenceName.Name = "_labelMBRResidenceName";
             this._labelMBRResidenceName.Size = new System.Drawing.Size(104, 13);
             this._labelMBRResidenceName.TabIndex = 14;
@@ -248,7 +259,7 @@ namespace ULMClubManger.Forms.UserControls
             this._tboxMBRResidenceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._tboxMBRResidenceName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "ResidenceName", true));
-            this._tboxMBRResidenceName.Location = new System.Drawing.Point(164, 302);
+            this._tboxMBRResidenceName.Location = new System.Drawing.Point(164, 351);
             this._tboxMBRResidenceName.MaximumSize = new System.Drawing.Size(240, 20);
             this._tboxMBRResidenceName.MinimumSize = new System.Drawing.Size(240, 20);
             this._tboxMBRResidenceName.Name = "_tboxMBRResidenceName";
@@ -259,7 +270,7 @@ namespace ULMClubManger.Forms.UserControls
             // _labelMBRBoxNumber
             // 
             this._labelMBRBoxNumber.AutoSize = true;
-            this._labelMBRBoxNumber.Location = new System.Drawing.Point(23, 277);
+            this._labelMBRBoxNumber.Location = new System.Drawing.Point(23, 326);
             this._labelMBRBoxNumber.Name = "_labelMBRBoxNumber";
             this._labelMBRBoxNumber.Size = new System.Drawing.Size(39, 13);
             this._labelMBRBoxNumber.TabIndex = 16;
@@ -268,16 +279,16 @@ namespace ULMClubManger.Forms.UserControls
             // _tboxMBRBoxNumber
             // 
             this._tboxMBRBoxNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "BoxNumber", true));
-            this._tboxMBRBoxNumber.Location = new System.Drawing.Point(164, 274);
+            this._tboxMBRBoxNumber.Location = new System.Drawing.Point(164, 323);
             this._tboxMBRBoxNumber.Name = "_tboxMBRBoxNumber";
             this._tboxMBRBoxNumber.ReadOnly = true;
             this._tboxMBRBoxNumber.Size = new System.Drawing.Size(75, 20);
-            this._tboxMBRBoxNumber.TabIndex = 17;
+            this._tboxMBRBoxNumber.TabIndex = 13;
             // 
             // _labelMBRBuildingNumber
             // 
             this._labelMBRBuildingNumber.AutoSize = true;
-            this._labelMBRBuildingNumber.Location = new System.Drawing.Point(23, 332);
+            this._labelMBRBuildingNumber.Location = new System.Drawing.Point(23, 381);
             this._labelMBRBuildingNumber.Name = "_labelMBRBuildingNumber";
             this._labelMBRBuildingNumber.Size = new System.Drawing.Size(78, 13);
             this._labelMBRBuildingNumber.TabIndex = 18;
@@ -286,7 +297,7 @@ namespace ULMClubManger.Forms.UserControls
             // _tboxMBRBuildingNumber
             // 
             this._tboxMBRBuildingNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "BuildingNumber", true));
-            this._tboxMBRBuildingNumber.Location = new System.Drawing.Point(164, 329);
+            this._tboxMBRBuildingNumber.Location = new System.Drawing.Point(164, 378);
             this._tboxMBRBuildingNumber.Name = "_tboxMBRBuildingNumber";
             this._tboxMBRBuildingNumber.ReadOnly = true;
             this._tboxMBRBuildingNumber.Size = new System.Drawing.Size(75, 20);
@@ -295,7 +306,7 @@ namespace ULMClubManger.Forms.UserControls
             // _labelMBRLocality
             // 
             this._labelMBRLocality.AutoSize = true;
-            this._labelMBRLocality.Location = new System.Drawing.Point(22, 363);
+            this._labelMBRLocality.Location = new System.Drawing.Point(22, 412);
             this._labelMBRLocality.Name = "_labelMBRLocality";
             this._labelMBRLocality.Size = new System.Drawing.Size(50, 13);
             this._labelMBRLocality.TabIndex = 20;
@@ -303,7 +314,7 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _tboxMBRZipCode
             // 
-            this._tboxMBRZipCode.Location = new System.Drawing.Point(164, 360);
+            this._tboxMBRZipCode.Location = new System.Drawing.Point(164, 409);
             this._tboxMBRZipCode.Name = "_tboxMBRZipCode";
             this._tboxMBRZipCode.ReadOnly = true;
             this._tboxMBRZipCode.Size = new System.Drawing.Size(75, 20);
@@ -313,26 +324,27 @@ namespace ULMClubManger.Forms.UserControls
             // _labelMRBRegistrationDate
             // 
             this._labelMRBRegistrationDate.AutoSize = true;
-            this._labelMRBRegistrationDate.Location = new System.Drawing.Point(22, 393);
+            this._labelMRBRegistrationDate.Location = new System.Drawing.Point(22, 442);
             this._labelMRBRegistrationDate.Name = "_labelMRBRegistrationDate";
-            this._labelMRBRegistrationDate.Size = new System.Drawing.Size(126, 13);
+            this._labelMRBRegistrationDate.Size = new System.Drawing.Size(132, 13);
             this._labelMRBRegistrationDate.TabIndex = 24;
-            this._labelMRBRegistrationDate.Text = "Date d\'inscription au club";
+            this._labelMRBRegistrationDate.Text = "Date d\'inscription au club :";
             // 
             // _dtpMRBRegistrationDate
             // 
             this._dtpMRBRegistrationDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "RegistrationDate", true));
             this._dtpMRBRegistrationDate.Enabled = false;
-            this._dtpMRBRegistrationDate.Location = new System.Drawing.Point(164, 387);
+            this._dtpMRBRegistrationDate.Location = new System.Drawing.Point(164, 436);
             this._dtpMRBRegistrationDate.Name = "_dtpMRBRegistrationDate";
             this._dtpMRBRegistrationDate.Size = new System.Drawing.Size(240, 20);
             this._dtpMRBRegistrationDate.TabIndex = 25;
             // 
             // _cboxMBRLocality
             // 
+            this._cboxMBRLocality.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this._bsMember, "LocalityID", true));
             this._cboxMBRLocality.Enabled = false;
             this._cboxMBRLocality.FormattingEnabled = true;
-            this._cboxMBRLocality.Location = new System.Drawing.Point(245, 360);
+            this._cboxMBRLocality.Location = new System.Drawing.Point(245, 409);
             this._cboxMBRLocality.Name = "_cboxMBRLocality";
             this._cboxMBRLocality.Size = new System.Drawing.Size(159, 21);
             this._cboxMBRLocality.TabIndex = 27;
@@ -400,7 +412,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelMBR_CRUD_btn.Controls.Add(this._btnMBRUpdate);
             this._panelMBR_CRUD_btn.Controls.Add(this._btnMBRDelete);
             this._panelMBR_CRUD_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._panelMBR_CRUD_btn.Location = new System.Drawing.Point(0, 672);
+            this._panelMBR_CRUD_btn.Location = new System.Drawing.Point(0, 951);
             this._panelMBR_CRUD_btn.Name = "_panelMBR_CRUD_btn";
             this._panelMBR_CRUD_btn.Size = new System.Drawing.Size(545, 94);
             this._panelMBR_CRUD_btn.TabIndex = 32;
@@ -422,7 +434,7 @@ namespace ULMClubManger.Forms.UserControls
             this._gboxPIL.Controls.Add(this._cboxMBRQual1);
             this._gboxPIL.Controls.Add(this._cboxMBRQual2);
             this._gboxPIL.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._gboxPIL.Location = new System.Drawing.Point(14, 428);
+            this._gboxPIL.Location = new System.Drawing.Point(14, 474);
             this._gboxPIL.Name = "_gboxPIL";
             this._gboxPIL.Size = new System.Drawing.Size(510, 225);
             this._gboxPIL.TabIndex = 33;
@@ -588,21 +600,13 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual2.Text = "Classe 2 : Pendulaires";
             this._cboxMBRQual2.UseVisualStyleBackColor = true;
             // 
-            // _bsMember
-            // 
-            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
-            // 
-            // iMemberBindingSource
-            // 
-            this.iMemberBindingSource.DataSource = typeof(ULMClubManager.DTO.Member);
-            // 
             // _panelMBR_Update_btn
             // 
             this._panelMBR_Update_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
             this._panelMBR_Update_btn.Controls.Add(this._btnMRBUpdateConfirm);
             this._panelMBR_Update_btn.Controls.Add(this._btnMBRUpdateCancel);
             this._panelMBR_Update_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._panelMBR_Update_btn.Location = new System.Drawing.Point(0, 578);
+            this._panelMBR_Update_btn.Location = new System.Drawing.Point(0, 857);
             this._panelMBR_Update_btn.Name = "_panelMBR_Update_btn";
             this._panelMBR_Update_btn.Size = new System.Drawing.Size(545, 94);
             this._panelMBR_Update_btn.TabIndex = 36;
@@ -637,11 +641,113 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRUpdateCancel.UseVisualStyleBackColor = false;
             this._btnMBRUpdateCancel.Click += new System.EventHandler(this._btnMBRUpdateCancel_Click);
             // 
+            // _panelMBR_Create_btn
+            // 
+            this._panelMBR_Create_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            this._panelMBR_Create_btn.Controls.Add(this._btnMRBCreateConfirm);
+            this._panelMBR_Create_btn.Controls.Add(this._btnMRBCreateCancel);
+            this._panelMBR_Create_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._panelMBR_Create_btn.Location = new System.Drawing.Point(0, 763);
+            this._panelMBR_Create_btn.Name = "_panelMBR_Create_btn";
+            this._panelMBR_Create_btn.Size = new System.Drawing.Size(545, 94);
+            this._panelMBR_Create_btn.TabIndex = 37;
+            // 
+            // _btnMRBCreateConfirm
+            // 
+            this._btnMRBCreateConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._btnMRBCreateConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnMRBCreateConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnMRBCreateConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnMRBCreateConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnMRBCreateConfirm.Location = new System.Drawing.Point(18, 15);
+            this._btnMRBCreateConfirm.Name = "_btnMRBCreateConfirm";
+            this._btnMRBCreateConfirm.Size = new System.Drawing.Size(150, 61);
+            this._btnMRBCreateConfirm.TabIndex = 29;
+            this._btnMRBCreateConfirm.Text = "Sauvegarder";
+            this._btnMRBCreateConfirm.UseVisualStyleBackColor = false;
+            this._btnMRBCreateConfirm.Click += new System.EventHandler(this._btnMRBCreateConfirm_Click);
+            // 
+            // _btnMRBCreateCancel
+            // 
+            this._btnMRBCreateCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._btnMRBCreateCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnMRBCreateCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnMRBCreateCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnMRBCreateCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnMRBCreateCancel.Location = new System.Drawing.Point(198, 15);
+            this._btnMRBCreateCancel.Name = "_btnMRBCreateCancel";
+            this._btnMRBCreateCancel.Size = new System.Drawing.Size(150, 61);
+            this._btnMRBCreateCancel.TabIndex = 31;
+            this._btnMRBCreateCancel.Text = "Annuler";
+            this._btnMRBCreateCancel.UseVisualStyleBackColor = false;
+            this._btnMRBCreateCancel.Click += new System.EventHandler(this._btnMRBCreateCancel_Click);
+            // 
+            // _labelMBRPhoneNumber
+            // 
+            this._labelMBRPhoneNumber.AutoSize = true;
+            this._labelMBRPhoneNumber.Location = new System.Drawing.Point(23, 246);
+            this._labelMBRPhoneNumber.Name = "_labelMBRPhoneNumber";
+            this._labelMBRPhoneNumber.Size = new System.Drawing.Size(86, 13);
+            this._labelMBRPhoneNumber.TabIndex = 38;
+            this._labelMBRPhoneNumber.Text = "Téléphone fixe  :";
+            // 
+            // _tboxMBRPhoneNumber
+            // 
+            this._tboxMBRPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._tboxMBRPhoneNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "PhoneNumber", true));
+            this._tboxMBRPhoneNumber.Location = new System.Drawing.Point(164, 243);
+            this._tboxMBRPhoneNumber.MaximumSize = new System.Drawing.Size(240, 20);
+            this._tboxMBRPhoneNumber.MinimumSize = new System.Drawing.Size(240, 20);
+            this._tboxMBRPhoneNumber.Name = "_tboxMBRPhoneNumber";
+            this._tboxMBRPhoneNumber.ReadOnly = true;
+            this._tboxMBRPhoneNumber.Size = new System.Drawing.Size(240, 20);
+            this._tboxMBRPhoneNumber.TabIndex = 39;
+            // 
+            // _labelMBRCellphoneNumber
+            // 
+            this._labelMBRCellphoneNumber.AutoSize = true;
+            this._labelMBRCellphoneNumber.Location = new System.Drawing.Point(23, 272);
+            this._labelMBRCellphoneNumber.Name = "_labelMBRCellphoneNumber";
+            this._labelMBRCellphoneNumber.Size = new System.Drawing.Size(40, 13);
+            this._labelMBRCellphoneNumber.TabIndex = 40;
+            this._labelMBRCellphoneNumber.Text = "GSM  :";
+            // 
+            // _tboxMBRCellphoneNumber
+            // 
+            this._tboxMBRCellphoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._tboxMBRCellphoneNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this._bsMember, "CellphoneNumber", true));
+            this._tboxMBRCellphoneNumber.Location = new System.Drawing.Point(164, 269);
+            this._tboxMBRCellphoneNumber.MaximumSize = new System.Drawing.Size(240, 20);
+            this._tboxMBRCellphoneNumber.MinimumSize = new System.Drawing.Size(240, 20);
+            this._tboxMBRCellphoneNumber.Name = "_tboxMBRCellphoneNumber";
+            this._tboxMBRCellphoneNumber.ReadOnly = true;
+            this._tboxMBRCellphoneNumber.Size = new System.Drawing.Size(240, 20);
+            this._tboxMBRCellphoneNumber.TabIndex = 41;
+            // 
+            // _labelError
+            // 
+            this._labelError.AutoSize = true;
+            this._labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelError.Location = new System.Drawing.Point(18, 706);
+            this._labelError.Name = "_labelError";
+            this._labelError.Size = new System.Drawing.Size(254, 16);
+            this._labelError.TabIndex = 42;
+            this._labelError.Text = "ERROR MESSAGE GOES HERE";
+            // 
             // UCMemberCRUD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this.Controls.Add(this._labelError);
+            this.Controls.Add(this._tboxMBRCellphoneNumber);
+            this.Controls.Add(this._labelMBRCellphoneNumber);
+            this.Controls.Add(this._tboxMBRPhoneNumber);
+            this.Controls.Add(this._labelMBRPhoneNumber);
+            this.Controls.Add(this._panelMBR_Create_btn);
             this.Controls.Add(this._panelMBR_Update_btn);
             this.Controls.Add(this._gboxPIL);
             this.Controls.Add(this._panelMBR_CRUD_btn);
@@ -672,13 +778,13 @@ namespace ULMClubManger.Forms.UserControls
             this.Controls.Add(this._labelMBRFirstName);
             this.Controls.Add(this._labelMBRLastName);
             this.Name = "UCMemberCRUD";
-            this.Size = new System.Drawing.Size(545, 766);
+            this.Size = new System.Drawing.Size(545, 1045);
+            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).EndInit();
             this._panelMBR_CRUD_btn.ResumeLayout(false);
             this._gboxPIL.ResumeLayout(false);
             this._gboxPIL.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMemberBindingSource)).EndInit();
             this._panelMBR_Update_btn.ResumeLayout(false);
+            this._panelMBR_Create_btn.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -724,7 +830,6 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.CheckBox _cboxMBRQual3;
         private System.Windows.Forms.CheckBox _cboxMBRQual1;
         private System.Windows.Forms.CheckBox _cboxMBRQual2;
-        private System.Windows.Forms.BindingSource iMemberBindingSource;
         private System.Windows.Forms.TextBox _tboxLICCountry;
         private System.Windows.Forms.Label _labelLICCountry;
         private System.Windows.Forms.DateTimePicker _dtpLICExpirationDte;
@@ -736,5 +841,13 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Panel _panelMBR_Update_btn;
         private System.Windows.Forms.Button _btnMRBUpdateConfirm;
         private System.Windows.Forms.Button _btnMBRUpdateCancel;
+        private System.Windows.Forms.Panel _panelMBR_Create_btn;
+        private System.Windows.Forms.Button _btnMRBCreateConfirm;
+        private System.Windows.Forms.Button _btnMRBCreateCancel;
+        private System.Windows.Forms.Label _labelMBRPhoneNumber;
+        private System.Windows.Forms.TextBox _tboxMBRPhoneNumber;
+        private System.Windows.Forms.Label _labelMBRCellphoneNumber;
+        private System.Windows.Forms.TextBox _tboxMBRCellphoneNumber;
+        private System.Windows.Forms.Label _labelError;
     }
 }

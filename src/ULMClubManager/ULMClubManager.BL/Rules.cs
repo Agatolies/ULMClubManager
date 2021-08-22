@@ -23,9 +23,9 @@ namespace ULMClubManager.BL
         {
             return new Dictionary<string, string>
             {
+                { "BS_MBR_PRN", "Le prénom doit avoir au minimum 3 caractères." },
                 { "CHK_MBR_DTE_NAI", "Un membre doit avoir au moins 18 ans." },
                 { "CHK_MBR_NOM", "Le nom de famille doit avoir au minimum 3 caractères." },
-                { "CHK_MBR_PRN", "Le prénom doit avoir au minimum 3 caractères." },
                 { "ERR_LOGIN", "Administrateur ? Le nom d'utilisateur ou le mot de passe est incorrect." },
                 { "ERR_ADMIN", "YOU SHALL NOT PAAAAAAAAASS! Vous n'êtes pas administrateur." }
             };

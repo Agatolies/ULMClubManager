@@ -7,9 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ULMClubManager.BL;
 using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
 using ULMClubManager.DTO.Abstractions;
+using ULMClubManager.DTO.Enums;
+using ULMClubManager.DTO.Exceptions;
 using ULMClubManager.DTO.Helpers;
 
 namespace ULMClubManger.Forms.UserControls
@@ -30,6 +33,8 @@ namespace ULMClubManger.Forms.UserControls
             _cboxMBRLocality.ValueMember = "ID";
 
             _panelMBR_Update_btn.Visible = false;
+            _panelMBR_Create_btn.Visible = false;
+            _labelError.Visible = false;
 
             _cboxMBRSex.DataSource = Gender.GetGenders();
             _localities = LocalityService.ReadAll();
@@ -75,33 +80,6 @@ namespace ULMClubManger.Forms.UserControls
             _bsMember.Clear();
         }
 
-        private void _tboxMBRZipCode_TextChanged(object sender, EventArgs e)
-        {
-            string zipCode = ((TextBox)sender).Text;
-
-            if (zipCode == "" || zipCode.Length != 4)
-            {
-                _cboxMBRLocality.DataSource = new List<Locality>();
-                _cboxMBRLocality.SelectedIndex = -1;
-                _cboxMBRLocality.Text = "";
-            }
-            else
-            {
-                List<Locality> localitiesForZipCode = _localities
-                    .Where(l => l.ZipCode.StartsWith(zipCode))
-                    .ToList();
-
-                _cboxMBRLocality.DataSource = localitiesForZipCode;
-            }
-        }
-
-        private void _cboxMBRLocality_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Locality locality = (Locality)((ComboBox)sender).SelectedItem;
-
-            _tboxMBRZipCode.Text = locality.ZipCode;
-        }
-
         private void ClearControls()
         {
             Member = new Member();
@@ -116,6 +94,8 @@ namespace ULMClubManger.Forms.UserControls
             _cboxMBRSex.Enabled = false;
             _dtpMBRDteOfBirth.Enabled = false;
             _tboxMBREmailAddress.ReadOnly = true;
+            _tboxMBRPhoneNumber.ReadOnly = true;
+            _tboxMBRCellphoneNumber.ReadOnly = true;
             _tboxMBRPostalAddress.ReadOnly = true;
             _tboxMBRBoxNumber.ReadOnly = true;
             _tboxMBRResidenceName.ReadOnly = true;
@@ -147,6 +127,8 @@ namespace ULMClubManger.Forms.UserControls
             _cboxMBRSex.Enabled = true;
             _dtpMBRDteOfBirth.Enabled = true;
             _tboxMBREmailAddress.ReadOnly = false;
+            _tboxMBRPhoneNumber.ReadOnly = false;
+            _tboxMBRCellphoneNumber.ReadOnly = false;
             _tboxMBRPostalAddress.ReadOnly = false; 
             _tboxMBRBoxNumber.ReadOnly = false;
             _tboxMBRResidenceName.ReadOnly = false;
@@ -168,15 +150,55 @@ namespace ULMClubManger.Forms.UserControls
             _cboxMBRQual6.Enabled = true;
         }
 
-        private void _btnMBRCreate_Click(object sender, EventArgs e)
+        private void ShowErrorMessage(Exception ex)
         {
-            UnlockControls(true);
+            string decoded = Rules.MessageDecoder(ContextError.MBR, ex.Message);
 
-            ClearControls();
-
-            //LockControls();
+            _labelError.Text = decoded;
+            _labelError.Visible = true;
         }
 
+        private void ShowErrorMessage(BusinessException ex)
+        {
+            string decoded = Rules.MessageDecoder(ex);
+
+            _labelError.Text = decoded;
+            _labelError.Visible = true;
+        }
+
+        private void HideErrorMessage()
+        {
+            _labelError.Text = "";
+            _labelError.Visible = false;
+        }
+
+        private void _tboxMBRZipCode_TextChanged(object sender, EventArgs e)
+        {
+            string zipCode = ((TextBox)sender).Text;
+
+            if (zipCode == "" || zipCode.Length != 4)
+            {
+                _cboxMBRLocality.DataSource = new List<Locality>();
+                _cboxMBRLocality.SelectedIndex = -1;
+                _cboxMBRLocality.Text = "";
+            }
+            else
+            {
+                List<Locality> localitiesForZipCode = _localities
+                    .Where(l => l.ZipCode.StartsWith(zipCode))
+                    .ToList();
+
+                _cboxMBRLocality.DataSource = localitiesForZipCode;
+            }
+        }
+
+        private void _cboxMBRLocality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Locality locality = (Locality)((ComboBox)sender).SelectedItem;
+
+            if (locality != null)
+                _tboxMBRZipCode.Text = locality.ZipCode;
+        }
 
         private void _btnMBRDelete_Click(object sender, EventArgs e)
         {
@@ -195,20 +217,32 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnMRBUpdateConfirm_Click(object sender, EventArgs e)
         {
-            MemberService.UpdateOne(_member);
+            try
+            {
+                MemberService.UpdateOne(_member);
 
-            _memberBackup = null;
+                _memberBackup = null;
 
-            MessageBox.Show(
-                $"Le membre {_member.FullName} a bien été mis à jour.",
-                "Information",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                HideErrorMessage();
+                LockControls();
 
-            LockControls();
+                _panelMBR_CRUD_btn.Visible = true;
+                _panelMBR_Update_btn.Visible = false;
 
-            _panelMBR_CRUD_btn.Visible = true;
-            _panelMBR_Update_btn.Visible = false;
+                MessageBox.Show(
+                    $"Le membre {_member.FullName} a bien été mis à jour.",
+                    "Information",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (BusinessException ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
         }
 
         private void _btnMBRUpdateCancel_Click(object sender, EventArgs e)
@@ -223,10 +257,83 @@ namespace ULMClubManger.Forms.UserControls
             {
                 Member = _memberBackup;
                 _memberBackup = null;
+
                 LockControls();
+                HideErrorMessage();
 
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Update_btn.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Commence le processus d'ajout d'un MBR
+        /// </summary>
+        private void _btnMBRCreate_Click(object sender, EventArgs e)
+        {
+            _panelMBR_CRUD_btn.Visible = false;
+            _panelMBR_Create_btn.Visible = true;
+
+            _memberBackup = _member.CreateDeepCopy();
+
+            UnlockControls(false);
+            ClearControls();
+        }
+
+        /// <summary>
+        /// Finit le processus d'ajout d'un MBR si tout ce passe bien
+        /// </summary>
+        private void _btnMRBCreateConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MemberService.CreateOne(_member);
+
+                _memberBackup = null;
+
+                HideErrorMessage();
+                LockControls();
+
+                _panelMBR_CRUD_btn.Visible = true;
+                _panelMBR_Create_btn.Visible = false;
+
+                MessageBox.Show(
+                    $"Le membre {_member.FullName} a bien été créé.",
+                    "Information",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (BusinessException ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+
+        /// <summary>
+        /// Finit le processus d'ajout d'un MBR si tout ce passe mal
+        /// </summary>
+        private void _btnMRBCreateCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                "Voulez-vous annuler la création du membre ?",
+                "Attention",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                Member = _memberBackup;
+                _memberBackup = null;
+
+                LockControls();
+                HideErrorMessage();
+
+                _panelMBR_CRUD_btn.Visible = true;
+                _panelMBR_Create_btn.Visible = false;
             }
         }
     }

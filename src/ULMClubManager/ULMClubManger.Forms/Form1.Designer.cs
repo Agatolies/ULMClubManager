@@ -41,7 +41,7 @@ namespace ULMClubManger.Forms
             this.ucLogin1.Location = new System.Drawing.Point(0, 0);
             this.ucLogin1.Margin = new System.Windows.Forms.Padding(2);
             this.ucLogin1.Name = "ucLogin1";
-            this.ucLogin1.Size = new System.Drawing.Size(1104, 781);
+            this.ucLogin1.Size = new System.Drawing.Size(1104, 868);
             this.ucLogin1.TabIndex = 0;
             this.ucLogin1.Visible = false;
             // 
@@ -51,18 +51,18 @@ namespace ULMClubManger.Forms
             this.ucLayout1.Location = new System.Drawing.Point(0, 0);
             this.ucLayout1.Margin = new System.Windows.Forms.Padding(4);
             this.ucLayout1.Name = "ucLayout1";
-            this.ucLayout1.Size = new System.Drawing.Size(1104, 781);
+            this.ucLayout1.Size = new System.Drawing.Size(1104, 868);
             this.ucLayout1.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 781);
+            this.ClientSize = new System.Drawing.Size(1104, 868);
             this.Controls.Add(this.ucLogin1);
             this.Controls.Add(this.ucLayout1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1120, 820);
+            this.MinimumSize = new System.Drawing.Size(1120, 907);
             this.Name = "Form1";
             this.Text = "ULM Club Manager Liège";
             this.ResumeLayout(false);

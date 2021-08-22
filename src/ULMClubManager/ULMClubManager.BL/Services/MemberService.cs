@@ -5,16 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using ULMClubManager.DAL;
 using ULMClubManager.DTO;
+using ULMClubManager.DTO.Exceptions;
 
 namespace ULMClubManager.BL.Services
 {
     public static class MemberService
     {
-        public static Member CreateOne(Member pilot)
+        public static Member CreateOne(Member member)
         {
+            if (member.FirstName.Length < 3)
+                throw new FirstNameTooShortException();
+
             using (DalSession dalSession = new DalSession())
             {
-                return dalSession.Members.CreateOne(pilot);
+                return dalSession.Members.CreateOne(member);
             }
         }
 
@@ -36,6 +40,9 @@ namespace ULMClubManager.BL.Services
 
         public static void UpdateOne(Member member)
         {
+            if (member.FirstName.Length < 3)
+                throw new FirstNameTooShortException();
+
             using (DalSession dalSession = new DalSession())
             {
                 dalSession.Members.UpdateOne(member);

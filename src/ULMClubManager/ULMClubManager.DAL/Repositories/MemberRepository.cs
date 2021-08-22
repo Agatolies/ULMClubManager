@@ -88,7 +88,13 @@ namespace ULMClubManager.DAL.Repositories
                     MBR_ADM = domainModel.Administrator,
                     MBR_USR_PSD = domainModel.UserName,
                     MBR_USR_PWD = domainModel.UserPWD,
-                    LOC_FK_ID = domainModel.LocalityID
+                    LOC_FK_ID = domainModel.LocalityID,
+                    MBR_QUAL_TYP_1 = domainModel.QualificationType1 ? 1 : 0,
+                    MBR_QUAL_TYP_2 = domainModel.QualificationType2 ? 1 : 0,
+                    MBR_QUAL_TYP_3 = domainModel.QualificationType3 ? 1 : 0,
+                    MBR_QUAL_TYP_4 = domainModel.QualificationType4 ? 1 : 0,
+                    MBR_QUAL_TYP_5 = domainModel.QualificationType5 ? 1 : 0,
+                    MBR_QUAL_TYP_6 = domainModel.QualificationType6 ? 1 : 0,
                 },
                 commandType: CommandType.StoredProcedure);
         }
