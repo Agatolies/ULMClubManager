@@ -59,7 +59,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRCreate = new System.Windows.Forms.Button();
             this._btnMBRDelete = new System.Windows.Forms.Button();
             this._btnMBRUpdate = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this._panelMBR_CRUD_btn = new System.Windows.Forms.Panel();
             this._gboxPIL = new System.Windows.Forms.GroupBox();
             this._tboxLICCountry = new System.Windows.Forms.TextBox();
             this._labelLICCountry = new System.Windows.Forms.Label();
@@ -77,10 +77,14 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual2 = new System.Windows.Forms.CheckBox();
             this._bsMember = new System.Windows.Forms.BindingSource(this.components);
             this.iMemberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1.SuspendLayout();
+            this._panelMBR_Update_btn = new System.Windows.Forms.Panel();
+            this._btnMRBUpdateConfirm = new System.Windows.Forms.Button();
+            this._btnMBRUpdateCancel = new System.Windows.Forms.Button();
+            this._panelMBR_CRUD_btn.SuspendLayout();
             this._gboxPIL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iMemberBindingSource)).BeginInit();
+            this._panelMBR_Update_btn.SuspendLayout();
             this.SuspendLayout();
             // 
             // _labelMBRLastName
@@ -389,17 +393,17 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRUpdate.UseVisualStyleBackColor = false;
             this._btnMBRUpdate.Click += new System.EventHandler(this._btnMBRUpdate_Click);
             // 
-            // panel1
+            // _panelMBR_CRUD_btn
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            this.panel1.Controls.Add(this._btnMBRCreate);
-            this.panel1.Controls.Add(this._btnMBRUpdate);
-            this.panel1.Controls.Add(this._btnMBRDelete);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 672);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(545, 94);
-            this.panel1.TabIndex = 32;
+            this._panelMBR_CRUD_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            this._panelMBR_CRUD_btn.Controls.Add(this._btnMBRCreate);
+            this._panelMBR_CRUD_btn.Controls.Add(this._btnMBRUpdate);
+            this._panelMBR_CRUD_btn.Controls.Add(this._btnMBRDelete);
+            this._panelMBR_CRUD_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._panelMBR_CRUD_btn.Location = new System.Drawing.Point(0, 672);
+            this._panelMBR_CRUD_btn.Name = "_panelMBR_CRUD_btn";
+            this._panelMBR_CRUD_btn.Size = new System.Drawing.Size(545, 94);
+            this._panelMBR_CRUD_btn.TabIndex = 32;
             // 
             // _gboxPIL
             // 
@@ -592,13 +596,55 @@ namespace ULMClubManger.Forms.UserControls
             // 
             this.iMemberBindingSource.DataSource = typeof(ULMClubManager.DTO.Member);
             // 
+            // _panelMBR_Update_btn
+            // 
+            this._panelMBR_Update_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            this._panelMBR_Update_btn.Controls.Add(this._btnMRBUpdateConfirm);
+            this._panelMBR_Update_btn.Controls.Add(this._btnMBRUpdateCancel);
+            this._panelMBR_Update_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._panelMBR_Update_btn.Location = new System.Drawing.Point(0, 578);
+            this._panelMBR_Update_btn.Name = "_panelMBR_Update_btn";
+            this._panelMBR_Update_btn.Size = new System.Drawing.Size(545, 94);
+            this._panelMBR_Update_btn.TabIndex = 36;
+            // 
+            // _btnMRBUpdateConfirm
+            // 
+            this._btnMRBUpdateConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._btnMRBUpdateConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnMRBUpdateConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnMRBUpdateConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnMRBUpdateConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnMRBUpdateConfirm.Location = new System.Drawing.Point(18, 15);
+            this._btnMRBUpdateConfirm.Name = "_btnMRBUpdateConfirm";
+            this._btnMRBUpdateConfirm.Size = new System.Drawing.Size(150, 61);
+            this._btnMRBUpdateConfirm.TabIndex = 29;
+            this._btnMRBUpdateConfirm.Text = "Sauvegarder";
+            this._btnMRBUpdateConfirm.UseVisualStyleBackColor = false;
+            this._btnMRBUpdateConfirm.Click += new System.EventHandler(this._btnMRBUpdateConfirm_Click);
+            // 
+            // _btnMBRUpdateCancel
+            // 
+            this._btnMBRUpdateCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._btnMBRUpdateCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnMBRUpdateCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnMBRUpdateCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnMBRUpdateCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnMBRUpdateCancel.Location = new System.Drawing.Point(198, 15);
+            this._btnMBRUpdateCancel.Name = "_btnMBRUpdateCancel";
+            this._btnMBRUpdateCancel.Size = new System.Drawing.Size(150, 61);
+            this._btnMBRUpdateCancel.TabIndex = 31;
+            this._btnMBRUpdateCancel.Text = "Annuler";
+            this._btnMBRUpdateCancel.UseVisualStyleBackColor = false;
+            this._btnMBRUpdateCancel.Click += new System.EventHandler(this._btnMBRUpdateCancel_Click);
+            // 
             // UCMemberCRUD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this.Controls.Add(this._panelMBR_Update_btn);
             this.Controls.Add(this._gboxPIL);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this._panelMBR_CRUD_btn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._cboxMBRLocality);
             this.Controls.Add(this._dtpMRBRegistrationDate);
@@ -627,11 +673,12 @@ namespace ULMClubManger.Forms.UserControls
             this.Controls.Add(this._labelMBRLastName);
             this.Name = "UCMemberCRUD";
             this.Size = new System.Drawing.Size(545, 766);
-            this.panel1.ResumeLayout(false);
+            this._panelMBR_CRUD_btn.ResumeLayout(false);
             this._gboxPIL.ResumeLayout(false);
             this._gboxPIL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._bsMember)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iMemberBindingSource)).EndInit();
+            this._panelMBR_Update_btn.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -669,7 +716,7 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Button _btnMBRCreate;
         private System.Windows.Forms.Button _btnMBRDelete;
         private System.Windows.Forms.Button _btnMBRUpdate;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel _panelMBR_CRUD_btn;
         private System.Windows.Forms.GroupBox _gboxPIL;
         private System.Windows.Forms.CheckBox _cboxMBRQual6;
         private System.Windows.Forms.CheckBox _cboxMBRQual5;
@@ -686,5 +733,8 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Label _labelLICObtentionDte;
         private System.Windows.Forms.TextBox _tboxLICNum;
         private System.Windows.Forms.Label _labelLICNum;
+        private System.Windows.Forms.Panel _panelMBR_Update_btn;
+        private System.Windows.Forms.Button _btnMRBUpdateConfirm;
+        private System.Windows.Forms.Button _btnMBRUpdateCancel;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
 using ULMClubManager.DTO.Abstractions;
+using ULMClubManager.DTO.Helpers;
 
 namespace ULMClubManger.Forms.UserControls
 {
@@ -17,6 +18,7 @@ namespace ULMClubManger.Forms.UserControls
     {
         private List<Locality> _localities;
         private Member _member;
+        private Member _memberBackup;
 
         public UCMemberCRUD()
         {
@@ -27,9 +29,10 @@ namespace ULMClubManger.Forms.UserControls
             _cboxMBRLocality.DisplayMember = "Name";
             _cboxMBRLocality.ValueMember = "ID";
 
+            _panelMBR_Update_btn.Visible = false;
+
             _cboxMBRSex.DataSource = Gender.GetGenders();
             _localities = LocalityService.ReadAll();
-
         }
 
         public Member Member
@@ -106,7 +109,32 @@ namespace ULMClubManger.Forms.UserControls
 
         private void LockControls()
         {
-            
+            _tboxMBRID.ReadOnly = true;
+
+            _tboxMBRLastName.ReadOnly = true;
+            _tboxMBRFirstName.ReadOnly = true;
+            _cboxMBRSex.Enabled = false;
+            _dtpMBRDteOfBirth.Enabled = false;
+            _tboxMBREmailAddress.ReadOnly = true;
+            _tboxMBRPostalAddress.ReadOnly = true;
+            _tboxMBRBoxNumber.ReadOnly = true;
+            _tboxMBRResidenceName.ReadOnly = true;
+            _tboxMBRBuildingNumber.ReadOnly = true;
+            _tboxMBRZipCode.ReadOnly = true;
+            _cboxMBRLocality.Enabled = false;
+            _dtpMRBRegistrationDate.Enabled = false;
+
+            _tboxLICNum.ReadOnly = true;
+            _dtpLICObtentionDte.Enabled = false;
+            _dtpLICExpirationDte.Enabled = false;
+            _tboxLICCountry.ReadOnly = true;
+
+            _cboxMBRQual1.Enabled = false;
+            _cboxMBRQual2.Enabled = false;
+            _cboxMBRQual3.Enabled = false;
+            _cboxMBRQual4.Enabled = false;
+            _cboxMBRQual5.Enabled = false;
+            _cboxMBRQual6.Enabled = false;
         }
 
         private void UnlockControls(bool unlockID)
@@ -149,16 +177,57 @@ namespace ULMClubManger.Forms.UserControls
             //LockControls();
         }
 
-        private void _btnMBRUpdate_Click(object sender, EventArgs e)
-        {
-            UnlockControls(false);
-
-            //LockControls();
-        }
 
         private void _btnMBRDelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void _btnMBRUpdate_Click(object sender, EventArgs e)
+        {
+            _panelMBR_CRUD_btn.Visible = false;
+            _panelMBR_Update_btn.Visible = true;
+
+            UnlockControls(false);
+
+            _memberBackup = _member.CreateDeepCopy();
+        }
+
+        private void _btnMRBUpdateConfirm_Click(object sender, EventArgs e)
+        {
+            MemberService.UpdateOne(_member);
+
+            _memberBackup = null;
+
+            MessageBox.Show(
+                $"Le membre {_member.FullName} a bien été mis à jour.",
+                "Information",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            LockControls();
+
+            _panelMBR_CRUD_btn.Visible = true;
+            _panelMBR_Update_btn.Visible = false;
+        }
+
+        private void _btnMBRUpdateCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                "Voulez-vous annuler la modification en cours ?",
+                "Attention",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                Member = _memberBackup;
+                _memberBackup = null;
+                LockControls();
+
+                _panelMBR_CRUD_btn.Visible = true;
+                _panelMBR_Update_btn.Visible = false;
+            }
         }
     }
 }

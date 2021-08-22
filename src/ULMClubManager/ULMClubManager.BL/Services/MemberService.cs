@@ -34,13 +34,11 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static void UpdateOne()
+        public static void UpdateOne(Member member)
         {
             using (DalSession dalSession = new DalSession())
             {
-                Member rami = dalSession.Members.ReadOne(23);
-                rami.FirstName = "Ramoudamour";
-                dalSession.Members.UpdateOne(rami);
+                dalSession.Members.UpdateOne(member);
             }
         }
 
