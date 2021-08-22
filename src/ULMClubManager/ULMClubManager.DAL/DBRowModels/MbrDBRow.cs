@@ -25,5 +25,11 @@ namespace ULMClubManager.DAL.DBRowModels
         public string MBR_USR_PSD { get; set; }
         public string MBR_USR_PWD { get; set; }
         public int LOC_FK_ID { get; set; }
+        public int MBR_QUAL_TYP_1 { get; set; }
+        public int MBR_QUAL_TYP_2 { get; set; }
+        public int MBR_QUAL_TYP_3 { get; set; }
+        public int MBR_QUAL_TYP_4 { get; set; }
+        public int MBR_QUAL_TYP_5 { get; set; }
+        public int MBR_QUAL_TYP_6 { get; set; }
     }
 }

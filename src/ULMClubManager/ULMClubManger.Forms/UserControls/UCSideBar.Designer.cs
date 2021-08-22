@@ -33,8 +33,8 @@ namespace ULMClubManger.Forms.UserControls
             this.panel1 = new System.Windows.Forms.Panel();
             this._btnMembers = new System.Windows.Forms.Button();
             this._panelMembersSubmenu = new System.Windows.Forms.Panel();
-            this._btnMembersInfo = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this._btnMembersInfo = new System.Windows.Forms.Button();
             this._btnBookings = new System.Windows.Forms.Button();
             this._panelBookingsSubmenu = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
@@ -50,17 +50,19 @@ namespace ULMClubManger.Forms.UserControls
             this._panelLogo.Controls.Add(this.panel1);
             this._panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this._panelLogo.Location = new System.Drawing.Point(0, 0);
+            this._panelLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._panelLogo.Name = "_panelLogo";
-            this._panelLogo.Size = new System.Drawing.Size(300, 100);
+            this._panelLogo.Size = new System.Drawing.Size(225, 81);
             this._panelLogo.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 100);
+            this.panel1.Size = new System.Drawing.Size(225, 81);
             this.panel1.TabIndex = 1;
             // 
             // _btnMembers
@@ -70,11 +72,11 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMembers.FlatAppearance.BorderSize = 0;
             this._btnMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._btnMembers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this._btnMembers.Location = new System.Drawing.Point(0, 100);
+            this._btnMembers.Location = new System.Drawing.Point(0, 81);
             this._btnMembers.Margin = new System.Windows.Forms.Padding(0);
             this._btnMembers.Name = "_btnMembers";
-            this._btnMembers.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this._btnMembers.Size = new System.Drawing.Size(300, 50);
+            this._btnMembers.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this._btnMembers.Size = new System.Drawing.Size(225, 41);
             this._btnMembers.TabIndex = 1;
             this._btnMembers.Text = "Membres";
             this._btnMembers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -86,10 +88,28 @@ namespace ULMClubManger.Forms.UserControls
             this._panelMembersSubmenu.Controls.Add(this.button2);
             this._panelMembersSubmenu.Controls.Add(this._btnMembersInfo);
             this._panelMembersSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this._panelMembersSubmenu.Location = new System.Drawing.Point(0, 150);
+            this._panelMembersSubmenu.Location = new System.Drawing.Point(0, 122);
+            this._panelMembersSubmenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._panelMembersSubmenu.Name = "_panelMembersSubmenu";
-            this._panelMembersSubmenu.Size = new System.Drawing.Size(300, 90);
+            this._panelMembersSubmenu.Size = new System.Drawing.Size(225, 73);
             this._panelMembersSubmenu.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this.button2.Location = new System.Drawing.Point(0, 37);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(225, 37);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // _btnMembersInfo
             // 
@@ -99,30 +119,15 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMembersInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._btnMembersInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
             this._btnMembersInfo.Location = new System.Drawing.Point(0, 0);
+            this._btnMembersInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._btnMembersInfo.Name = "_btnMembersInfo";
-            this._btnMembersInfo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this._btnMembersInfo.Size = new System.Drawing.Size(300, 45);
+            this._btnMembersInfo.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this._btnMembersInfo.Size = new System.Drawing.Size(225, 37);
             this._btnMembersInfo.TabIndex = 0;
             this._btnMembersInfo.Text = "Données Signalétiques";
             this._btnMembersInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this._btnMembersInfo.UseVisualStyleBackColor = false;
             this._btnMembersInfo.Click += new System.EventHandler(this._btnMembersInfo_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this.button2.Location = new System.Drawing.Point(0, 45);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(300, 45);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // _btnBookings
             // 
@@ -131,11 +136,11 @@ namespace ULMClubManger.Forms.UserControls
             this._btnBookings.FlatAppearance.BorderSize = 0;
             this._btnBookings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._btnBookings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this._btnBookings.Location = new System.Drawing.Point(0, 240);
+            this._btnBookings.Location = new System.Drawing.Point(0, 195);
             this._btnBookings.Margin = new System.Windows.Forms.Padding(0);
             this._btnBookings.Name = "_btnBookings";
-            this._btnBookings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this._btnBookings.Size = new System.Drawing.Size(300, 50);
+            this._btnBookings.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this._btnBookings.Size = new System.Drawing.Size(225, 41);
             this._btnBookings.TabIndex = 3;
             this._btnBookings.Text = "Réservations";
             this._btnBookings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -147,9 +152,10 @@ namespace ULMClubManger.Forms.UserControls
             this._panelBookingsSubmenu.Controls.Add(this.button4);
             this._panelBookingsSubmenu.Controls.Add(this.button5);
             this._panelBookingsSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this._panelBookingsSubmenu.Location = new System.Drawing.Point(0, 290);
+            this._panelBookingsSubmenu.Location = new System.Drawing.Point(0, 236);
+            this._panelBookingsSubmenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._panelBookingsSubmenu.Name = "_panelBookingsSubmenu";
-            this._panelBookingsSubmenu.Size = new System.Drawing.Size(300, 90);
+            this._panelBookingsSubmenu.Size = new System.Drawing.Size(225, 73);
             this._panelBookingsSubmenu.TabIndex = 4;
             // 
             // button4
@@ -159,10 +165,11 @@ namespace ULMClubManger.Forms.UserControls
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this.button4.Location = new System.Drawing.Point(0, 45);
+            this.button4.Location = new System.Drawing.Point(0, 37);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(300, 45);
+            this.button4.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.button4.Size = new System.Drawing.Size(225, 37);
             this.button4.TabIndex = 1;
             this.button4.Text = "button4";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -176,9 +183,10 @@ namespace ULMClubManger.Forms.UserControls
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
             this.button5.Location = new System.Drawing.Point(0, 0);
+            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(300, 45);
+            this.button5.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.button5.Size = new System.Drawing.Size(225, 37);
             this.button5.TabIndex = 0;
             this.button5.Text = "button5";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -186,18 +194,17 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // UCSideBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(13)))), ((int)(((byte)(6)))));
             this.Controls.Add(this._panelBookingsSubmenu);
             this.Controls.Add(this._btnBookings);
             this.Controls.Add(this._panelMembersSubmenu);
             this.Controls.Add(this._btnMembers);
             this.Controls.Add(this._panelLogo);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCSideBar";
-            this.Size = new System.Drawing.Size(300, 615);
+            this.Size = new System.Drawing.Size(225, 500);
             this._panelLogo.ResumeLayout(false);
             this._panelMembersSubmenu.ResumeLayout(false);
             this._panelBookingsSubmenu.ResumeLayout(false);

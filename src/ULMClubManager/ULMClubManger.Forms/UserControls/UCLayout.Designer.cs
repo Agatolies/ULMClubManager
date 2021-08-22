@@ -29,31 +29,30 @@ namespace ULMClubManger.Forms.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucSideBar1 = new ULMClubManger.Forms.UserControls.UCSideBar();
             this._panelChildForm = new System.Windows.Forms.Panel();
+            this.ucSideBar1 = new ULMClubManger.Forms.UserControls.UCSideBar();
             this.SuspendLayout();
+            // 
+            // _panelChildForm
+            // 
+            this._panelChildForm.BackColor = System.Drawing.Color.Gray;
+            this._panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._panelChildForm.Location = new System.Drawing.Point(225, 0);
+            this._panelChildForm.Margin = new System.Windows.Forms.Padding(2);
+            this._panelChildForm.Name = "_panelChildForm";
+            this._panelChildForm.Size = new System.Drawing.Size(663, 700);
+            this._panelChildForm.TabIndex = 6;
             // 
             // ucSideBar1
             // 
             this.ucSideBar1.AutoScroll = true;
-            this.ucSideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this.ucSideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(13)))), ((int)(((byte)(6)))));
             this.ucSideBar1.Dock = System.Windows.Forms.DockStyle.Left;
             this.ucSideBar1.Location = new System.Drawing.Point(0, 0);
             this.ucSideBar1.MinimumSize = new System.Drawing.Size(225, 600);
             this.ucSideBar1.Name = "ucSideBar1";
             this.ucSideBar1.Size = new System.Drawing.Size(225, 700);
             this.ucSideBar1.TabIndex = 5;
-            // 
-            // _panelChildForm
-            // 
-            this._panelChildForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._panelChildForm.BackColor = System.Drawing.Color.Gray;
-            this._panelChildForm.Location = new System.Drawing.Point(225, 0);
-            this._panelChildForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this._panelChildForm.Name = "_panelChildForm";
-            this._panelChildForm.Size = new System.Drawing.Size(663, 700);
-            this._panelChildForm.TabIndex = 6;
             // 
             // UCLayout
             // 

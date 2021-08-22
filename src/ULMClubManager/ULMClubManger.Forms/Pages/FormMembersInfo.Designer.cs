@@ -29,27 +29,28 @@ namespace ULMClubManger.Forms.Pages
         /// </summary>
         private void InitializeComponent()
         {
-            this._ucMemberPicker = new ULMClubManger.Forms.UserControls.UCMemberPicker();
             this._ucMemberCRUD = new ULMClubManger.Forms.UserControls.UCMemberCRUD();
+            this._ucMemberPicker = new ULMClubManger.Forms.UserControls.UCMemberPicker();
             this.SuspendLayout();
+            // 
+            // _ucMemberCRUD
+            // 
+            this._ucMemberCRUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._ucMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ucMemberCRUD.Location = new System.Drawing.Point(234, 0);
+            this._ucMemberCRUD.Name = "_ucMemberCRUD";
+            this._ucMemberCRUD.Size = new System.Drawing.Size(554, 600);
+            this._ucMemberCRUD.TabIndex = 1;
             // 
             // _ucMemberPicker
             // 
+            this._ucMemberPicker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
             this._ucMemberPicker.Dock = System.Windows.Forms.DockStyle.Left;
             this._ucMemberPicker.Location = new System.Drawing.Point(0, 0);
             this._ucMemberPicker.Name = "_ucMemberPicker";
             this._ucMemberPicker.Size = new System.Drawing.Size(234, 600);
             this._ucMemberPicker.TabIndex = 0;
             this._ucMemberPicker.SelectMember += new ULMClubManger.Forms.delSelect(this._ucMemberPicker_SelectMember);
-            // 
-            // _ucMemberCRUD
-            // 
-            this._ucMemberCRUD.BackColor = System.Drawing.Color.Gainsboro;
-            this._ucMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._ucMemberCRUD.Location = new System.Drawing.Point(234, 0);
-            this._ucMemberCRUD.Name = "_ucMemberCRUD";
-            this._ucMemberCRUD.Size = new System.Drawing.Size(554, 600);
-            this._ucMemberCRUD.TabIndex = 1;
             // 
             // FormMembersInfo
             // 

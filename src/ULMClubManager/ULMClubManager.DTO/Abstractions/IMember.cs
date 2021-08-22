@@ -24,6 +24,8 @@ namespace ULMClubManager.DTO.Abstractions
         string UserName { get; set; }
         string UserPWD { get; set; }
         int LocalityID { get; set; }
+        Qualification Qualification { get; set; }
+
         string FullName { get; }
     }
 }

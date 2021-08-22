@@ -12,6 +12,14 @@ namespace ULMClubManager.DAL.Mappers
     {
         public override Pilot From(PilDBRow pil)
         {
+            Qualification qualification = new Qualification(
+                pil.MBR_QUAL_TYP_1 == 1,
+                pil.MBR_QUAL_TYP_2 == 1,
+                pil.MBR_QUAL_TYP_3 == 1,
+                pil.MBR_QUAL_TYP_4 == 1,
+                pil.MBR_QUAL_TYP_5 == 1,
+                pil.MBR_QUAL_TYP_6 == 1);
+
             return new Pilot(
                 pil.MBR_ID,
                 pil.PIL_NUM_LIC,
@@ -33,7 +41,8 @@ namespace ULMClubManager.DAL.Mappers
                 pil.MBR_ADM,
                 pil.MBR_USR_PSD,
                 pil.MBR_USR_PWD,
-                pil.LOC_FK_ID
+                pil.LOC_FK_ID,
+                qualification
             ) ;
         }
 
@@ -64,6 +73,12 @@ namespace ULMClubManager.DAL.Mappers
             result.MBR_USR_PSD = pil.UserName;
             result.MBR_USR_PWD = pil.UserPWD;
             result.LOC_FK_ID = pil.LocalityID;
+            result.MBR_QUAL_TYP_1 = pil.Qualification.Type1 ? 1 : 0;
+            result.MBR_QUAL_TYP_2 = pil.Qualification.Type2 ? 1 : 0;
+            result.MBR_QUAL_TYP_3 = pil.Qualification.Type3 ? 1 : 0;
+            result.MBR_QUAL_TYP_4 = pil.Qualification.Type4 ? 1 : 0;
+            result.MBR_QUAL_TYP_5 = pil.Qualification.Type5 ? 1 : 0;
+            result.MBR_QUAL_TYP_6 = pil.Qualification.Type6 ? 1 : 0;
 
             return result;
         }

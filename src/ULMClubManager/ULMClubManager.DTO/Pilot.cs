@@ -12,7 +12,7 @@ namespace ULMClubManager.DTO
             DateTime registrationDate, string street, string residenceName, 
             string buildingNumber, string boxNumber, string phoneNumber, 
             string cellphoneNumber, string emailAddress, bool administrator, 
-            string userName, string userPWD, int localityID)
+            string userName, string userPWD, int localityID, Qualification qualification)
         {
             ID = memberID;
             LicenceNumber = licenceNumber;
@@ -35,6 +35,7 @@ namespace ULMClubManager.DTO
             UserName = userName;
             UserPWD = userPWD;
             LocalityID = localityID;
+            Qualification = qualification;
         }
 
         public Pilot(
@@ -44,12 +45,13 @@ namespace ULMClubManager.DTO
             string street, string residenceName, string buildingNumber,
             string boxNumber, string phoneNumber, string cellphoneNumber,
             string emailAddress, bool administrator, string userName,
-            string userPWD, int localityID)
+            string userPWD, int localityID, Qualification qualification)
             : this(
                   null, licenceNumber, obtentionDate, expirationDate, country, 
                   lastName, firstName, sex, dateOfBirth, registrationDate, 
                   street, residenceName, buildingNumber, boxNumber, phoneNumber,
-                  cellphoneNumber, emailAddress, administrator, userName, userPWD, localityID)
+                  cellphoneNumber, emailAddress, administrator, userName,
+                  userPWD, localityID, qualification)
         {
         }
 
@@ -74,11 +76,13 @@ namespace ULMClubManager.DTO
         public string UserName { get; set; }
         public string UserPWD { get; set; }
         public int LocalityID { get; set; }
+        public Qualification Qualification { get; set; }
 
         public string FullName 
         { 
             get { return $"{LastName.ToUpper()} {FirstName}"; } 
         }
+
 
         public override string ToString()
         {

@@ -12,6 +12,14 @@ namespace ULMClubManager.DAL.Mappers
     {
         public override Supporter From(SymDBRow sym)
         {
+            Qualification qualification = new Qualification(
+                sym.MBR_QUAL_TYP_1 == 1,
+                sym.MBR_QUAL_TYP_2 == 1,
+                sym.MBR_QUAL_TYP_3 == 1,
+                sym.MBR_QUAL_TYP_4 == 1,
+                sym.MBR_QUAL_TYP_5 == 1,
+                sym.MBR_QUAL_TYP_6 == 1);
+
             return new Supporter(
                  sym.MBR_ID,
                  sym.MBR_NOM,
@@ -29,7 +37,8 @@ namespace ULMClubManager.DAL.Mappers
                  sym.MBR_ADM,
                  sym.MBR_USR_PSD,
                  sym.MBR_USR_PWD,
-                 sym.LOC_FK_ID
+                 sym.LOC_FK_ID,
+                 qualification
             );
         }
 
@@ -56,6 +65,12 @@ namespace ULMClubManager.DAL.Mappers
             result.MBR_USR_PSD = sym.UserName;
             result.MBR_USR_PWD = sym.UserPWD;
             result.LOC_FK_ID = sym.LocalityID;
+            result.MBR_QUAL_TYP_1 = sym.Qualification.Type1 ? 1 : 0;
+            result.MBR_QUAL_TYP_2 = sym.Qualification.Type2 ? 1 : 0;
+            result.MBR_QUAL_TYP_3 = sym.Qualification.Type3 ? 1 : 0;
+            result.MBR_QUAL_TYP_4 = sym.Qualification.Type4 ? 1 : 0;
+            result.MBR_QUAL_TYP_5 = sym.Qualification.Type5 ? 1 : 0;
+            result.MBR_QUAL_TYP_6 = sym.Qualification.Type6 ? 1 : 0;
 
             return result;
         }

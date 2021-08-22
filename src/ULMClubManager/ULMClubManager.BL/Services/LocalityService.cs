@@ -56,16 +56,11 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static void ReadAll()
+        public static List<Locality> ReadAll()
         {
             using (DalSession dalSession = new DalSession())
             {
-                IEnumerable<Locality> localites = dalSession.Localities.ReadAll();
-
-                foreach (var item in localites)
-                {
-                    Console.WriteLine(item);
-                }
+                return dalSession.Localities.ReadAll();
             }
         }
 
