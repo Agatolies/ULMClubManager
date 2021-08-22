@@ -35,7 +35,7 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _panelChildForm
             // 
-            this._panelChildForm.BackColor = System.Drawing.Color.Gray;
+            this._panelChildForm.BackColor = System.Drawing.Color.WhiteSmoke;
             this._panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this._panelChildForm.Location = new System.Drawing.Point(225, 0);
             this._panelChildForm.Margin = new System.Windows.Forms.Padding(2);

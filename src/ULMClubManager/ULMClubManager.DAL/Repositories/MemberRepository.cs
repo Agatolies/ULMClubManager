@@ -73,7 +73,7 @@ namespace ULMClubManager.DAL.Repositories
                     PIL_LIC_DTE_OBT = domainModel.LicenceObtentionDate,
                     PIL_LIC_DTE_EXP = domainModel.LicenceExpirationDate,
                     PIL_LIC_PAYS = domainModel.LicenceCountry,
-                    MBR_NOM = domainModel.LastName,
+                    MBR_NOM = domainModel.LastName.ToUpper(),
                     MBR_PRN = domainModel.FirstName,
                     MBR_SEX = domainModel.Sex,
                     MBR_DTE_NAI = domainModel.DateOfBirth,

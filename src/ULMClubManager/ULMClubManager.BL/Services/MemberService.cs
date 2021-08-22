@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ULMClubManager.DAL;
 using ULMClubManager.DTO;
@@ -15,6 +16,16 @@ namespace ULMClubManager.BL.Services
         {
             if (member.FirstName.Length < 3)
                 throw new FirstNameTooShortException();
+
+            Regex regEmail = new Regex(
+               @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$",
+               RegexOptions.IgnoreCase);
+
+            if (!regEmail.IsMatch(member.EmailAddress))
+                throw new InvalidEmailAddressException();
+
+            if (member.LicenceCountry.Length != 2)
+                throw new InvalidCountryCode();
 
             using (DalSession dalSession = new DalSession())
             {
@@ -42,6 +53,16 @@ namespace ULMClubManager.BL.Services
         {
             if (member.FirstName.Length < 3)
                 throw new FirstNameTooShortException();
+
+            Regex regEmail = new Regex(
+                @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$", 
+                RegexOptions.IgnoreCase);
+
+            if (!regEmail.IsMatch(member.EmailAddress))
+                throw new InvalidEmailAddressException();
+
+            if(member.LicenceCountry.Length != 2)
+                throw new InvalidCountryCode();
 
             using (DalSession dalSession = new DalSession())
             {

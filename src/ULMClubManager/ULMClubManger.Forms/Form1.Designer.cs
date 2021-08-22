@@ -36,7 +36,7 @@ namespace ULMClubManger.Forms
             // ucLogin1
             // 
             this.ucLogin1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ucLogin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ucLogin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
             this.ucLogin1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLogin1.Location = new System.Drawing.Point(0, 0);
             this.ucLogin1.Margin = new System.Windows.Forms.Padding(2);

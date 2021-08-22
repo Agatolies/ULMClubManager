@@ -61,7 +61,7 @@ namespace ULMClubManger.Forms.UserControls
             // _tboxUserName
             // 
             this._tboxUserName.Location = new System.Drawing.Point(136, 32);
-            this._tboxUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._tboxUserName.Margin = new System.Windows.Forms.Padding(2);
             this._tboxUserName.Name = "_tboxUserName";
             this._tboxUserName.Size = new System.Drawing.Size(138, 20);
             this._tboxUserName.TabIndex = 2;
@@ -69,7 +69,7 @@ namespace ULMClubManger.Forms.UserControls
             // _tboxPassword
             // 
             this._tboxPassword.Location = new System.Drawing.Point(136, 72);
-            this._tboxPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._tboxPassword.Margin = new System.Windows.Forms.Padding(2);
             this._tboxPassword.Name = "_tboxPassword";
             this._tboxPassword.PasswordChar = '*';
             this._tboxPassword.Size = new System.Drawing.Size(138, 20);
@@ -78,7 +78,7 @@ namespace ULMClubManger.Forms.UserControls
             // _btnLogin
             // 
             this._btnLogin.Location = new System.Drawing.Point(136, 109);
-            this._btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this._btnLogin.Name = "_btnLogin";
             this._btnLogin.Size = new System.Drawing.Size(136, 19);
             this._btnLogin.TabIndex = 4;
@@ -89,7 +89,7 @@ namespace ULMClubManger.Forms.UserControls
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this._labelUserName);
             this.panel1.Controls.Add(this._labelPassword);
             this.panel1.Controls.Add(this._tboxUserName);
@@ -104,9 +104,9 @@ namespace ULMClubManger.Forms.UserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UCLogin";
             this.Size = new System.Drawing.Size(450, 406);
             this.panel1.ResumeLayout(false);

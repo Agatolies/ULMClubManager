@@ -35,7 +35,7 @@ namespace ULMClubManger.Forms.Pages
             // 
             // _ucMemberCRUD
             // 
-            this._ucMemberCRUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._ucMemberCRUD.BackColor = System.Drawing.Color.WhiteSmoke;
             this._ucMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
             this._ucMemberCRUD.Location = new System.Drawing.Point(234, 0);
             this._ucMemberCRUD.Name = "_ucMemberCRUD";
@@ -44,7 +44,7 @@ namespace ULMClubManger.Forms.Pages
             // 
             // _ucMemberPicker
             // 
-            this._ucMemberPicker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._ucMemberPicker.BackColor = System.Drawing.Color.WhiteSmoke;
             this._ucMemberPicker.Dock = System.Windows.Forms.DockStyle.Left;
             this._ucMemberPicker.Location = new System.Drawing.Point(0, 0);
             this._ucMemberPicker.Name = "_ucMemberPicker";

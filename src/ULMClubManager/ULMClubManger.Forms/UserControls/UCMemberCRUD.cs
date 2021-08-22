@@ -276,6 +276,9 @@ namespace ULMClubManger.Forms.UserControls
 
             _memberBackup = _member.CreateDeepCopy();
 
+            _dtpLICObtentionDte.Value = DateTime.Now;
+            _dtpLICExpirationDte.Value = DateTime.Now;
+
             UnlockControls(false);
             ClearControls();
         }
