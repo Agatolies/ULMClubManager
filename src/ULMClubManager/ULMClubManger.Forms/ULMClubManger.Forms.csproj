@@ -132,8 +132,18 @@
       <DependentUpon>UCSideBar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Abstractions.IMember.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Aircraft.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Booking.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Cancellation.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Category.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Gender.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Locality.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Member.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.MemberType.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Runway.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Subscription.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Unavailability.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.Withdrawal.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -156,6 +166,9 @@
       <Project>{30e75ab0-a051-41d1-b602-880535c65da7}</Project>
       <Name>ULMClubManager.DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

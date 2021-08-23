@@ -33,7 +33,8 @@ namespace ULMClubManager.DAL.Repositories
                     AER_FK_ID = domainModel.AircraftID,
                     PIST_FK_ID = domainModel.RunwayID
                 },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
 
             return ReadLast();
         }
@@ -41,7 +42,9 @@ namespace ULMClubManager.DAL.Repositories
         public override List<Booking> ReadAll()
         {
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(
-                "sp_select_RES");
+                "sp_select_RES",
+                transaction: _unitOfWork.Transaction);
+
             return _mapper.From(models);
         }
 
@@ -50,8 +53,9 @@ namespace ULMClubManager.DAL.Repositories
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(
                 "sp_select_RES_BY_PIL_ID",
                 param: new { PIL_ID = pilotID },
-                commandType: CommandType.StoredProcedure);
-
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
+                
             return _mapper.From(models);
         }
 
@@ -60,7 +64,8 @@ namespace ULMClubManager.DAL.Repositories
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(
                 "sp_select_RES_BY_AER_ID",
                 param: new { AER_ID = aircraftID },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
 
             return _mapper.From(models);
         }
@@ -70,7 +75,8 @@ namespace ULMClubManager.DAL.Repositories
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(
                 "sp_select_RES_BY_PIST_ID",
                 param: new { PIST_ID = runwayID },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
 
             return _mapper.From(models);
         }
@@ -79,7 +85,8 @@ namespace ULMClubManager.DAL.Repositories
         {
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(
                 "sp_select_RES_IN_FUTURE",
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
 
             return _mapper.From(models);
         }
@@ -89,7 +96,8 @@ namespace ULMClubManager.DAL.Repositories
             ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
                 "sp_select_RES_BY_ID",
                 param: new { RES_ID = id },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
 
             if (result == null)
                 throw new KeyNotFoundException($"La table {_tableName} avec l'id [{id}] n'existe pas.");
@@ -100,7 +108,9 @@ namespace ULMClubManager.DAL.Repositories
         public override Booking ReadLast()
         {
             ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
-                "sp_select_RES_LAST");
+                "sp_select_RES_LAST",
+                transaction: _unitOfWork.Transaction);
+
             return _mapper.From(result);
         }
 
@@ -118,7 +128,8 @@ namespace ULMClubManager.DAL.Repositories
                     AER_FK_ID = domainModel.AircraftID,
                     PIST_FK_ID = domainModel.RunwayID
                 },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
         }
 
         public Booking CreateOneCancellation(Cancellation domainModel)
@@ -129,7 +140,8 @@ namespace ULMClubManager.DAL.Repositories
                     RES_FK_ID = domainModel.BookingID,
                     ANN_MOTIF = domainModel.Reason
                 },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
 
             return ReadOne(domainModel.BookingID);
         }
@@ -139,7 +151,8 @@ namespace ULMClubManager.DAL.Repositories
             _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
                 "sp_delete_ANN",
                 param: new { bookingID },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
 
             return ReadOne(bookingID);
         }

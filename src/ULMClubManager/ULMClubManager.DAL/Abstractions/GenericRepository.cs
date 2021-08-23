@@ -55,7 +55,8 @@ namespace ULMClubManager.DAL.Abstractions
             string sql = GenerateInsertQuery();
 
             TDBRow model = _mapper.To(domainModel);
-            _unitOfWork.Connection.Execute(sql, model);
+            _unitOfWork.Connection.Execute(sql, model, transaction: _unitOfWork.Transaction);
+
             return ReadLast();
         }
 
@@ -63,7 +64,7 @@ namespace ULMClubManager.DAL.Abstractions
         {
             string sql = $"DELETE FROM {_tableName} WHERE {_keyPrefix}_ID = @ID";
 
-            int affectedRows = _unitOfWork.Connection.Execute(sql, new { ID = id });
+            int affectedRows = _unitOfWork.Connection.Execute(sql, new { ID = id }, transaction: _unitOfWork.Transaction);
             if (affectedRows == 0)
                 throw new KeyNotFoundException($"La table {_tableName} avec l'id [{id}] n'existe pas.");
         }
@@ -71,7 +72,7 @@ namespace ULMClubManager.DAL.Abstractions
         public virtual List<TDomain> ReadAll()
         {
             string query = $"SELECT * FROM {_tableName}";
-            IEnumerable<TDBRow> models = _unitOfWork.Connection.Query<TDBRow>(query);
+            IEnumerable<TDBRow> models = _unitOfWork.Connection.Query<TDBRow>(query, transaction: _unitOfWork.Transaction);
             return _mapper.From(models);
         }
 
@@ -79,7 +80,7 @@ namespace ULMClubManager.DAL.Abstractions
         {
             string query = $"SELECT * FROM {_tableName} WHERE {_keyPrefix}_ID = @ID";
 
-            TDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<TDBRow>(query, new { ID = id });
+            TDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<TDBRow>(query, new { ID = id }, transaction: _unitOfWork.Transaction);
             if (result == null)
                 throw new KeyNotFoundException($"La table {_tableName} avec l'id [{id}] n'existe pas.");
 
@@ -89,7 +90,7 @@ namespace ULMClubManager.DAL.Abstractions
         public virtual TDomain ReadLast()
         {
             string query = $"SELECT TOP 1 * FROM {_tableName} ORDER BY {_keyPrefix}_ID DESC";
-            TDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<TDBRow>(query);
+            TDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<TDBRow>(query, transaction: _unitOfWork.Transaction);
             return _mapper.From(result);
         }
 
@@ -98,7 +99,7 @@ namespace ULMClubManager.DAL.Abstractions
             string query = GenerateUpdateQuery();
 
             TDBRow model = _mapper.To(domainModel);
-            int affectedRows = _unitOfWork.Connection.Execute(query, model);
+            int affectedRows = _unitOfWork.Connection.Execute(query, model, transaction: _unitOfWork.Transaction);
             if (affectedRows == 0)
                 throw new KeyNotFoundException($"La table {_tableName} avec l'id [{domainModel.ID}] n'existe pas.");
         }

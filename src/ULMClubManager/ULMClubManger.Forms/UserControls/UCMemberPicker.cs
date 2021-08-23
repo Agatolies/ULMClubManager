@@ -24,6 +24,9 @@ namespace ULMClubManger.Forms.UserControls
         public UCMemberPicker()
         {
             InitializeComponent();
+
+            _cboxMemberTypes.DisplayMember = "Description";
+            _cboxMemberTypes.ValueMember = "Key";
         }
 
         public void InitializeData()
@@ -31,17 +34,44 @@ namespace ULMClubManger.Forms.UserControls
             try
             {
                 _allMembers = MemberService.ReadAll();
-                _lbMembers.DataSource = _allMembers;
-
                 _allPilots = _allMembers.Where(member => member.IsPilot).ToList();
                 _allSupporters = _allMembers.Where(member => member.IsSupporter).ToList();
 
-                //Comment alimenter la DataSource de _cboxMemberTypes???
+                _lbMembers.DataSource = _allMembers;
+                _cboxMemberTypes.DataSource = MemberType.GetMemberTypes();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void FilterMembers()
+        {
+            string searchLetters = _tboxSearchMember.Text;
+            MemberType memberType = (MemberType)_cboxMemberTypes.SelectedItem;
+
+            List<Member> filteredMembers;
+
+            switch (memberType.Key)
+            {
+                case MemberTypeKey.Pilot:
+                    filteredMembers = _allPilots;
+                    break;
+                case MemberTypeKey.Supporter:
+                    filteredMembers = _allSupporters;
+                    break;
+                case MemberTypeKey.Member:
+                default:
+                    filteredMembers = _allMembers;
+                    break;
+            }
+
+            filteredMembers = filteredMembers
+                .Where(member => member.FullName.ToUpper().Contains(searchLetters.ToUpper()))
+                .ToList();
+
+            _lbMembers.DataSource = filteredMembers;
         }
 
         private void UCMemberPicker_Load(object sender, EventArgs e)
@@ -51,19 +81,18 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _tboxSearchMember_TextChanged(object sender, EventArgs e)
         {
-            string searchLetters = _tboxSearchMember.Text;
-
-            List<Member> filteredMembers = _allMembers
-                .Where(member => member.FullName.Contains(searchLetters))
-                .ToList();
-
-            _lbMembers.DataSource = filteredMembers;
+            FilterMembers();
         }
 
         private void _lbMembers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_lbMembers.DataSource != null && this.SelectMember != null)
                 this.SelectMember(((Member)_lbMembers.SelectedItem).ID.Value);
+        }
+
+        private void _cboxMemberTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterMembers();
         }
     }
 }

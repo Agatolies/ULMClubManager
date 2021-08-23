@@ -87,6 +87,7 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMemberTypes.Name = "_cboxMemberTypes";
             this._cboxMemberTypes.Size = new System.Drawing.Size(190, 21);
             this._cboxMemberTypes.TabIndex = 8;
+            this._cboxMemberTypes.SelectedIndexChanged += new System.EventHandler(this._cboxMemberTypes_SelectedIndexChanged);
             // 
             // _labelPickPILorSYM
             // 

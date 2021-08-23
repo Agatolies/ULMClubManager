@@ -26,18 +26,7 @@ namespace ULMClubManger.Forms.UserControls
         public UCMemberCRUD()
         {
             InitializeComponent();
-
-            _cboxMBRSex.DisplayMember = "Description";
-            _cboxMBRSex.ValueMember = "Key";
-            _cboxMBRLocality.DisplayMember = "Name";
-            _cboxMBRLocality.ValueMember = "ID";
-
-            _panelMBR_Update_btn.Visible = false;
-            _panelMBR_Create_btn.Visible = false;
-            _labelError.Visible = false;
-
-            _cboxMBRSex.DataSource = Gender.GetGenders();
-            _localities = LocalityService.ReadAll();
+            InitializeData();
         }
 
         public Member Member
@@ -68,6 +57,21 @@ namespace ULMClubManger.Forms.UserControls
                     }
                 }
             }
+        }
+
+        private void InitializeData()
+        {
+            _cboxMBRSex.DisplayMember = "Description";
+            _cboxMBRSex.ValueMember = "Key";
+            _cboxMBRLocality.DisplayMember = "Name";
+            _cboxMBRLocality.ValueMember = "ID";
+
+            _panelMBR_Update_btn.Visible = false;
+            _panelMBR_Create_btn.Visible = false;
+            _labelError.Visible = false;
+
+            _cboxMBRSex.DataSource = Gender.GetGenders();
+            _localities = LocalityService.ReadAll();
         }
 
         public void RefreshData(int memberID)
@@ -176,19 +180,19 @@ namespace ULMClubManger.Forms.UserControls
         {
             string zipCode = ((TextBox)sender).Text;
 
-            if (zipCode == "" || zipCode.Length != 4)
-            {
-                _cboxMBRLocality.DataSource = new List<Locality>();
-                _cboxMBRLocality.SelectedIndex = -1;
-                _cboxMBRLocality.Text = "";
-            }
-            else
+            if (zipCode.Length == 4)
             {
                 List<Locality> localitiesForZipCode = _localities
                     .Where(l => l.ZipCode.StartsWith(zipCode))
                     .ToList();
 
                 _cboxMBRLocality.DataSource = localitiesForZipCode;
+            }
+            else
+            {
+                _cboxMBRLocality.DataSource = new List<Locality>();
+                _cboxMBRLocality.SelectedIndex = -1;
+                _cboxMBRLocality.Text = "";
             }
         }
 
@@ -197,12 +201,12 @@ namespace ULMClubManger.Forms.UserControls
             Locality locality = (Locality)((ComboBox)sender).SelectedItem;
 
             if (locality != null)
+            {
                 _tboxMBRZipCode.Text = locality.ZipCode;
-        }
 
-        private void _btnMBRDelete_Click(object sender, EventArgs e)
-        {
-
+                // Fix pour solutionner le bug d'affection par défaut de la localité
+                Member.LocalityID = locality.ID.Value;
+            }
         }
 
         private void _btnMBRUpdate_Click(object sender, EventArgs e)
@@ -255,8 +259,6 @@ namespace ULMClubManger.Forms.UserControls
 
             if (dialogResult == DialogResult.Yes)
             {
-                Member = _memberBackup;
-                _memberBackup = null;
 
                 LockControls();
                 HideErrorMessage();
@@ -290,7 +292,7 @@ namespace ULMClubManger.Forms.UserControls
         {
             try
             {
-                MemberService.CreateOne(_member);
+                MemberService.CreateOne(Member);
 
                 _memberBackup = null;
 
@@ -337,6 +339,34 @@ namespace ULMClubManger.Forms.UserControls
 
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Create_btn.Visible = false;
+            }
+        }
+
+        private void _btnMBRDelete_Click(object sender, EventArgs e)
+        {
+            LockControls();
+
+            DialogResult dialogResult = MessageBox.Show(
+                $"Voulez-vous supprimer le membre { _member.FullName }?",
+                "Attention",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            try
+            {
+                if (dialogResult == DialogResult.Yes)
+                    MemberService.DeleteOne(_member.ID.Value);
+
+                ClearControls();
+                HideErrorMessage();
+            }
+            catch (BusinessException ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
             }
         }
     }

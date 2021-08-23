@@ -12,38 +12,6 @@ namespace ULMClubManager.BL.Services
 {
     public static class MemberService
     {
-        public static Member CreateOne(Member member)
-        {
-            if (member.FirstName.Length < 3)
-                throw new FirstNameTooShortException();
-
-            Regex regEmail = new Regex(
-               @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$",
-               RegexOptions.IgnoreCase);
-
-            if (!regEmail.IsMatch(member.EmailAddress))
-                throw new InvalidEmailAddressException();
-
-            if (member.LicenceCountry.Length != 2)
-                throw new InvalidCountryCode();
-
-            bool noLicence =
-                   !member.QualificationType1
-                && !member.QualificationType2
-                && !member.QualificationType3
-                && !member.QualificationType4
-                && !member.QualificationType5
-                && !member.QualificationType6;
-
-            if ((member.LicenceNumber != null) && noLicence)
-                throw new LicenceWithoutQualificationsException();
-
-            using (DalSession dalSession = new DalSession())
-            {
-                return dalSession.Members.CreateOne(member);
-            }
-        }
-
         public static List<Member> ReadAll()
         {
             using (DalSession dalSession = new DalSession())
@@ -60,31 +28,19 @@ namespace ULMClubManager.BL.Services
             }
         }
 
+        public static Member CreateOne(Member member)
+        {
+            ValidateMember(member);
+
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Members.CreateOne(member);
+            }
+        }
+
         public static void UpdateOne(Member member)
         {
-            if (member.FirstName.Length < 3)
-                throw new FirstNameTooShortException();
-
-            Regex regEmail = new Regex(
-                @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$", 
-                RegexOptions.IgnoreCase);
-
-            if (!regEmail.IsMatch(member.EmailAddress))
-                throw new InvalidEmailAddressException();
-
-            bool noLicence =
-                  !member.QualificationType1
-               && !member.QualificationType2
-               && !member.QualificationType3
-               && !member.QualificationType4
-               && !member.QualificationType5
-               && !member.QualificationType6;
-
-            if ((member.LicenceNumber != null) && noLicence)
-                throw new LicenceWithoutQualificationsException();
-
-            if (member.LicenceCountry.Length != 2)
-                throw new InvalidCountryCode();
+            ValidateMember(member);
 
             using (DalSession dalSession = new DalSession())
             {
@@ -179,11 +135,43 @@ namespace ULMClubManager.BL.Services
                     dalSession.Members.DeleteOne(memberID);
                     dalSession.UnitOfWork.Commit();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     dalSession.UnitOfWork.Rollback();
                     throw;
                 }
+            }
+        }
+
+        private static void ValidateMember(Member member)
+        {
+            if (member.FirstName.Length < 3)
+                throw new FirstNameTooShortException();
+
+            Regex regEmail = new Regex(
+                @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$",
+                RegexOptions.IgnoreCase);
+
+            if (!regEmail.IsMatch(member.EmailAddress))
+                throw new InvalidEmailAddressException();
+
+            if (member.IsPilot)
+            {
+                if (member.LicenceCountry.Length != 2)
+                    throw new InvalidCountryCode();
+
+                bool hasNoQualification =
+                    !member.QualificationType1
+                    && !member.QualificationType2
+                    && !member.QualificationType3
+                    && !member.QualificationType4
+                    && !member.QualificationType5
+                    && !member.QualificationType6;
+
+                bool hasLicence = member.LicenceNumber != null;
+
+                if (hasLicence && hasNoQualification)
+                    throw new LicenceWithoutQualificationsException();
             }
         }
     }

@@ -26,7 +26,10 @@ namespace ULMClubManager.DAL.Repositories
 
         public List<Member> ReadAll()
         {
-            IEnumerable<MbrDBRow> models = _unitOfWork.Connection.Query<MbrDBRow>("sp_select_MBR");
+            IEnumerable<MbrDBRow> models = _unitOfWork.Connection.Query<MbrDBRow>(
+                "sp_select_MBR",
+                transaction: _unitOfWork.Transaction);
+
             return _memberMapper.From(models);
         }
 
@@ -35,7 +38,8 @@ namespace ULMClubManager.DAL.Repositories
             MbrDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<MbrDBRow>(
                 "sp_select_MBR_BY_ID",
                 param: new { MBR_ID = memberID },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
 
             if (result == null)
                 throw new KeyNotFoundException($"La table MBR avec l'id [{memberID}] n'existe pas.");
@@ -45,7 +49,10 @@ namespace ULMClubManager.DAL.Repositories
 
         public Member ReadLast()
         {
-            MbrDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<MbrDBRow>("sp_select_MBR_LAST");
+            MbrDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<MbrDBRow>(
+                "sp_select_MBR_LAST",
+                transaction: _unitOfWork.Transaction);
+
             return _memberMapper.From(result);
         }
 
@@ -96,7 +103,8 @@ namespace ULMClubManager.DAL.Repositories
                     MBR_QUAL_TYP_5 = domainModel.QualificationType5 ? 1 : 0,
                     MBR_QUAL_TYP_6 = domainModel.QualificationType6 ? 1 : 0,
                 },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
         }
 
         private void CreateOneSupporter(Member domainModel)
@@ -122,7 +130,8 @@ namespace ULMClubManager.DAL.Repositories
                     MBR_USR_PWD = domainModel.UserPWD,
                     LOC_FK_ID = domainModel.LocalityID
                 },
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
         }
 
         public void UpdateOne(Member domainModel)
@@ -132,41 +141,66 @@ namespace ULMClubManager.DAL.Repositories
                 _unitOfWork.Connection.Execute(
                     "sp_update_PIL",
                     param: _memberMapper.To(domainModel),
-                    commandType: CommandType.StoredProcedure);
+                    commandType: CommandType.StoredProcedure,
+                    transaction: _unitOfWork.Transaction);
             }
             else if (domainModel.IsSupporter)
             {
                 _unitOfWork.Connection.Execute(
                     "sp_update_SYM",
                     param: _memberMapper.To(domainModel),
-                    commandType: CommandType.StoredProcedure);
+                    commandType: CommandType.StoredProcedure,
+                    transaction: _unitOfWork.Transaction);
             }
         }
 
         public void DeleteOne(int id)
         {
-            try
+            Member memberToDelete = ReadOne(id);
+
+            if (memberToDelete.IsPilot)
             {
                 _unitOfWork.Connection.Execute(
                     "sp_delete_PIL",
-                    param: new { PIL_ID = id },
-                    commandType: CommandType.StoredProcedure);
+                    param: new { MBR_ID = id },
+                    commandType: CommandType.StoredProcedure,
+                    transaction: _unitOfWork.Transaction);
             }
-            catch (Exception)
+            else if (memberToDelete.IsSupporter)
             {
                 _unitOfWork.Connection.Execute(
                     "sp_delete_SYM",
-                    param: new { SYM_ID = id },
-                    commandType: CommandType.StoredProcedure);
+                    param: new { MBR_ID = id },
+                    commandType: CommandType.StoredProcedure,
+                    transaction: _unitOfWork.Transaction);
             }
         }
+
+        //public void DeleteOnePilot(int id)
+        //{
+        //    _unitOfWork.Connection.Execute(
+        //        "sp_delete_PIL",
+        //        param: new { PIL_ID = id },
+        //        commandType: CommandType.StoredProcedure);
+        //}
+
+        //public void DeleteOneSupporter(int id)
+        //{
+        //    _unitOfWork.Connection.Execute(
+        //            "sp_delete_SYM",
+        //            param: new { SYM_ID = id },
+        //            commandType: CommandType.StoredProcedure);
+        //}
 
         public int Match(string userName, string password)
         {
             string sql = $"SELECT * FROM MBR WHERE MBR_USR_PSD = @USERNAME";
 
             var member = _unitOfWork.Connection
-                .Query(sql, new { USERNAME = userName })
+                .Query(
+                    sql,
+                    param: new { USERNAME = userName }, 
+                    transaction: _unitOfWork.Transaction)
                 .FirstOrDefault();
 
             if (member != null)

@@ -58,6 +58,7 @@
     <Compile Include="Helpers\CloneHelper.cs" />
     <Compile Include="Locality.cs" />
     <Compile Include="Member.cs" />
+    <Compile Include="MemberType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Runway.cs" />
     <Compile Include="Subscription.cs" />

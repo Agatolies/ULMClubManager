@@ -19,9 +19,11 @@ namespace ULMClubManager.DTO
 
         public static List<Gender> GetGenders()
         {
-            return new List<Gender> { 
+            return new List<Gender> 
+            { 
                 new Gender("F", "Femme"),
-                new Gender("M", "Homme") };
+                new Gender("M", "Homme") 
+            };
         }
     }
 }
