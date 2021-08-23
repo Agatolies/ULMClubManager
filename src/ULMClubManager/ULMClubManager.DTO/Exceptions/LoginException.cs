@@ -12,7 +12,6 @@ namespace ULMClubManager.DTO.Exceptions
         public LoginException() 
             : base(ContextError.MBR, "ERR_LOGIN")
         {
-
         }
     }
 }

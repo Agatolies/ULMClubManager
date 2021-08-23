@@ -27,6 +27,17 @@ namespace ULMClubManager.BL.Services
             if (member.LicenceCountry.Length != 2)
                 throw new InvalidCountryCode();
 
+            bool noLicence =
+                   !member.QualificationType1
+                && !member.QualificationType2
+                && !member.QualificationType3
+                && !member.QualificationType4
+                && !member.QualificationType5
+                && !member.QualificationType6;
+
+            if ((member.LicenceNumber != null) && noLicence)
+                throw new LicenceWithoutQualificationsException();
+
             using (DalSession dalSession = new DalSession())
             {
                 return dalSession.Members.CreateOne(member);
@@ -61,7 +72,18 @@ namespace ULMClubManager.BL.Services
             if (!regEmail.IsMatch(member.EmailAddress))
                 throw new InvalidEmailAddressException();
 
-            if(member.LicenceCountry.Length != 2)
+            bool noLicence =
+                  !member.QualificationType1
+               && !member.QualificationType2
+               && !member.QualificationType3
+               && !member.QualificationType4
+               && !member.QualificationType5
+               && !member.QualificationType6;
+
+            if ((member.LicenceNumber != null) && noLicence)
+                throw new LicenceWithoutQualificationsException();
+
+            if (member.LicenceCountry.Length != 2)
                 throw new InvalidCountryCode();
 
             using (DalSession dalSession = new DalSession())
@@ -165,6 +187,4 @@ namespace ULMClubManager.BL.Services
             }
         }
     }
-
-   
 }

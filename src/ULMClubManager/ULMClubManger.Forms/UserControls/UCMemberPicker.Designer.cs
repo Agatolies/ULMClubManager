@@ -29,15 +29,22 @@ namespace ULMClubManger.Forms.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._labelSearchName = new System.Windows.Forms.Label();
             this._tboxSearchMember = new System.Windows.Forms.TextBox();
             this._lbMembers = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this._cboxMemberTypes = new System.Windows.Forms.ComboBox();
+            this._labelPickPILorSYM = new System.Windows.Forms.Label();
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // _labelSearchName
             // 
             this._labelSearchName.AutoSize = true;
-            this._labelSearchName.Location = new System.Drawing.Point(5, 5);
+            this._labelSearchName.Location = new System.Drawing.Point(6, 16);
             this._labelSearchName.Name = "_labelSearchName";
             this._labelSearchName.Size = new System.Drawing.Size(29, 13);
             this._labelSearchName.TabIndex = 6;
@@ -45,7 +52,7 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _tboxSearchMember
             // 
-            this._tboxSearchMember.Location = new System.Drawing.Point(40, 2);
+            this._tboxSearchMember.Location = new System.Drawing.Point(41, 13);
             this._tboxSearchMember.Name = "_tboxSearchMember";
             this._tboxSearchMember.Size = new System.Drawing.Size(191, 20);
             this._tboxSearchMember.TabIndex = 5;
@@ -53,28 +60,60 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _lbMembers
             // 
-            this._lbMembers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this._lbMembers.FormattingEnabled = true;
-            this._lbMembers.Location = new System.Drawing.Point(2, 28);
+            this._lbMembers.Location = new System.Drawing.Point(3, 73);
             this._lbMembers.Margin = new System.Windows.Forms.Padding(2);
             this._lbMembers.Name = "_lbMembers";
-            this._lbMembers.Size = new System.Drawing.Size(229, 563);
+            this._lbMembers.Size = new System.Drawing.Size(229, 628);
             this._lbMembers.TabIndex = 4;
             this._lbMembers.SelectedIndexChanged += new System.EventHandler(this._lbMembers_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this._cboxMemberTypes);
+            this.panel1.Controls.Add(this._labelPickPILorSYM);
+            this.panel1.Controls.Add(this._labelSearchName);
+            this.panel1.Controls.Add(this._tboxSearchMember);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(234, 68);
+            this.panel1.TabIndex = 7;
+            // 
+            // _cboxMemberTypes
+            // 
+            this._cboxMemberTypes.FormattingEnabled = true;
+            this._cboxMemberTypes.Location = new System.Drawing.Point(41, 40);
+            this._cboxMemberTypes.Name = "_cboxMemberTypes";
+            this._cboxMemberTypes.Size = new System.Drawing.Size(190, 21);
+            this._cboxMemberTypes.TabIndex = 8;
+            // 
+            // _labelPickPILorSYM
+            // 
+            this._labelPickPILorSYM.AutoSize = true;
+            this._labelPickPILorSYM.Location = new System.Drawing.Point(6, 43);
+            this._labelPickPILorSYM.Name = "_labelPickPILorSYM";
+            this._labelPickPILorSYM.Size = new System.Drawing.Size(31, 13);
+            this._labelPickPILorSYM.TabIndex = 7;
+            this._labelPickPILorSYM.Text = "Type";
+            // 
+            // memberBindingSource
+            // 
+            this.memberBindingSource.DataSource = typeof(ULMClubManager.DTO.Member);
             // 
             // UCMemberPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this._labelSearchName);
-            this.Controls.Add(this._tboxSearchMember);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this._lbMembers);
             this.Name = "UCMemberPicker";
-            this.Size = new System.Drawing.Size(234, 600);
+            this.Size = new System.Drawing.Size(234, 707);
             this.Load += new System.EventHandler(this.UCMemberPicker_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -83,5 +122,9 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Label _labelSearchName;
         private System.Windows.Forms.TextBox _tboxSearchMember;
         private System.Windows.Forms.ListBox _lbMembers;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox _cboxMemberTypes;
+        private System.Windows.Forms.Label _labelPickPILorSYM;
+        private System.Windows.Forms.BindingSource memberBindingSource;
     }
 }

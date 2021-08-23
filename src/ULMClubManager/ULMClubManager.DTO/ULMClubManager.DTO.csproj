@@ -51,6 +51,7 @@
     <Compile Include="Exceptions\FirstNameTooShortException.cs" />
     <Compile Include="Exceptions\InvalidCountryCode.cs" />
     <Compile Include="Exceptions\InvalidEmailAddressException.cs" />
+    <Compile Include="Exceptions\LicenceWithoutQualificationsException.cs" />
     <Compile Include="Exceptions\LoginAdminException.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
     <Compile Include="Gender.cs" />

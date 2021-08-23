@@ -18,6 +18,8 @@ namespace ULMClubManger.Forms.UserControls
         public event delSelect SelectMember;
 
         private List<Member> _allMembers;
+        private List<Member> _allPilots;
+        private List<Member> _allSupporters;
 
         public UCMemberPicker()
         {
@@ -30,6 +32,11 @@ namespace ULMClubManger.Forms.UserControls
             {
                 _allMembers = MemberService.ReadAll();
                 _lbMembers.DataSource = _allMembers;
+
+                _allPilots = _allMembers.Where(member => member.IsPilot).ToList();
+                _allSupporters = _allMembers.Where(member => member.IsSupporter).ToList();
+
+                //Comment alimenter la DataSource de _cboxMemberTypes???
             }
             catch (Exception ex)
             {
