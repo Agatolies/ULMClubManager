@@ -33,11 +33,11 @@ namespace ULMClubManger.Forms.UserControls
             this._labelSearchName = new System.Windows.Forms.Label();
             this._tboxSearchMember = new System.Windows.Forms.TextBox();
             this._lbMembers = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this._panelMemberPicker = new System.Windows.Forms.Panel();
             this._cboxMemberTypes = new System.Windows.Forms.ComboBox();
             this._labelPickPILorSYM = new System.Windows.Forms.Label();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1.SuspendLayout();
+            this._panelMemberPicker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,17 +68,17 @@ namespace ULMClubManger.Forms.UserControls
             this._lbMembers.TabIndex = 4;
             this._lbMembers.SelectedIndexChanged += new System.EventHandler(this._lbMembers_SelectedIndexChanged);
             // 
-            // panel1
+            // _panelMemberPicker
             // 
-            this.panel1.Controls.Add(this._cboxMemberTypes);
-            this.panel1.Controls.Add(this._labelPickPILorSYM);
-            this.panel1.Controls.Add(this._labelSearchName);
-            this.panel1.Controls.Add(this._tboxSearchMember);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(234, 68);
-            this.panel1.TabIndex = 7;
+            this._panelMemberPicker.Controls.Add(this._cboxMemberTypes);
+            this._panelMemberPicker.Controls.Add(this._labelPickPILorSYM);
+            this._panelMemberPicker.Controls.Add(this._labelSearchName);
+            this._panelMemberPicker.Controls.Add(this._tboxSearchMember);
+            this._panelMemberPicker.Dock = System.Windows.Forms.DockStyle.Top;
+            this._panelMemberPicker.Location = new System.Drawing.Point(0, 0);
+            this._panelMemberPicker.Name = "_panelMemberPicker";
+            this._panelMemberPicker.Size = new System.Drawing.Size(234, 68);
+            this._panelMemberPicker.TabIndex = 7;
             // 
             // _cboxMemberTypes
             // 
@@ -106,13 +106,13 @@ namespace ULMClubManger.Forms.UserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this._panelMemberPicker);
             this.Controls.Add(this._lbMembers);
             this.Name = "UCMemberPicker";
             this.Size = new System.Drawing.Size(234, 707);
             this.Load += new System.EventHandler(this.UCMemberPicker_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this._panelMemberPicker.ResumeLayout(false);
+            this._panelMemberPicker.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -123,7 +123,7 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Label _labelSearchName;
         private System.Windows.Forms.TextBox _tboxSearchMember;
         private System.Windows.Forms.ListBox _lbMembers;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel _panelMemberPicker;
         private System.Windows.Forms.ComboBox _cboxMemberTypes;
         private System.Windows.Forms.Label _labelPickPILorSYM;
         private System.Windows.Forms.BindingSource memberBindingSource;

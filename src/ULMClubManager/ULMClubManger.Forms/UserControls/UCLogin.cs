@@ -21,9 +21,9 @@ namespace ULMClubManger.Forms.UserControls
 
 #if DEBUG
             // connexion automatique en DEBUG
-            _tboxUserName.Text = "agateau136";
-            _tboxPassword.Text = "04198504";
-            _btnLogin_Click(null, null);
+            //_tboxUserName.Text = "agateau136";
+            //_tboxPassword.Text = "04198504";
+            //_btnLogin_Click(null, null);
 #endif
         }
 

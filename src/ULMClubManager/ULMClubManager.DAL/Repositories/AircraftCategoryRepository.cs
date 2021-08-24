@@ -5,9 +5,9 @@ using ULMClubManager.DTO;
 
 namespace ULMClubManager.DAL.Repositories
 {
-    public class CategoryRepository : GenericRepository<TypDBRow, int, Category>
+    public class AircraftCategoryRepository : GenericRepository<TypDBRow, int, AircraftCategory>
     {
-        public CategoryRepository(IUnitOfWork unitOfWork, CategoryMapper mapper)
+        public AircraftCategoryRepository(IUnitOfWork unitOfWork, CategoryMapper mapper)
             : base(unitOfWork, "TYP", mapper)
         {
         }

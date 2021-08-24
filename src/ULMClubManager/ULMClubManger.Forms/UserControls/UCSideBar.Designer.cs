@@ -36,8 +36,9 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMembersInfo = new System.Windows.Forms.Button();
             this._btnBookings = new System.Windows.Forms.Button();
             this._panelBookingsSubmenu = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this._btnBookingPist = new System.Windows.Forms.Button();
+            this._btnBookingAircraft = new System.Windows.Forms.Button();
+            this._btnBookingMember = new System.Windows.Forms.Button();
             this._btnSubscriptions = new System.Windows.Forms.Button();
             this._panelSubscriptionsSubmenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -61,7 +62,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelLogo.Location = new System.Drawing.Point(0, 0);
             this._panelLogo.Margin = new System.Windows.Forms.Padding(2);
             this._panelLogo.Name = "_panelLogo";
-            this._panelLogo.Size = new System.Drawing.Size(191, 81);
+            this._panelLogo.Size = new System.Drawing.Size(140, 81);
             this._panelLogo.TabIndex = 0;
             // 
             // panel1
@@ -71,7 +72,7 @@ namespace ULMClubManger.Forms.UserControls
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(191, 81);
+            this.panel1.Size = new System.Drawing.Size(140, 81);
             this.panel1.TabIndex = 1;
             // 
             // _btnMembers
@@ -86,7 +87,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMembers.Margin = new System.Windows.Forms.Padding(0);
             this._btnMembers.Name = "_btnMembers";
             this._btnMembers.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this._btnMembers.Size = new System.Drawing.Size(191, 41);
+            this._btnMembers.Size = new System.Drawing.Size(140, 41);
             this._btnMembers.TabIndex = 1;
             this._btnMembers.Text = "Membres";
             this._btnMembers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -100,7 +101,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelMembersSubmenu.Location = new System.Drawing.Point(0, 122);
             this._panelMembersSubmenu.Margin = new System.Windows.Forms.Padding(2);
             this._panelMembersSubmenu.Name = "_panelMembersSubmenu";
-            this._panelMembersSubmenu.Size = new System.Drawing.Size(191, 37);
+            this._panelMembersSubmenu.Size = new System.Drawing.Size(140, 37);
             this._panelMembersSubmenu.TabIndex = 2;
             // 
             // _btnMembersInfo
@@ -115,7 +116,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMembersInfo.Margin = new System.Windows.Forms.Padding(2);
             this._btnMembersInfo.Name = "_btnMembersInfo";
             this._btnMembersInfo.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this._btnMembersInfo.Size = new System.Drawing.Size(191, 37);
+            this._btnMembersInfo.Size = new System.Drawing.Size(140, 37);
             this._btnMembersInfo.TabIndex = 0;
             this._btnMembersInfo.Text = "Données Signalétiques";
             this._btnMembersInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -134,7 +135,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnBookings.Margin = new System.Windows.Forms.Padding(0);
             this._btnBookings.Name = "_btnBookings";
             this._btnBookings.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this._btnBookings.Size = new System.Drawing.Size(191, 41);
+            this._btnBookings.Size = new System.Drawing.Size(140, 41);
             this._btnBookings.TabIndex = 3;
             this._btnBookings.Text = "Réservations";
             this._btnBookings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -143,50 +144,72 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _panelBookingsSubmenu
             // 
-            this._panelBookingsSubmenu.Controls.Add(this.button4);
-            this._panelBookingsSubmenu.Controls.Add(this.button5);
+            this._panelBookingsSubmenu.Controls.Add(this._btnBookingPist);
+            this._panelBookingsSubmenu.Controls.Add(this._btnBookingAircraft);
+            this._panelBookingsSubmenu.Controls.Add(this._btnBookingMember);
             this._panelBookingsSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this._panelBookingsSubmenu.Location = new System.Drawing.Point(0, 200);
             this._panelBookingsSubmenu.Margin = new System.Windows.Forms.Padding(2);
             this._panelBookingsSubmenu.Name = "_panelBookingsSubmenu";
-            this._panelBookingsSubmenu.Size = new System.Drawing.Size(191, 73);
+            this._panelBookingsSubmenu.Size = new System.Drawing.Size(140, 111);
             this._panelBookingsSubmenu.TabIndex = 4;
             // 
-            // button4
+            // _btnBookingPist
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this.button4.Location = new System.Drawing.Point(0, 37);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(191, 37);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "button4";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = false;
+            this._btnBookingPist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnBookingPist.Dock = System.Windows.Forms.DockStyle.Top;
+            this._btnBookingPist.FlatAppearance.BorderSize = 0;
+            this._btnBookingPist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnBookingPist.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnBookingPist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnBookingPist.Location = new System.Drawing.Point(0, 74);
+            this._btnBookingPist.Margin = new System.Windows.Forms.Padding(2);
+            this._btnBookingPist.Name = "_btnBookingPist";
+            this._btnBookingPist.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this._btnBookingPist.Size = new System.Drawing.Size(140, 37);
+            this._btnBookingPist.TabIndex = 2;
+            this._btnBookingPist.Text = "Piste";
+            this._btnBookingPist.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._btnBookingPist.UseVisualStyleBackColor = false;
+            this._btnBookingPist.Click += new System.EventHandler(this._btnBookingPist_Click);
             // 
-            // button5
+            // _btnBookingAircraft
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(191, 37);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "button5";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.UseVisualStyleBackColor = false;
+            this._btnBookingAircraft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnBookingAircraft.Dock = System.Windows.Forms.DockStyle.Top;
+            this._btnBookingAircraft.FlatAppearance.BorderSize = 0;
+            this._btnBookingAircraft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnBookingAircraft.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnBookingAircraft.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnBookingAircraft.Location = new System.Drawing.Point(0, 37);
+            this._btnBookingAircraft.Margin = new System.Windows.Forms.Padding(2);
+            this._btnBookingAircraft.Name = "_btnBookingAircraft";
+            this._btnBookingAircraft.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this._btnBookingAircraft.Size = new System.Drawing.Size(140, 37);
+            this._btnBookingAircraft.TabIndex = 1;
+            this._btnBookingAircraft.Text = "Aéronef";
+            this._btnBookingAircraft.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._btnBookingAircraft.UseVisualStyleBackColor = false;
+            this._btnBookingAircraft.Click += new System.EventHandler(this._btnBookingAircraft_Click);
+            // 
+            // _btnBookingMember
+            // 
+            this._btnBookingMember.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnBookingMember.Dock = System.Windows.Forms.DockStyle.Top;
+            this._btnBookingMember.FlatAppearance.BorderSize = 0;
+            this._btnBookingMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnBookingMember.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnBookingMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnBookingMember.Location = new System.Drawing.Point(0, 0);
+            this._btnBookingMember.Margin = new System.Windows.Forms.Padding(2);
+            this._btnBookingMember.Name = "_btnBookingMember";
+            this._btnBookingMember.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this._btnBookingMember.Size = new System.Drawing.Size(140, 37);
+            this._btnBookingMember.TabIndex = 0;
+            this._btnBookingMember.Text = "Membre";
+            this._btnBookingMember.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._btnBookingMember.UseVisualStyleBackColor = false;
+            this._btnBookingMember.Click += new System.EventHandler(this._btnBookingMember_Click);
             // 
             // _btnSubscriptions
             // 
@@ -196,11 +219,11 @@ namespace ULMClubManger.Forms.UserControls
             this._btnSubscriptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._btnSubscriptions.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._btnSubscriptions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this._btnSubscriptions.Location = new System.Drawing.Point(0, 273);
+            this._btnSubscriptions.Location = new System.Drawing.Point(0, 311);
             this._btnSubscriptions.Margin = new System.Windows.Forms.Padding(0);
             this._btnSubscriptions.Name = "_btnSubscriptions";
             this._btnSubscriptions.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this._btnSubscriptions.Size = new System.Drawing.Size(191, 41);
+            this._btnSubscriptions.Size = new System.Drawing.Size(140, 41);
             this._btnSubscriptions.TabIndex = 5;
             this._btnSubscriptions.Text = "Cotisations";
             this._btnSubscriptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -212,10 +235,10 @@ namespace ULMClubManger.Forms.UserControls
             this._panelSubscriptionsSubmenu.Controls.Add(this.button1);
             this._panelSubscriptionsSubmenu.Controls.Add(this.button2);
             this._panelSubscriptionsSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this._panelSubscriptionsSubmenu.Location = new System.Drawing.Point(0, 314);
+            this._panelSubscriptionsSubmenu.Location = new System.Drawing.Point(0, 352);
             this._panelSubscriptionsSubmenu.Margin = new System.Windows.Forms.Padding(2);
             this._panelSubscriptionsSubmenu.Name = "_panelSubscriptionsSubmenu";
-            this._panelSubscriptionsSubmenu.Size = new System.Drawing.Size(191, 73);
+            this._panelSubscriptionsSubmenu.Size = new System.Drawing.Size(140, 73);
             this._panelSubscriptionsSubmenu.TabIndex = 6;
             // 
             // button1
@@ -230,7 +253,7 @@ namespace ULMClubManger.Forms.UserControls
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(191, 37);
+            this.button1.Size = new System.Drawing.Size(140, 37);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -248,7 +271,7 @@ namespace ULMClubManger.Forms.UserControls
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(191, 37);
+            this.button2.Size = new System.Drawing.Size(140, 37);
             this.button2.TabIndex = 0;
             this.button2.Text = "button2";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -262,11 +285,11 @@ namespace ULMClubManger.Forms.UserControls
             this._btnClubManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._btnClubManagement.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._btnClubManagement.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this._btnClubManagement.Location = new System.Drawing.Point(0, 387);
+            this._btnClubManagement.Location = new System.Drawing.Point(0, 425);
             this._btnClubManagement.Margin = new System.Windows.Forms.Padding(0);
             this._btnClubManagement.Name = "_btnClubManagement";
             this._btnClubManagement.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this._btnClubManagement.Size = new System.Drawing.Size(191, 41);
+            this._btnClubManagement.Size = new System.Drawing.Size(140, 41);
             this._btnClubManagement.TabIndex = 7;
             this._btnClubManagement.Text = "Gestion du Club";
             this._btnClubManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -278,10 +301,10 @@ namespace ULMClubManger.Forms.UserControls
             this._panelClubManagementSubmenu.Controls.Add(this.button6);
             this._panelClubManagementSubmenu.Controls.Add(this.button7);
             this._panelClubManagementSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this._panelClubManagementSubmenu.Location = new System.Drawing.Point(0, 428);
+            this._panelClubManagementSubmenu.Location = new System.Drawing.Point(0, 466);
             this._panelClubManagementSubmenu.Margin = new System.Windows.Forms.Padding(2);
             this._panelClubManagementSubmenu.Name = "_panelClubManagementSubmenu";
-            this._panelClubManagementSubmenu.Size = new System.Drawing.Size(191, 73);
+            this._panelClubManagementSubmenu.Size = new System.Drawing.Size(140, 73);
             this._panelClubManagementSubmenu.TabIndex = 8;
             // 
             // button6
@@ -296,7 +319,7 @@ namespace ULMClubManger.Forms.UserControls
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(191, 37);
+            this.button6.Size = new System.Drawing.Size(140, 37);
             this.button6.TabIndex = 1;
             this.button6.Text = "button6";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -314,7 +337,7 @@ namespace ULMClubManger.Forms.UserControls
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button7.Size = new System.Drawing.Size(191, 37);
+            this.button7.Size = new System.Drawing.Size(140, 37);
             this.button7.TabIndex = 0;
             this.button7.Text = "button7";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -336,7 +359,7 @@ namespace ULMClubManger.Forms.UserControls
             this.Controls.Add(this._btnMembers);
             this.Controls.Add(this._panelLogo);
             this.Name = "UCSideBar";
-            this.Size = new System.Drawing.Size(191, 500);
+            this.Size = new System.Drawing.Size(140, 500);
             this._panelLogo.ResumeLayout(false);
             this._panelMembersSubmenu.ResumeLayout(false);
             this._panelBookingsSubmenu.ResumeLayout(false);
@@ -355,8 +378,8 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Button _btnMembersInfo;
         private System.Windows.Forms.Button _btnBookings;
         private System.Windows.Forms.Panel _panelBookingsSubmenu;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button _btnBookingAircraft;
+        private System.Windows.Forms.Button _btnBookingMember;
         private System.Windows.Forms.Button _btnSubscriptions;
         private System.Windows.Forms.Panel _panelSubscriptionsSubmenu;
         private System.Windows.Forms.Button button1;
@@ -365,5 +388,6 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Panel _panelClubManagementSubmenu;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button _btnBookingPist;
     }
 }

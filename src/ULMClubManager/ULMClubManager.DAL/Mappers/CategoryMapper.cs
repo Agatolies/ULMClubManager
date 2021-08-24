@@ -3,14 +3,14 @@ using ULMClubManager.DTO;
 
 namespace ULMClubManager.DAL.Mappers
 {
-    public class CategoryMapper : GenericMapper<TypDBRow, Category>
+    public class CategoryMapper : GenericMapper<TypDBRow, AircraftCategory>
     {
-        public override Category From(TypDBRow typ)
+        public override AircraftCategory From(TypDBRow typ)
         {
-            return new Category(typ.TYP_ID, typ.TYP_NOM, typ.TYP_DES);
+            return new AircraftCategory(typ.TYP_ID, typ.TYP_NOM, typ.TYP_DES);
         }
 
-        public override TypDBRow To(Category typ)
+        public override TypDBRow To(AircraftCategory typ)
         {
             TypDBRow result = new TypDBRow();
 

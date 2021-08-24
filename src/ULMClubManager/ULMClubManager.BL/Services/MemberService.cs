@@ -158,7 +158,7 @@ namespace ULMClubManager.BL.Services
             if (member.IsPilot)
             {
                 if (member.LicenceCountry.Length != 2)
-                    throw new InvalidCountryCode();
+                    throw new InvalidCountryCodeException();
 
                 bool hasNoQualification =
                     !member.QualificationType1

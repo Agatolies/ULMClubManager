@@ -21,7 +21,7 @@ namespace ULMClubManager.DAL.Mappers
 
             result.AER_IMA = aer.Registration;
             result.AER_TYPE = aer.Type;
-            result.TYP_FK_ID = aer.TypeID;
+            result.TYP_FK_ID = aer.CategoryID;
 
             return result;
         }

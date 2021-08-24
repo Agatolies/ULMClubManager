@@ -2,16 +2,16 @@
 
 namespace ULMClubManager.DTO
 {
-    public class Category : IDomainModel
+    public class AircraftCategory : IDomainModel
     {
-        public Category(int? id, string name, string description)
+        public AircraftCategory(int? id, string name, string description)
         {
             ID = id;
             Name = name;
             Description = description;
         }
 
-        public Category(string name, string description)
+        public AircraftCategory(string name, string description)
             : this(null, name, description)
         {
         }
@@ -22,7 +22,7 @@ namespace ULMClubManager.DTO
 
         public override string ToString()
         {
-            return $"L'ULM est de type {Name}";
+            return $"Classe {Name}";
         }
     }
 }

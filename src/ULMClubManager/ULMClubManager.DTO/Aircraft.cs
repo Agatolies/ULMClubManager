@@ -9,7 +9,7 @@ namespace ULMClubManager.DTO
             ID = id;
             Registration = registration;
             Type = type;
-            TypeID = typeID;
+            CategoryID = typeID;
         }
 
         public Aircraft(string registration, string type, int typeID)
@@ -20,11 +20,11 @@ namespace ULMClubManager.DTO
         public int? ID { get; }
         public string Registration { get; set; }
         public string Type { get; set; }
-        public int TypeID { get; set; }
+        public int CategoryID { get; set; }
 
         public override string ToString()
         {
-            return $"ULM {Registration} de type {Type} {TypeID}";
+            return $"ULM {Registration}  de classe {CategoryID}";
         }
     }
 }

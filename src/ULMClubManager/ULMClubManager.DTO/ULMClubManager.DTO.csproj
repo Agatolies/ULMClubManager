@@ -49,7 +49,8 @@
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\DataAccessException.cs" />
     <Compile Include="Exceptions\FirstNameTooShortException.cs" />
-    <Compile Include="Exceptions\InvalidCountryCode.cs" />
+    <Compile Include="Exceptions\InvalidAicraftIDException.cs" />
+    <Compile Include="Exceptions\InvalidCountryCodeException.cs" />
     <Compile Include="Exceptions\InvalidEmailAddressException.cs" />
     <Compile Include="Exceptions\LicenceWithoutQualificationsException.cs" />
     <Compile Include="Exceptions\LoginAdminException.cs" />
@@ -62,7 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Runway.cs" />
     <Compile Include="Subscription.cs" />
-    <Compile Include="Type.cs" />
+    <Compile Include="AircraftCategory.cs" />
     <Compile Include="Unavailability.cs" />
     <Compile Include="Withdrawal.cs" />
   </ItemGroup>

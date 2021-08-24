@@ -24,7 +24,7 @@ namespace ULMClubManager.DAL
 
         private AircraftRepository _aircrafts;
         private BookingRepository _bookings;
-        private CategoryRepository _categories;
+        private AircraftCategoryRepository _categories;
         private LocalityRepository _localities;
         private RunwayRepository _runways;
         private SubscriptionRepository _subscriptions;
@@ -67,11 +67,11 @@ namespace ULMClubManager.DAL
             }
         }
 
-        public CategoryRepository Categories
+        public AircraftCategoryRepository AircraftCategories
         {
             get
             {
-                return _categories ?? (_categories = new CategoryRepository(_unitOfWork, new CategoryMapper()));
+                return _categories ?? (_categories = new AircraftCategoryRepository(_unitOfWork, new CategoryMapper()));
             }
         }
 

@@ -103,5 +103,19 @@ namespace ULMClubManger.Forms.UserControls
             childForm.Show();
         }
 
+        private void _btnBookingMember_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormBookingByMember());
+        }
+
+        private void _btnBookingAircraft_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormBookingByAircraft());
+        }
+
+        private void _btnBookingPist_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormBookingByRunway());
+        }
     }
 }

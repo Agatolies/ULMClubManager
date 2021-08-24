@@ -7,22 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ULMClubManager.BL.Services;
-using ULMClubManager.DTO.Abstractions;
-using ULMClubManger.Forms.UserControls;
 
 namespace ULMClubManger.Forms.Pages
 {
-    public partial class FormMembersInfo : Form
+    public partial class FormBookingByAircraft : Form
     {
-        public FormMembersInfo()
+        public FormBookingByAircraft()
         {
             InitializeComponent();
         }
 
-        private void _ucMemberPicker_SelectMember(int memberID)
+        private void _ucBookingPickerByAircraft_SelectAircraftID(int aircraftCategory)
         {
-            _ucMemberCRUD.RefreshData(memberID);
         }
     }
 }

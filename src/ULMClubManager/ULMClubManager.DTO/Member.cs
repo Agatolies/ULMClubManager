@@ -126,7 +126,7 @@ namespace ULMClubManager.DTO
 
         public override string ToString()
         {
-            return $"{FullName} / {MemberCategory}";
+            return $"{FullName}";
         }
     }
 }

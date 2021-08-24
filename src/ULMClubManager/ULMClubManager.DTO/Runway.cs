@@ -25,7 +25,7 @@ namespace ULMClubManager.DTO
 
         public override string ToString()
         {
-            return $"{Availability}";
+            return $"Piste {ID}";
         }
     }
 }

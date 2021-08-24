@@ -33,7 +33,6 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRLastName = new System.Windows.Forms.Label();
             this._labelMBRFirstName = new System.Windows.Forms.Label();
             this._tboxMBRLastName = new System.Windows.Forms.TextBox();
-            this._bsMember = new System.Windows.Forms.BindingSource(this.components);
             this._tboxMBRFirstName = new System.Windows.Forms.TextBox();
             this._labelMBRID = new System.Windows.Forms.Label();
             this._tboxMBRID = new System.Windows.Forms.TextBox();
@@ -56,7 +55,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMRBRegistrationDate = new System.Windows.Forms.Label();
             this._dtpMRBRegistrationDate = new System.Windows.Forms.DateTimePicker();
             this._cboxMBRLocality = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this._labelMBR_CRUD_Title = new System.Windows.Forms.Label();
             this._btnMBRCreate = new System.Windows.Forms.Button();
             this._btnMBRDelete = new System.Windows.Forms.Button();
             this._btnMBRUpdate = new System.Windows.Forms.Button();
@@ -102,11 +101,12 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBREmailMandatory = new System.Windows.Forms.Label();
             this._labelMBRDteOfBirthMandatory = new System.Windows.Forms.Label();
             this._labelMemberCRUDMandatory = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
+            this._bsMember = new System.Windows.Forms.BindingSource(this.components);
             this._panelMBR_CRUD_btn.SuspendLayout();
             this._gboxPIL.SuspendLayout();
             this._panelMBR_Update_btn.SuspendLayout();
             this._panelMBR_Create_btn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
             this.SuspendLayout();
             // 
             // _labelMBRLastName
@@ -139,10 +139,6 @@ namespace ULMClubManger.Forms.UserControls
             this._tboxMBRLastName.ReadOnly = true;
             this._tboxMBRLastName.Size = new System.Drawing.Size(240, 20);
             this._tboxMBRLastName.TabIndex = 2;
-            // 
-            // _bsMember
-            // 
-            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
             // 
             // _tboxMBRFirstName
             // 
@@ -365,15 +361,15 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRLocality.TabIndex = 27;
             this._cboxMBRLocality.SelectedIndexChanged += new System.EventHandler(this._cboxMBRLocality_SelectedIndexChanged);
             // 
-            // label1
+            // _labelMBR_CRUD_Title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Bright", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(449, 36);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "DONNEES SIGNALETIQUES";
+            this._labelMBR_CRUD_Title.AutoSize = true;
+            this._labelMBR_CRUD_Title.Font = new System.Drawing.Font("Lucida Bright", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelMBR_CRUD_Title.Location = new System.Drawing.Point(20, 14);
+            this._labelMBR_CRUD_Title.Name = "_labelMBR_CRUD_Title";
+            this._labelMBR_CRUD_Title.Size = new System.Drawing.Size(449, 36);
+            this._labelMBR_CRUD_Title.TabIndex = 28;
+            this._labelMBR_CRUD_Title.Text = "DONNEES SIGNALETIQUES";
             // 
             // _btnMBRCreate
             // 
@@ -921,6 +917,10 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMemberCRUDMandatory.TabIndex = 52;
             this._labelMemberCRUDMandatory.Text = "* Donnée obligatoire";
             // 
+            // _bsMember
+            // 
+            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
+            // 
             // UCMemberCRUD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -946,7 +946,7 @@ namespace ULMClubManger.Forms.UserControls
             this.Controls.Add(this._panelMBR_Update_btn);
             this.Controls.Add(this._gboxPIL);
             this.Controls.Add(this._panelMBR_CRUD_btn);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this._labelMBR_CRUD_Title);
             this.Controls.Add(this._cboxMBRLocality);
             this.Controls.Add(this._dtpMRBRegistrationDate);
             this.Controls.Add(this._labelMRBRegistrationDate);
@@ -974,12 +974,12 @@ namespace ULMClubManger.Forms.UserControls
             this.Controls.Add(this._labelMBRLastName);
             this.Name = "UCMemberCRUD";
             this.Size = new System.Drawing.Size(545, 1045);
-            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).EndInit();
             this._panelMBR_CRUD_btn.ResumeLayout(false);
             this._gboxPIL.ResumeLayout(false);
             this._gboxPIL.PerformLayout();
             this._panelMBR_Update_btn.ResumeLayout(false);
             this._panelMBR_Create_btn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1013,7 +1013,7 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Label _labelMRBRegistrationDate;
         private System.Windows.Forms.DateTimePicker _dtpMRBRegistrationDate;
         private System.Windows.Forms.ComboBox _cboxMBRLocality;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label _labelMBR_CRUD_Title;
         private System.Windows.Forms.Button _btnMBRCreate;
         private System.Windows.Forms.Button _btnMBRDelete;
         private System.Windows.Forms.Button _btnMBRUpdate;

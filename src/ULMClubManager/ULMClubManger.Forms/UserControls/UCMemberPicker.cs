@@ -68,7 +68,8 @@ namespace ULMClubManger.Forms.UserControls
             }
 
             filteredMembers = filteredMembers
-                .Where(member => member.FullName.ToUpper().Contains(searchLetters.ToUpper()))
+                .Where(member => member.FullName.ToUpper()
+                .Contains(searchLetters.ToUpper()))
                 .ToList();
 
             _lbMembers.DataSource = filteredMembers;

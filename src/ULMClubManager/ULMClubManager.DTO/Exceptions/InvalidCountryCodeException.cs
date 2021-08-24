@@ -2,9 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-    public class InvalidCountryCode : BusinessException
+    public class InvalidCountryCodeException : BusinessException
     {
-        public InvalidCountryCode()
+        public InvalidCountryCodeException()
             : base(ContextError.MBR, "CHK_PIL_LIC_PAYS")
         {
         }

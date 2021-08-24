@@ -39,6 +39,7 @@ namespace ULMClubManager.BL
         {
             return new Dictionary<string, string>
             {
+                { "BS_AER_ID", "La recherche doit se faire par le numéro de l'AER." },
                 { "CHK_RES_DTE", "La date de réservation ne peut pas être supérieure à la date d'encodage plus trois mois." },
                 { "CHK_RES_DTE_NOT_IN_PAST", "La date de réservation ne peut pas être passée." },
                 { "CHK_RES_HEU_FIN", "La durée d'une réservation doit être comprise entre 1 et 6 heures." },
