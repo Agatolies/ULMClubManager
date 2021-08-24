@@ -51,7 +51,7 @@ namespace ULMClubManager.DAL.Repositories
         public List<Booking> ReadAllByPilotID(int pilotID)
         {
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(
-                "sp_select_RES_BY_PIL_ID",
+                "sp_select_RES_BY_MBR_ID",
                 param: new { PIL_ID = pilotID },
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);

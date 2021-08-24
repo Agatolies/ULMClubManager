@@ -30,7 +30,7 @@ namespace ULMClubManger.Forms.Pages
         private void InitializeComponent()
         {
             this._ucBookingPickerByPilot = new ULMClubManger.Forms.UserControls.UCBookingPickerByMember();
-            this.ucBookingByMemberCRUD1 = new ULMClubManger.Forms.UserControls.UCBookingByMemberCRUD();
+            this._ucBookingByMemberCRUD = new ULMClubManger.Forms.UserControls.UCBookingByMemberCRUD();
             this.SuspendLayout();
             // 
             // _ucBookingPickerByPilot
@@ -43,21 +43,21 @@ namespace ULMClubManger.Forms.Pages
             this._ucBookingPickerByPilot.TabIndex = 0;
             this._ucBookingPickerByPilot.SelectPilot += new ULMClubManger.Forms.delSelect(this._ucBookingPickerByPilot_SelectPilot);
             // 
-            // ucBookingByMemberCRUD1
+            // _ucBookingByMemberCRUD
             // 
-            this.ucBookingByMemberCRUD1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ucBookingByMemberCRUD1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucBookingByMemberCRUD1.Location = new System.Drawing.Point(234, 0);
-            this.ucBookingByMemberCRUD1.Name = "ucBookingByMemberCRUD1";
-            this.ucBookingByMemberCRUD1.Size = new System.Drawing.Size(538, 739);
-            this.ucBookingByMemberCRUD1.TabIndex = 1;
+            this._ucBookingByMemberCRUD.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._ucBookingByMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ucBookingByMemberCRUD.Location = new System.Drawing.Point(234, 0);
+            this._ucBookingByMemberCRUD.Name = "_ucBookingByMemberCRUD";
+            this._ucBookingByMemberCRUD.Size = new System.Drawing.Size(538, 739);
+            this._ucBookingByMemberCRUD.TabIndex = 1;
             // 
             // FormBookingByMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 739);
-            this.Controls.Add(this.ucBookingByMemberCRUD1);
+            this.Controls.Add(this._ucBookingByMemberCRUD);
             this.Controls.Add(this._ucBookingPickerByPilot);
             this.Name = "FormBookingByMember";
             this.Text = "FormBookingByMember";
@@ -68,6 +68,6 @@ namespace ULMClubManger.Forms.Pages
         #endregion
 
         private UserControls.UCBookingPickerByMember _ucBookingPickerByPilot;
-        private UserControls.UCBookingByMemberCRUD ucBookingByMemberCRUD1;
+        private UserControls.UCBookingByMemberCRUD _ucBookingByMemberCRUD;
     }
 }

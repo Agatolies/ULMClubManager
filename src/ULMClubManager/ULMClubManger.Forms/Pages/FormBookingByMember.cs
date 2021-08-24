@@ -19,7 +19,7 @@ namespace ULMClubManger.Forms.Pages
 
         private void _ucBookingPickerByPilot_SelectPilot(int memberID)
         {
-            
+            _ucBookingByMemberCRUD.RefreshData(memberID);
         }
     }
 }

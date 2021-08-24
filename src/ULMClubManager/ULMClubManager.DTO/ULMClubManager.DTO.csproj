@@ -45,6 +45,7 @@
     <Compile Include="Aircraft.cs" />
     <Compile Include="Booking.cs" />
     <Compile Include="Cancellation.cs" />
+    <Compile Include="DetailedBooking.cs" />
     <Compile Include="Enums\ContextError.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\DataAccessException.cs" />

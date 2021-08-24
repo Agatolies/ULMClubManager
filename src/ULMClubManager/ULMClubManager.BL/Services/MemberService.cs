@@ -48,22 +48,11 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static void CreateBooking()
+        public static void CreateBooking(Booking booking)
         {
             using (DalSession dalSession = new DalSession())
             {
-                Booking newbooking = new Booking(
-                    new DateTime(2021, 9, 2), 
-                    new TimeSpan(13, 0, 0), 
-                    new TimeSpan(14, 30, 0), 
-                    null,
-                    null,
-                    null,
-                    23,
-                    2,
-                    2);
-
-                dalSession.Bookings.CreateOne(newbooking);
+                dalSession.Bookings.CreateOne(booking);
             }
         }
 
@@ -75,29 +64,6 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static List<Booking> ReadAllBookingByPilotID(int pilotID)
-        {
-            using (DalSession dalSession = new DalSession())
-            {
-                return dalSession.Bookings.ReadAllByPilotID(pilotID).ToList();
-            }
-        }
-
-        public static List<Booking> ReadAllBookingByAircraftID(int aircraftID)
-        {
-            using (DalSession dalSession = new DalSession())
-            {
-                return dalSession.Bookings.ReadAllByAircraftID(aircraftID).ToList();
-            }
-        }
-
-        public static List<Booking> ReadAllBookingByRunwayID(int runwayID)
-        {
-            using (DalSession dalSession = new DalSession())
-            {
-                return dalSession.Bookings.ReadAllByRunwayID(runwayID).ToList();
-            }
-        }
 
         public static List<Booking> ReadAllBookingInFuture()
         {

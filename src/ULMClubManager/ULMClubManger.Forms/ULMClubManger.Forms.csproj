@@ -217,6 +217,7 @@
     <None Include="Properties\DataSources\ULMClubManager.DTO.Booking.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Cancellation.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Category.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.DetailedBooking.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Gender.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Locality.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Member.datasource" />
