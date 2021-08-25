@@ -216,7 +216,6 @@
     <None Include="Properties\DataSources\ULMClubManager.DTO.Aircraft.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Booking.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Cancellation.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Category.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.DetailedBooking.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Gender.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Locality.datasource" />
@@ -224,6 +223,7 @@
     <None Include="Properties\DataSources\ULMClubManager.DTO.MemberType.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Runway.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Subscription.datasource" />
+    <None Include="Properties\DataSources\ULMClubManager.DTO.TimeSlot.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Unavailability.datasource" />
     <None Include="Properties\DataSources\ULMClubManager.DTO.Withdrawal.datasource" />
     <None Include="Properties\Settings.settings">

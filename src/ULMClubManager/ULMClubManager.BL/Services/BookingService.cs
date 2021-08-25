@@ -60,5 +60,21 @@ namespace ULMClubManager.BL.Services
 
             return detailedBookings;
         }
+
+        public static void DeleteOneBooking(int bookingID)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                 dalSession.Bookings.DeleteOne(bookingID);
+            }
+        }
+
+        public static void CreateOne(Booking booking)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                dalSession.Bookings.CreateOne(booking);
+            }
+        }
     }
 }

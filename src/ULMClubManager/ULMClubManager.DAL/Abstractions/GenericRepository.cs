@@ -60,13 +60,15 @@ namespace ULMClubManager.DAL.Abstractions
             return ReadLast();
         }
 
-        public virtual void DeleteOne(TKey id)
+        public virtual int DeleteOne(TKey id)
         {
             string sql = $"DELETE FROM {_tableName} WHERE {_keyPrefix}_ID = @ID";
 
             int affectedRows = _unitOfWork.Connection.Execute(sql, new { ID = id }, transaction: _unitOfWork.Transaction);
             if (affectedRows == 0)
                 throw new KeyNotFoundException($"La table {_tableName} avec l'id [{id}] n'existe pas.");
+
+            return affectedRows;
         }
 
         public virtual List<TDomain> ReadAll()

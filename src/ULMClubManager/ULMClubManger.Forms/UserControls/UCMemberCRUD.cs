@@ -209,68 +209,6 @@ namespace ULMClubManger.Forms.UserControls
             }
         }
 
-        private void _btnMBRUpdate_Click(object sender, EventArgs e)
-        {
-            _panelMBR_CRUD_btn.Visible = false;
-            _panelMBR_Update_btn.Visible = true;
-
-            UnlockControls(false);
-
-            _memberBackup = _member.CreateDeepCopy();
-        }
-
-        private void _btnMRBUpdateConfirm_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MemberService.UpdateOne(_member);
-
-                _memberBackup = null;
-
-                HideErrorMessage();
-                LockControls();
-
-                _panelMBR_CRUD_btn.Visible = true;
-                _panelMBR_Update_btn.Visible = false;
-
-                MessageBox.Show(
-                    $"Le membre {_member.FullName} a bien été mis à jour.",
-                    "Information",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-            catch (BusinessException ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-        }
-
-        private void _btnMBRUpdateCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show(
-                "Voulez-vous annuler la modification en cours ?",
-                "Attention",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            if (dialogResult == DialogResult.Yes)
-            {
-
-                LockControls();
-                HideErrorMessage();
-
-                _panelMBR_CRUD_btn.Visible = true;
-                _panelMBR_Update_btn.Visible = false;
-            }
-        }
-
-        /// <summary>
-        /// Commence le processus d'ajout d'un MBR
-        /// </summary>
         private void _btnMBRCreate_Click(object sender, EventArgs e)
         {
             _panelMBR_CRUD_btn.Visible = false;
@@ -342,19 +280,82 @@ namespace ULMClubManger.Forms.UserControls
             }
         }
 
+        private void _btnMBRUpdate_Click(object sender, EventArgs e)
+        {
+            _panelMBR_CRUD_btn.Visible = false;
+            _panelMBR_Update_btn.Visible = true;
+
+            UnlockControls(false);
+
+            _memberBackup = _member.CreateDeepCopy();
+        }
+
+        private void _btnMRBUpdateConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MemberService.UpdateOne(_member);
+
+                _memberBackup = null;
+
+                HideErrorMessage();
+                LockControls();
+
+                _panelMBR_CRUD_btn.Visible = true;
+                _panelMBR_Update_btn.Visible = false;
+
+                MessageBox.Show(
+                    $"Le membre {_member.FullName} a bien été mis à jour.",
+                    "Information",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (BusinessException ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+
+        private void _btnMBRUpdateCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                "Voulez-vous annuler la modification en cours ?",
+                "Attention",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                LockControls();
+                HideErrorMessage();
+
+                _panelMBR_CRUD_btn.Visible = true;
+                _panelMBR_Update_btn.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Commence le processus d'ajout d'un MBR
+        /// </summary>
+
         private void _btnMBRDelete_Click(object sender, EventArgs e)
         {
             LockControls();
 
             DialogResult dialogResult = MessageBox.Show(
                 $"Voulez-vous supprimer le membre { _member.FullName }?",
-                "Attention",
-                MessageBoxButtons.YesNo,
+                "Confirmation",
+                MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning);
 
             try
             {
-                if (dialogResult == DialogResult.Yes)
+                if (dialogResult == DialogResult.OK)
                     MemberService.DeleteOne(_member.ID.Value);
 
                 ClearControls();

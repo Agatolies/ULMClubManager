@@ -58,6 +58,7 @@
     <Compile Include="Exceptions\LoginException.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Helpers\CloneHelper.cs" />
+    <Compile Include="TimeSlot.cs" />
     <Compile Include="Locality.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="MemberType.cs" />

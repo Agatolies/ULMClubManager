@@ -51,5 +51,6 @@ namespace ULMClubManager.DTO
         public int MemberID { get; }
         public string MemberLastName { get; }
         public string MemberFirstName { get; }
+        public string MemberFullName => $"{MemberLastName.ToUpper()} {MemberFirstName}";
     }
 }
