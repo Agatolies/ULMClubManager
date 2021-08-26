@@ -45,6 +45,7 @@
     <Compile Include="Rules.cs" />
     <Compile Include="Services\AircraftService.cs" />
     <Compile Include="Services\BookingService.cs" />
+    <Compile Include="Services\CancellationService.cs" />
     <Compile Include="Services\LocalityService.cs" />
     <Compile Include="Services\MemberService.cs" />
     <Compile Include="Services\RunwayService.cs" />

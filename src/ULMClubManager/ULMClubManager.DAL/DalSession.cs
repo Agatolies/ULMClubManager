@@ -31,6 +31,7 @@ namespace ULMClubManager.DAL
         private UnavailabilityRepository _unavailabilities;
         private WithdrawalRepository _withdrawals;
         private MemberRepository _members;
+        private CancellationRepository _cancellations;
 
         public DalSession()
         {
@@ -120,6 +121,14 @@ namespace ULMClubManager.DAL
             get
             {
                 return _members ?? (_members = new MemberRepository(_unitOfWork));
+            }
+        }
+
+        public CancellationRepository Cancellations
+        {
+            get
+            {
+                return _cancellations ?? (_cancellations = new CancellationRepository(_unitOfWork));
             }
         }
         public void Dispose()

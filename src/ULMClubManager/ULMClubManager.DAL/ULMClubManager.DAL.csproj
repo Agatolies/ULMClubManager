@@ -47,8 +47,11 @@
     <Compile Include="Abstractions\GenericRepository.cs" />
     <Compile Include="Abstractions\IUnitOfWork.cs" />
     <Compile Include="DalSession.cs" />
+    <Compile Include="DBRowModels\AnnDBRow.cs" />
     <Compile Include="DBRowModels\MbrDBRow.cs" />
+    <Compile Include="Mappers\CancellationMapper.cs" />
     <Compile Include="Mappers\MemberMapper.cs" />
+    <Compile Include="Repositories\CancellationRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="DBRowModels\AerDBRow.cs" />

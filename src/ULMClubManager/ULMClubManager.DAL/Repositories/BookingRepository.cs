@@ -16,6 +16,7 @@ namespace ULMClubManager.DAL.Repositories
         {
         }
 
+        // Bookings
 
         public override List<Booking> ReadAll()
         {
@@ -142,31 +143,6 @@ namespace ULMClubManager.DAL.Repositories
                transaction: _unitOfWork.Transaction);
 
             return result;
-        }
-
-        public Booking CreateOneCancellation(Cancellation domainModel)
-        {
-            _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
-                "sp_insert_ANN",
-                param: new { 
-                    RES_FK_ID = domainModel.BookingID,
-                    ANN_MOTIF = domainModel.Reason
-                },
-                commandType: CommandType.StoredProcedure,
-                transaction: _unitOfWork.Transaction);
-
-            return ReadOne(domainModel.BookingID);
-        }
-
-        public Booking DeleteOneCancellation(int bookingID)
-        {
-            _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
-                "sp_delete_ANN",
-                param: new { bookingID },
-                commandType: CommandType.StoredProcedure,
-                transaction: _unitOfWork.Transaction);
-
-            return ReadOne(bookingID);
         }
     }
 }
