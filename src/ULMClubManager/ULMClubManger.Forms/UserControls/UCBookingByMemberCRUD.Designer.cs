@@ -37,15 +37,14 @@ namespace ULMClubManger.Forms.UserControls
             this._labelBookingByMember_CRUD_Title1 = new System.Windows.Forms.Label();
             this._panelBookingByMember_CRUD_Title = new System.Windows.Forms.Panel();
             this._paneldgvBookingMemberCRUD = new System.Windows.Forms.Panel();
-            this._panelBookingByMember_Update = new System.Windows.Forms.Panel();
-            this._btnBookingByMembe_UpdateSave = new System.Windows.Forms.Button();
-            this._btnBookingByMembe_UpdateDelete = new System.Windows.Forms.Button();
             this._panelBookingByMember_Details = new System.Windows.Forms.Panel();
             this._cboxBookingByMember_TimeSlotEnd = new System.Windows.Forms.ComboBox();
             this._cboxBookingByMember_TimeSlotStart = new System.Windows.Forms.ComboBox();
             this._cboxBookingByMember_Runway = new System.Windows.Forms.ComboBox();
+            this._bsRunways = new System.Windows.Forms.BindingSource(this.components);
             this._labelBookingByMember_Runway = new System.Windows.Forms.Label();
             this._labelBookingByMember_Error = new System.Windows.Forms.Label();
+            this._tboxBookingByMember_MemberName = new System.Windows.Forms.TextBox();
             this._labelBookingByMember_MemberName = new System.Windows.Forms.Label();
             this._labelBookingByMember_Aircraft = new System.Windows.Forms.Label();
             this._cboxBookingByMember_Aircraft = new System.Windows.Forms.ComboBox();
@@ -55,6 +54,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelBookingByMember_StartHour = new System.Windows.Forms.Label();
             this._labelBookingByMember_Date = new System.Windows.Forms.Label();
             this._labelBookingByMember_Details = new System.Windows.Forms.Label();
+            this._labelBookingByMember_NewBooking = new System.Windows.Forms.Label();
             this._dgvBookingByMemberCRUD = new System.Windows.Forms.DataGridView();
             this.aircraftRegistrationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +62,9 @@ namespace ULMClubManger.Forms.UserControls
             this.EndHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RunwayID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._bsBookings = new System.Windows.Forms.BindingSource(this.components);
+            this._panelBookingByMember_Update = new System.Windows.Forms.Panel();
+            this._btnBookingByMembe_UpdateConfirm = new System.Windows.Forms.Button();
+            this._btnBookingByMembe_UpdateDelete = new System.Windows.Forms.Button();
             this._panel_CRUD_BookingByMember_btn = new System.Windows.Forms.Panel();
             this._btnBookingByMemberCreate = new System.Windows.Forms.Button();
             this._btnBookingByMemberUpdate = new System.Windows.Forms.Button();
@@ -69,18 +72,16 @@ namespace ULMClubManger.Forms.UserControls
             this._panelBookingByMember_Create = new System.Windows.Forms.Panel();
             this._btnBookingByMember_CreateConfirm = new System.Windows.Forms.Button();
             this._btnBookingByMember_CreateCancel = new System.Windows.Forms.Button();
-            this._bsRunways = new System.Windows.Forms.BindingSource(this.components);
-            this._tboxBookingByMember_MemberName = new System.Windows.Forms.TextBox();
             this._panelBookingByMember_CRUD_Title.SuspendLayout();
             this._paneldgvBookingMemberCRUD.SuspendLayout();
-            this._panelBookingByMember_Update.SuspendLayout();
             this._panelBookingByMember_Details.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._bsRunways)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._bsAircrafts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgvBookingByMemberCRUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._bsBookings)).BeginInit();
+            this._panelBookingByMember_Update.SuspendLayout();
             this._panel_CRUD_BookingByMember_btn.SuspendLayout();
             this._panelBookingByMember_Create.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._bsRunways)).BeginInit();
             this.SuspendLayout();
             // 
             // _labelBookingByMember_CRUD_Title1
@@ -104,7 +105,6 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _paneldgvBookingMemberCRUD
             // 
-            this._paneldgvBookingMemberCRUD.Controls.Add(this._panelBookingByMember_Update);
             this._paneldgvBookingMemberCRUD.Controls.Add(this._panelBookingByMember_Details);
             this._paneldgvBookingMemberCRUD.Controls.Add(this._dgvBookingByMemberCRUD);
             this._paneldgvBookingMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -112,45 +112,6 @@ namespace ULMClubManger.Forms.UserControls
             this._paneldgvBookingMemberCRUD.Name = "_paneldgvBookingMemberCRUD";
             this._paneldgvBookingMemberCRUD.Size = new System.Drawing.Size(925, 991);
             this._paneldgvBookingMemberCRUD.TabIndex = 35;
-            // 
-            // _panelBookingByMember_Update
-            // 
-            this._panelBookingByMember_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            this._panelBookingByMember_Update.Controls.Add(this._btnBookingByMembe_UpdateSave);
-            this._panelBookingByMember_Update.Controls.Add(this._btnBookingByMembe_UpdateDelete);
-            this._panelBookingByMember_Update.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._panelBookingByMember_Update.Location = new System.Drawing.Point(0, 897);
-            this._panelBookingByMember_Update.Name = "_panelBookingByMember_Update";
-            this._panelBookingByMember_Update.Size = new System.Drawing.Size(925, 94);
-            this._panelBookingByMember_Update.TabIndex = 37;
-            // 
-            // _btnBookingByMembe_UpdateSave
-            // 
-            this._btnBookingByMembe_UpdateSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._btnBookingByMembe_UpdateSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
-            this._btnBookingByMembe_UpdateSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btnBookingByMembe_UpdateSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._btnBookingByMembe_UpdateSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this._btnBookingByMembe_UpdateSave.Location = new System.Drawing.Point(18, 15);
-            this._btnBookingByMembe_UpdateSave.Name = "_btnBookingByMembe_UpdateSave";
-            this._btnBookingByMembe_UpdateSave.Size = new System.Drawing.Size(150, 61);
-            this._btnBookingByMembe_UpdateSave.TabIndex = 29;
-            this._btnBookingByMembe_UpdateSave.Text = "Sauvegarder";
-            this._btnBookingByMembe_UpdateSave.UseVisualStyleBackColor = false;
-            // 
-            // _btnBookingByMembe_UpdateDelete
-            // 
-            this._btnBookingByMembe_UpdateDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._btnBookingByMembe_UpdateDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
-            this._btnBookingByMembe_UpdateDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btnBookingByMembe_UpdateDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._btnBookingByMembe_UpdateDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this._btnBookingByMembe_UpdateDelete.Location = new System.Drawing.Point(198, 15);
-            this._btnBookingByMembe_UpdateDelete.Name = "_btnBookingByMembe_UpdateDelete";
-            this._btnBookingByMembe_UpdateDelete.Size = new System.Drawing.Size(150, 61);
-            this._btnBookingByMembe_UpdateDelete.TabIndex = 31;
-            this._btnBookingByMembe_UpdateDelete.Text = "Annuler";
-            this._btnBookingByMembe_UpdateDelete.UseVisualStyleBackColor = false;
             // 
             // _panelBookingByMember_Details
             // 
@@ -170,9 +131,10 @@ namespace ULMClubManger.Forms.UserControls
             this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_StartHour);
             this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Date);
             this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Details);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_NewBooking);
             this._panelBookingByMember_Details.Location = new System.Drawing.Point(20, 317);
             this._panelBookingByMember_Details.Name = "_panelBookingByMember_Details";
-            this._panelBookingByMember_Details.Size = new System.Drawing.Size(877, 401);
+            this._panelBookingByMember_Details.Size = new System.Drawing.Size(877, 437);
             this._panelBookingByMember_Details.TabIndex = 34;
             // 
             // _cboxBookingByMember_TimeSlotEnd
@@ -196,11 +158,17 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _cboxBookingByMember_Runway
             // 
+            this._cboxBookingByMember_Runway.DataSource = this._bsRunways;
+            this._cboxBookingByMember_Runway.Enabled = false;
             this._cboxBookingByMember_Runway.FormattingEnabled = true;
             this._cboxBookingByMember_Runway.Location = new System.Drawing.Point(18, 329);
             this._cboxBookingByMember_Runway.Name = "_cboxBookingByMember_Runway";
             this._cboxBookingByMember_Runway.Size = new System.Drawing.Size(223, 21);
             this._cboxBookingByMember_Runway.TabIndex = 45;
+            // 
+            // _bsRunways
+            // 
+            this._bsRunways.DataSource = typeof(ULMClubManager.DTO.Runway);
             // 
             // _labelBookingByMember_Runway
             // 
@@ -221,6 +189,14 @@ namespace ULMClubManger.Forms.UserControls
             this._labelBookingByMember_Error.Size = new System.Drawing.Size(231, 16);
             this._labelBookingByMember_Error.TabIndex = 43;
             this._labelBookingByMember_Error.Text = "ERROR MESSAGE GOES HERE";
+            // 
+            // _tboxBookingByMember_MemberName
+            // 
+            this._tboxBookingByMember_MemberName.Location = new System.Drawing.Point(18, 79);
+            this._tboxBookingByMember_MemberName.Name = "_tboxBookingByMember_MemberName";
+            this._tboxBookingByMember_MemberName.ReadOnly = true;
+            this._tboxBookingByMember_MemberName.Size = new System.Drawing.Size(223, 20);
+            this._tboxBookingByMember_MemberName.TabIndex = 41;
             // 
             // _labelBookingByMember_MemberName
             // 
@@ -295,6 +271,16 @@ namespace ULMClubManger.Forms.UserControls
             this._labelBookingByMember_Details.TabIndex = 30;
             this._labelBookingByMember_Details.Text = "DETAILS";
             // 
+            // _labelBookingByMember_NewBooking
+            // 
+            this._labelBookingByMember_NewBooking.AutoSize = true;
+            this._labelBookingByMember_NewBooking.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMember_NewBooking.Location = new System.Drawing.Point(13, 12);
+            this._labelBookingByMember_NewBooking.Name = "_labelBookingByMember_NewBooking";
+            this._labelBookingByMember_NewBooking.Size = new System.Drawing.Size(326, 27);
+            this._labelBookingByMember_NewBooking.TabIndex = 48;
+            this._labelBookingByMember_NewBooking.Text = "NOUVELLE RESERVATION";
+            // 
             // _dgvBookingByMemberCRUD
             // 
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -347,7 +333,6 @@ namespace ULMClubManger.Forms.UserControls
             this._dgvBookingByMemberCRUD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._dgvBookingByMemberCRUD.Size = new System.Drawing.Size(877, 292);
             this._dgvBookingByMemberCRUD.TabIndex = 33;
-            this._dgvBookingByMemberCRUD.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._dgvBookingByMemberCRUD_CellContentClick);
             this._dgvBookingByMemberCRUD.SelectionChanged += new System.EventHandler(this._dgvBookingByMemberCRUD_SelectionChanged);
             // 
             // aircraftRegistrationDataGridViewTextBoxColumn
@@ -390,6 +375,47 @@ namespace ULMClubManger.Forms.UserControls
             // _bsBookings
             // 
             this._bsBookings.DataSource = typeof(ULMClubManager.DTO.DetailedBooking);
+            // 
+            // _panelBookingByMember_Update
+            // 
+            this._panelBookingByMember_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            this._panelBookingByMember_Update.Controls.Add(this._btnBookingByMembe_UpdateConfirm);
+            this._panelBookingByMember_Update.Controls.Add(this._btnBookingByMembe_UpdateDelete);
+            this._panelBookingByMember_Update.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._panelBookingByMember_Update.Location = new System.Drawing.Point(0, 763);
+            this._panelBookingByMember_Update.Name = "_panelBookingByMember_Update";
+            this._panelBookingByMember_Update.Size = new System.Drawing.Size(925, 94);
+            this._panelBookingByMember_Update.TabIndex = 37;
+            // 
+            // _btnBookingByMembe_UpdateConfirm
+            // 
+            this._btnBookingByMembe_UpdateConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._btnBookingByMembe_UpdateConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnBookingByMembe_UpdateConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnBookingByMembe_UpdateConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnBookingByMembe_UpdateConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnBookingByMembe_UpdateConfirm.Location = new System.Drawing.Point(18, 15);
+            this._btnBookingByMembe_UpdateConfirm.Name = "_btnBookingByMembe_UpdateConfirm";
+            this._btnBookingByMembe_UpdateConfirm.Size = new System.Drawing.Size(150, 61);
+            this._btnBookingByMembe_UpdateConfirm.TabIndex = 29;
+            this._btnBookingByMembe_UpdateConfirm.Text = "Sauvegarder";
+            this._btnBookingByMembe_UpdateConfirm.UseVisualStyleBackColor = false;
+            this._btnBookingByMembe_UpdateConfirm.Click += new System.EventHandler(this._btnBookingByMembe_UpdateConfirm_Click);
+            // 
+            // _btnBookingByMembe_UpdateDelete
+            // 
+            this._btnBookingByMembe_UpdateDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._btnBookingByMembe_UpdateDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnBookingByMembe_UpdateDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnBookingByMembe_UpdateDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnBookingByMembe_UpdateDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            this._btnBookingByMembe_UpdateDelete.Location = new System.Drawing.Point(198, 15);
+            this._btnBookingByMembe_UpdateDelete.Name = "_btnBookingByMembe_UpdateDelete";
+            this._btnBookingByMembe_UpdateDelete.Size = new System.Drawing.Size(150, 61);
+            this._btnBookingByMembe_UpdateDelete.TabIndex = 31;
+            this._btnBookingByMembe_UpdateDelete.Text = "Annuler";
+            this._btnBookingByMembe_UpdateDelete.UseVisualStyleBackColor = false;
+            this._btnBookingByMembe_UpdateDelete.Click += new System.EventHandler(this._btnBookingByMembe_UpdateDelete_Click);
             // 
             // _panel_CRUD_BookingByMember_btn
             // 
@@ -487,24 +513,14 @@ namespace ULMClubManger.Forms.UserControls
             this._btnBookingByMember_CreateCancel.TabIndex = 31;
             this._btnBookingByMember_CreateCancel.Text = "Annuler";
             this._btnBookingByMember_CreateCancel.UseVisualStyleBackColor = false;
-            // 
-            // _bsRunways
-            // 
-            this._bsRunways.DataSource = typeof(ULMClubManager.DTO.Runway);
-            // 
-            // _tboxBookingByMember_MemberName
-            // 
-            this._tboxBookingByMember_MemberName.Location = new System.Drawing.Point(18, 79);
-            this._tboxBookingByMember_MemberName.Name = "_tboxBookingByMember_MemberName";
-            this._tboxBookingByMember_MemberName.ReadOnly = true;
-            this._tboxBookingByMember_MemberName.Size = new System.Drawing.Size(223, 20);
-            this._tboxBookingByMember_MemberName.TabIndex = 41;
+            this._btnBookingByMember_CreateCancel.Click += new System.EventHandler(this._btnBookingByMember_CreateCancel_Click);
             // 
             // UCBookingByMemberCRUD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Controls.Add(this._panelBookingByMember_Update);
             this.Controls.Add(this._panelBookingByMember_Create);
             this.Controls.Add(this._panel_CRUD_BookingByMember_btn);
             this.Controls.Add(this._paneldgvBookingMemberCRUD);
@@ -514,15 +530,15 @@ namespace ULMClubManger.Forms.UserControls
             this._panelBookingByMember_CRUD_Title.ResumeLayout(false);
             this._panelBookingByMember_CRUD_Title.PerformLayout();
             this._paneldgvBookingMemberCRUD.ResumeLayout(false);
-            this._panelBookingByMember_Update.ResumeLayout(false);
             this._panelBookingByMember_Details.ResumeLayout(false);
             this._panelBookingByMember_Details.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._bsRunways)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._bsAircrafts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgvBookingByMemberCRUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._bsBookings)).EndInit();
+            this._panelBookingByMember_Update.ResumeLayout(false);
             this._panel_CRUD_BookingByMember_btn.ResumeLayout(false);
             this._panelBookingByMember_Create.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._bsRunways)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -555,7 +571,7 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Label _labelBookingByMember_MemberName;
         private System.Windows.Forms.Label _labelBookingByMember_Error;
         private System.Windows.Forms.Panel _panelBookingByMember_Update;
-        private System.Windows.Forms.Button _btnBookingByMembe_UpdateSave;
+        private System.Windows.Forms.Button _btnBookingByMembe_UpdateConfirm;
         private System.Windows.Forms.Button _btnBookingByMembe_UpdateDelete;
         private System.Windows.Forms.Panel _panelBookingByMember_Create;
         private System.Windows.Forms.Button _btnBookingByMember_CreateConfirm;
@@ -566,5 +582,6 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.ComboBox _cboxBookingByMember_TimeSlotEnd;
         private System.Windows.Forms.ComboBox _cboxBookingByMember_TimeSlotStart;
         private System.Windows.Forms.TextBox _tboxBookingByMember_MemberName;
+        private System.Windows.Forms.Label _labelBookingByMember_NewBooking;
     }
 }

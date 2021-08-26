@@ -16,28 +16,6 @@ namespace ULMClubManager.DAL.Repositories
         {
         }
 
-        public override Booking CreateOne(Booking domainModel)
-        {
-            // L'utilisation du mapper n'est pas souhaitée ici.
-            // Si nous utilisions le PilotMapper, nous aurions un paramètre
-            // "MBR_ID" en trop pour pouvoir executer la procédure stockée.
-
-            _unitOfWork.Connection.Execute(
-                "sp_insert_RES",
-                param: new
-                {
-                    RES_DTE = domainModel.Date,
-                    RES_HEU_DEB = domainModel.StartHour,
-                    RES_HEU_FIN = domainModel.EndHour,
-                    MBR_FK_ID = domainModel.MemberID,
-                    AER_FK_ID = domainModel.AircraftID,
-                    PIST_FK_ID = domainModel.RunwayID
-                },
-                commandType: CommandType.StoredProcedure,
-                transaction: _unitOfWork.Transaction);
-
-            return ReadLast();
-        }
 
         public override List<Booking> ReadAll()
         {
@@ -114,7 +92,30 @@ namespace ULMClubManager.DAL.Repositories
             return _mapper.From(result);
         }
 
-        public override void UpdateOne(Booking domainModel)
+        public override Booking CreateOne(Booking domainModel)
+        {
+            // L'utilisation du mapper n'est pas souhaitée ici.
+            // Si nous utilisions le PilotMapper, nous aurions un paramètre
+            // "MBR_ID" en trop pour pouvoir executer la procédure stockée.
+
+            _unitOfWork.Connection.Execute(
+                "sp_insert_RES",
+                param: new
+                {
+                    RES_DTE = domainModel.Date,
+                    RES_HEU_DEB = domainModel.StartHour,
+                    RES_HEU_FIN = domainModel.EndHour,
+                    MBR_FK_ID = domainModel.MemberID,
+                    AER_FK_ID = domainModel.AircraftID,
+                    PIST_FK_ID = domainModel.RunwayID
+                },
+                commandType: CommandType.StoredProcedure,
+                transaction: _unitOfWork.Transaction);
+
+            return ReadLast();
+        }
+
+        public void UpdateOne(DetailedBooking domainModel)
         {
             _unitOfWork.Connection.Execute(
                 "sp_update_RES",
@@ -130,6 +131,17 @@ namespace ULMClubManager.DAL.Repositories
                 },
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
+        }
+
+        public override int DeleteOne(int bookingID)
+        {
+            int result = _unitOfWork.Connection.Execute(
+               "sp_delete_RES_BY_RES_ID",
+               param: new { RES_ID = bookingID },
+               commandType: CommandType.StoredProcedure,
+               transaction: _unitOfWork.Transaction);
+
+            return result;
         }
 
         public Booking CreateOneCancellation(Cancellation domainModel)

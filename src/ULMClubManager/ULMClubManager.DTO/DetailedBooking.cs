@@ -3,6 +3,8 @@ using ULMClubManager.DTO;
 
 namespace ULMClubManager.DTO
 {
+    // Nécessaire pour faire fonctionner CloneHelper
+    [Serializable]
     public class DetailedBooking
     {
         public DetailedBooking(Booking booking, Aircraft aircraft, Runway runway, Member pilot)

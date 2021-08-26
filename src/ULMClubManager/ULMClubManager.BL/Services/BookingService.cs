@@ -65,7 +65,17 @@ namespace ULMClubManager.BL.Services
         {
             using (DalSession dalSession = new DalSession())
             {
-                 dalSession.Bookings.DeleteOne(bookingID);
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    dalSession.Bookings.DeleteOne(bookingID);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
             }
         }
 
@@ -74,6 +84,14 @@ namespace ULMClubManager.BL.Services
             using (DalSession dalSession = new DalSession())
             {
                 dalSession.Bookings.CreateOne(booking);
+            }
+        }
+
+        public static void UpdateOne(DetailedBooking selectedBooking)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                dalSession.Bookings.UpdateOne(selectedBooking);
             }
         }
     }

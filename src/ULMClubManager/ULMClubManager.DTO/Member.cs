@@ -5,6 +5,7 @@ namespace ULMClubManager.DTO
 {
     // Nécessaire pour faire fonctionner CloneHelper
     [Serializable]
+
     public class Member : IDomainModel
     {
         public Member(int? id, string licenceNumber, DateTime licenceObtentionDate,

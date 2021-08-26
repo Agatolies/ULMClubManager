@@ -12,6 +12,7 @@ using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
 using ULMClubManager.DTO.Enums;
 using ULMClubManager.DTO.Exceptions;
+using ULMClubManager.DTO.Helpers;
 
 namespace ULMClubManger.Forms.UserControls
 {
@@ -19,14 +20,12 @@ namespace ULMClubManger.Forms.UserControls
     {
         private List<DetailedBooking> _bookings;
         private DetailedBooking _selectedBooking;
+        private DetailedBooking _bookingBackup;
 
         public UCBookingByMemberCRUD()
         {
             InitializeComponent();
             InitializeData();
-
-            _cboxBookingByMember_Aircraft.DisplayMember = "Registration";
-            _cboxBookingByMember_Aircraft.ValueMember = "ID";
         }
 
         public List<DetailedBooking> Bookings 
@@ -52,9 +51,17 @@ namespace ULMClubManger.Forms.UserControls
             _bsAircrafts.DataSource = aircrafts;
             _cboxBookingByMember_TimeSlotStart.DataSource = GetTimeSlotsStart();
             _cboxBookingByMember_TimeSlotEnd.DataSource = TimeSlot.GetTimeSlots();
+            _cboxBookingByMember_Runway.DataSource = RunwayService.ReadAll();
+
+            _cboxBookingByMember_Aircraft.DisplayMember = "Registration";
+            _cboxBookingByMember_Aircraft.ValueMember = "ID";
+            _cboxBookingByMember_Runway.DisplayMember = "ID";
+            _cboxBookingByMember_Runway.ValueMember = "ID";
 
             _panelBookingByMember_Create.Visible = false;
             _panelBookingByMember_Update.Visible = false;
+
+            _labelBookingByMember_NewBooking.Visible = false;
         }
 
         private List<TimeSpan> GetTimeSlotsStart()
@@ -94,6 +101,7 @@ namespace ULMClubManger.Forms.UserControls
             _dtpBookingByMember_Date.Value = _selectedBooking.Date;
             _cboxBookingByMember_TimeSlotStart.SelectedItem = _selectedBooking.StartHour;
             _cboxBookingByMember_TimeSlotEnd.SelectedItem = _selectedBooking.EndHour;
+            _cboxBookingByMember_Runway.SelectedValue = _selectedBooking.RunwayID;
         }
 
         private void ClearData()
@@ -108,6 +116,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_Aircraft.SelectedValue = -1;
             _dtpBookingByMember_Date.Value = DateTime.Now;
             _cboxBookingByMember_TimeSlotStart.DataSource = TimeSlot.GetTimeSlots();
+            _cboxBookingByMember_Runway.SelectedValue = -1;
         }
 
         private void LockControls()
@@ -116,6 +125,7 @@ namespace ULMClubManger.Forms.UserControls
             _dtpBookingByMember_Date.Enabled = false;
             _cboxBookingByMember_TimeSlotStart.Enabled = false;
             _cboxBookingByMember_TimeSlotEnd.Enabled = false;
+            _cboxBookingByMember_Runway.Enabled = false;
         }
 
         public void UnlockControls()
@@ -124,6 +134,7 @@ namespace ULMClubManger.Forms.UserControls
             _dtpBookingByMember_Date.Enabled = true;
             _cboxBookingByMember_TimeSlotStart.Enabled = true;
             _cboxBookingByMember_TimeSlotEnd.Enabled = true;
+            _cboxBookingByMember_Runway.Enabled = true;
         }
 
         private void ShowErrorMessage(Exception ex)
@@ -153,6 +164,11 @@ namespace ULMClubManger.Forms.UserControls
             _panel_CRUD_BookingByMember_btn.Visible = false;
             _panelBookingByMember_Create.Visible = true;
 
+            _bookingBackup = _selectedBooking.CreateDeepCopy();
+
+            _labelBookingByMember_Details.Visible = false;
+            _labelBookingByMember_NewBooking.Visible = true;
+
             _dtpBookingByMember_Date.Value = DateTime.Now;
 
             UnlockControls();
@@ -163,8 +179,6 @@ namespace ULMClubManger.Forms.UserControls
         {
             try
             {
-                //TimeSpan.
-
                 Booking booking = new Booking(
                     _dtpBookingByMember_Date.Value,
                     (TimeSpan)_cboxBookingByMember_TimeSlotStart.SelectedItem,
@@ -172,15 +186,54 @@ namespace ULMClubManger.Forms.UserControls
                     "",
                     null,
                     null,
-                    MemberID,
+                    _selectedBooking.MemberID,
                     ((Aircraft)_cboxBookingByMember_Aircraft.SelectedItem).ID.Value,
                     ((Runway)_cboxBookingByMember_Runway.SelectedItem).ID.Value);
 
                 BookingService.CreateOne(booking);
+
+                _bookingBackup = null;
+
+                HideErrorMessage();
+                LockControls();
+
+                _panelBookingByMember_Create.Visible = false;
+                _panel_CRUD_BookingByMember_btn.Visible = true;
+
+                MessageBox.Show(
+                    $"La réserervation pour {_selectedBooking.MemberFullName} a bien été créé.",
+                    "Information",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
             catch (BusinessException ex)
             {
+                ShowErrorMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
 
+        private void _btnBookingByMember_CreateCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                "Voulez-vous annuler la création de cette réservation ?",
+                "Attention",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                _selectedBooking = _bookingBackup;
+                _bookingBackup = null;
+
+                LockControls();
+                HideErrorMessage();
+
+                _panelBookingByMember_Create.Visible = false;
+                _panel_CRUD_BookingByMember_btn.Visible = true;
             }
         }
 
@@ -191,7 +244,55 @@ namespace ULMClubManger.Forms.UserControls
 
             UnlockControls();
 
+            _bookingBackup = _selectedBooking.CreateDeepCopy();
+        }
 
+        private void _btnBookingByMembe_UpdateConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BookingService.UpdateOne(_selectedBooking);
+
+                _bookingBackup = null;
+
+                HideErrorMessage();
+                LockControls();
+
+                _panelBookingByMember_Update.Visible = false;
+                _panel_CRUD_BookingByMember_btn.Visible = true;
+
+                MessageBox.Show(
+                    $"La réservation pour {_selectedBooking.MemberFullName} a bien été mise à jour.",
+                    "Information",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (BusinessException ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+
+        private void _btnBookingByMembe_UpdateDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                "Voulez-vous annuler la modification en cours ?",
+                "Attention",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                LockControls();
+                HideErrorMessage();
+
+                _panelBookingByMember_Update.Visible = false;
+                _panel_CRUD_BookingByMember_btn.Visible = true;
+            }
         }
 
         private void _btnBookingByMemberDelete_Click(object sender, EventArgs e)
@@ -210,39 +311,25 @@ namespace ULMClubManger.Forms.UserControls
                 {
                     BookingService.DeleteOneBooking(_selectedBooking.ID.Value);
 
-                    HideErrorMessage();
-                    RefreshData(this.MemberID);
+                    MessageBox.Show(
+                        $"La réservation a bien été supprimée.",
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
 
-                    //if (BookingService.DeleteOneBooking(_selectedBooking.ID.Value) == 1)
-                    //{
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(
-                    //        "Réservation non trouvée.",
-                    //        "Avertissement",
-                    //        MessageBoxButtons.OK,
-                    //        MessageBoxIcon.Warning);
-                    //}
-                }
-                else
-                {
-                    RefreshData(this.MemberID);
-                }
+
+                ClearControls();
+                HideErrorMessage();
             }
-            catch (Exception)
+            catch (BusinessException ex)
             {
-                MessageBox.Show(
-                    "Réservation non trouvée.",
-                    "Avertissement",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                ShowErrorMessage(ex);
             }
-        }
-
-        private void _dgvBookingByMemberCRUD_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _dgvBookingByMemberCRUD.AllowUserToAddRows = true;
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
         }
 
         private void _dgvBookingByMemberCRUD_SelectionChanged(object sender, EventArgs e)
@@ -256,11 +343,17 @@ namespace ULMClubManger.Forms.UserControls
                 //this.BookingID = current.ID.Value;
                 //this.MemberID = current.MemberID;
             }
+            else
+            {
+                _tboxBookingByMember_MemberName.Text = "";
+                ClearControls();
+            }
         }
 
         private void _cboxBookingByMember_TimeSlotStart_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshTimeSlotsEnd();
         }
+
     }
 }

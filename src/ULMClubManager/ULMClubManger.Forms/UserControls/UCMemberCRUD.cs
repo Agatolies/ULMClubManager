@@ -330,7 +330,6 @@ namespace ULMClubManger.Forms.UserControls
 
             if (dialogResult == DialogResult.Yes)
             {
-
                 LockControls();
                 HideErrorMessage();
 
