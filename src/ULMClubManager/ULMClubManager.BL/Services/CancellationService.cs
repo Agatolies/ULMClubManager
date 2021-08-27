@@ -34,11 +34,11 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static Cancellation CreateOneCancellation(Cancellation cancellation)
+        public static void CreateOneCancellation(int bookingID, string reason)
         {
             using (DalSession dalSession = new DalSession())
             {
-                return dalSession.Cancellations.CreateOneCancellation(cancellation);
+                dalSession.Cancellations.CreateOneCancellation(bookingID, reason);
             }
         }
     }

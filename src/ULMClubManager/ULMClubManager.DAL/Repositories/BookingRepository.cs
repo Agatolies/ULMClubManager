@@ -59,7 +59,7 @@ namespace ULMClubManager.DAL.Repositories
 
             return _mapper.From(models);
         }
-
+                
         public List<Booking> ReadAllInFuture()
         {
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(

@@ -73,13 +73,9 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_Runway.DisplayMember = "ID";
             _cboxBookingByMember_Runway.ValueMember = "ID";
 
-            _panelFooterBookingByMember_Create.Visible = false;
-            _panelFooterBookingByMember_Update.Visible = false;
-            _panelFooterBookingByMember_Cancel.Visible = false;
-
             _labelBookingByMember_NewBooking.Visible = false;
-            _labelBookingByMember_CancellationTitle.Visible = false;
             _labelBookingByMember_Update.Visible = false;
+            _labelBookingByMember_Cancellation.Visible = false;
         }
 
         private List<TimeSpan> GetTimeSlotsStart()
@@ -111,6 +107,7 @@ namespace ULMClubManger.Forms.UserControls
         {
             List<DetailedBooking> detailedBookings = BookingService.ReadAllBookingByPilotID(memberID);
 
+
             Bookings = detailedBookings
                 .Where(booking => string.IsNullOrEmpty(booking.CancellationReason))
                 .ToList();
@@ -119,6 +116,10 @@ namespace ULMClubManger.Forms.UserControls
                 .Where(booking => !string.IsNullOrEmpty(booking.CancellationReason))
                 .ToList();
 
+            foreach (DetailedBooking can in Cancellations)
+            {
+                Bookings.Remove(can);
+            }
 
             //Cancellations = CancellationService.ReadAllCancellationByPilotID(memberID);
         }
@@ -225,6 +226,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 _bookingBackup = null;
 
+                RefreshData(_selectedBooking.MemberID);
                 HideErrorMessage();
                 LockControls();
 
@@ -299,6 +301,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 HideErrorMessage();
                 LockControls();
+                RefreshData(_selectedBooking.MemberID);
 
                 _labelBookingByMember_Update.Visible = false;
 
@@ -349,8 +352,8 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByMemberCancel_Click(object sender, EventArgs e)
         {
-            _labelBookingByMember_Cancellation.Visible = true;
             _labelBookingByMember_CancellationReason.Visible = true;
+            _labelBookingByMember_Cancellation.Visible = true;
 
             _panelBookingByMember_Details.Visible = true;
             _panelFooterBookingByMember_Cancel.Visible = true;
@@ -360,87 +363,67 @@ namespace ULMClubManger.Forms.UserControls
 
             _dgvBookingByMemberCRUD.Enabled = false;
 
+            LockControls();
+
             _bookingBackup = _selectedBooking.CreateDeepCopy();
-
-            // Pour une suppression de réservation et non une annulation
-            //LockControls();
-
-            //DialogResult dialogResult = MessageBox.Show(
-            //    "Voulez-vous confirmer la suppression de cette réservation ?",
-            //    "Confirmation",
-            //    MessageBoxButtons.OKCancel,
-            //    MessageBoxIcon.Warning);
-
-            //try
-            //{
-            //    if (dialogResult == DialogResult.OK)
-            //    {
-            //        BookingService.DeleteOneBooking(_selectedBooking.ID.Value);
-
-            //        MessageBox.Show(
-            //            $"La réservation a bien été supprimée.",
-            //            "Information",
-            //            MessageBoxButtons.OK,
-            //            MessageBoxIcon.Information);
-            //    }
-
-
-            //    ClearControls();
-            //    HideErrorMessage();
-            //}
-            //catch (BusinessException ex)
-            //{
-            //    ShowErrorMessage(ex);
-            //}
-            //catch (Exception ex)
-            //{
-            //    ShowErrorMessage(ex);
-            //}
         }
 
         private void _btnFooterBookingByMember_CancelConfirm_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    Cancellation cancellation = new Cancellation(
-            //        _selectedBooking.ID,
-            //        _tboxlBookingByMember_CancellationReason.Text,
-            //        _selectedBooking.AircraftRegistration,
-            //        _selectedBooking.RunwayID,
-            //        _selectedBooking.Date,
-            //        _selectedBooking.StartHour,
-            //        _selectedBooking.EndHour);
 
-            //    CancellationService.CreateOneCancellation(cancellation);
+            DialogResult dialogResult = MessageBox.Show(
+                "Voulez-vous vraiment annuler cette réservation ?",
+                "Confirmation",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning);
+            
+            try
+            {
+                if (dialogResult == DialogResult.OK)
+                {
+                    CancellationService.CreateOneCancellation(_selectedBooking.ID.Value, _tboxlBookingByMember_CancellationReason.Text);
 
-            //    BookingService.DeleteOneBooking(_selectedBooking.ID.Value);
+                    _bookingBackup = null;
 
-            //    _bookingBackup = null;
+                    RefreshData(_selectedBooking.MemberID);
+                    HideErrorMessage();
 
-            //    HideErrorMessage();
+                    _labelBookingByMember_CancellationReason.Visible = false;
 
-            //    _labelBookingByMember_Cancellation.Visible = false;
-            //    _labelBookingByMember_CancellationReason.Visible = false;
+                    _panelBookingByMember_Details.Visible = false;
+                    _panelFooterBookingByMember_Cancel.Visible = false;
+                    _panelFooterBookingByMemberCRUD.Visible = true;
 
-            //    _panelBookingByMember_Details.Visible = false;
-            //    _panelFooterBookingByMember_Cancel.Visible = false;
-            //    _panelFooterBookingByMemberCRUD.Visible = true;
+                    _tboxlBookingByMember_CancellationReason.Visible = false;
 
-            //    _tboxlBookingByMember_CancellationReason.Visible = false;
-
-            //    _dgvBookingByMemberCRUD.Enabled = true;
-
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
+                    _dgvBookingByMemberCRUD.Enabled = true;
+                }
+            }
+            catch (BusinessException ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
         }
 
         private void _btnFooterBookingByMember_CancelCancel_Click(object sender, EventArgs e)
         {
+            _selectedBooking = _bookingBackup;
+            _bookingBackup = null;
 
+            LockControls();
+            HideErrorMessage();
+
+            _panelBookingByMember_Details.Visible = false;
+            _panelFooterBookingByMember_Cancel.Visible = false;
+            _panelFooterBookingByMemberCRUD.Visible = true;
+
+            _tboxlBookingByMember_CancellationReason.Visible = false;
+
+            _dgvBookingByMemberCRUD.Enabled = true;
         }
         private void _dgvBookingByMemberCRUD_SelectionChanged(object sender, EventArgs e)
         {

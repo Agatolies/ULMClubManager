@@ -30,14 +30,14 @@ namespace ULMClubManger.Forms.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this._labelBookingByMember_CRUD_Title1 = new System.Windows.Forms.Label();
             this._panelBookingByMember_CRUD_Title = new System.Windows.Forms.Panel();
             this._paneldgvBookingMemberCRUD = new System.Windows.Forms.Panel();
@@ -61,11 +61,11 @@ namespace ULMClubManger.Forms.UserControls
             this._labelBookingByMember_Date = new System.Windows.Forms.Label();
             this._labelBookingByMember_NewBooking = new System.Windows.Forms.Label();
             this._labelBookingByMember_Update = new System.Windows.Forms.Label();
-            this._labelBookingByMember_CancellationTitle = new System.Windows.Forms.Label();
             this._labelBookingByMember_Cancellation = new System.Windows.Forms.Label();
+            this._labelBookingByMember_CancellationTitle = new System.Windows.Forms.Label();
             this._dgvBookingByMember_Cancellation = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AircraftID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AircraftRegistration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,7 +130,7 @@ namespace ULMClubManger.Forms.UserControls
             // _paneldgvBookingMemberCRUD
             // 
             this._paneldgvBookingMemberCRUD.Controls.Add(this._panelBookingByMember_Details);
-            this._paneldgvBookingMemberCRUD.Controls.Add(this._labelBookingByMember_Cancellation);
+            this._paneldgvBookingMemberCRUD.Controls.Add(this._labelBookingByMember_CancellationTitle);
             this._paneldgvBookingMemberCRUD.Controls.Add(this._dgvBookingByMember_Cancellation);
             this._paneldgvBookingMemberCRUD.Controls.Add(this._dgvBookingByMemberCRUD);
             this._paneldgvBookingMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -160,7 +160,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Date);
             this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_NewBooking);
             this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Update);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_CancellationTitle);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Cancellation);
             this._panelBookingByMember_Details.Location = new System.Drawing.Point(20, 526);
             this._panelBookingByMember_Details.Name = "_panelBookingByMember_Details";
             this._panelBookingByMember_Details.Size = new System.Drawing.Size(877, 277);
@@ -314,95 +314,101 @@ namespace ULMClubManger.Forms.UserControls
             // 
             this._labelBookingByMember_NewBooking.AutoSize = true;
             this._labelBookingByMember_NewBooking.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMember_NewBooking.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
             this._labelBookingByMember_NewBooking.Location = new System.Drawing.Point(-5, 13);
             this._labelBookingByMember_NewBooking.Name = "_labelBookingByMember_NewBooking";
             this._labelBookingByMember_NewBooking.Size = new System.Drawing.Size(326, 27);
             this._labelBookingByMember_NewBooking.TabIndex = 48;
             this._labelBookingByMember_NewBooking.Text = "NOUVELLE RESERVATION";
+            this._labelBookingByMember_NewBooking.Visible = false;
             // 
             // _labelBookingByMember_Update
             // 
             this._labelBookingByMember_Update.AutoSize = true;
             this._labelBookingByMember_Update.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMember_Update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
             this._labelBookingByMember_Update.Location = new System.Drawing.Point(-5, 13);
             this._labelBookingByMember_Update.Name = "_labelBookingByMember_Update";
             this._labelBookingByMember_Update.Size = new System.Drawing.Size(361, 27);
             this._labelBookingByMember_Update.TabIndex = 50;
             this._labelBookingByMember_Update.Text = "MODIFIER LA RESERVATION";
-            // 
-            // _labelBookingByMember_CancellationTitle
-            // 
-            this._labelBookingByMember_CancellationTitle.AutoSize = true;
-            this._labelBookingByMember_CancellationTitle.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelBookingByMember_CancellationTitle.Location = new System.Drawing.Point(-5, 13);
-            this._labelBookingByMember_CancellationTitle.Name = "_labelBookingByMember_CancellationTitle";
-            this._labelBookingByMember_CancellationTitle.Size = new System.Drawing.Size(357, 27);
-            this._labelBookingByMember_CancellationTitle.TabIndex = 49;
-            this._labelBookingByMember_CancellationTitle.Text = "ANNULER LA RESERVATION";
+            this._labelBookingByMember_Update.Visible = false;
             // 
             // _labelBookingByMember_Cancellation
             // 
             this._labelBookingByMember_Cancellation.AutoSize = true;
-            this._labelBookingByMember_Cancellation.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold);
-            this._labelBookingByMember_Cancellation.Location = new System.Drawing.Point(15, 261);
+            this._labelBookingByMember_Cancellation.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMember_Cancellation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelBookingByMember_Cancellation.Location = new System.Drawing.Point(-5, 13);
             this._labelBookingByMember_Cancellation.Name = "_labelBookingByMember_Cancellation";
-            this._labelBookingByMember_Cancellation.Size = new System.Drawing.Size(340, 27);
-            this._labelBookingByMember_Cancellation.TabIndex = 36;
-            this._labelBookingByMember_Cancellation.Text = "RESERVATIONS ANNULEES";
+            this._labelBookingByMember_Cancellation.Size = new System.Drawing.Size(357, 27);
+            this._labelBookingByMember_Cancellation.TabIndex = 49;
+            this._labelBookingByMember_Cancellation.Text = "ANNULER LA RESERVATION";
+            this._labelBookingByMember_Cancellation.Visible = false;
+            // 
+            // _labelBookingByMember_CancellationTitle
+            // 
+            this._labelBookingByMember_CancellationTitle.AutoSize = true;
+            this._labelBookingByMember_CancellationTitle.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold);
+            this._labelBookingByMember_CancellationTitle.Location = new System.Drawing.Point(15, 261);
+            this._labelBookingByMember_CancellationTitle.Name = "_labelBookingByMember_CancellationTitle";
+            this._labelBookingByMember_CancellationTitle.Size = new System.Drawing.Size(340, 27);
+            this._labelBookingByMember_CancellationTitle.TabIndex = 36;
+            this._labelBookingByMember_CancellationTitle.Text = "RESERVATIONS ANNULEES";
             // 
             // _dgvBookingByMember_Cancellation
             // 
             this._dgvBookingByMember_Cancellation.AllowUserToAddRows = false;
             this._dgvBookingByMember_Cancellation.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this._dgvBookingByMember_Cancellation.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this._dgvBookingByMember_Cancellation.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle33;
             this._dgvBookingByMember_Cancellation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._dgvBookingByMember_Cancellation.AutoGenerateColumns = false;
             this._dgvBookingByMember_Cancellation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._dgvBookingByMember_Cancellation.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Lucida Bright", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this._dgvBookingByMember_Cancellation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Lucida Bright", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._dgvBookingByMember_Cancellation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this._dgvBookingByMember_Cancellation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dgvBookingByMember_Cancellation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.AircraftID,
+            this.AircraftRegistration,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.cancellationReasonDataGridViewTextBoxColumn});
             this._dgvBookingByMember_Cancellation.DataSource = this._bsCancellations;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dgvBookingByMember_Cancellation.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dgvBookingByMember_Cancellation.DefaultCellStyle = dataGridViewCellStyle35;
             this._dgvBookingByMember_Cancellation.Enabled = false;
             this._dgvBookingByMember_Cancellation.GridColor = System.Drawing.Color.Gainsboro;
             this._dgvBookingByMember_Cancellation.Location = new System.Drawing.Point(20, 300);
             this._dgvBookingByMember_Cancellation.Name = "_dgvBookingByMember_Cancellation";
             this._dgvBookingByMember_Cancellation.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this._dgvBookingByMember_Cancellation.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._dgvBookingByMember_Cancellation.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
             this._dgvBookingByMember_Cancellation.RowHeadersVisible = false;
             this._dgvBookingByMember_Cancellation.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this._dgvBookingByMember_Cancellation.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -418,12 +424,12 @@ namespace ULMClubManger.Forms.UserControls
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             // 
-            // AircraftID
+            // AircraftRegistration
             // 
-            this.AircraftID.DataPropertyName = "AircraftID";
-            this.AircraftID.HeaderText = "ULM";
-            this.AircraftID.Name = "AircraftID";
-            this.AircraftID.ReadOnly = true;
+            this.AircraftRegistration.DataPropertyName = "AircraftRegistration";
+            this.AircraftRegistration.HeaderText = "ULM";
+            this.AircraftRegistration.Name = "AircraftRegistration";
+            this.AircraftRegistration.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -470,24 +476,24 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _dgvBookingByMemberCRUD
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this._dgvBookingByMemberCRUD.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this._dgvBookingByMemberCRUD.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
             this._dgvBookingByMemberCRUD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._dgvBookingByMemberCRUD.AutoGenerateColumns = false;
             this._dgvBookingByMemberCRUD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._dgvBookingByMemberCRUD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Lucida Bright", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this._dgvBookingByMemberCRUD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Lucida Bright", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._dgvBookingByMemberCRUD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
             this._dgvBookingByMemberCRUD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dgvBookingByMemberCRUD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -497,25 +503,25 @@ namespace ULMClubManger.Forms.UserControls
             this.StartHour,
             this.EndHour});
             this._dgvBookingByMemberCRUD.DataSource = this._bsBookings;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dgvBookingByMemberCRUD.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dgvBookingByMemberCRUD.DefaultCellStyle = dataGridViewCellStyle39;
             this._dgvBookingByMemberCRUD.GridColor = System.Drawing.Color.Gainsboro;
             this._dgvBookingByMemberCRUD.Location = new System.Drawing.Point(20, 19);
             this._dgvBookingByMemberCRUD.Name = "_dgvBookingByMemberCRUD";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this._dgvBookingByMemberCRUD.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._dgvBookingByMemberCRUD.RowHeadersDefaultCellStyle = dataGridViewCellStyle40;
             this._dgvBookingByMemberCRUD.RowHeadersVisible = false;
             this._dgvBookingByMemberCRUD.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this._dgvBookingByMemberCRUD.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -582,6 +588,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelFooterBookingByMember_Update.Name = "_panelFooterBookingByMember_Update";
             this._panelFooterBookingByMember_Update.Size = new System.Drawing.Size(925, 94);
             this._panelFooterBookingByMember_Update.TabIndex = 37;
+            this._panelFooterBookingByMember_Update.Visible = false;
             // 
             // _btnFooterBookingByMember_UpdateConfirm
             // 
@@ -680,6 +687,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelFooterBookingByMember_Create.Name = "_panelFooterBookingByMember_Create";
             this._panelFooterBookingByMember_Create.Size = new System.Drawing.Size(925, 94);
             this._panelFooterBookingByMember_Create.TabIndex = 37;
+            this._panelFooterBookingByMember_Create.Visible = false;
             // 
             // _btnFooterBookingByMember_CreateConfirm
             // 
@@ -721,6 +729,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelFooterBookingByMember_Cancel.Name = "_panelFooterBookingByMember_Cancel";
             this._panelFooterBookingByMember_Cancel.Size = new System.Drawing.Size(925, 94);
             this._panelFooterBookingByMember_Cancel.TabIndex = 38;
+            this._panelFooterBookingByMember_Cancel.Visible = false;
             // 
             // _btnFooterBookingByMember_CancelConfirm
             // 
@@ -820,7 +829,7 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.TextBox _tboxBookingByMember_MemberName;
         private System.Windows.Forms.Label _labelBookingByMember_NewBooking;
         private System.Windows.Forms.DataGridView _dgvBookingByMember_Cancellation;
-        private System.Windows.Forms.Label _labelBookingByMember_Cancellation;
+        private System.Windows.Forms.Label _labelBookingByMember_CancellationTitle;
         private System.Windows.Forms.BindingSource _bsCancellations;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -829,19 +838,19 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartHour;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndHour;
-        private System.Windows.Forms.Label _labelBookingByMember_CancellationTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AircraftID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cancellationReasonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label _labelBookingByMember_Cancellation;
         private System.Windows.Forms.Label _labelBookingByMember_Update;
         private System.Windows.Forms.Panel _panelFooterBookingByMember_Cancel;
         private System.Windows.Forms.Button _btnFooterBookingByMember_CancelConfirm;
         private System.Windows.Forms.Button _btnFooterBookingByMember_CancelCancel;
         private System.Windows.Forms.Label _labelBookingByMember_CancellationReason;
         private System.Windows.Forms.TextBox _tboxlBookingByMember_CancellationReason;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AircraftRegistration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cancellationReasonDataGridViewTextBoxColumn;
     }
 }

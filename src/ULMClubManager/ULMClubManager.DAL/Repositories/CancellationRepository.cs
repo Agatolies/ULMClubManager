@@ -70,19 +70,17 @@ namespace ULMClubManager.DAL.Repositories
             return _cancellationMapper.From(result);
         }
 
-        public Cancellation CreateOneCancellation(Cancellation domainModel)
+        public void CreateOneCancellation(int bookingID, string reason)
         {
             _unitOfWork.Connection.QueryFirstOrDefault<AnnDBRow>(
                 "sp_insert_ANN",
                 param: new
                 {
-                    RES_FK_ID = domainModel.ID,
-                    ANN_MOTIF = domainModel.Reason,
+                    RES_FK_ID = bookingID,
+                    ANN_MOTIF = reason,
                 },
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
-
-            return ReadOneCancellation(domainModel.ID);
         }
 
         
