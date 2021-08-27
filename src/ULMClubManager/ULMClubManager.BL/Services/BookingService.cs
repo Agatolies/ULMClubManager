@@ -87,7 +87,7 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static void UpdateOne(DetailedBooking selectedBooking)
+        public static void UpdateOne(Booking selectedBooking)
         {
             using (DalSession dalSession = new DalSession())
             {

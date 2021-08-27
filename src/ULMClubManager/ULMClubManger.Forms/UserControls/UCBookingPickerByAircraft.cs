@@ -33,7 +33,7 @@ namespace ULMClubManger.Forms.UserControls
             try
             {
                 _allAircrafts = AircraftService.ReadAll();
-                _allAircraftCategories = AircraftService.ReadAllCategories();
+                _allAircraftCategories = AircraftService.ReadAllAvailableCategories();
 
                 _lbAircraftID.DataSource = _allAircrafts;
                 _cboxSearchAircraftCategory.DataSource = _allAircraftCategories;

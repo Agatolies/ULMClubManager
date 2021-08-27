@@ -295,6 +295,7 @@ namespace ULMClubManger.Forms.UserControls
             try
             {
                 MemberService.UpdateOne(_member);
+                RefreshData(_member.ID.Value);
 
                 _memberBackup = null;
 

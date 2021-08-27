@@ -1,7 +1,10 @@
-﻿using ULMClubManager.DTO.Abstractions;
+﻿using System;
+using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {
+    // Nécessaire pour faire fonctionner CloneHelper
+    [Serializable]
     public class Aircraft : IDomainModel
     {
         public Aircraft(int? id, string registration, string type, int typeID)

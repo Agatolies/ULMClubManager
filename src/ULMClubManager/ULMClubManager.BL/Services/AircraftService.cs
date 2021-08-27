@@ -33,5 +33,13 @@ namespace ULMClubManager.BL.Services
                 return dalSession.Runways.ReadAll().ToList();
             }
         }
+
+        public static List<AircraftCategory> ReadAllAvailableCategories()
+        {
+            return AircraftService
+                .ReadAllCategories()
+                .Where(category => category.ID.Value < 4)
+                .ToList();
+        }
     }
 }

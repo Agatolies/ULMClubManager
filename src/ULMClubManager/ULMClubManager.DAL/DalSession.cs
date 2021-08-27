@@ -131,6 +131,7 @@ namespace ULMClubManager.DAL
                 return _cancellations ?? (_cancellations = new CancellationRepository(_unitOfWork));
             }
         }
+
         public void Dispose()
         {
             _aircrafts = null;

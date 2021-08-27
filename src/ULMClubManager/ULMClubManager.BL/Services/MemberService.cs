@@ -20,6 +20,13 @@ namespace ULMClubManager.BL.Services
             }
         }
 
+        public static List<Member> ReadAllPilots()
+        {
+            return ReadAll()
+                .Where(member => member.IsPilot)
+                .ToList();
+        }
+
         public static Member ReadOne(int id)
         {
             using (DalSession dalSession = new DalSession())

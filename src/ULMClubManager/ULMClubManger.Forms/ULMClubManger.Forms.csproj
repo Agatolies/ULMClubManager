@@ -95,6 +95,12 @@
     <Compile Include="UserControls\UCBookingByAircraftCRUD.Designer.cs">
       <DependentUpon>UCBookingByAircraftCRUD.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCBookingByAircraftDetailsForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCBookingByAircraftDetailsForm.Designer.cs">
+      <DependentUpon>UCBookingByAircraftDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCBookingByMemberCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +112,12 @@
     </Compile>
     <Compile Include="UserControls\UCBookingByRunwayReadOnly.Designer.cs">
       <DependentUpon>UCBookingByRunwayReadOnly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCBookingByMemberDetailsForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCBookingByMemberDetailsForm.Designer.cs">
+      <DependentUpon>UCBookingByMemberDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCBookingPickerByAircraft.cs">
       <SubType>UserControl</SubType>
@@ -182,11 +194,17 @@
     <EmbeddedResource Include="UserControls\UCBookingByAircraftCRUD.resx">
       <DependentUpon>UCBookingByAircraftCRUD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCBookingByAircraftDetailsForm.resx">
+      <DependentUpon>UCBookingByAircraftDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCBookingByMemberCRUD.resx">
       <DependentUpon>UCBookingByMemberCRUD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCBookingByRunwayReadOnly.resx">
       <DependentUpon>UCBookingByRunwayReadOnly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCBookingByMemberDetailsForm.resx">
+      <DependentUpon>UCBookingByMemberDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCBookingPickerByAircraft.resx">
       <DependentUpon>UCBookingPickerByAircraft.cs</DependentUpon>

@@ -28,7 +28,6 @@ namespace ULMClubManger.Forms.UserControls
         {
             _panelMembersSubmenu.Visible = false;
             _panelBookingsSubmenu.Visible = false;
-            _panelSubscriptionsSubmenu.Visible = false;
             _panelClubManagementSubmenu.Visible = false;
         }
 
@@ -39,9 +38,6 @@ namespace ULMClubManger.Forms.UserControls
 
             if (_panelBookingsSubmenu.Visible)
                 _panelBookingsSubmenu.Visible = false;
-
-            if (_panelSubscriptionsSubmenu.Visible)
-                _panelSubscriptionsSubmenu.Visible = false;
 
             if (_panelClubManagementSubmenu.Visible)
                 _panelClubManagementSubmenu.Visible = false;
@@ -73,11 +69,6 @@ namespace ULMClubManger.Forms.UserControls
         private void _btnMembersInfo_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormMembersInfo());
-        }
-
-        private void _btnSubscriptions_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(_panelSubscriptionsSubmenu);
         }
 
         private void _btnClubManagement_Click(object sender, EventArgs e)

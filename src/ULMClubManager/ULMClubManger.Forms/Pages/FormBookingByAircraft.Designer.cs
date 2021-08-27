@@ -29,36 +29,55 @@ namespace ULMClubManger.Forms.Pages
         /// </summary>
         private void InitializeComponent()
         {
-            this._ucBookingPickerByAircraft = new ULMClubManger.Forms.UserControls.UCBookingPickerByAircraft();
-            this.ucBookingByAircraftCRUD1 = new ULMClubManger.Forms.UserControls.UCBookingByAircraftCRUD();
+            this._ucBookingByAircraftDetailsForm = new ULMClubManger.Forms.UserControls.UCBookingByAircraftDetailsForm();
+            this._ucBookingByAircraftCRUD = new ULMClubManger.Forms.UserControls.UCBookingByAircraftCRUD();
+            this._ucBookingByAircraftPicker = new ULMClubManger.Forms.UserControls.UCBookingPickerByAircraft();
             this.SuspendLayout();
             // 
-            // _ucBookingPickerByAircraft
+            // _ucBookingByAircraftDetailsForm
             // 
-            this._ucBookingPickerByAircraft.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._ucBookingPickerByAircraft.Dock = System.Windows.Forms.DockStyle.Left;
-            this._ucBookingPickerByAircraft.Location = new System.Drawing.Point(0, 0);
-            this._ucBookingPickerByAircraft.Name = "_ucBookingPickerByAircraft";
-            this._ucBookingPickerByAircraft.Size = new System.Drawing.Size(234, 739);
-            this._ucBookingPickerByAircraft.TabIndex = 0;
-            this._ucBookingPickerByAircraft.SelectAircraftCategoryID += new ULMClubManger.Forms.delSelect(this._ucBookingPickerByAircraft_SelectAircraftID);
+            this._ucBookingByAircraftDetailsForm.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._ucBookingByAircraftDetailsForm.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._ucBookingByAircraftDetailsForm.Location = new System.Drawing.Point(234, 549);
+            this._ucBookingByAircraftDetailsForm.Name = "_ucBookingByAircraftDetailsForm";
+            this._ucBookingByAircraftDetailsForm.SelectedBooking = null;
+            this._ucBookingByAircraftDetailsForm.Size = new System.Drawing.Size(857, 320);
+            this._ucBookingByAircraftDetailsForm.TabIndex = 2;
+            this._ucBookingByAircraftDetailsForm.BookingForAircraftCreating += new ULMClubManger.Forms.delBookingForAircraftCreated(this._ucBookingDetailsForm_BookingForAircraftCreating);
+            this._ucBookingByAircraftDetailsForm.BookingForAircraftUpdating += new ULMClubManger.Forms.delBookingForAircraftUpdated(this._ucBookingDetailsForm_BookingForAircraftUpdating);
+            this._ucBookingByAircraftDetailsForm.BookingForAircraftCanceling += new ULMClubManger.Forms.delBookingForAircraftCanceled(this._ucBookingDetailsForm_BookingForAircraftCanceling);
+            this._ucBookingByAircraftDetailsForm.BookingForAircraftCreated += new ULMClubManger.Forms.delBookingForAircraftCreated(this._ucBookingDetailsForm_BookingForAircraftCreated);
+            this._ucBookingByAircraftDetailsForm.BookingForAircraftUpdated += new ULMClubManger.Forms.delBookingForAircraftUpdated(this._ucBookingDetailsForm_BookingForAircraftUpdated);
+            this._ucBookingByAircraftDetailsForm.BookingForAircraftCanceled += new ULMClubManger.Forms.delBookingForAircraftCanceled(this._ucBookingDetailsForm_BookingForAircraftCanceled);
             // 
-            // ucBookingByAircraftCRUD1
+            // _ucBookingByAircraftCRUD
             // 
-            this.ucBookingByAircraftCRUD1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ucBookingByAircraftCRUD1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucBookingByAircraftCRUD1.Location = new System.Drawing.Point(234, 0);
-            this.ucBookingByAircraftCRUD1.Name = "ucBookingByAircraftCRUD1";
-            this.ucBookingByAircraftCRUD1.Size = new System.Drawing.Size(538, 739);
-            this.ucBookingByAircraftCRUD1.TabIndex = 1;
+            this._ucBookingByAircraftCRUD.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._ucBookingByAircraftCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ucBookingByAircraftCRUD.Location = new System.Drawing.Point(234, 0);
+            this._ucBookingByAircraftCRUD.Name = "_ucBookingByAircraftCRUD";
+            this._ucBookingByAircraftCRUD.Size = new System.Drawing.Size(857, 869);
+            this._ucBookingByAircraftCRUD.TabIndex = 1;
+            this._ucBookingByAircraftCRUD.SelectAircraft += new ULMClubManger.Forms.delSelectAircraft(this._ucBookingByAircraftCRUD_SelectAircraft);
+            // 
+            // _ucBookingByAircraftPicker
+            // 
+            this._ucBookingByAircraftPicker.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._ucBookingByAircraftPicker.Dock = System.Windows.Forms.DockStyle.Left;
+            this._ucBookingByAircraftPicker.Location = new System.Drawing.Point(0, 0);
+            this._ucBookingByAircraftPicker.Name = "_ucBookingByAircraftPicker";
+            this._ucBookingByAircraftPicker.Size = new System.Drawing.Size(234, 869);
+            this._ucBookingByAircraftPicker.TabIndex = 0;
+            this._ucBookingByAircraftPicker.SelectAircraftCategoryID += new ULMClubManger.Forms.delSelect(this._ucBookingPickerByAircraft_SelectAircraftID);
             // 
             // FormBookingByAircraft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 739);
-            this.Controls.Add(this.ucBookingByAircraftCRUD1);
-            this.Controls.Add(this._ucBookingPickerByAircraft);
+            this.ClientSize = new System.Drawing.Size(1091, 869);
+            this.Controls.Add(this._ucBookingByAircraftDetailsForm);
+            this.Controls.Add(this._ucBookingByAircraftCRUD);
+            this.Controls.Add(this._ucBookingByAircraftPicker);
             this.Name = "FormBookingByAircraft";
             this.Text = "FormBookingByAircraft";
             this.ResumeLayout(false);
@@ -67,7 +86,8 @@ namespace ULMClubManger.Forms.Pages
 
         #endregion
 
-        private UserControls.UCBookingPickerByAircraft _ucBookingPickerByAircraft;
-        private UserControls.UCBookingByAircraftCRUD ucBookingByAircraftCRUD1;
+        private UserControls.UCBookingPickerByAircraft _ucBookingByAircraftPicker;
+        private UserControls.UCBookingByAircraftCRUD _ucBookingByAircraftCRUD;
+        private UserControls.UCBookingByAircraftDetailsForm _ucBookingByAircraftDetailsForm;
     }
 }
