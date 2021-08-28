@@ -30,26 +30,8 @@ namespace ULMClubManger.Forms.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this._dtpBookingByMember_Date = new System.Windows.Forms.DateTimePicker();
-            this._cboxBookingByMember_Aircraft = new System.Windows.Forms.ComboBox();
             this._bsAircrafts = new System.Windows.Forms.BindingSource(this.components);
-            this._cboxBookingByMember_Runway = new System.Windows.Forms.ComboBox();
             this._bsRunways = new System.Windows.Forms.BindingSource(this.components);
-            this._cboxBookingByMember_TimeSlotStart = new System.Windows.Forms.ComboBox();
-            this._cboxBookingByMember_TimeSlotEnd = new System.Windows.Forms.ComboBox();
-            this._btnFooterBookingByMemberCancel = new System.Windows.Forms.Button();
-            this._btnFooterBookingByMemberUpdate = new System.Windows.Forms.Button();
-            this._btnFooterBookingByMemberCreate = new System.Windows.Forms.Button();
-            this._panelFooterBookingByMemberCRUD = new System.Windows.Forms.Panel();
-            this._btnFooterBookingByMember_CreateCancel = new System.Windows.Forms.Button();
-            this._btnFooterBookingByMember_CreateConfirm = new System.Windows.Forms.Button();
-            this._panelFooterBookingByMember_Create = new System.Windows.Forms.Panel();
-            this._btnFooterBookingByMember_UpdateDelete = new System.Windows.Forms.Button();
-            this._btnFooterBookingByMember_UpdateConfirm = new System.Windows.Forms.Button();
-            this._panelFooterBookingByMember_Update = new System.Windows.Forms.Panel();
-            this._btnFooterBookingByMember_CancelCancel = new System.Windows.Forms.Button();
-            this._btnFooterBookingByMember_CancelConfirm = new System.Windows.Forms.Button();
-            this._panelFooterBookingByMember_Cancel = new System.Windows.Forms.Panel();
             this._labelBookingByMember_Error = new System.Windows.Forms.Label();
             this._panelBookingByMember_Details = new System.Windows.Forms.Panel();
             this._tboxlBookingByMember_CancellationReason = new System.Windows.Forms.TextBox();
@@ -63,29 +45,305 @@ namespace ULMClubManger.Forms.UserControls
             this._labelBookingByMember_NewBooking = new System.Windows.Forms.Label();
             this._labelBookingByMember_Update = new System.Windows.Forms.Label();
             this._labelBookingByMember_Cancellation = new System.Windows.Forms.Label();
-            this._labelBookingByMBR_MemberName = new System.Windows.Forms.Label();
+            this._bsPilots = new System.Windows.Forms.BindingSource(this.components);
             this._labelBookingByMBR_AircraftRegistration = new System.Windows.Forms.Label();
             this._labelBookingByMBR_Runway = new System.Windows.Forms.Label();
+            this._labelBookingByMBR_MemberName = new System.Windows.Forms.Label();
             this._labelBookingByMBR_Date = new System.Windows.Forms.Label();
             this._labelBookingByMBR_StartHour = new System.Windows.Forms.Label();
+            this._cboxBookingByMember_TimeSlotEnd = new System.Windows.Forms.ComboBox();
             this._labelBookingByMBR_EndHour = new System.Windows.Forms.Label();
+            this._cboxBookingByMember_TimeSlotStart = new System.Windows.Forms.ComboBox();
             this._labelBookingByMBR_CancellationReason = new System.Windows.Forms.Label();
+            this._cboxBookingByMember_Runway = new System.Windows.Forms.ComboBox();
             this._tboxBookingByMBR_CancellationReason = new System.Windows.Forms.TextBox();
+            this._dtpBookingByMember_Date = new System.Windows.Forms.DateTimePicker();
+            this._cboxBookingByMember_Aircraft = new System.Windows.Forms.ComboBox();
             this._labelBookingByMBR_ErrorMessage = new System.Windows.Forms.Label();
             this._labelBookingByMBR_DetailsTitle = new System.Windows.Forms.Label();
-            this._panelBookingByMBR_Details = new System.Windows.Forms.Panel();
             this._cboxBookingByMember_MemberName = new System.Windows.Forms.ComboBox();
-            this._bsPilots = new System.Windows.Forms.BindingSource(this.components);
+            this._panelBookingByMBR_Details = new System.Windows.Forms.Panel();
+            this._btnFooterBookingByMemberCancel = new System.Windows.Forms.Button();
+            this._btnFooterBookingByMemberUpdate = new System.Windows.Forms.Button();
+            this._btnFooterBookingByMemberCreate = new System.Windows.Forms.Button();
+            this._panelFooterBookingByMemberCRUD = new System.Windows.Forms.Panel();
+            this._btnFooterBookingByMember_CreateCancel = new System.Windows.Forms.Button();
+            this._btnFooterBookingByMember_CreateConfirm = new System.Windows.Forms.Button();
+            this._panelFooterBookingByMember_Create = new System.Windows.Forms.Panel();
+            this._btnFooterBookingByMember_UpdateDelete = new System.Windows.Forms.Button();
+            this._btnFooterBookingByMember_UpdateConfirm = new System.Windows.Forms.Button();
+            this._panelFooterBookingByMember_Update = new System.Windows.Forms.Panel();
+            this._btnFooterBookingByMember_CancelCancel = new System.Windows.Forms.Button();
+            this._btnFooterBookingByMember_CancelConfirm = new System.Windows.Forms.Button();
+            this._panelFooterBookingByMember_Cancel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this._bsAircrafts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._bsRunways)).BeginInit();
+            this._panelBookingByMember_Details.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._bsPilots)).BeginInit();
+            this._panelBookingByMBR_Details.SuspendLayout();
             this._panelFooterBookingByMemberCRUD.SuspendLayout();
             this._panelFooterBookingByMember_Create.SuspendLayout();
             this._panelFooterBookingByMember_Update.SuspendLayout();
             this._panelFooterBookingByMember_Cancel.SuspendLayout();
-            this._panelBookingByMember_Details.SuspendLayout();
-            this._panelBookingByMBR_Details.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._bsPilots)).BeginInit();
             this.SuspendLayout();
+            // 
+            // _bsAircrafts
+            // 
+            this._bsAircrafts.DataSource = typeof(ULMClubManager.DTO.Aircraft);
+            // 
+            // _bsRunways
+            // 
+            this._bsRunways.DataSource = typeof(ULMClubManager.DTO.Runway);
+            // 
+            // _labelBookingByMember_Error
+            // 
+            this._labelBookingByMember_Error.AutoSize = true;
+            this._labelBookingByMember_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMember_Error.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelBookingByMember_Error.Location = new System.Drawing.Point(-3, 205);
+            this._labelBookingByMember_Error.Name = "_labelBookingByMember_Error";
+            this._labelBookingByMember_Error.Size = new System.Drawing.Size(231, 16);
+            this._labelBookingByMember_Error.TabIndex = 43;
+            this._labelBookingByMember_Error.Text = "ERROR MESSAGE GOES HERE";
+            this._labelBookingByMember_Error.Visible = false;
+            // 
+            // _panelBookingByMember_Details
+            // 
+            this._panelBookingByMember_Details.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._panelBookingByMember_Details.Controls.Add(this._tboxlBookingByMember_CancellationReason);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_CancellationReason);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Runway);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Error);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_MemberName);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Aircraft);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_EndHour);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_StartHour);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Date);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_NewBooking);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Update);
+            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Cancellation);
+            this._panelBookingByMember_Details.Location = new System.Drawing.Point(20, 474);
+            this._panelBookingByMember_Details.Name = "_panelBookingByMember_Details";
+            this._panelBookingByMember_Details.Size = new System.Drawing.Size(877, 277);
+            this._panelBookingByMember_Details.TabIndex = 34;
+            this._panelBookingByMember_Details.Visible = false;
+            // 
+            // _tboxlBookingByMember_CancellationReason
+            // 
+            this._tboxlBookingByMember_CancellationReason.Location = new System.Drawing.Point(569, 73);
+            this._tboxlBookingByMember_CancellationReason.Name = "_tboxlBookingByMember_CancellationReason";
+            this._tboxlBookingByMember_CancellationReason.Size = new System.Drawing.Size(225, 20);
+            this._tboxlBookingByMember_CancellationReason.TabIndex = 52;
+            this._tboxlBookingByMember_CancellationReason.Visible = false;
+            // 
+            // _labelBookingByMember_CancellationReason
+            // 
+            this._labelBookingByMember_CancellationReason.AutoSize = true;
+            this._labelBookingByMember_CancellationReason.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelBookingByMember_CancellationReason.Location = new System.Drawing.Point(566, 54);
+            this._labelBookingByMember_CancellationReason.Name = "_labelBookingByMember_CancellationReason";
+            this._labelBookingByMember_CancellationReason.Size = new System.Drawing.Size(101, 13);
+            this._labelBookingByMember_CancellationReason.TabIndex = 51;
+            this._labelBookingByMember_CancellationReason.Text = "Motif de l\'annulation";
+            this._labelBookingByMember_CancellationReason.Visible = false;
+            // 
+            // _labelBookingByMember_Runway
+            // 
+            this._labelBookingByMember_Runway.AutoSize = true;
+            this._labelBookingByMember_Runway.Location = new System.Drawing.Point(-3, 149);
+            this._labelBookingByMember_Runway.Name = "_labelBookingByMember_Runway";
+            this._labelBookingByMember_Runway.Size = new System.Drawing.Size(30, 13);
+            this._labelBookingByMember_Runway.TabIndex = 44;
+            this._labelBookingByMember_Runway.Text = "Piste";
+            // 
+            // _labelBookingByMember_MemberName
+            // 
+            this._labelBookingByMember_MemberName.AutoSize = true;
+            this._labelBookingByMember_MemberName.Location = new System.Drawing.Point(-3, 54);
+            this._labelBookingByMember_MemberName.Name = "_labelBookingByMember_MemberName";
+            this._labelBookingByMember_MemberName.Size = new System.Drawing.Size(45, 13);
+            this._labelBookingByMember_MemberName.TabIndex = 40;
+            this._labelBookingByMember_MemberName.Text = "Membre";
+            // 
+            // _labelBookingByMember_Aircraft
+            // 
+            this._labelBookingByMember_Aircraft.AutoSize = true;
+            this._labelBookingByMember_Aircraft.Location = new System.Drawing.Point(-3, 102);
+            this._labelBookingByMember_Aircraft.Name = "_labelBookingByMember_Aircraft";
+            this._labelBookingByMember_Aircraft.Size = new System.Drawing.Size(30, 13);
+            this._labelBookingByMember_Aircraft.TabIndex = 39;
+            this._labelBookingByMember_Aircraft.Text = "ULM";
+            // 
+            // _labelBookingByMember_EndHour
+            // 
+            this._labelBookingByMember_EndHour.AutoSize = true;
+            this._labelBookingByMember_EndHour.Location = new System.Drawing.Point(280, 153);
+            this._labelBookingByMember_EndHour.Name = "_labelBookingByMember_EndHour";
+            this._labelBookingByMember_EndHour.Size = new System.Drawing.Size(65, 13);
+            this._labelBookingByMember_EndHour.TabIndex = 36;
+            this._labelBookingByMember_EndHour.Text = "Heure de fin";
+            // 
+            // _labelBookingByMember_StartHour
+            // 
+            this._labelBookingByMember_StartHour.AutoSize = true;
+            this._labelBookingByMember_StartHour.Location = new System.Drawing.Point(280, 104);
+            this._labelBookingByMember_StartHour.Name = "_labelBookingByMember_StartHour";
+            this._labelBookingByMember_StartHour.Size = new System.Drawing.Size(81, 13);
+            this._labelBookingByMember_StartHour.TabIndex = 34;
+            this._labelBookingByMember_StartHour.Text = "Heure de début";
+            // 
+            // _labelBookingByMember_Date
+            // 
+            this._labelBookingByMember_Date.AutoSize = true;
+            this._labelBookingByMember_Date.Location = new System.Drawing.Point(280, 54);
+            this._labelBookingByMember_Date.Name = "_labelBookingByMember_Date";
+            this._labelBookingByMember_Date.Size = new System.Drawing.Size(30, 13);
+            this._labelBookingByMember_Date.TabIndex = 32;
+            this._labelBookingByMember_Date.Text = "Date";
+            // 
+            // _labelBookingByMember_NewBooking
+            // 
+            this._labelBookingByMember_NewBooking.AutoSize = true;
+            this._labelBookingByMember_NewBooking.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMember_NewBooking.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelBookingByMember_NewBooking.Location = new System.Drawing.Point(-5, 13);
+            this._labelBookingByMember_NewBooking.Name = "_labelBookingByMember_NewBooking";
+            this._labelBookingByMember_NewBooking.Size = new System.Drawing.Size(326, 27);
+            this._labelBookingByMember_NewBooking.TabIndex = 48;
+            this._labelBookingByMember_NewBooking.Text = "NOUVELLE RESERVATION";
+            this._labelBookingByMember_NewBooking.Visible = false;
+            // 
+            // _labelBookingByMember_Update
+            // 
+            this._labelBookingByMember_Update.AutoSize = true;
+            this._labelBookingByMember_Update.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMember_Update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelBookingByMember_Update.Location = new System.Drawing.Point(-5, 13);
+            this._labelBookingByMember_Update.Name = "_labelBookingByMember_Update";
+            this._labelBookingByMember_Update.Size = new System.Drawing.Size(361, 27);
+            this._labelBookingByMember_Update.TabIndex = 50;
+            this._labelBookingByMember_Update.Text = "MODIFIER LA RESERVATION";
+            this._labelBookingByMember_Update.Visible = false;
+            // 
+            // _labelBookingByMember_Cancellation
+            // 
+            this._labelBookingByMember_Cancellation.AutoSize = true;
+            this._labelBookingByMember_Cancellation.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMember_Cancellation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelBookingByMember_Cancellation.Location = new System.Drawing.Point(-5, 13);
+            this._labelBookingByMember_Cancellation.Name = "_labelBookingByMember_Cancellation";
+            this._labelBookingByMember_Cancellation.Size = new System.Drawing.Size(357, 27);
+            this._labelBookingByMember_Cancellation.TabIndex = 49;
+            this._labelBookingByMember_Cancellation.Text = "ANNULER LA RESERVATION";
+            this._labelBookingByMember_Cancellation.Visible = false;
+            // 
+            // _bsPilots
+            // 
+            this._bsPilots.DataSource = typeof(ULMClubManager.DTO.Member);
+            // 
+            // _labelBookingByMBR_AircraftRegistration
+            // 
+            this._labelBookingByMBR_AircraftRegistration.AutoSize = true;
+            this._labelBookingByMBR_AircraftRegistration.Location = new System.Drawing.Point(15, 92);
+            this._labelBookingByMBR_AircraftRegistration.Name = "_labelBookingByMBR_AircraftRegistration";
+            this._labelBookingByMBR_AircraftRegistration.Size = new System.Drawing.Size(30, 13);
+            this._labelBookingByMBR_AircraftRegistration.TabIndex = 49;
+            this._labelBookingByMBR_AircraftRegistration.Text = "ULM";
+            // 
+            // _labelBookingByMBR_Runway
+            // 
+            this._labelBookingByMBR_Runway.AutoSize = true;
+            this._labelBookingByMBR_Runway.Location = new System.Drawing.Point(15, 139);
+            this._labelBookingByMBR_Runway.Name = "_labelBookingByMBR_Runway";
+            this._labelBookingByMBR_Runway.Size = new System.Drawing.Size(30, 13);
+            this._labelBookingByMBR_Runway.TabIndex = 50;
+            this._labelBookingByMBR_Runway.Text = "Piste";
+            // 
+            // _labelBookingByMBR_MemberName
+            // 
+            this._labelBookingByMBR_MemberName.AutoSize = true;
+            this._labelBookingByMBR_MemberName.Location = new System.Drawing.Point(15, 44);
+            this._labelBookingByMBR_MemberName.Name = "_labelBookingByMBR_MemberName";
+            this._labelBookingByMBR_MemberName.Size = new System.Drawing.Size(33, 13);
+            this._labelBookingByMBR_MemberName.TabIndex = 48;
+            this._labelBookingByMBR_MemberName.Text = "Pilote";
+            // 
+            // _labelBookingByMBR_Date
+            // 
+            this._labelBookingByMBR_Date.AutoSize = true;
+            this._labelBookingByMBR_Date.Location = new System.Drawing.Point(298, 44);
+            this._labelBookingByMBR_Date.Name = "_labelBookingByMBR_Date";
+            this._labelBookingByMBR_Date.Size = new System.Drawing.Size(30, 13);
+            this._labelBookingByMBR_Date.TabIndex = 51;
+            this._labelBookingByMBR_Date.Text = "Date";
+            // 
+            // _labelBookingByMBR_StartHour
+            // 
+            this._labelBookingByMBR_StartHour.AutoSize = true;
+            this._labelBookingByMBR_StartHour.Location = new System.Drawing.Point(298, 92);
+            this._labelBookingByMBR_StartHour.Name = "_labelBookingByMBR_StartHour";
+            this._labelBookingByMBR_StartHour.Size = new System.Drawing.Size(81, 13);
+            this._labelBookingByMBR_StartHour.TabIndex = 52;
+            this._labelBookingByMBR_StartHour.Text = "Heure de début";
+            // 
+            // _cboxBookingByMember_TimeSlotEnd
+            // 
+            this._cboxBookingByMember_TimeSlotEnd.Enabled = false;
+            this._cboxBookingByMember_TimeSlotEnd.FormattingEnabled = true;
+            this._cboxBookingByMember_TimeSlotEnd.Location = new System.Drawing.Point(301, 159);
+            this._cboxBookingByMember_TimeSlotEnd.Name = "_cboxBookingByMember_TimeSlotEnd";
+            this._cboxBookingByMember_TimeSlotEnd.Size = new System.Drawing.Size(223, 21);
+            this._cboxBookingByMember_TimeSlotEnd.TabIndex = 47;
+            // 
+            // _labelBookingByMBR_EndHour
+            // 
+            this._labelBookingByMBR_EndHour.AutoSize = true;
+            this._labelBookingByMBR_EndHour.Location = new System.Drawing.Point(298, 139);
+            this._labelBookingByMBR_EndHour.Name = "_labelBookingByMBR_EndHour";
+            this._labelBookingByMBR_EndHour.Size = new System.Drawing.Size(65, 13);
+            this._labelBookingByMBR_EndHour.TabIndex = 53;
+            this._labelBookingByMBR_EndHour.Text = "Heure de fin";
+            // 
+            // _cboxBookingByMember_TimeSlotStart
+            // 
+            this._cboxBookingByMember_TimeSlotStart.Enabled = false;
+            this._cboxBookingByMember_TimeSlotStart.FormattingEnabled = true;
+            this._cboxBookingByMember_TimeSlotStart.Location = new System.Drawing.Point(301, 110);
+            this._cboxBookingByMember_TimeSlotStart.Name = "_cboxBookingByMember_TimeSlotStart";
+            this._cboxBookingByMember_TimeSlotStart.Size = new System.Drawing.Size(223, 21);
+            this._cboxBookingByMember_TimeSlotStart.TabIndex = 46;
+            this._cboxBookingByMember_TimeSlotStart.SelectedIndexChanged += new System.EventHandler(this._cboxBookingByMember_TimeSlotStart_SelectedIndexChanged);
+            // 
+            // _labelBookingByMBR_CancellationReason
+            // 
+            this._labelBookingByMBR_CancellationReason.AutoSize = true;
+            this._labelBookingByMBR_CancellationReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMBR_CancellationReason.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelBookingByMBR_CancellationReason.Location = new System.Drawing.Point(573, 53);
+            this._labelBookingByMBR_CancellationReason.Name = "_labelBookingByMBR_CancellationReason";
+            this._labelBookingByMBR_CancellationReason.Size = new System.Drawing.Size(122, 13);
+            this._labelBookingByMBR_CancellationReason.TabIndex = 54;
+            this._labelBookingByMBR_CancellationReason.Text = "Motif de l\'annulation";
+            this._labelBookingByMBR_CancellationReason.Visible = false;
+            // 
+            // _cboxBookingByMember_Runway
+            // 
+            this._cboxBookingByMember_Runway.DataSource = this._bsRunways;
+            this._cboxBookingByMember_Runway.Enabled = false;
+            this._cboxBookingByMember_Runway.FormattingEnabled = true;
+            this._cboxBookingByMember_Runway.Location = new System.Drawing.Point(18, 155);
+            this._cboxBookingByMember_Runway.Name = "_cboxBookingByMember_Runway";
+            this._cboxBookingByMember_Runway.Size = new System.Drawing.Size(223, 21);
+            this._cboxBookingByMember_Runway.TabIndex = 45;
+            // 
+            // _tboxBookingByMBR_CancellationReason
+            // 
+            this._tboxBookingByMBR_CancellationReason.Location = new System.Drawing.Point(576, 69);
+            this._tboxBookingByMBR_CancellationReason.Name = "_tboxBookingByMBR_CancellationReason";
+            this._tboxBookingByMBR_CancellationReason.Size = new System.Drawing.Size(223, 20);
+            this._tboxBookingByMBR_CancellationReason.TabIndex = 55;
+            this._tboxBookingByMBR_CancellationReason.Visible = false;
             // 
             // _dtpBookingByMember_Date
             // 
@@ -105,42 +363,62 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxBookingByMember_Aircraft.Size = new System.Drawing.Size(223, 21);
             this._cboxBookingByMember_Aircraft.TabIndex = 38;
             // 
-            // _bsAircrafts
+            // _labelBookingByMBR_ErrorMessage
             // 
-            this._bsAircrafts.DataSource = typeof(ULMClubManager.DTO.Aircraft);
+            this._labelBookingByMBR_ErrorMessage.AutoSize = true;
+            this._labelBookingByMBR_ErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelBookingByMBR_ErrorMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelBookingByMBR_ErrorMessage.Location = new System.Drawing.Point(14, 205);
+            this._labelBookingByMBR_ErrorMessage.Name = "_labelBookingByMBR_ErrorMessage";
+            this._labelBookingByMBR_ErrorMessage.Size = new System.Drawing.Size(188, 24);
+            this._labelBookingByMBR_ErrorMessage.TabIndex = 56;
+            this._labelBookingByMBR_ErrorMessage.Text = "ERROR MESSAGE";
+            this._labelBookingByMBR_ErrorMessage.Visible = false;
             // 
-            // _cboxBookingByMember_Runway
+            // _labelBookingByMBR_DetailsTitle
             // 
-            this._cboxBookingByMember_Runway.DataSource = this._bsRunways;
-            this._cboxBookingByMember_Runway.Enabled = false;
-            this._cboxBookingByMember_Runway.FormattingEnabled = true;
-            this._cboxBookingByMember_Runway.Location = new System.Drawing.Point(18, 155);
-            this._cboxBookingByMember_Runway.Name = "_cboxBookingByMember_Runway";
-            this._cboxBookingByMember_Runway.Size = new System.Drawing.Size(223, 21);
-            this._cboxBookingByMember_Runway.TabIndex = 45;
+            this._labelBookingByMBR_DetailsTitle.AutoSize = true;
+            this._labelBookingByMBR_DetailsTitle.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold);
+            this._labelBookingByMBR_DetailsTitle.Location = new System.Drawing.Point(13, 0);
+            this._labelBookingByMBR_DetailsTitle.Name = "_labelBookingByMBR_DetailsTitle";
+            this._labelBookingByMBR_DetailsTitle.Size = new System.Drawing.Size(193, 27);
+            this._labelBookingByMBR_DetailsTitle.TabIndex = 57;
+            this._labelBookingByMBR_DetailsTitle.Text = "DETAILS TITLE";
             // 
-            // _bsRunways
+            // _cboxBookingByMember_MemberName
             // 
-            this._bsRunways.DataSource = typeof(ULMClubManager.DTO.Runway);
+            this._cboxBookingByMember_MemberName.DataSource = this._bsPilots;
+            this._cboxBookingByMember_MemberName.Enabled = false;
+            this._cboxBookingByMember_MemberName.FormattingEnabled = true;
+            this._cboxBookingByMember_MemberName.Location = new System.Drawing.Point(18, 60);
+            this._cboxBookingByMember_MemberName.Name = "_cboxBookingByMember_MemberName";
+            this._cboxBookingByMember_MemberName.Size = new System.Drawing.Size(223, 21);
+            this._cboxBookingByMember_MemberName.TabIndex = 58;
             // 
-            // _cboxBookingByMember_TimeSlotStart
+            // _panelBookingByMBR_Details
             // 
-            this._cboxBookingByMember_TimeSlotStart.Enabled = false;
-            this._cboxBookingByMember_TimeSlotStart.FormattingEnabled = true;
-            this._cboxBookingByMember_TimeSlotStart.Location = new System.Drawing.Point(301, 110);
-            this._cboxBookingByMember_TimeSlotStart.Name = "_cboxBookingByMember_TimeSlotStart";
-            this._cboxBookingByMember_TimeSlotStart.Size = new System.Drawing.Size(223, 21);
-            this._cboxBookingByMember_TimeSlotStart.TabIndex = 46;
-            this._cboxBookingByMember_TimeSlotStart.SelectedIndexChanged += new System.EventHandler(this._cboxBookingByMember_TimeSlotStart_SelectedIndexChanged);
-            // 
-            // _cboxBookingByMember_TimeSlotEnd
-            // 
-            this._cboxBookingByMember_TimeSlotEnd.Enabled = false;
-            this._cboxBookingByMember_TimeSlotEnd.FormattingEnabled = true;
-            this._cboxBookingByMember_TimeSlotEnd.Location = new System.Drawing.Point(301, 159);
-            this._cboxBookingByMember_TimeSlotEnd.Name = "_cboxBookingByMember_TimeSlotEnd";
-            this._cboxBookingByMember_TimeSlotEnd.Size = new System.Drawing.Size(223, 21);
-            this._cboxBookingByMember_TimeSlotEnd.TabIndex = 47;
+            this._panelBookingByMBR_Details.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_MemberName);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_DetailsTitle);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_ErrorMessage);
+            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_Aircraft);
+            this._panelBookingByMBR_Details.Controls.Add(this._dtpBookingByMember_Date);
+            this._panelBookingByMBR_Details.Controls.Add(this._tboxBookingByMBR_CancellationReason);
+            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_Runway);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_CancellationReason);
+            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_TimeSlotStart);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_EndHour);
+            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_TimeSlotEnd);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_StartHour);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_Date);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_MemberName);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_Runway);
+            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_AircraftRegistration);
+            this._panelBookingByMBR_Details.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._panelBookingByMBR_Details.Location = new System.Drawing.Point(0, 0);
+            this._panelBookingByMBR_Details.Name = "_panelBookingByMBR_Details";
+            this._panelBookingByMBR_Details.Size = new System.Drawing.Size(925, 256);
+            this._panelBookingByMBR_Details.TabIndex = 58;
             // 
             // _btnFooterBookingByMemberCancel
             // 
@@ -325,284 +603,6 @@ namespace ULMClubManger.Forms.UserControls
             this._panelFooterBookingByMember_Cancel.TabIndex = 38;
             this._panelFooterBookingByMember_Cancel.Visible = false;
             // 
-            // _labelBookingByMember_Error
-            // 
-            this._labelBookingByMember_Error.AutoSize = true;
-            this._labelBookingByMember_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelBookingByMember_Error.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
-            this._labelBookingByMember_Error.Location = new System.Drawing.Point(-3, 205);
-            this._labelBookingByMember_Error.Name = "_labelBookingByMember_Error";
-            this._labelBookingByMember_Error.Size = new System.Drawing.Size(231, 16);
-            this._labelBookingByMember_Error.TabIndex = 43;
-            this._labelBookingByMember_Error.Text = "ERROR MESSAGE GOES HERE";
-            this._labelBookingByMember_Error.Visible = false;
-            // 
-            // _panelBookingByMember_Details
-            // 
-            this._panelBookingByMember_Details.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._panelBookingByMember_Details.Controls.Add(this._tboxlBookingByMember_CancellationReason);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_CancellationReason);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Runway);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Error);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_MemberName);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Aircraft);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_EndHour);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_StartHour);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Date);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_NewBooking);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Update);
-            this._panelBookingByMember_Details.Controls.Add(this._labelBookingByMember_Cancellation);
-            this._panelBookingByMember_Details.Location = new System.Drawing.Point(20, 474);
-            this._panelBookingByMember_Details.Name = "_panelBookingByMember_Details";
-            this._panelBookingByMember_Details.Size = new System.Drawing.Size(877, 277);
-            this._panelBookingByMember_Details.TabIndex = 34;
-            this._panelBookingByMember_Details.Visible = false;
-            // 
-            // _tboxlBookingByMember_CancellationReason
-            // 
-            this._tboxlBookingByMember_CancellationReason.Location = new System.Drawing.Point(569, 73);
-            this._tboxlBookingByMember_CancellationReason.Name = "_tboxlBookingByMember_CancellationReason";
-            this._tboxlBookingByMember_CancellationReason.Size = new System.Drawing.Size(225, 20);
-            this._tboxlBookingByMember_CancellationReason.TabIndex = 52;
-            this._tboxlBookingByMember_CancellationReason.Visible = false;
-            // 
-            // _labelBookingByMember_CancellationReason
-            // 
-            this._labelBookingByMember_CancellationReason.AutoSize = true;
-            this._labelBookingByMember_CancellationReason.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
-            this._labelBookingByMember_CancellationReason.Location = new System.Drawing.Point(566, 54);
-            this._labelBookingByMember_CancellationReason.Name = "_labelBookingByMember_CancellationReason";
-            this._labelBookingByMember_CancellationReason.Size = new System.Drawing.Size(101, 13);
-            this._labelBookingByMember_CancellationReason.TabIndex = 51;
-            this._labelBookingByMember_CancellationReason.Text = "Motif de l\'annulation";
-            this._labelBookingByMember_CancellationReason.Visible = false;
-            // 
-            // _labelBookingByMember_Runway
-            // 
-            this._labelBookingByMember_Runway.AutoSize = true;
-            this._labelBookingByMember_Runway.Location = new System.Drawing.Point(-3, 149);
-            this._labelBookingByMember_Runway.Name = "_labelBookingByMember_Runway";
-            this._labelBookingByMember_Runway.Size = new System.Drawing.Size(30, 13);
-            this._labelBookingByMember_Runway.TabIndex = 44;
-            this._labelBookingByMember_Runway.Text = "Piste";
-            // 
-            // _labelBookingByMember_MemberName
-            // 
-            this._labelBookingByMember_MemberName.AutoSize = true;
-            this._labelBookingByMember_MemberName.Location = new System.Drawing.Point(-3, 54);
-            this._labelBookingByMember_MemberName.Name = "_labelBookingByMember_MemberName";
-            this._labelBookingByMember_MemberName.Size = new System.Drawing.Size(45, 13);
-            this._labelBookingByMember_MemberName.TabIndex = 40;
-            this._labelBookingByMember_MemberName.Text = "Membre";
-            // 
-            // _labelBookingByMember_Aircraft
-            // 
-            this._labelBookingByMember_Aircraft.AutoSize = true;
-            this._labelBookingByMember_Aircraft.Location = new System.Drawing.Point(-3, 102);
-            this._labelBookingByMember_Aircraft.Name = "_labelBookingByMember_Aircraft";
-            this._labelBookingByMember_Aircraft.Size = new System.Drawing.Size(30, 13);
-            this._labelBookingByMember_Aircraft.TabIndex = 39;
-            this._labelBookingByMember_Aircraft.Text = "ULM";
-            // 
-            // _labelBookingByMember_EndHour
-            // 
-            this._labelBookingByMember_EndHour.AutoSize = true;
-            this._labelBookingByMember_EndHour.Location = new System.Drawing.Point(280, 153);
-            this._labelBookingByMember_EndHour.Name = "_labelBookingByMember_EndHour";
-            this._labelBookingByMember_EndHour.Size = new System.Drawing.Size(65, 13);
-            this._labelBookingByMember_EndHour.TabIndex = 36;
-            this._labelBookingByMember_EndHour.Text = "Heure de fin";
-            // 
-            // _labelBookingByMember_StartHour
-            // 
-            this._labelBookingByMember_StartHour.AutoSize = true;
-            this._labelBookingByMember_StartHour.Location = new System.Drawing.Point(280, 104);
-            this._labelBookingByMember_StartHour.Name = "_labelBookingByMember_StartHour";
-            this._labelBookingByMember_StartHour.Size = new System.Drawing.Size(81, 13);
-            this._labelBookingByMember_StartHour.TabIndex = 34;
-            this._labelBookingByMember_StartHour.Text = "Heure de début";
-            // 
-            // _labelBookingByMember_Date
-            // 
-            this._labelBookingByMember_Date.AutoSize = true;
-            this._labelBookingByMember_Date.Location = new System.Drawing.Point(280, 54);
-            this._labelBookingByMember_Date.Name = "_labelBookingByMember_Date";
-            this._labelBookingByMember_Date.Size = new System.Drawing.Size(30, 13);
-            this._labelBookingByMember_Date.TabIndex = 32;
-            this._labelBookingByMember_Date.Text = "Date";
-            // 
-            // _labelBookingByMember_NewBooking
-            // 
-            this._labelBookingByMember_NewBooking.AutoSize = true;
-            this._labelBookingByMember_NewBooking.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelBookingByMember_NewBooking.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
-            this._labelBookingByMember_NewBooking.Location = new System.Drawing.Point(-5, 13);
-            this._labelBookingByMember_NewBooking.Name = "_labelBookingByMember_NewBooking";
-            this._labelBookingByMember_NewBooking.Size = new System.Drawing.Size(326, 27);
-            this._labelBookingByMember_NewBooking.TabIndex = 48;
-            this._labelBookingByMember_NewBooking.Text = "NOUVELLE RESERVATION";
-            this._labelBookingByMember_NewBooking.Visible = false;
-            // 
-            // _labelBookingByMember_Update
-            // 
-            this._labelBookingByMember_Update.AutoSize = true;
-            this._labelBookingByMember_Update.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelBookingByMember_Update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
-            this._labelBookingByMember_Update.Location = new System.Drawing.Point(-5, 13);
-            this._labelBookingByMember_Update.Name = "_labelBookingByMember_Update";
-            this._labelBookingByMember_Update.Size = new System.Drawing.Size(361, 27);
-            this._labelBookingByMember_Update.TabIndex = 50;
-            this._labelBookingByMember_Update.Text = "MODIFIER LA RESERVATION";
-            this._labelBookingByMember_Update.Visible = false;
-            // 
-            // _labelBookingByMember_Cancellation
-            // 
-            this._labelBookingByMember_Cancellation.AutoSize = true;
-            this._labelBookingByMember_Cancellation.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelBookingByMember_Cancellation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
-            this._labelBookingByMember_Cancellation.Location = new System.Drawing.Point(-5, 13);
-            this._labelBookingByMember_Cancellation.Name = "_labelBookingByMember_Cancellation";
-            this._labelBookingByMember_Cancellation.Size = new System.Drawing.Size(357, 27);
-            this._labelBookingByMember_Cancellation.TabIndex = 49;
-            this._labelBookingByMember_Cancellation.Text = "ANNULER LA RESERVATION";
-            this._labelBookingByMember_Cancellation.Visible = false;
-            // 
-            // _labelBookingByMBR_MemberName
-            // 
-            this._labelBookingByMBR_MemberName.AutoSize = true;
-            this._labelBookingByMBR_MemberName.Location = new System.Drawing.Point(15, 44);
-            this._labelBookingByMBR_MemberName.Name = "_labelBookingByMBR_MemberName";
-            this._labelBookingByMBR_MemberName.Size = new System.Drawing.Size(33, 13);
-            this._labelBookingByMBR_MemberName.TabIndex = 48;
-            this._labelBookingByMBR_MemberName.Text = "Pilote";
-            // 
-            // _labelBookingByMBR_AircraftRegistration
-            // 
-            this._labelBookingByMBR_AircraftRegistration.AutoSize = true;
-            this._labelBookingByMBR_AircraftRegistration.Location = new System.Drawing.Point(15, 92);
-            this._labelBookingByMBR_AircraftRegistration.Name = "_labelBookingByMBR_AircraftRegistration";
-            this._labelBookingByMBR_AircraftRegistration.Size = new System.Drawing.Size(30, 13);
-            this._labelBookingByMBR_AircraftRegistration.TabIndex = 49;
-            this._labelBookingByMBR_AircraftRegistration.Text = "ULM";
-            // 
-            // _labelBookingByMBR_Runway
-            // 
-            this._labelBookingByMBR_Runway.AutoSize = true;
-            this._labelBookingByMBR_Runway.Location = new System.Drawing.Point(15, 139);
-            this._labelBookingByMBR_Runway.Name = "_labelBookingByMBR_Runway";
-            this._labelBookingByMBR_Runway.Size = new System.Drawing.Size(30, 13);
-            this._labelBookingByMBR_Runway.TabIndex = 50;
-            this._labelBookingByMBR_Runway.Text = "Piste";
-            // 
-            // _labelBookingByMBR_Date
-            // 
-            this._labelBookingByMBR_Date.AutoSize = true;
-            this._labelBookingByMBR_Date.Location = new System.Drawing.Point(298, 44);
-            this._labelBookingByMBR_Date.Name = "_labelBookingByMBR_Date";
-            this._labelBookingByMBR_Date.Size = new System.Drawing.Size(30, 13);
-            this._labelBookingByMBR_Date.TabIndex = 51;
-            this._labelBookingByMBR_Date.Text = "Date";
-            // 
-            // _labelBookingByMBR_StartHour
-            // 
-            this._labelBookingByMBR_StartHour.AutoSize = true;
-            this._labelBookingByMBR_StartHour.Location = new System.Drawing.Point(298, 92);
-            this._labelBookingByMBR_StartHour.Name = "_labelBookingByMBR_StartHour";
-            this._labelBookingByMBR_StartHour.Size = new System.Drawing.Size(81, 13);
-            this._labelBookingByMBR_StartHour.TabIndex = 52;
-            this._labelBookingByMBR_StartHour.Text = "Heure de début";
-            // 
-            // _labelBookingByMBR_EndHour
-            // 
-            this._labelBookingByMBR_EndHour.AutoSize = true;
-            this._labelBookingByMBR_EndHour.Location = new System.Drawing.Point(298, 139);
-            this._labelBookingByMBR_EndHour.Name = "_labelBookingByMBR_EndHour";
-            this._labelBookingByMBR_EndHour.Size = new System.Drawing.Size(65, 13);
-            this._labelBookingByMBR_EndHour.TabIndex = 53;
-            this._labelBookingByMBR_EndHour.Text = "Heure de fin";
-            // 
-            // _labelBookingByMBR_CancellationReason
-            // 
-            this._labelBookingByMBR_CancellationReason.AutoSize = true;
-            this._labelBookingByMBR_CancellationReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelBookingByMBR_CancellationReason.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
-            this._labelBookingByMBR_CancellationReason.Location = new System.Drawing.Point(573, 53);
-            this._labelBookingByMBR_CancellationReason.Name = "_labelBookingByMBR_CancellationReason";
-            this._labelBookingByMBR_CancellationReason.Size = new System.Drawing.Size(122, 13);
-            this._labelBookingByMBR_CancellationReason.TabIndex = 54;
-            this._labelBookingByMBR_CancellationReason.Text = "Motif de l\'annulation";
-            this._labelBookingByMBR_CancellationReason.Visible = false;
-            // 
-            // _tboxBookingByMBR_CancellationReason
-            // 
-            this._tboxBookingByMBR_CancellationReason.Location = new System.Drawing.Point(576, 69);
-            this._tboxBookingByMBR_CancellationReason.Name = "_tboxBookingByMBR_CancellationReason";
-            this._tboxBookingByMBR_CancellationReason.Size = new System.Drawing.Size(223, 20);
-            this._tboxBookingByMBR_CancellationReason.TabIndex = 55;
-            this._tboxBookingByMBR_CancellationReason.Visible = false;
-            // 
-            // _labelBookingByMBR_ErrorMessage
-            // 
-            this._labelBookingByMBR_ErrorMessage.AutoSize = true;
-            this._labelBookingByMBR_ErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelBookingByMBR_ErrorMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
-            this._labelBookingByMBR_ErrorMessage.Location = new System.Drawing.Point(14, 205);
-            this._labelBookingByMBR_ErrorMessage.Name = "_labelBookingByMBR_ErrorMessage";
-            this._labelBookingByMBR_ErrorMessage.Size = new System.Drawing.Size(188, 24);
-            this._labelBookingByMBR_ErrorMessage.TabIndex = 56;
-            this._labelBookingByMBR_ErrorMessage.Text = "ERROR MESSAGE";
-            this._labelBookingByMBR_ErrorMessage.Visible = false;
-            // 
-            // _labelBookingByMBR_DetailsTitle
-            // 
-            this._labelBookingByMBR_DetailsTitle.AutoSize = true;
-            this._labelBookingByMBR_DetailsTitle.Font = new System.Drawing.Font("Lucida Bright", 18F, System.Drawing.FontStyle.Bold);
-            this._labelBookingByMBR_DetailsTitle.Location = new System.Drawing.Point(13, 0);
-            this._labelBookingByMBR_DetailsTitle.Name = "_labelBookingByMBR_DetailsTitle";
-            this._labelBookingByMBR_DetailsTitle.Size = new System.Drawing.Size(193, 27);
-            this._labelBookingByMBR_DetailsTitle.TabIndex = 57;
-            this._labelBookingByMBR_DetailsTitle.Text = "DETAILS TITLE";
-            // 
-            // _panelBookingByMBR_Details
-            // 
-            this._panelBookingByMBR_Details.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_MemberName);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_DetailsTitle);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_ErrorMessage);
-            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_Aircraft);
-            this._panelBookingByMBR_Details.Controls.Add(this._dtpBookingByMember_Date);
-            this._panelBookingByMBR_Details.Controls.Add(this._tboxBookingByMBR_CancellationReason);
-            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_Runway);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_CancellationReason);
-            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_TimeSlotStart);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_EndHour);
-            this._panelBookingByMBR_Details.Controls.Add(this._cboxBookingByMember_TimeSlotEnd);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_StartHour);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_Date);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_MemberName);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_Runway);
-            this._panelBookingByMBR_Details.Controls.Add(this._labelBookingByMBR_AircraftRegistration);
-            this._panelBookingByMBR_Details.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._panelBookingByMBR_Details.Location = new System.Drawing.Point(0, 0);
-            this._panelBookingByMBR_Details.Name = "_panelBookingByMBR_Details";
-            this._panelBookingByMBR_Details.Size = new System.Drawing.Size(925, 256);
-            this._panelBookingByMBR_Details.TabIndex = 58;
-            // 
-            // _cboxBookingByMember_MemberName
-            // 
-            this._cboxBookingByMember_MemberName.DataSource = this._bsPilots;
-            this._cboxBookingByMember_MemberName.Enabled = false;
-            this._cboxBookingByMember_MemberName.FormattingEnabled = true;
-            this._cboxBookingByMember_MemberName.Location = new System.Drawing.Point(18, 60);
-            this._cboxBookingByMember_MemberName.Name = "_cboxBookingByMember_MemberName";
-            this._cboxBookingByMember_MemberName.Size = new System.Drawing.Size(223, 21);
-            this._cboxBookingByMember_MemberName.TabIndex = 58;
-            // 
-            // _bsPilots
-            // 
-            this._bsPilots.DataSource = typeof(ULMClubManager.DTO.Member);
-            // 
             // UCBookingByMemberDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -616,15 +616,15 @@ namespace ULMClubManger.Forms.UserControls
             this.Size = new System.Drawing.Size(925, 632);
             ((System.ComponentModel.ISupportInitialize)(this._bsAircrafts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._bsRunways)).EndInit();
+            this._panelBookingByMember_Details.ResumeLayout(false);
+            this._panelBookingByMember_Details.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._bsPilots)).EndInit();
+            this._panelBookingByMBR_Details.ResumeLayout(false);
+            this._panelBookingByMBR_Details.PerformLayout();
             this._panelFooterBookingByMemberCRUD.ResumeLayout(false);
             this._panelFooterBookingByMember_Create.ResumeLayout(false);
             this._panelFooterBookingByMember_Update.ResumeLayout(false);
             this._panelFooterBookingByMember_Cancel.ResumeLayout(false);
-            this._panelBookingByMember_Details.ResumeLayout(false);
-            this._panelBookingByMember_Details.PerformLayout();
-            this._panelBookingByMBR_Details.ResumeLayout(false);
-            this._panelBookingByMBR_Details.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._bsPilots)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -634,6 +634,36 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.BindingSource _bsAircrafts;
         private System.Windows.Forms.BindingSource _bsRunways;
         private System.Windows.Forms.Label _labelBookingByMember_Error;
+        private System.Windows.Forms.Panel _panelBookingByMember_Details;
+        private System.Windows.Forms.TextBox _tboxlBookingByMember_CancellationReason;
+        private System.Windows.Forms.Label _labelBookingByMember_CancellationReason;
+        private System.Windows.Forms.Label _labelBookingByMember_Runway;
+        private System.Windows.Forms.Label _labelBookingByMember_MemberName;
+        private System.Windows.Forms.Label _labelBookingByMember_Aircraft;
+        private System.Windows.Forms.Label _labelBookingByMember_EndHour;
+        private System.Windows.Forms.Label _labelBookingByMember_StartHour;
+        private System.Windows.Forms.Label _labelBookingByMember_Date;
+        private System.Windows.Forms.Label _labelBookingByMember_NewBooking;
+        private System.Windows.Forms.Label _labelBookingByMember_Update;
+        private System.Windows.Forms.Label _labelBookingByMember_Cancellation;
+        private System.Windows.Forms.BindingSource _bsPilots;
+        private System.Windows.Forms.Label _labelBookingByMBR_AircraftRegistration;
+        private System.Windows.Forms.Label _labelBookingByMBR_Runway;
+        private System.Windows.Forms.Label _labelBookingByMBR_MemberName;
+        private System.Windows.Forms.Label _labelBookingByMBR_Date;
+        private System.Windows.Forms.Label _labelBookingByMBR_StartHour;
+        private System.Windows.Forms.ComboBox _cboxBookingByMember_TimeSlotEnd;
+        private System.Windows.Forms.Label _labelBookingByMBR_EndHour;
+        private System.Windows.Forms.ComboBox _cboxBookingByMember_TimeSlotStart;
+        private System.Windows.Forms.Label _labelBookingByMBR_CancellationReason;
+        private System.Windows.Forms.ComboBox _cboxBookingByMember_Runway;
+        private System.Windows.Forms.TextBox _tboxBookingByMBR_CancellationReason;
+        private System.Windows.Forms.DateTimePicker _dtpBookingByMember_Date;
+        private System.Windows.Forms.ComboBox _cboxBookingByMember_Aircraft;
+        private System.Windows.Forms.Label _labelBookingByMBR_ErrorMessage;
+        private System.Windows.Forms.Label _labelBookingByMBR_DetailsTitle;
+        private System.Windows.Forms.ComboBox _cboxBookingByMember_MemberName;
+        private System.Windows.Forms.Panel _panelBookingByMBR_Details;
         private System.Windows.Forms.Button _btnFooterBookingByMemberCancel;
         private System.Windows.Forms.Button _btnFooterBookingByMemberUpdate;
         private System.Windows.Forms.Button _btnFooterBookingByMemberCreate;
@@ -647,35 +677,5 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Button _btnFooterBookingByMember_CancelCancel;
         private System.Windows.Forms.Button _btnFooterBookingByMember_CancelConfirm;
         private System.Windows.Forms.Panel _panelFooterBookingByMember_Cancel;
-        private System.Windows.Forms.Panel _panelBookingByMember_Details;
-        private System.Windows.Forms.TextBox _tboxlBookingByMember_CancellationReason;
-        private System.Windows.Forms.Label _labelBookingByMember_CancellationReason;
-        private System.Windows.Forms.ComboBox _cboxBookingByMember_TimeSlotEnd;
-        private System.Windows.Forms.ComboBox _cboxBookingByMember_TimeSlotStart;
-        private System.Windows.Forms.ComboBox _cboxBookingByMember_Runway;
-        private System.Windows.Forms.Label _labelBookingByMember_Runway;
-        private System.Windows.Forms.Label _labelBookingByMember_MemberName;
-        private System.Windows.Forms.Label _labelBookingByMember_Aircraft;
-        private System.Windows.Forms.ComboBox _cboxBookingByMember_Aircraft;
-        private System.Windows.Forms.DateTimePicker _dtpBookingByMember_Date;
-        private System.Windows.Forms.Label _labelBookingByMember_EndHour;
-        private System.Windows.Forms.Label _labelBookingByMember_StartHour;
-        private System.Windows.Forms.Label _labelBookingByMember_Date;
-        private System.Windows.Forms.Label _labelBookingByMember_NewBooking;
-        private System.Windows.Forms.Label _labelBookingByMember_Update;
-        private System.Windows.Forms.Label _labelBookingByMember_Cancellation;
-        private System.Windows.Forms.Label _labelBookingByMBR_MemberName;
-        private System.Windows.Forms.Label _labelBookingByMBR_AircraftRegistration;
-        private System.Windows.Forms.Label _labelBookingByMBR_Runway;
-        private System.Windows.Forms.Label _labelBookingByMBR_Date;
-        private System.Windows.Forms.Label _labelBookingByMBR_StartHour;
-        private System.Windows.Forms.Label _labelBookingByMBR_EndHour;
-        private System.Windows.Forms.Label _labelBookingByMBR_CancellationReason;
-        private System.Windows.Forms.TextBox _tboxBookingByMBR_CancellationReason;
-        private System.Windows.Forms.Label _labelBookingByMBR_ErrorMessage;
-        private System.Windows.Forms.Label _labelBookingByMBR_DetailsTitle;
-        private System.Windows.Forms.Panel _panelBookingByMBR_Details;
-        private System.Windows.Forms.ComboBox _cboxBookingByMember_MemberName;
-        private System.Windows.Forms.BindingSource _bsPilots;
     }
 }

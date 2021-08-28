@@ -42,9 +42,9 @@ namespace ULMClubManger.Forms.Pages
             this._ucBookingByMemberDetailsForm.SelectedBooking = null;
             this._ucBookingByMemberDetailsForm.Size = new System.Drawing.Size(857, 320);
             this._ucBookingByMemberDetailsForm.TabIndex = 2;
-            this._ucBookingByMemberDetailsForm.BookingForMemberCreating += new ULMClubManger.Forms.delBookingForMemberCreated(this._ucBookingDetailsForm_BookingForMemberCreating);
-            this._ucBookingByMemberDetailsForm.BookingForMemberUpdating += new ULMClubManger.Forms.delBookingForMemberUpdated(this._ucBookingDetailsForm_BookingForMemberUpdating);
-            this._ucBookingByMemberDetailsForm.BookingForMemberCanceling += new ULMClubManger.Forms.delBookingForMemberCanceled(this._ucBookingDetailsForm_BookingForMemberCanceling);
+            this._ucBookingByMemberDetailsForm.BookingForMemberCreating += new ULMClubManger.Forms.delBookingForMemberCreating(this._ucBookingDetailsForm_BookingForMemberCreating);
+            this._ucBookingByMemberDetailsForm.BookingForMemberUpdating += new ULMClubManger.Forms.delBookingForMemberUpdating(this._ucBookingDetailsForm_BookingForMemberUpdating);
+            this._ucBookingByMemberDetailsForm.BookingForMemberCanceling += new ULMClubManger.Forms.delBookingForMemberCanceling(this._ucBookingDetailsForm_BookingForMemberCanceling);
             this._ucBookingByMemberDetailsForm.BookingForMemberCreated += new ULMClubManger.Forms.delBookingForMemberCreated(this._ucBookingDetailsForm_BookingForMemberCreated);
             this._ucBookingByMemberDetailsForm.BookingForMemberUpdated += new ULMClubManger.Forms.delBookingForMemberUpdated(this._ucBookingDetailsForm_BookingForMemberUpdated);
             this._ucBookingByMemberDetailsForm.BookingForMemberCanceled += new ULMClubManger.Forms.delBookingForMemberCanceled(this._ucBookingDetailsForm_BookingForMemberCanceled);

@@ -18,9 +18,9 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCBookingByMemberDetailsForm : UserControl
     {
-        public event delBookingForMemberCreated BookingForMemberCreating;
-        public event delBookingForMemberUpdated BookingForMemberUpdating;
-        public event delBookingForMemberCanceled BookingForMemberCanceling;
+        public event delBookingForMemberCreating BookingForMemberCreating;
+        public event delBookingForMemberUpdating BookingForMemberUpdating;
+        public event delBookingForMemberCanceling BookingForMemberCanceling;
 
         public event delBookingForMemberCreated BookingForMemberCreated;
         public event delBookingForMemberUpdated BookingForMemberUpdated;
@@ -81,6 +81,7 @@ namespace ULMClubManger.Forms.UserControls
             _bsRunways.DataSource = RunwayService.ReadAll();
 
             _panelBookingByMBR_Details.Visible = false;
+            _panelBookingByMember_Details.Visible = false;
         }
 
         private void ClearData()
@@ -137,7 +138,6 @@ namespace ULMClubManger.Forms.UserControls
 
         private void RefreshDetailsForm()
         {
-            //_cboxBookingByMember_MemberName = SelectedBooking.MemberFullName;
             _cboxBookingByMember_Aircraft.SelectedValue = SelectedBooking.AircraftID;
             _dtpBookingByMember_Date.Value = SelectedBooking.Date;
             _cboxBookingByMember_TimeSlotStart.SelectedItem = SelectedBooking.StartHour;
@@ -223,7 +223,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 _panelFooterBookingByMember_Create.Visible = false;
                 _panelFooterBookingByMemberCRUD.Visible = true;
-                _panelBookingByMember_Details.Visible = false;
+                _panelBookingByMBR_Details.Visible = false;
 
                 this.BookingForMemberCreated();
 
@@ -262,7 +262,6 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByMember_Create.Visible = false;
                 _panelFooterBookingByMemberCRUD.Visible = true;
                 _panelBookingByMBR_Details.Visible = false;
-
                 this.BookingForMemberCreated();
             }
         }
@@ -302,7 +301,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 _panelFooterBookingByMember_Update.Visible = false;
                 _panelFooterBookingByMemberCRUD.Visible = true;
-                _panelBookingByMember_Details.Visible = false;
+                _panelBookingByMBR_Details.Visible = false;
 
                 this.BookingForMemberUpdated();
 
@@ -383,6 +382,8 @@ namespace ULMClubManger.Forms.UserControls
                     //RefreshData(_selectedBooking.MemberID);
                     HideErrorMessage();
 
+                    _labelBookingByMBR_CancellationReason.Visible = false;
+
                     _panelBookingByMBR_Details.Visible = false;
                     _panelFooterBookingByMember_Cancel.Visible = false;
                     _panelFooterBookingByMemberCRUD.Visible = true;
@@ -417,6 +418,8 @@ namespace ULMClubManger.Forms.UserControls
 
                 SelectedBooking = _bookingBackup;
                 _bookingBackup = null;
+
+                _labelBookingByMBR_CancellationReason.Visible = false;
 
                 _panelFooterBookingByMember_Update.Visible = false;
                 _panelFooterBookingByMember_Cancel.Visible = false;
