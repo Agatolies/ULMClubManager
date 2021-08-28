@@ -8,8 +8,8 @@ namespace ULMClubManager.DTO
 
     public class Member : IDomainModel
     {
-        public Member(int? id, string licenceNumber, DateTime licenceObtentionDate,
-            DateTime licenceExpirationDate, string licenceCountry, 
+        public Member(int? id, string licenceNumber, DateTime? licenceObtentionDate,
+            DateTime? licenceExpirationDate, string licenceCountry, 
             string lastName, string firstName, string sex, 
             DateTime dateOfBirth, DateTime registrationDate, string street, 
             string residenceName, string buildingNumber, string boxNumber, 
@@ -91,8 +91,8 @@ namespace ULMClubManager.DTO
         public int LocalityID { get; set; }
         public string LicenceNumber { get; set; }
 
-        public DateTime LicenceObtentionDate { get; set; }
-        public DateTime LicenceExpirationDate { get; set; }
+        public DateTime? LicenceObtentionDate { get; set; }
+        public DateTime? LicenceExpirationDate { get; set; }
         public string LicenceCountry { get; set; }
 
         public bool QualificationType1 { get; set; }

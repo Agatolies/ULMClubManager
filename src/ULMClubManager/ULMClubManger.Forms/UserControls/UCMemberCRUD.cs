@@ -294,6 +294,12 @@ namespace ULMClubManger.Forms.UserControls
         {
             try
             {
+                if (_member.IsSupporter)
+                {
+                    _member.LicenceExpirationDate = null;
+                    _member.LicenceObtentionDate = null;
+                }
+
                 MemberService.UpdateOne(_member);
                 RefreshData(_member.ID.Value);
 

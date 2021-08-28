@@ -136,11 +136,13 @@ namespace ULMClubManager.DAL.Repositories
 
         public void UpdateOne(Member domainModel)
         {
+            MbrDBRow param = _memberMapper.To(domainModel);
+
             if (domainModel.IsPilot)
             {
                 _unitOfWork.Connection.Execute(
                     "sp_update_PIL",
-                    param: _memberMapper.To(domainModel),
+                    param: param,
                     commandType: CommandType.StoredProcedure,
                     transaction: _unitOfWork.Transaction);
             }
@@ -148,7 +150,25 @@ namespace ULMClubManager.DAL.Repositories
             {
                 _unitOfWork.Connection.Execute(
                     "sp_update_SYM",
-                    param: _memberMapper.To(domainModel),
+                    param: new { 
+                        MBR_ID = param.MBR_ID,
+                        MBR_NOM = param.MBR_NOM,
+                        MBR_PRN = param.MBR_PRN,
+                        MBR_SEX = param.MBR_SEX,
+                        MBR_DTE_NAI = param.MBR_DTE_NAI,
+                        MBR_DTE_INS = param.MBR_DTE_INS,
+                        MBR_RUE = param.MBR_RUE,
+                        MBR_NOM_RES = param.MBR_NOM_RES,
+                        MBR_NUM_IMM = param.MBR_NUM_IMM,
+                        MBR_NUM_BTE = param.MBR_NUM_BTE,
+                        MBR_NUM_TEL = param.MBR_NUM_TEL,
+                        MBR_NUM_GSM = param.MBR_NUM_GSM,
+                        MBR_ADR_MAIL = param.MBR_ADR_MAIL,
+                        MBR_ADM = param.MBR_ADM,
+                        MBR_USR_PSD = param.MBR_USR_PSD,
+                        MBR_USR_PWD = param.MBR_USR_PWD,
+                        LOC_FK_ID = param.LOC_FK_ID
+                    },
                     commandType: CommandType.StoredProcedure,
                     transaction: _unitOfWork.Transaction);
             }
