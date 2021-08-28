@@ -67,7 +67,7 @@ namespace ULMClubManger.Forms.UserControls
                 // On récupère la liste de TOUS les timeslots
                 .GetTimeSlots()
                 // ...ensuite on supprime les éléments jusqu'à l'heure de début
-                .Where(timeSlot => timeSlot > startTimeSlot)
+                .Where(timeSlot => timeSlot > startTimeSlot.Add(TimeSpan.FromMinutes(45)))
                 // ...et on supprime tous ceux qui sont plus de 6h dans le futur (RG)
                 .Where(timeSlot => timeSlot <= startTimeSlot.Add(TimeSpan.FromHours(6)))
                 .ToList();

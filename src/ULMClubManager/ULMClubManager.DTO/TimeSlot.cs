@@ -19,10 +19,15 @@ namespace ULMClubManager.DTO
         {
             List<TimeSpan> result = new List<TimeSpan>();
 
+            List<string> minutes = new List<string> { "00", "15", "30", "45" };
+
             for (int i = 8; i <= 20; i++)
             {
-                string timeSlot = $"{i}:00";
-                result.Add(TimeSpan.Parse(timeSlot));
+                foreach (string min in minutes)
+                {
+                    string timeSlotHour = $"{i}:{min}";
+                    result.Add(TimeSpan.Parse(timeSlotHour));
+                }
             }
 
             return result;
