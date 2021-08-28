@@ -36,4 +36,7 @@ namespace ULMClubManger.Forms
     public delegate void delBookingForAircraftCreated();
     public delegate void delBookingForAircraftUpdated();
     public delegate void delBookingForAircraftCanceled();
+
+    // Délégués pour le rafraichissement des vues
+    //public delegate
 }

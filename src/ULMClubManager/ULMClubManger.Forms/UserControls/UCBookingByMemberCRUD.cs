@@ -97,6 +97,16 @@ namespace ULMClubManger.Forms.UserControls
             }
         }
 
+        public void EnableDgvBookingByMember()
+        {
+            _dgvBookingByMember.Enabled = true;
+        }
+
+        public void DisableDgvBookingByMember()
+        {
+            _dgvBookingByMember.Enabled = false;
+        }
+
         private void _dgvBookingByMemberCRUD_SelectionChanged(object sender, EventArgs e)
         {
             OnSelectBooking();

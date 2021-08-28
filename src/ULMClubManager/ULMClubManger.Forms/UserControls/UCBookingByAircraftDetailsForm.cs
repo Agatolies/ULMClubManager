@@ -175,41 +175,7 @@ namespace ULMClubManger.Forms.UserControls
                 ((Runway)_cboxBookingByAircraft_Runway.SelectedItem).ID.Value);
         }
 
-        private void OnBookingForAircraftCreating()
-        {
-            if (this.BookingForAircraftCreating != null)
-                this.BookingForAircraftCreating();
-        }
-
-        private void OnBookingForAircraftUpdating()
-        {
-            if (this.BookingForAircraftUpdating != null)
-                this.BookingForAircraftUpdating();
-        }
-
-        private void OnBookingForAircraftCanceling()
-        {
-            if (this.BookingForAircraftCanceling != null)
-                this.BookingForAircraftCanceling();
-        }
-
-        private void OnBookingForAircraftCreated()
-        {
-            if (this.BookingForAircraftCreated != null)
-                this.BookingForAircraftCreated();
-        }
-
-        private void OnBookingForAircraftUpdated()
-        {
-            if (this.BookingForAircraftUpdated != null)
-                this.BookingForAircraftUpdated();
-        }
-
-        private void OnBookingForAircraftCanceled()
-        {
-            if (this.BookingForAircraftCanceled != null)
-                this.BookingForAircraftCanceled();
-        }
+        // Ajout d'une réservation
 
         private void _btnFooterBookingByAircraftCreate_Click(object sender, EventArgs e)
         {
@@ -249,7 +215,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByAircraftCRUD.Visible = true;
                 _panelBookingByAircraft_Details.Visible = false;
 
-                //_dgvBookingByAircraftCRUD.Enabled = true;
+                this.BookingForAircraftCreated();
 
                 MessageBox.Show(
                     $"La réserervation pour {SelectedBooking.MemberFullName} a bien été créé.",
@@ -287,7 +253,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByAircraftCRUD.Visible = true;
                 _panelBookingByAircraft_Details.Visible = false;
 
-                //_dgvBookingByAircraftCRUD.Enabled = true;
+                this.BookingForAircraftCreated();
             }
         }
 
@@ -301,7 +267,7 @@ namespace ULMClubManger.Forms.UserControls
             _panelFooterBookingByAircraft_Update.Visible = true;
             _panelBookingByAircraft_Details.Visible = true;
 
-            //_dgvBookingByAircraftCRUD.Enabled = false;
+            this.BookingForAircraftUpdating();
 
             UnlockControls();
 
@@ -326,7 +292,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByAircraftCRUD.Visible = true;
                 _panelBookingByAircraft_Details.Visible = false;
 
-                //_dgvBookingByAircraftCRUD.Enabled = true;
+                this.BookingForAircraftUpdating();
 
                 MessageBox.Show(
                     $"La réservation pour {SelectedBooking.MemberFullName} a bien été mise à jour.",
@@ -361,7 +327,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByAircraftCRUD.Visible = true;
                 _panelBookingByAircraft_Details.Visible = false;
 
-                //_dgvBookingByAircraftCRUD.Enabled = true;
+                this.BookingForAircraftUpdated();
             }
         }
 
@@ -379,7 +345,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _tboxBookingByAircraft_CancellationReason.Visible = true;
 
-            //_dgvBookingByAircraftCRUD.Enabled = false;
+            this.BookingForAircraftCanceling();
 
             LockControls();
 
@@ -411,7 +377,7 @@ namespace ULMClubManger.Forms.UserControls
 
                     _tboxBookingByAircraft_CancellationReason.Visible = false;
 
-                    //_dgvBookingByAircraftCRUD.Enabled = true;
+                    this.BookingForAircraftCanceled();
                 }
             }
             catch (BusinessException ex)
@@ -438,7 +404,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _tboxBookingByAircraft_CancellationReason.Visible = false;
 
-            //_dgvBookingByAircraftCRUD.Enabled = true;
+            this.BookingForAircraftCanceled();
         }
 
         private void _cboxBookingByAircraft_TimeSlotStart_SelectedIndexChanged(object sender, EventArgs e)

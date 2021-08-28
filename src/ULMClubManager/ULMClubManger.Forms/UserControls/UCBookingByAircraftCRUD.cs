@@ -101,6 +101,16 @@ namespace ULMClubManger.Forms.UserControls
             }
         }
 
+        public void EnableDgvBookingByAircraft()
+        {
+            _dgvBookingByAircraftCRUD.Enabled = true;
+        }
+
+        public void DisableDgvBookingByAircraft()
+        {
+            _dgvBookingByAircraftCRUD.Enabled = false;
+        }
+
         private void _dgvBookingByAircraftCRUD_SelectionChanged(object sender, EventArgs e)
         {
             OnSelectBooking();

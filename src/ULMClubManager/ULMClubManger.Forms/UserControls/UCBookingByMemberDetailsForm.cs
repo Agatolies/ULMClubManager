@@ -179,42 +179,6 @@ namespace ULMClubManger.Forms.UserControls
                 ((Runway)_cboxBookingByMember_Runway.SelectedItem).ID.Value);
         }
 
-        private void OnBookingForMemberCreating()
-        { 
-            if (this.BookingForMemberCreating != null)
-                this.BookingForMemberCreating();
-        }
-
-        private void OnBookingForMemberUpdating()
-        {
-            if (this.BookingForMemberUpdating != null)
-                this.BookingForMemberUpdating();
-        }
-
-        private void OnBookingForMemberCanceling()
-        {
-            if (this.BookingForMemberCanceling != null)
-                this.BookingForMemberCanceling();
-        }
-
-        private void OnBookingForMemberCreated()
-        {
-            if (this.BookingForMemberCreated != null)
-                this.BookingForMemberCreated();
-        }
-
-        private void OnBookingForMemberUpdated()
-        {
-            if (this.BookingForMemberUpdated != null)
-                this.BookingForMemberUpdated();
-        }
-
-        private void OnBookingForMemberCanceled()
-        {
-            if (this.BookingForMemberCanceled != null)
-                this.BookingForMemberCanceled();
-        }
-
         // Ajout d'une réservation
 
         private void _btnFooterBookingByMemberCreate_Click(object sender, EventArgs e)
@@ -257,7 +221,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByMemberCRUD.Visible = true;
                 _panelBookingByMember_Details.Visible = false;
 
-                //_dgvBookingByMemberCRUD.Enabled = true;
+                this.BookingForMemberCreated();
 
                 MessageBox.Show(
                     $"La réserervation pour {SelectedBooking.MemberFullName} a bien été créé.",
@@ -295,7 +259,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByMemberCRUD.Visible = true;
                 _panelBookingByMBR_Details.Visible = false;
 
-                //_dgvBookingByMemberCRUD.Enabled = true;
+                this.BookingForMemberCreated();
             }
         }
 
@@ -309,7 +273,7 @@ namespace ULMClubManger.Forms.UserControls
             _panelFooterBookingByMember_Update.Visible = true;
             _panelBookingByMBR_Details.Visible = true;
 
-            //_dgvBookingByMemberCRUD.Enabled = false;
+            this.BookingForMemberUpdating();
 
             UnlockControls();
 
@@ -334,7 +298,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByMemberCRUD.Visible = true;
                 _panelBookingByMember_Details.Visible = false;
 
-                //_dgvBookingByMemberCRUD.Enabled = true;
+                this.BookingForMemberUpdated();
 
                 MessageBox.Show(
                     $"La réservation pour {SelectedBooking.MemberFullName} a bien été mise à jour.",
@@ -369,7 +333,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByMemberCRUD.Visible = true;
                 _panelBookingByMBR_Details.Visible = false;
 
-                //_dgvBookingByMemberCRUD.Enabled = true;
+                this.BookingForMemberUpdated();
             }
         }
 
@@ -386,7 +350,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _tboxBookingByMBR_CancellationReason.Visible = true;
 
-            //_dgvBookingByMemberCRUD.Enabled = false;
+            this.BookingForMemberCanceling();
 
             LockControls();
 
@@ -419,7 +383,7 @@ namespace ULMClubManger.Forms.UserControls
 
                     _tboxBookingByMBR_CancellationReason.Visible = false;
 
-                    //_dgvBookingByMemberCRUD.Enabled = true;
+                    this.BookingForMemberCanceled();
                 }
             }
             catch (BusinessException ex)
@@ -455,7 +419,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 _tboxBookingByMBR_CancellationReason.Visible = false;
 
-                //_dgvBookingByMemberCRUD.Enabled = true;
+                this.BookingForMemberCanceled();
             }
         }
 

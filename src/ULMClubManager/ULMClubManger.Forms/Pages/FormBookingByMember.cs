@@ -30,34 +30,32 @@ namespace ULMClubManger.Forms.Pages
 
         private void _ucBookingDetailsForm_BookingForMemberCreating()
         {
-            //_ucBookingByMemberCRUD.OnBoo
-            //_dgvBookingByMemberCRUD.Enabled = false;
-            // TODO: implement me
+            _ucBookingByMemberCRUD.DisableDgvBookingByMember();
         }
 
         private void _ucBookingDetailsForm_BookingForMemberUpdating()
         {
-            // TODO: implement me
+            _ucBookingByMemberCRUD.DisableDgvBookingByMember();
         }
 
         private void _ucBookingDetailsForm_BookingForMemberCanceling()
         {
-            // TODO: implement me
+            _ucBookingByMemberCRUD.DisableDgvBookingByMember();
         }
 
         private void _ucBookingDetailsForm_BookingForMemberCreated()
         {
-            // TODO: implement me
+            _ucBookingByMemberCRUD.EnableDgvBookingByMember();
         }
 
         private void _ucBookingDetailsForm_BookingForMemberUpdated()
         {
-            // TODO: implement me
+            _ucBookingByMemberCRUD.EnableDgvBookingByMember();
         }
 
         private void _ucBookingDetailsForm_BookingForMemberCanceled()
         {
-            // TODO: implement me
+            _ucBookingByMemberCRUD.EnableDgvBookingByMember();
         }
     }
 }
