@@ -333,39 +333,50 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByAircraft_CancelConfirm_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show(
+            if (string.IsNullOrWhiteSpace(_tboxBookingByAircraft_CancellationReason.Text))
+            {
+                MessageBox.Show(
+                    "Le motif d'annulation est obligatoire",
+                    "Erreur",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show(
                 "Voulez-vous vraiment annuler cette réservation ?",
                 "Confirmation",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning);
 
-            try
-            {
-                if (dialogResult == DialogResult.OK)
+                try
                 {
-                    CancellationService.CreateOneCancellation(SelectedBooking.ID.Value, _tboxBookingByAircraft_CancellationReason.Text);
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        CancellationService.CreateOneCancellation(SelectedBooking.ID.Value, _tboxBookingByAircraft_CancellationReason.Text);
 
-                    _bookingBackup = null;
+                        _bookingBackup = null;
 
-                    //RefreshData(_selectedBooking.MemberID);
-                    HideErrorMessage();
+                        //RefreshData(_selectedBooking.MemberID);
+                        HideErrorMessage();
 
-                    _panelBookingByAircraft_Details.Visible = false;
-                    _panelFooterBookingByAircraft_Cancel.Visible = false;
-                    _panelFooterBookingByAircraftCRUD.Visible = true;
+                        _panelBookingByAircraft_Details.Visible = false;
+                        _panelFooterBookingByAircraft_Cancel.Visible = false;
+                        _panelFooterBookingByAircraftCRUD.Visible = true;
 
-                    _tboxBookingByAircraft_CancellationReason.Visible = false;
+                        _tboxBookingByAircraft_CancellationReason.Visible = false;
 
-                    this.BookingForAircraftCanceled();
+                        this.BookingForAircraftCanceled();
+                    }
                 }
-            }
-            catch (BusinessException ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
         }
 

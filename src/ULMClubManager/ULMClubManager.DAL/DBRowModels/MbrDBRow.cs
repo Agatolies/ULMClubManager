@@ -31,6 +31,8 @@ namespace ULMClubManager.DAL.DBRowModels
         public int MBR_QUAL_TYP_4 { get; set; }
         public int MBR_QUAL_TYP_5 { get; set; }
         public int MBR_QUAL_TYP_6 { get; set; }
+        public DateTime? COTI_DTE_PAI { get; set; }
+        public int COTI_PERIODE { get; set; }
         public string PIL_NUM_LIC { get; set; }
         public DateTime? PIL_LIC_DTE_OBT { get; set; }
         public DateTime? PIL_LIC_DTE_EXP { get; set; }

@@ -61,6 +61,8 @@ namespace ULMClubManger.Forms.UserControls
 
         private void InitializeData()
         {
+            _btnPaiementSubscriptionDate.Visible = false;
+
             _cboxMBRSex.DisplayMember = "Description";
             _cboxMBRSex.ValueMember = "Key";
             _cboxMBRLocality.DisplayMember = "Name";
@@ -222,6 +224,8 @@ namespace ULMClubManger.Forms.UserControls
             _dtpLICObtentionDte.Value = DateTime.Now;
             _dtpLICExpirationDte.Value = DateTime.Now;
 
+            _gboxSubscription.Visible = false;
+
             UnlockControls(false);
             ClearControls();
         }
@@ -242,6 +246,8 @@ namespace ULMClubManger.Forms.UserControls
 
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Create_btn.Visible = false;
+
+                _gboxSubscription.Visible = true;
 
                 MessageBox.Show(
                     $"Le membre {_member.FullName} a bien été créé.",
@@ -280,6 +286,8 @@ namespace ULMClubManger.Forms.UserControls
 
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Create_btn.Visible = false;
+
+                _gboxSubscription.Visible = true;
             }
         }
 
@@ -291,12 +299,24 @@ namespace ULMClubManger.Forms.UserControls
             UnlockControls(false);
 
             _memberBackup = _member.CreateDeepCopy();
+
+            bool ok = MemberService.IsInOrderOfPaiement(_member.ID.Value);
+            
+            if (!ok)
+            {
+                _btnPaiementSubscriptionDate.Visible = true;
+            }
         }
 
         private void _btnMRBUpdateConfirm_Click(object sender, EventArgs e)
         {
             try
             {
+                if (_dtpPaymentDateSubscription.Visible)
+                    _member.SubscriptionPaiementDate = _dtpPaymentDateSubscription.Value;
+                else
+                    _member.SubscriptionPaiementDate = null;
+
                 if (_member.IsSupporter)
                 {
                     _member.LicenceExpirationDate = null;
@@ -310,6 +330,10 @@ namespace ULMClubManger.Forms.UserControls
 
                 HideErrorMessage();
                 LockControls();
+
+                _dtpPaymentDateSubscription.Visible = false;
+
+                _btnPaiementSubscriptionDate.Visible = false;
 
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Update_btn.Visible = false;
@@ -342,6 +366,10 @@ namespace ULMClubManger.Forms.UserControls
             {
                 LockControls();
                 HideErrorMessage();
+
+                _dtpPaymentDateSubscription.Visible = false;
+
+                _btnPaiementSubscriptionDate.Visible = false;
 
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Update_btn.Visible = false;
@@ -378,6 +406,11 @@ namespace ULMClubManger.Forms.UserControls
             {
                 ShowErrorMessage(ex);
             }
+        }
+
+        private void _btnPaiementSubscriptionDate_Click(object sender, EventArgs e)
+        {
+            _dtpPaymentDateSubscription.Visible = true;
         }
     }
 }

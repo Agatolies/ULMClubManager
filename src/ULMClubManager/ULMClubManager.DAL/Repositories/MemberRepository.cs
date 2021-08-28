@@ -101,7 +101,7 @@ namespace ULMClubManager.DAL.Repositories
                     MBR_QUAL_TYP_3 = domainModel.QualificationType3 ? 1 : 0,
                     MBR_QUAL_TYP_4 = domainModel.QualificationType4 ? 1 : 0,
                     MBR_QUAL_TYP_5 = domainModel.QualificationType5 ? 1 : 0,
-                    MBR_QUAL_TYP_6 = domainModel.QualificationType6 ? 1 : 0,
+                    MBR_QUAL_TYP_6 = domainModel.QualificationType6 ? 1 : 0
                 },
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
@@ -142,7 +142,37 @@ namespace ULMClubManager.DAL.Repositories
             {
                 _unitOfWork.Connection.Execute(
                     "sp_update_PIL",
-                    param: param,
+                    param: new
+                    {
+                        MBR_ID = param.MBR_ID,
+                        MBR_NOM = param.MBR_NOM,
+                        MBR_PRN = param.MBR_PRN,
+                        MBR_SEX = param.MBR_SEX,
+                        MBR_DTE_NAI = param.MBR_DTE_NAI,
+                        MBR_DTE_INS = param.MBR_DTE_INS,
+                        MBR_RUE = param.MBR_RUE,
+                        MBR_NOM_RES = param.MBR_NOM_RES,
+                        MBR_NUM_IMM = param.MBR_NUM_IMM,
+                        MBR_NUM_BTE = param.MBR_NUM_BTE,
+                        MBR_NUM_TEL = param.MBR_NUM_TEL,
+                        MBR_NUM_GSM = param.MBR_NUM_GSM,
+                        MBR_ADR_MAIL = param.MBR_ADR_MAIL,
+                        MBR_ADM = param.MBR_ADM,
+                        MBR_USR_PSD = param.MBR_USR_PSD,
+                        MBR_USR_PWD = param.MBR_USR_PWD,
+                        COTI_DTE_PAI = param.COTI_DTE_PAI,
+                        LOC_FK_ID = param.LOC_FK_ID,
+                        PIL_NUM_LIC = param.PIL_NUM_LIC,
+                        PIL_LIC_DTE_OBT = param.PIL_LIC_DTE_EXP,
+                        PIL_LIC_DTE_EXP = param.PIL_LIC_DTE_EXP,
+                        PIL_LIC_PAYS = param.PIL_LIC_PAYS,
+                        MBR_QUAL_TYP_1 = param.MBR_QUAL_TYP_1,
+                        MBR_QUAL_TYP_2 = param.MBR_QUAL_TYP_2,
+                        MBR_QUAL_TYP_3 = param.MBR_QUAL_TYP_3,
+                        MBR_QUAL_TYP_4 = param.MBR_QUAL_TYP_4,
+                        MBR_QUAL_TYP_5 = param.MBR_QUAL_TYP_5,
+                        MBR_QUAL_TYP_6 = param.MBR_QUAL_TYP_6
+                    },
                     commandType: CommandType.StoredProcedure,
                     transaction: _unitOfWork.Transaction);
             }
@@ -167,6 +197,7 @@ namespace ULMClubManager.DAL.Repositories
                         MBR_ADM = param.MBR_ADM,
                         MBR_USR_PSD = param.MBR_USR_PSD,
                         MBR_USR_PWD = param.MBR_USR_PWD,
+                        COTI_DTE_PAI = param.COTI_DTE_PAI,
                         LOC_FK_ID = param.LOC_FK_ID
                     },
                     commandType: CommandType.StoredProcedure,

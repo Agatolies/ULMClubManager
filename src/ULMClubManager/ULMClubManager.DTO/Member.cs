@@ -16,7 +16,8 @@ namespace ULMClubManager.DTO
             string phoneNumber, string cellphoneNumber, string emailAddress, 
             bool administrator, string userName, string userPWD, int localityID,
             bool qualificationType1, bool qualificationType2, bool qualificationType3,
-            bool qualificationType4, bool qualificationType5, bool qualificationType6)
+            bool qualificationType4, bool qualificationType5, bool qualificationType6,
+            DateTime? subscriptionPaiementDate, int subscriptionPeriod)
         {
             ID = id;
             LicenceNumber = licenceNumber;
@@ -45,6 +46,8 @@ namespace ULMClubManager.DTO
             QualificationType4 = qualificationType4;
             QualificationType5 = qualificationType5;
             QualificationType6 = qualificationType6;
+            SubscriptionPaiementDate = subscriptionPaiementDate;
+            SubscriptionPeriod = subscriptionPeriod;
         }
 
         public Member(string licenceNumber, DateTime licenceObtentionDate,
@@ -55,7 +58,8 @@ namespace ULMClubManager.DTO
             string phoneNumber, string cellphoneNumber, string emailAddress,
             bool administrator, string userName, string userPWD, int localityID,
             bool qualificationType1, bool qualificationType2, bool qualificationType3,
-            bool qualificationType4, bool qualificationType5, bool qualificationType6)
+            bool qualificationType4, bool qualificationType5, bool qualificationType6,
+            DateTime? subscriptionPaiementDate, int subscriptionPeriod)
             : this(null, licenceNumber, licenceObtentionDate,
                 licenceExpirationDate, licenceCountry, 
                 lastName, firstName, sex, 
@@ -64,7 +68,8 @@ namespace ULMClubManager.DTO
                 phoneNumber, cellphoneNumber, emailAddress,
                 administrator, userName, userPWD, localityID, 
                 qualificationType1, qualificationType2, qualificationType3,
-                qualificationType4, qualificationType5, qualificationType6)
+                qualificationType4, qualificationType5, qualificationType6,
+                subscriptionPaiementDate, subscriptionPeriod)
         {
         }
 
@@ -101,6 +106,9 @@ namespace ULMClubManager.DTO
         public bool QualificationType4 { get; set; }
         public bool QualificationType5 { get; set; }
         public bool QualificationType6 { get; set; }
+
+        public DateTime? SubscriptionPaiementDate { get; set; }
+        public int SubscriptionPeriod { get; set; }
 
         public bool IsPilot => LicenceNumber != null;
         public bool IsSupporter => !IsPilot;

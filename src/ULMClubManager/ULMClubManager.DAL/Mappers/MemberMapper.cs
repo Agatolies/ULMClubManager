@@ -38,7 +38,9 @@ namespace ULMClubManager.DAL.Mappers
                 mbr.MBR_QUAL_TYP_3 == 1,
                 mbr.MBR_QUAL_TYP_4 == 1,
                 mbr.MBR_QUAL_TYP_5 == 1,
-                mbr.MBR_QUAL_TYP_6 == 1
+                mbr.MBR_QUAL_TYP_6 == 1,
+                mbr.COTI_DTE_PAI,
+                mbr.COTI_PERIODE
             );
         }
 
@@ -82,6 +84,8 @@ namespace ULMClubManager.DAL.Mappers
             result.MBR_QUAL_TYP_4 = member.QualificationType4 ? 1 : 0;
             result.MBR_QUAL_TYP_5 = member.QualificationType5 ? 1 : 0;
             result.MBR_QUAL_TYP_6 = member.QualificationType6 ? 1 : 0;
+            result.COTI_DTE_PAI = member.SubscriptionPaiementDate;
+            result.COTI_PERIODE = member.SubscriptionPeriod;
 
             return result;
         }

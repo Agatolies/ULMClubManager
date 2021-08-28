@@ -33,7 +33,6 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRLastName = new System.Windows.Forms.Label();
             this._labelMBRFirstName = new System.Windows.Forms.Label();
             this._tboxMBRLastName = new System.Windows.Forms.TextBox();
-            this._bsMember = new System.Windows.Forms.BindingSource(this.components);
             this._tboxMBRFirstName = new System.Windows.Forms.TextBox();
             this._labelMBRID = new System.Windows.Forms.Label();
             this._tboxMBRID = new System.Windows.Forms.TextBox();
@@ -104,10 +103,12 @@ namespace ULMClubManger.Forms.UserControls
             this._labelSubscription = new System.Windows.Forms.Label();
             this._gboxMember = new System.Windows.Forms.GroupBox();
             this._gboxSubscription = new System.Windows.Forms.GroupBox();
+            this._dtpPaymentDateSubscription = new System.Windows.Forms.DateTimePicker();
             this._panelMessages = new System.Windows.Forms.Panel();
             this._panelGroupboxes = new System.Windows.Forms.Panel();
             this._panelRelative = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
+            this._btnPaiementSubscriptionDate = new System.Windows.Forms.Button();
+            this._bsMember = new System.Windows.Forms.BindingSource(this.components);
             this._panelMBR_CRUD_btn.SuspendLayout();
             this._gboxPIL.SuspendLayout();
             this._panelMBR_Update_btn.SuspendLayout();
@@ -117,6 +118,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelMessages.SuspendLayout();
             this._panelGroupboxes.SuspendLayout();
             this._panelRelative.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
             this.SuspendLayout();
             // 
             // _labelMBRLastName
@@ -152,10 +154,6 @@ namespace ULMClubManger.Forms.UserControls
             this._tboxMBRLastName.ReadOnly = true;
             this._tboxMBRLastName.Size = new System.Drawing.Size(240, 20);
             this._tboxMBRLastName.TabIndex = 2;
-            // 
-            // _bsMember
-            // 
-            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
             // 
             // _tboxMBRFirstName
             // 
@@ -712,7 +710,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMRBUpdateConfirm.Name = "_btnMRBUpdateConfirm";
             this._btnMRBUpdateConfirm.Size = new System.Drawing.Size(150, 61);
             this._btnMRBUpdateConfirm.TabIndex = 29;
-            this._btnMRBUpdateConfirm.Text = "Sauvegarder";
+            this._btnMRBUpdateConfirm.Text = "  Confirmer      la modification";
             this._btnMRBUpdateConfirm.UseVisualStyleBackColor = false;
             this._btnMRBUpdateConfirm.Click += new System.EventHandler(this._btnMRBUpdateConfirm_Click);
             // 
@@ -727,7 +725,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRUpdateCancel.Name = "_btnMBRUpdateCancel";
             this._btnMBRUpdateCancel.Size = new System.Drawing.Size(150, 61);
             this._btnMBRUpdateCancel.TabIndex = 31;
-            this._btnMBRUpdateCancel.Text = "Annuler";
+            this._btnMBRUpdateCancel.Text = "Revenir";
             this._btnMBRUpdateCancel.UseVisualStyleBackColor = false;
             this._btnMBRUpdateCancel.Click += new System.EventHandler(this._btnMBRUpdateCancel_Click);
             // 
@@ -753,7 +751,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMRBCreateConfirm.Name = "_btnMRBCreateConfirm";
             this._btnMRBCreateConfirm.Size = new System.Drawing.Size(150, 61);
             this._btnMRBCreateConfirm.TabIndex = 29;
-            this._btnMRBCreateConfirm.Text = "Créer";
+            this._btnMRBCreateConfirm.Text = "Confirmer   l\'ajout";
             this._btnMRBCreateConfirm.UseVisualStyleBackColor = false;
             this._btnMRBCreateConfirm.Click += new System.EventHandler(this._btnMRBCreateConfirm_Click);
             // 
@@ -768,7 +766,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMRBCreateCancel.Name = "_btnMRBCreateCancel";
             this._btnMRBCreateCancel.Size = new System.Drawing.Size(150, 61);
             this._btnMRBCreateCancel.TabIndex = 31;
-            this._btnMRBCreateCancel.Text = "Annuler";
+            this._btnMRBCreateCancel.Text = "Revenir";
             this._btnMRBCreateCancel.UseVisualStyleBackColor = false;
             this._btnMRBCreateCancel.Click += new System.EventHandler(this._btnMRBCreateCancel_Click);
             // 
@@ -1016,6 +1014,8 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _gboxSubscription
             // 
+            this._gboxSubscription.Controls.Add(this._btnPaiementSubscriptionDate);
+            this._gboxSubscription.Controls.Add(this._dtpPaymentDateSubscription);
             this._gboxSubscription.Controls.Add(this._labelSubscription);
             this._gboxSubscription.Dock = System.Windows.Forms.DockStyle.Fill;
             this._gboxSubscription.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold);
@@ -1024,7 +1024,16 @@ namespace ULMClubManger.Forms.UserControls
             this._gboxSubscription.Size = new System.Drawing.Size(907, 137);
             this._gboxSubscription.TabIndex = 55;
             this._gboxSubscription.TabStop = false;
-            this._gboxSubscription.Text = "COTISATIONS";
+            this._gboxSubscription.Text = " COTISATIONS";
+            // 
+            // _dtpPaymentDateSubscription
+            // 
+            this._dtpPaymentDateSubscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this._dtpPaymentDateSubscription.Location = new System.Drawing.Point(636, 33);
+            this._dtpPaymentDateSubscription.Name = "_dtpPaymentDateSubscription";
+            this._dtpPaymentDateSubscription.Size = new System.Drawing.Size(240, 20);
+            this._dtpPaymentDateSubscription.TabIndex = 55;
+            this._dtpPaymentDateSubscription.Visible = false;
             // 
             // _panelMessages
             // 
@@ -1058,6 +1067,24 @@ namespace ULMClubManger.Forms.UserControls
             this._panelRelative.Size = new System.Drawing.Size(907, 747);
             this._panelRelative.TabIndex = 52;
             // 
+            // _btnPaiementSubscriptionDate
+            // 
+            this._btnPaiementSubscriptionDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnPaiementSubscriptionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnPaiementSubscriptionDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this._btnPaiementSubscriptionDate.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this._btnPaiementSubscriptionDate.Location = new System.Drawing.Point(636, 0);
+            this._btnPaiementSubscriptionDate.Name = "_btnPaiementSubscriptionDate";
+            this._btnPaiementSubscriptionDate.Size = new System.Drawing.Size(240, 34);
+            this._btnPaiementSubscriptionDate.TabIndex = 56;
+            this._btnPaiementSubscriptionDate.Text = "Ajouter une date de paiement ?";
+            this._btnPaiementSubscriptionDate.UseVisualStyleBackColor = false;
+            this._btnPaiementSubscriptionDate.Click += new System.EventHandler(this._btnPaiementSubscriptionDate_Click);
+            // 
+            // _bsMember
+            // 
+            this._bsMember.DataSource = typeof(ULMClubManager.DTO.Member);
+            // 
             // UCMemberCRUD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1070,7 +1097,6 @@ namespace ULMClubManger.Forms.UserControls
             this.Controls.Add(this._panelMBR_CRUD_btn);
             this.Name = "UCMemberCRUD";
             this.Size = new System.Drawing.Size(925, 1116);
-            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).EndInit();
             this._panelMBR_CRUD_btn.ResumeLayout(false);
             this._gboxPIL.ResumeLayout(false);
             this._gboxPIL.PerformLayout();
@@ -1084,6 +1110,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelMessages.PerformLayout();
             this._panelGroupboxes.ResumeLayout(false);
             this._panelRelative.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._bsMember)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1167,5 +1194,7 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Panel _panelMessages;
         private System.Windows.Forms.Panel _panelGroupboxes;
         private System.Windows.Forms.Panel _panelRelative;
+        private System.Windows.Forms.DateTimePicker _dtpPaymentDateSubscription;
+        private System.Windows.Forms.Button _btnPaiementSubscriptionDate;
     }
 }

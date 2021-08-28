@@ -35,13 +35,15 @@ namespace ULMClubManager.DTO
                 if (IsForCurrentYear)
                 {
                     description = IsPaid
-                        ? $"Le membre est en ordre de cotisation pour l'année courante."
-                        : $"Le membre n'a pas encore payé pour cette année.";
+                        ? $"Le membre est en ordre de cotisation pour cette année."
+                        : $"Le membre n'est pas en ordre de cotisation cette année.\n" +
+                          $"";
+                          
                 }
                 else
                 {
                     description = IsPaid
-                        ? $"Le membre est en ordre de cotisation pour l'année {TimePeriod}."
+                        ? $"Le membre est en ordre de cotisation pour cette année."
                         : $"Le membre n'est pas en ordre de cotisation pour l'année {TimePeriod}.";
                 }
 

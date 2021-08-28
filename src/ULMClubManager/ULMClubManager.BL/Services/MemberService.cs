@@ -138,14 +138,20 @@ namespace ULMClubManager.BL.Services
 
         public static string GetSubscriptionStatus(int memberID)
         {
-            List<Subscription> subscriptions = ReadAllSubscription(memberID);
-            DateTime today = DateTime.Now;
+            return GetLastSubscription(memberID).Description;
+        }
 
-            Subscription lastSubscription = subscriptions
+        public static Subscription GetLastSubscription(int memberID)
+        {
+            return ReadAllSubscription(memberID)
                 .OrderByDescending(subscription => subscription.TimePeriod)
                 .FirstOrDefault();
+        }
 
-            return lastSubscription.Description;
+        public static bool IsInOrderOfPaiement(int memberID)
+        {
+            Subscription lastSubscription = GetLastSubscription(memberID);
+            return lastSubscription.IsPaid && lastSubscription.IsForCurrentYear;
         }
 
         private static void ValidateMember(Member member)

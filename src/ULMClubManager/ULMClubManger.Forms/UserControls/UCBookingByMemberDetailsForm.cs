@@ -338,42 +338,52 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByMember_CancelConfirm_Click(object sender, EventArgs e)
         {
-
-            DialogResult dialogResult = MessageBox.Show(
+            if (string.IsNullOrWhiteSpace(_tboxBookingByMBR_CancellationReason.Text))
+            {
+                MessageBox.Show(
+                    "Le motif d'annulation est obligatoire",
+                    "Erreur",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show(
                 "Voulez-vous vraiment annuler cette réservation ?",
                 "Confirmation",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning);
 
-            try
-            {
-                if (dialogResult == DialogResult.OK)
+                try
                 {
-                    CancellationService.CreateOneCancellation(SelectedBooking.ID.Value, _tboxBookingByMBR_CancellationReason.Text);
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        CancellationService.CreateOneCancellation(SelectedBooking.ID.Value, _tboxBookingByMBR_CancellationReason.Text);
 
-                    _bookingBackup = null;
+                        _bookingBackup = null;
 
-                    //RefreshData(_selectedBooking.MemberID);
-                    HideErrorMessage();
+                        //RefreshData(_selectedBooking.MemberID);
+                        HideErrorMessage();
 
-                    _labelBookingByMBR_CancellationReason.Visible = false;
+                        _labelBookingByMBR_CancellationReason.Visible = false;
 
-                    _panelBookingByMBR_Details.Visible = false;
-                    _panelFooterBookingByMember_Cancel.Visible = false;
-                    _panelFooterBookingByMemberCRUD.Visible = true;
+                        _panelBookingByMBR_Details.Visible = false;
+                        _panelFooterBookingByMember_Cancel.Visible = false;
+                        _panelFooterBookingByMemberCRUD.Visible = true;
 
-                    _tboxBookingByMBR_CancellationReason.Visible = false;
+                        _tboxBookingByMBR_CancellationReason.Visible = false;
 
-                    this.BookingForMemberCanceled();
+                        this.BookingForMemberCanceled();
+                    }
                 }
-            }
-            catch (BusinessException ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
         }
 
