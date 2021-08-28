@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +14,7 @@ using ULMClubManager.DTO.Helpers;
 
 namespace ULMClubManger.Forms.UserControls
 {
-    public partial class UCBookingByMemberDetailsForm : UserControl
+    public partial class UCBookingByMemberDetailsForm : UCBookingBase, IUCBooking
     {
         public event delBookingForMemberCreating BookingForMemberCreating;
         public event delBookingForMemberUpdating BookingForMemberUpdating;
@@ -26,22 +24,11 @@ namespace ULMClubManger.Forms.UserControls
         public event delBookingForMemberUpdated BookingForMemberUpdated;
         public event delBookingForMemberCanceled BookingForMemberCanceled;
 
-        private DetailedBooking _bookingBackup;
-        private DetailedBooking _selectedBooking;
-        private List<Member> _allPilots; 
-
-
         public UCBookingByMemberDetailsForm()
         {
             InitializeComponent();
             InitializeData();
         }
-
-        public int SelectedPilotID { get; set; }
-
-        public Member SelectedPilot => _allPilots
-                .Where(pilot => pilot.ID == SelectedPilotID)
-                .FirstOrDefault();
 
         public DetailedBooking SelectedBooking
         {
@@ -69,11 +56,13 @@ namespace ULMClubManger.Forms.UserControls
             }
         }
 
-        private void InitializeData()
+        private new void InitializeData()
         {
-            _cboxBookingByMember_TimeSlotStart.DataSource = GetTimeSlotsStart();
-            _cboxBookingByMember_TimeSlotEnd.DataSource = TimeSlot.GetTimeSlots();
-            _cboxBookingByMember_Runway.DataSource = RunwayService.ReadAll();
+            base.InitializeData();
+
+            _cboxBookingByMember_TimeSlotStart.DataSource = _timeSlotsStart;
+            _cboxBookingByMember_TimeSlotEnd.DataSource = _timeSlotsEnd;
+            _cboxBookingByMember_Runway.DataSource = _allRunways;
 
             _cboxBookingByMember_Aircraft.DisplayMember = "Registration";
             _cboxBookingByMember_Aircraft.ValueMember = "ID";
@@ -82,11 +71,9 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_MemberName.DisplayMember = "FullName";
             _cboxBookingByMember_MemberName.ValueMember = "ID";
 
-            _allPilots = MemberService.ReadAllPilots();
-
             _bsPilots.DataSource = _allPilots;
-            _bsAircrafts.DataSource = AircraftService.ReadAll();
-            _bsRunways.DataSource = RunwayService.ReadAll();
+            _bsAircrafts.DataSource = _allAircrafts;
+            _bsRunways.DataSource = _allRunways;
 
             _panelBookingByMBR_Details.Visible = false;
             _panelBookingByMember_Details.Visible = false;
@@ -98,12 +85,7 @@ namespace ULMClubManger.Forms.UserControls
             //}
         }
 
-        private void ClearData()
-        {
-            _bsAircrafts.Clear();
-        }
-
-        private void ShowErrorMessage(BusinessException ex)
+        public void ShowErrorMessage(BusinessException ex)
         {
             string decoded = Rules.MessageDecoder(ex);
 
@@ -111,7 +93,7 @@ namespace ULMClubManger.Forms.UserControls
             _labelBookingByMBR_ErrorMessage.Visible = true;
         }
 
-        private void ShowErrorMessage(Exception ex)
+        public void ShowErrorMessage(Exception ex)
         {
             string decoded = Rules.MessageDecoder(ContextError.RES, ex.Message);
 
@@ -119,38 +101,22 @@ namespace ULMClubManger.Forms.UserControls
             _labelBookingByMBR_ErrorMessage.Visible = true;
         }
 
-        private void HideErrorMessage()
+        public void HideErrorMessage()
         {
             _labelBookingByMBR_ErrorMessage.Text = "";
             _labelBookingByMBR_ErrorMessage.Visible = false;
         }
 
-        private List<TimeSpan> GetTimeSlotsStart()
-        {
-            List<TimeSpan> allTimeSlots = TimeSlot.GetTimeSlots();
-            allTimeSlots.RemoveAt(allTimeSlots.Count - 1);
-
-            return allTimeSlots;
-        }
-
-        private void RefreshTimeSlotsEnd()
+        public void RefreshTimeSlotsEnd()
         {
             // On récupère l'heure de début
             TimeSpan startTimeSlot = (TimeSpan)_cboxBookingByMember_TimeSlotStart.SelectedValue;
-
-            List<TimeSpan> timeSlots = TimeSlot
-                // On récupère la liste de TOUS les timeslots
-                .GetTimeSlots()
-                // ...ensuite on supprime les éléments jusqu'à l'heure de début
-                .Where(timeSlot => timeSlot > startTimeSlot)
-                // ...et on supprime tous ceux qui sont plus de 6h dans le futur (RG)
-                .Where(timeSlot => timeSlot <= startTimeSlot.Add(TimeSpan.FromHours(6)))
-                .ToList();
+            List<TimeSpan> timeSlots = GetMaximumBookingHours(startTimeSlot);
 
             _cboxBookingByMember_TimeSlotEnd.DataSource = timeSlots;
         }
 
-        private void RefreshDetailsForm()
+        public void RefreshDetailsForm()
         {
             _cboxBookingByMember_Aircraft.SelectedValue = SelectedBooking.AircraftID;
             _dtpBookingByMember_Date.Value = SelectedBooking.Date;
@@ -159,7 +125,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_Runway.SelectedValue = SelectedBooking.RunwayID;
         }
 
-        private void ClearControls()
+        public void ClearControls()
         {
             _cboxBookingByMember_Aircraft.SelectedValue = -1;
             _dtpBookingByMember_Date.Value = DateTime.Now;
@@ -167,7 +133,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_Runway.SelectedValue = -1;
         }
 
-        private void LockControls()
+        public void LockControls()
         {
             _cboxBookingByMember_Aircraft.Enabled = false;
             _dtpBookingByMember_Date.Enabled = false;
@@ -185,7 +151,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_Runway.Enabled = true;
         }
 
-        private Booking GetEditedBooking()
+        public Booking GetEditedBooking()
         {
             return new Booking(
                 _dtpBookingByMember_Date.Value,
@@ -241,11 +207,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 this.BookingForMemberCreated();
 
-                MessageBox.Show(
-                    $"La réserervation pour {SelectedPilot.FullName} a bien été créé.",
-                    "Information",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                ShowCreateBookingConfirmation(SelectedPilot.FullName);
             }
             catch (BusinessException ex)
             {
@@ -259,11 +221,7 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByMember_CreateCancel_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show(
-                "Voulez-vous annuler la création de cette réservation ?",
-                "Attention",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
+            DialogResult dialogResult = ShowCancelBookingCreation();
 
             if (dialogResult == DialogResult.Yes)
             {
@@ -276,6 +234,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByMember_Create.Visible = false;
                 _panelFooterBookingByMemberCRUD.Visible = true;
                 _panelBookingByMBR_Details.Visible = false;
+
                 this.BookingForMemberCreated();
             }
         }

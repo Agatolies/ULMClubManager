@@ -89,6 +89,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIDelegates.cs" />
+    <Compile Include="UserControls\UCBookingBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\UCBookingByAircraftCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>

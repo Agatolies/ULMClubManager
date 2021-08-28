@@ -16,7 +16,7 @@ using ULMClubManager.DTO.Helpers;
 
 namespace ULMClubManger.Forms.UserControls
 {
-    public partial class UCBookingByAircraftDetailsForm : UserControl
+    public partial class UCBookingByAircraftDetailsForm : UCBookingBase, IUCBooking
     {
         public event delBookingForAircraftCreated BookingForAircraftCreating;
         public event delBookingForAircraftUpdated BookingForAircraftUpdating;
@@ -25,9 +25,6 @@ namespace ULMClubManger.Forms.UserControls
         public event delBookingForAircraftCreated BookingForAircraftCreated;
         public event delBookingForAircraftUpdated BookingForAircraftUpdated;
         public event delBookingForAircraftCanceled BookingForAircraftCanceled;
-
-        private DetailedBooking _bookingBackup;
-        private DetailedBooking _selectedBooking;
 
         public UCBookingByAircraftDetailsForm()
         {
@@ -61,10 +58,12 @@ namespace ULMClubManger.Forms.UserControls
             }
         }
 
-        private void InitializeData()
+        private new void InitializeData()
         {
-            _cboxBookingByAircraft_TimeSlotStart.DataSource = GetTimeSlotsStart();
-            _cboxBookingByAircraft_TimeSlotEnd.DataSource = TimeSlot.GetTimeSlots();
+            base.InitializeData();
+
+            _cboxBookingByAircraft_TimeSlotStart.DataSource = _timeSlotsStart;
+            _cboxBookingByAircraft_TimeSlotEnd.DataSource = _timeSlotsEnd;
 
             _cboxBookingByAircraft_Aircraft.DisplayMember = "Registration";
             _cboxBookingByAircraft_Aircraft.ValueMember = "ID";
@@ -73,19 +72,14 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_MemberName.DisplayMember = "FullName";
             _cboxBookingByAircraft_MemberName.ValueMember = "ID";
 
-            _bsAircrafts.DataSource = AircraftService.ReadAll(); 
-            _bsPilots.DataSource = MemberService.ReadAllPilots();
-            _bsRunways.DataSource = RunwayService.ReadAll();
+            _bsAircrafts.DataSource = _allAircrafts;
+            _bsPilots.DataSource = _allPilots;
+            _bsRunways.DataSource = _allRunways;
 
             _panelBookingByAircraft_Details.Visible = false;
         }
 
-        private void ClearData()
-        {
-            _bsAircrafts.Clear();
-        }
-
-        private void ShowErrorMessage(BusinessException ex)
+        public void ShowErrorMessage(BusinessException ex)
         {
             string decoded = Rules.MessageDecoder(ex);
 
@@ -93,7 +87,7 @@ namespace ULMClubManger.Forms.UserControls
             _labelBookingByAircraft_ErrorMessage.Visible = true;
         }
 
-        private void ShowErrorMessage(Exception ex)
+        public void ShowErrorMessage(Exception ex)
         {
             string decoded = Rules.MessageDecoder(ContextError.RES, ex.Message);
 
@@ -101,38 +95,22 @@ namespace ULMClubManger.Forms.UserControls
             _labelBookingByAircraft_ErrorMessage.Visible = true;
         }
 
-        private void HideErrorMessage()
+        public void HideErrorMessage()
         {
             _labelBookingByAircraft_ErrorMessage.Text = "";
             _labelBookingByAircraft_ErrorMessage.Visible = false;
         }
 
-        private List<TimeSpan> GetTimeSlotsStart()
-        {
-            List<TimeSpan> allTimeSlots = TimeSlot.GetTimeSlots();
-            allTimeSlots.RemoveAt(allTimeSlots.Count - 1);
-
-            return allTimeSlots;
-        }
-
-        private void RefreshTimeSlotsEnd()
+        public void RefreshTimeSlotsEnd()
         {
             // On récupère l'heure de début
             TimeSpan startTimeSlot = (TimeSpan)_cboxBookingByAircraft_TimeSlotStart.SelectedValue;
-
-            List<TimeSpan> timeSlots = TimeSlot
-                // On récupère la liste de TOUS les timeslots
-                .GetTimeSlots()
-                // ...ensuite on supprime les éléments jusqu'à l'heure de début
-                .Where(timeSlot => timeSlot > startTimeSlot)
-                // ...et on supprime tous ceux qui sont plus de 6h dans le futur (RG)
-                .Where(timeSlot => timeSlot <= startTimeSlot.Add(TimeSpan.FromHours(6)))
-                .ToList();
+            List<TimeSpan> timeSlots = GetMaximumBookingHours(startTimeSlot);
 
             _cboxBookingByAircraft_TimeSlotEnd.DataSource = timeSlots;
         }
 
-        private void RefreshDetailsForm()
+        public void RefreshDetailsForm()
         {
             _cboxBookingByAircraft_MemberName.SelectedValue = SelectedBooking.MemberID;
             _cboxBookingByAircraft_Aircraft.SelectedValue = SelectedBooking.AircraftID;
@@ -142,7 +120,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_Runway.SelectedValue = SelectedBooking.RunwayID;
         }
 
-        private void ClearControls()
+        public void ClearControls()
         {
             _cboxBookingByAircraft_Aircraft.SelectedValue = -1;
             _dtpBookingByAircraft_Date.Value = DateTime.Now;
@@ -151,7 +129,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_MemberName.SelectedValue = -1;
         }
 
-        private void LockControls()
+        public void LockControls()
         {
             _cboxBookingByAircraft_Aircraft.Enabled = false;
             _dtpBookingByAircraft_Date.Enabled = false;
@@ -169,7 +147,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_Runway.Enabled = true;
         }
 
-        private Booking GetEditedBooking()
+        public Booking GetEditedBooking()
         {
             return new Booking(
                 _dtpBookingByAircraft_Date.Value,
@@ -225,11 +203,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 this.BookingForAircraftCreated();
 
-                MessageBox.Show(
-                    $"La réserervation pour {SelectedBooking.MemberFullName} a bien été créé.",
-                    "Information",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                ShowCreateBookingConfirmation(_cboxBookingByAircraft_MemberName.Text);
             }
             catch (BusinessException ex)
             {
@@ -243,11 +217,7 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByAircraft_CreateCancel_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show(
-                "Voulez-vous annuler la création de cette réservation ?",
-                "Attention",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
+            DialogResult dialogResult = ShowCancelBookingCreation();
 
             if (dialogResult == DialogResult.Yes)
             {
