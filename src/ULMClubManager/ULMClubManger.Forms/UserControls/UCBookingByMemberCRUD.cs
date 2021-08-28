@@ -73,11 +73,6 @@ namespace ULMClubManger.Forms.UserControls
                 Bookings.Remove(can);
         }
 
-        private void ClearData()
-        {
-            _bsBookings.Clear();
-        }
-
         private void OnSelectBooking()
         {
             // Utilisation du délégué pour notifier le UCBookingByMemberDetailsForm

@@ -154,10 +154,11 @@ namespace ULMClubManger.Forms.UserControls
         public Booking GetEditedBooking()
         {
             return new Booking(
+                SelectedBooking.ID,
                 _dtpBookingByMember_Date.Value,
                 (TimeSpan)_cboxBookingByMember_TimeSlotStart.SelectedItem,
                 (TimeSpan)_cboxBookingByMember_TimeSlotEnd.SelectedItem,
-                "",
+                null,
                 null,
                 null,
                 SelectedPilotID,

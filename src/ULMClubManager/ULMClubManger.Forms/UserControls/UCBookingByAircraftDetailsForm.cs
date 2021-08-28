@@ -150,10 +150,11 @@ namespace ULMClubManger.Forms.UserControls
         public Booking GetEditedBooking()
         {
             return new Booking(
+                SelectedBooking.ID,
                 _dtpBookingByAircraft_Date.Value,
                 (TimeSpan)_cboxBookingByAircraft_TimeSlotStart.SelectedItem,
                 (TimeSpan)_cboxBookingByAircraft_TimeSlotEnd.SelectedItem,
-                "",
+                null,
                 null,
                 null,
                 ((Member)_cboxBookingByAircraft_MemberName.SelectedItem).ID.Value,
@@ -370,19 +371,28 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByAircraft_CancelCancel_Click(object sender, EventArgs e)
         {
-            SelectedBooking = _bookingBackup;
-            _bookingBackup = null;
+            DialogResult dialogResult = MessageBox.Show(
+                "Voulez-vous annuler l'opération en cours ?",
+                "Attention",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
-            LockControls();
-            HideErrorMessage();
+            if (dialogResult == DialogResult.Yes)
+            {
+                SelectedBooking = _bookingBackup;
+                _bookingBackup = null;
 
-            _panelBookingByAircraft_Details.Visible = false;
-            _panelFooterBookingByAircraft_Cancel.Visible = false;
-            _panelFooterBookingByAircraftCRUD.Visible = true;
+                LockControls();
+                HideErrorMessage();
 
-            _tboxBookingByAircraft_CancellationReason.Visible = false;
+                _panelBookingByAircraft_Details.Visible = false;
+                _panelFooterBookingByAircraft_Cancel.Visible = false;
+                _panelFooterBookingByAircraftCRUD.Visible = true;
 
-            this.BookingForAircraftCanceled();
+                _tboxBookingByAircraft_CancellationReason.Visible = false;
+
+                this.BookingForAircraftCanceled();
+            }
         }
 
         private void _cboxBookingByAircraft_TimeSlotStart_SelectedIndexChanged(object sender, EventArgs e)

@@ -116,7 +116,7 @@ namespace ULMClubManager.DAL.Repositories
             return ReadLast();
         }
 
-        public void UpdateOne(DetailedBooking domainModel)
+        public override void UpdateOne(Booking domainModel)
         {
             _unitOfWork.Connection.Execute(
                 "sp_update_RES",
