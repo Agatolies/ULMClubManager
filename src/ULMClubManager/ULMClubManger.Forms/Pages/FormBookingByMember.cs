@@ -21,6 +21,7 @@ namespace ULMClubManger.Forms.Pages
         private void _ucBookingPickerByPilot_SelectPilot(int memberID)
         {
             _ucBookingByMemberCRUD.RefreshData(memberID);
+            _ucBookingByMemberDetailsForm.SelectedPilotID = memberID;
         }
 
         private void _ucBookingByMemberCRUD_SelectBooking(DetailedBooking selectedBooking)

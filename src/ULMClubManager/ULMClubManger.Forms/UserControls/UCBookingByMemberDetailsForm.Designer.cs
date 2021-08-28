@@ -591,6 +591,7 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _cboxBookingByMember_MemberName
             // 
+            this._cboxBookingByMember_MemberName.DataSource = this._bsPilots;
             this._cboxBookingByMember_MemberName.Enabled = false;
             this._cboxBookingByMember_MemberName.FormattingEnabled = true;
             this._cboxBookingByMember_MemberName.Location = new System.Drawing.Point(18, 60);

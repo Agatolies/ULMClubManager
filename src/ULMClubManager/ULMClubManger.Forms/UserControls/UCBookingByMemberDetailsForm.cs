@@ -37,6 +37,8 @@ namespace ULMClubManger.Forms.UserControls
             InitializeData();
         }
 
+        public int SelectedPilotID { get; set; }
+
         public DetailedBooking SelectedBooking
         {
             get { return _selectedBooking; }
@@ -192,7 +194,7 @@ namespace ULMClubManger.Forms.UserControls
             _bookingBackup = SelectedBooking?.CreateDeepCopy();
 
             _cboxBookingByMember_MemberName.SelectedItem = _allPilots
-                .Where(pilot => pilot.ID == _selectedBooking.MemberID)
+                .Where(pilot => pilot.ID == SelectedPilotID)
                 .FirstOrDefault();
 
             _dtpBookingByMember_Date.Value = DateTime.Now;
