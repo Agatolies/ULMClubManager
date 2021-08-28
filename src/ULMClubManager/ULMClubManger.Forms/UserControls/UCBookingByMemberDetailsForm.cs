@@ -39,6 +39,10 @@ namespace ULMClubManger.Forms.UserControls
 
         public int SelectedPilotID { get; set; }
 
+        public Member SelectedPilot => _allPilots
+                .Where(pilot => pilot.ID == SelectedPilotID)
+                .FirstOrDefault();
+
         public DetailedBooking SelectedBooking
         {
             get { return _selectedBooking; }
@@ -193,9 +197,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _bookingBackup = SelectedBooking?.CreateDeepCopy();
 
-            _cboxBookingByMember_MemberName.SelectedItem = _allPilots
-                .Where(pilot => pilot.ID == SelectedPilotID)
-                .FirstOrDefault();
+            _cboxBookingByMember_MemberName.SelectedItem = SelectedPilot;
 
             _dtpBookingByMember_Date.Value = DateTime.Now;
 
@@ -275,11 +277,13 @@ namespace ULMClubManger.Forms.UserControls
             _panelFooterBookingByMember_Update.Visible = true;
             _panelBookingByMBR_Details.Visible = true;
 
+            _cboxBookingByMember_MemberName.SelectedItem = SelectedPilot;
+
             this.BookingForMemberUpdating();
 
             UnlockControls();
 
-            _bookingBackup = SelectedBooking.CreateDeepCopy();
+            _bookingBackup = SelectedBooking?.CreateDeepCopy();
         }
 
         private void _btnFooterBookingByMember_UpdateConfirm_Click(object sender, EventArgs e)
