@@ -43,11 +43,19 @@ namespace ULMClubManger.Forms.UserControls
                 if (value != null)
                 {
                     _selectedBooking = value;
+
+                    _btnFooterBookingByAircraftUpdate.Visible = true;
+                    _btnFooterBookingByAircraftCancel.Visible = true;
+
                     RefreshDetailsForm();
                 }
                 else
                 {
                     _cboxBookingByAircraft_MemberName.SelectedIndex = -1;
+
+                    _btnFooterBookingByAircraftUpdate.Visible = false;
+                    _btnFooterBookingByAircraftCancel.Visible = false;
+
                     ClearControls();
                 }
             }

@@ -51,11 +51,19 @@ namespace ULMClubManger.Forms.UserControls
                 if (value != null)
                 {
                     _selectedBooking = value;
+
+                    _btnFooterBookingByMemberUpdate.Visible = true;
+                    _btnFooterBookingByMemberCancel.Visible = true;
+
                     RefreshDetailsForm();
                 }
                 else
                 {
                     _cboxBookingByMember_MemberName.SelectedIndex = -1;
+
+                    _btnFooterBookingByMemberUpdate.Visible = false;
+                    _btnFooterBookingByMemberCancel.Visible = false;
+
                     ClearControls();
                 }
             }
@@ -82,6 +90,12 @@ namespace ULMClubManger.Forms.UserControls
 
             _panelBookingByMBR_Details.Visible = false;
             _panelBookingByMember_Details.Visible = false;
+
+            //if (BookingService.ReadAllBookingByPilotID(SelectedPilotID) == null)
+            //{
+            //    _btnFooterBookingByMemberUpdate.Visible = false;
+            //    _btnFooterBookingByMemberCancel.Visible = false;
+            //}
         }
 
         private void ClearData()
@@ -180,7 +194,7 @@ namespace ULMClubManger.Forms.UserControls
                 "",
                 null,
                 null,
-                SelectedBooking.MemberID,
+                SelectedPilotID,
                 ((Aircraft)_cboxBookingByMember_Aircraft.SelectedItem).ID.Value,
                 ((Runway)_cboxBookingByMember_Runway.SelectedItem).ID.Value);
         }
@@ -228,7 +242,7 @@ namespace ULMClubManger.Forms.UserControls
                 this.BookingForMemberCreated();
 
                 MessageBox.Show(
-                    $"La réserervation pour {SelectedBooking.MemberFullName} a bien été créé.",
+                    $"La réserervation pour {SelectedPilot.FullName} a bien été créé.",
                     "Information",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
