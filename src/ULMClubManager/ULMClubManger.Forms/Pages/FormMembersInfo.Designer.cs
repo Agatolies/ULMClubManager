@@ -37,16 +37,16 @@ namespace ULMClubManger.Forms.Pages
             // 
             this._ucMemberCRUD.BackColor = System.Drawing.Color.WhiteSmoke;
             this._ucMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._ucMemberCRUD.Location = new System.Drawing.Point(234, 0);
+            this._ucMemberCRUD.Location = new System.Drawing.Point(0, 0);
             this._ucMemberCRUD.Name = "_ucMemberCRUD";
-            this._ucMemberCRUD.Size = new System.Drawing.Size(554, 778);
+            this._ucMemberCRUD.Size = new System.Drawing.Size(927, 778);
             this._ucMemberCRUD.TabIndex = 1;
             // 
             // _ucMemberPicker
             // 
             this._ucMemberPicker.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._ucMemberPicker.Dock = System.Windows.Forms.DockStyle.Left;
-            this._ucMemberPicker.Location = new System.Drawing.Point(0, 0);
+            this._ucMemberPicker.Dock = System.Windows.Forms.DockStyle.Right;
+            this._ucMemberPicker.Location = new System.Drawing.Point(927, 0);
             this._ucMemberPicker.Name = "_ucMemberPicker";
             this._ucMemberPicker.Size = new System.Drawing.Size(234, 778);
             this._ucMemberPicker.TabIndex = 0;
@@ -57,7 +57,7 @@ namespace ULMClubManger.Forms.Pages
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(788, 778);
+            this.ClientSize = new System.Drawing.Size(1161, 778);
             this.Controls.Add(this._ucMemberCRUD);
             this.Controls.Add(this._ucMemberPicker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

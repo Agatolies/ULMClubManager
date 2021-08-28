@@ -92,9 +92,21 @@ namespace ULMClubManager.BL.Services
         {
             using (DalSession dalSession = new DalSession())
             {
-                Booking booking = dalSession.Bookings.ReadOne(29);
-                booking.AircraftID = 3;
-                dalSession.Bookings.UpdateOne(booking);
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+
+                    Booking booking = dalSession.Bookings.ReadOne(29);
+                    booking.AircraftID = 3;
+                    dalSession.Bookings.UpdateOne(booking);
+
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
             }
         }
 
@@ -114,6 +126,26 @@ namespace ULMClubManager.BL.Services
                     throw;
                 }
             }
+        }
+
+        public static List<Subscription> ReadAllSubscription(int memberID)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Subscriptions.ReadAllByMemberID(memberID);
+            }
+        }
+
+        public static string GetSubscriptionStatus(int memberID)
+        {
+            List<Subscription> subscriptions = ReadAllSubscription(memberID);
+            DateTime today = DateTime.Now;
+
+            Subscription lastSubscription = subscriptions
+                .OrderByDescending(subscription => subscription.TimePeriod)
+                .FirstOrDefault();
+
+            return lastSubscription.Description;
         }
 
         private static void ValidateMember(Member member)

@@ -65,18 +65,21 @@ namespace ULMClubManger.Forms.UserControls
             _cboxMBRSex.ValueMember = "Key";
             _cboxMBRLocality.DisplayMember = "Name";
             _cboxMBRLocality.ValueMember = "ID";
+            _cboxMBRSex.DataSource = Gender.GetGenders();
 
             _panelMBR_Update_btn.Visible = false;
             _panelMBR_Create_btn.Visible = false;
+
             _labelError.Visible = false;
 
-            _cboxMBRSex.DataSource = Gender.GetGenders();
             _localities = LocalityService.ReadAll();
         }
 
         public void RefreshData(int memberID)
         {
             Member = MemberService.ReadOne(memberID);
+
+            _labelSubscription.Text = MemberService.GetSubscriptionStatus(memberID);
         }
 
         public void ClearData()

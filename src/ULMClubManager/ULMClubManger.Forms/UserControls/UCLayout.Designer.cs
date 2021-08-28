@@ -62,7 +62,7 @@ namespace ULMClubManger.Forms.UserControls
             // _ucSideBar
             // 
             this._ucSideBar.AutoScroll = true;
-            this._ucSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(13)))), ((int)(((byte)(6)))));
+            this._ucSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
             this._ucSideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this._ucSideBar.Location = new System.Drawing.Point(0, 0);
             this._ucSideBar.MinimumSize = new System.Drawing.Size(225, 600);

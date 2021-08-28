@@ -5,29 +5,53 @@ namespace ULMClubManager.DTO
 {
     public class Subscription : IDomainModel
     {
-        public Subscription(int? id, DateTime issueDate, DateTime paymentDate, decimal fee, int memberID)
+        public Subscription(int? id, DateTime? paymentDate, int timePeriod, int memberID)
         {
             ID = id;
-            IssueDate = issueDate;
             PaymentDate = paymentDate;
-            Fee = fee;
+            TimePeriod = timePeriod;
             MemberID = memberID;
         }
 
-        public Subscription(DateTime issueDate, DateTime paymentDate, decimal fee, int memberID)
-            : this(null, issueDate, paymentDate, fee, memberID)
+        public Subscription(DateTime? paymentDate, int timePeriod, int memberID)
+            : this(null, paymentDate, timePeriod, memberID)
         {
         }
 
         public int? ID { get; }
-        public DateTime IssueDate { get; set; }
-        public DateTime PaymentDate { get; set; }
-        public decimal Fee { get; set; }
+        public DateTime? PaymentDate { get; set; }
+        public int TimePeriod { get; set; }
         public int MemberID { get; set; }
 
+        public bool IsPaid => PaymentDate != null;
+        public bool IsForCurrentYear => DateTime.Now.Year == TimePeriod;
+
+        public string Description
+        {
+            get
+            {
+                string description;
+
+                if (IsForCurrentYear)
+                {
+                    description = IsPaid
+                        ? $"Le membre est en ordre de cotisation pour l'année courante."
+                        : $"Le membre n'a pas encore payé pour cette année.";
+                }
+                else
+                {
+                    description = IsPaid
+                        ? $"Le membre est en ordre de cotisation pour l'année {TimePeriod}."
+                        : $"Le membre n'est pas en ordre de cotisation pour l'année {TimePeriod}.";
+                }
+
+                return description;
+            }
+        }
+        
         public override string ToString()
         {
-            return $"Cotisation émise au {IssueDate:d} pour un montant de {Fee}";
+            return Description;
         }
     }
 }
