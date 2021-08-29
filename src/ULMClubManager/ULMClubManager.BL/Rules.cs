@@ -40,10 +40,16 @@ namespace ULMClubManager.BL
             return new Dictionary<string, string>
             {
                 { "BS_AER_ID", "La recherche doit se faire par le numéro de l'AER." },
-                { "CHK_RES_DTE_NOT_IN_PAST", "La date de réservation ne peut pas être dans le passée." },
+                { "BS_COTI_INVALID", "Réservation impossible. Le membre n'est pas en ordre de cotisation." },
+                { "BS_RES_DEADLINE", "La date de réservation doit être antérieure à mars de l'année prochaine." },
+                { "BS_RES_QUAL", "Le pilote n'a pas la qualification requise." },
+                { "BS_RES_LIC", "La license du pilote aura expiré à cette date." },
+                { "BS_RES_PIL_UNAVAILABLE", "Le pilote est indisponible pour ce créneau horaire." },
+                { "BS_RES_PIST_UNAVAILABLE", "La piste est indisponible pour ce créneau horaire." },
+                { "BS_RES_AER_UNAVAILABLE", "L'aéronef est indisponible pour ce créneau horaire." },
+                { "CHK_RES_DTE_NOT_IN_PAST", "La date de réservation ne peut pas être dans le passé." },
                 { "CHK_RES_DTE", "La date de réservation ne peut pas être supérieure à la date d'encodage plus trois mois." },
                 { "CHK_RES_HEU_FIN", "La durée d'une réservation doit être comprise entre 1 et 6 heures." }
-                //{ "CHK_RES_IS_VALID_LICENCE", "La date de réservation doit être antérieure à la date d'expiration de la licence + 1 mois." }
             };
         }
 

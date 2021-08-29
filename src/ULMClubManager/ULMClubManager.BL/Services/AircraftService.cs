@@ -18,6 +18,14 @@ namespace ULMClubManager.BL.Services
             }
         }
 
+        public static Aircraft ReadOne(int aircraftID)
+        {
+            using (DalSession dalSession = new DalSession())
+            {
+                return dalSession.Aircrafts.ReadOne(aircraftID);
+            }
+        }
+
         public static List<AircraftCategory> ReadAllCategories()
         {
             using (DalSession dalSession = new DalSession())

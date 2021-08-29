@@ -166,6 +166,15 @@ namespace ULMClubManger.Forms.UserControls
                 ((Runway)_cboxBookingByMember_Runway.SelectedItem).ID.Value);
         }
 
+        private bool DetectedUnfilledFields()
+        {
+            bool isMemberNameNotFilled = _cboxBookingByMember_MemberName.SelectedIndex == -1;
+            bool isAircraftNotFilled = _cboxBookingByMember_Aircraft.SelectedIndex == -1;
+            bool isRunwayNotFilled = _cboxBookingByMember_Runway.SelectedIndex == -1;
+            bool hasError = isMemberNameNotFilled || isAircraftNotFilled || isRunwayNotFilled;
+            return hasError;
+        }
+
         // Ajout d'une réservation
 
         private void _btnFooterBookingByMemberCreate_Click(object sender, EventArgs e)
@@ -190,33 +199,44 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByMember_CreateConfirm_Click(object sender, EventArgs e)
         {
-            try
+            bool hasError = DetectedUnfilledFields();
+            if (hasError)
             {
-                Booking booking = GetEditedBooking();
-
-                BookingService.CreateOne(booking);
-
-                _bookingBackup = null;
-
-                //RefreshData(_selectedBooking.MemberID);
-                HideErrorMessage();
-                LockControls();
-
-                _panelFooterBookingByMember_Create.Visible = false;
-                _panelFooterBookingByMemberCRUD.Visible = true;
-                _panelBookingByMBR_Details.Visible = false;
-
-                this.BookingForMemberCreated();
-
-                ShowCreateBookingConfirmation(SelectedPilot.FullName);
+                MessageBox.Show(
+                    $"Toutes les données doivent être complétées",
+                    "Erreur",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-            catch (BusinessException ex)
+            else
             {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
+                try
+                {
+                    Booking booking = GetEditedBooking();
+                    BookingService.CreateOne(booking);
+
+                    _bookingBackup = null;
+
+                    //RefreshData(_selectedBooking.MemberID);
+                    HideErrorMessage();
+                    LockControls();
+
+                    _panelFooterBookingByMember_Create.Visible = false;
+                    _panelFooterBookingByMemberCRUD.Visible = true;
+                    _panelBookingByMBR_Details.Visible = false;
+
+                    this.BookingForMemberCreated();
+
+                    ShowCreateBookingConfirmation(SelectedPilot.FullName);
+                }
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
         }
 

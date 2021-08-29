@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ULMClubManager.DAL;
 using ULMClubManager.DTO;
+using ULMClubManager.DTO.Exceptions;
 
 namespace ULMClubManager.BL.Services
 {
@@ -81,18 +82,111 @@ namespace ULMClubManager.BL.Services
 
         public static void CreateOne(Booking booking)
         {
+            ValidateBooking(booking);
+
             using (DalSession dalSession = new DalSession())
             {
                 dalSession.Bookings.CreateOne(booking);
             }
         }
 
-        public static void UpdateOne(Booking selectedBooking)
+        public static void UpdateOne(Booking booking)
         {
+            ValidateBooking(booking);
+
             using (DalSession dalSession = new DalSession())
             {
-                dalSession.Bookings.UpdateOne(selectedBooking);
+                dalSession.Bookings.UpdateOne(booking);
             }
+        }
+
+        public static void ValidateBooking(Booking booking)
+        {
+            // VERIFICATION DATE LIMITE 
+            int nextYear = booking.Date.AddYears(1).Year;
+            DateTime bookingDeadline = new DateTime(nextYear, 3, 1);
+
+            if (booking.Date >= bookingDeadline)
+                throw new BookingDeadline();
+
+            // VERIFICATION EN ORDRE DE PAIEMENT
+            if (!MemberService.IsInOrderOfPaiement(booking.MemberID))
+                throw new InvalidSubscriptionForBooking();
+
+            // VERIFICATION POUR UN PILOTE, UNE PISTE ET UN AERONEF
+            using (DalSession dalSession = new DalSession())
+            {
+                // Récupèration de tous les bookings existants pour la date souhaitée
+                List<Booking> allBookings = dalSession.Bookings.ReadAll();
+
+                List<Booking> existingBookingsToCheck = allBookings
+                    .Where(b => b.Date.Year == booking.Date.Year 
+                                && b.Date.Month == booking.Date.Month
+                                && b.Date.Day == booking.Date.Day)
+                    .ToList();
+
+                ValidatePilotAvailability(booking, existingBookingsToCheck);
+                ValidateRunwayAvailability(booking, existingBookingsToCheck);
+                ValidateAircraftAvailability(booking, existingBookingsToCheck);
+            }
+
+            // VERIFICATION LICENCE ET QUALIFICATIONS
+            Member pilot = MemberService.ReadOne(booking.MemberID);
+            Aircraft aircraft = AircraftService.ReadOne(booking.AircraftID);
+
+            if (!pilot.HasQualification(aircraft.CategoryID))
+                throw new IncorrectQualification();
+
+            if (!pilot.HasValidLicence(booking.Date))
+                throw new ExpiredLicence();
+        }
+
+        private static void ValidatePilotAvailability(Booking booking, List<Booking> existingBookingsToCheck)
+        {
+            // Sélection de celles qui concernent le pilote qu'on souhaite...
+            List<Booking> bookingsForPilot = existingBookingsToCheck
+                .Where(b => b.MemberID== booking.MemberID)
+                .ToList();
+
+            // ...Pour lesquels on vérifie les heures
+            foreach (Booking b in bookingsForPilot)
+                if (IsOverlapse(booking, b))
+                    throw new UnavailablePilot();
+        }
+
+        private static void ValidateRunwayAvailability(Booking booking, List<Booking> existingBookingsToCheck)
+        {
+            // Sélection de celles qui concernent la piste qu'on souhaite...
+            List<Booking> bookingsForRunway = existingBookingsToCheck
+                .Where(b => b.RunwayID == booking.RunwayID)
+                .ToList();
+
+            // ...Pour lesquels on vérifie les heures
+            foreach (Booking b in bookingsForRunway)
+                if (IsOverlapse(booking, b))
+                    throw new UnavailableRunway();
+        }
+
+        private static void ValidateAircraftAvailability(Booking booking, List<Booking> existingBookingsToCheck)
+        {
+            // Sélection de celles qui concernent l'aeronef qu'on souhaite...
+            List<Booking> bookingsForAircraft = existingBookingsToCheck
+                .Where(b => b.AircraftID == booking.AircraftID)
+                .ToList();
+
+            // ...Pour lesquels on vérifie les heures
+            foreach (Booking b in bookingsForAircraft)
+                if (IsOverlapse(booking, b))
+                    throw new UnavailableAircraft();
+        }
+
+        private static bool IsOverlapse(Booking newBooking, Booking existingBooking)
+        {
+            bool isOverlapse = newBooking.StartHour < existingBooking.EndHour
+                ? existingBooking.StartHour < newBooking.EndHour.Add(TimeSpan.FromMinutes(15))
+                : newBooking.StartHour < existingBooking.EndHour.Add(TimeSpan.FromMinutes(15));
+
+            return isOverlapse;
         }
     }
 }

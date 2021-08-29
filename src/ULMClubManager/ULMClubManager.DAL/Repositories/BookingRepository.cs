@@ -9,22 +9,26 @@ using System;
 
 namespace ULMClubManager.DAL.Repositories
 {
-    public class BookingRepository : GenericRepository<ResDBRow, int, Booking>
+    public class BookingRepository
     {
-        public BookingRepository(IUnitOfWork unitOfWork, BookingMapper mapper)
-            : base(unitOfWork, "RES", mapper)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly BookingMapper _bookingMapper;
+
+        public BookingRepository(IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
+            _bookingMapper = new BookingMapper();
         }
 
         // Bookings
 
-        public override List<Booking> ReadAll()
+        public List<Booking> ReadAll()
         {
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(
                 "sp_select_RES",
                 transaction: _unitOfWork.Transaction);
 
-            return _mapper.From(models);
+            return _bookingMapper.From(models);
         }
 
         public List<Booking> ReadAllByPilotID(int pilotID)
@@ -35,7 +39,7 @@ namespace ULMClubManager.DAL.Repositories
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
                 
-            return _mapper.From(models);
+            return _bookingMapper.From(models);
         }
 
         public List<Booking> ReadAllByAircraftID(int aircraftID)
@@ -46,7 +50,7 @@ namespace ULMClubManager.DAL.Repositories
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
 
-            return _mapper.From(models);
+            return _bookingMapper.From(models);
         }
 
         public List<Booking> ReadAllByRunwayID(int runwayID)
@@ -57,7 +61,7 @@ namespace ULMClubManager.DAL.Repositories
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
 
-            return _mapper.From(models);
+            return _bookingMapper.From(models);
         }
                 
         public List<Booking> ReadAllInFuture()
@@ -67,10 +71,10 @@ namespace ULMClubManager.DAL.Repositories
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
 
-            return _mapper.From(models);
+            return _bookingMapper.From(models);
         }
 
-        public override Booking ReadOne(int id)
+        public Booking ReadOne(int id)
         {
             ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
                 "sp_select_RES_BY_ID",
@@ -79,21 +83,21 @@ namespace ULMClubManager.DAL.Repositories
                 transaction: _unitOfWork.Transaction);
 
             if (result == null)
-                throw new KeyNotFoundException($"La table {_tableName} avec l'id [{id}] n'existe pas.");
+                throw new KeyNotFoundException($"La table RES avec l'id [{id}] n'existe pas.");
 
-            return _mapper.From(result);
+            return _bookingMapper.From(result);
         }
 
-        public override Booking ReadLast()
+        public Booking ReadLast()
         {
             ResDBRow result = _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
                 "sp_select_RES_LAST",
                 transaction: _unitOfWork.Transaction);
 
-            return _mapper.From(result);
+            return _bookingMapper.From(result);
         }
 
-        public override Booking CreateOne(Booking domainModel)
+        public Booking CreateOne(Booking domainModel)
         {
             // L'utilisation du mapper n'est pas souhaitée ici.
             // Si nous utilisions le PilotMapper, nous aurions un paramètre
@@ -116,7 +120,7 @@ namespace ULMClubManager.DAL.Repositories
             return ReadLast();
         }
 
-        public override void UpdateOne(Booking domainModel)
+        public void UpdateOne(Booking domainModel)
         {
             _unitOfWork.Connection.Execute(
                 "sp_update_RES",
@@ -134,7 +138,7 @@ namespace ULMClubManager.DAL.Repositories
                 transaction: _unitOfWork.Transaction);
         }
 
-        public override int DeleteOne(int bookingID)
+        public int DeleteOne(int bookingID)
         {
             int result = _unitOfWork.Connection.Execute(
                "sp_delete_RES_BY_RES_ID",

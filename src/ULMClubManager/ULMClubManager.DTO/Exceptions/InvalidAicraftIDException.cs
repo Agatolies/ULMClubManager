@@ -2,6 +2,7 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+
     public class InvalidAicraftIDException : BusinessException
     {
         public InvalidAicraftIDException()

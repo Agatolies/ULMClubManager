@@ -133,6 +133,32 @@ namespace ULMClubManager.DTO
             }
         }
 
+        public bool HasQualification(int qualificationID)
+        {
+            switch (qualificationID)
+            {
+                case 1:
+                    return QualificationType1;
+                case 2:
+                    return QualificationType2;
+                case 3:
+                    return QualificationType3;
+                case 4:
+                    return QualificationType4;
+                case 5:
+                    return QualificationType5;
+                case 6:
+                    return QualificationType6;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(qualificationID));
+            }
+        }
+
+        public bool HasValidLicence(DateTime bookingDate)
+        {
+            return bookingDate < LicenceExpirationDate.Value.AddMonths(1);
+        }
+
         public override string ToString()
         {
             return $"{FullName}";

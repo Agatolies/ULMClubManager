@@ -17,5 +17,11 @@ namespace ULMClubManager.BL.Services
                 return dalSession.Runways.ReadAll().ToList();
             }
         }
+
+        public static bool IsAvailable()
+        {
+
+            return false;
+        }
     }
 }

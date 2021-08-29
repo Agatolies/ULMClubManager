@@ -72,6 +72,8 @@ namespace ULMClubManger.Forms.UserControls
             _panelMBR_Update_btn.Visible = false;
             _panelMBR_Create_btn.Visible = false;
 
+            
+
             _labelError.Visible = false;
 
             _localities = LocalityService.ReadAll();
@@ -224,6 +226,8 @@ namespace ULMClubManger.Forms.UserControls
             _dtpLICObtentionDte.Value = DateTime.Now;
             _dtpLICExpirationDte.Value = DateTime.Now;
 
+            
+
             _gboxSubscription.Visible = false;
 
             UnlockControls(false);
@@ -303,9 +307,7 @@ namespace ULMClubManger.Forms.UserControls
             bool ok = MemberService.IsInOrderOfPaiement(_member.ID.Value);
             
             if (!ok)
-            {
                 _btnPaiementSubscriptionDate.Visible = true;
-            }
         }
 
         private void _btnMRBUpdateConfirm_Click(object sender, EventArgs e)

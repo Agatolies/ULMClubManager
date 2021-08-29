@@ -162,6 +162,15 @@ namespace ULMClubManger.Forms.UserControls
                 ((Runway)_cboxBookingByAircraft_Runway.SelectedItem).ID.Value);
         }
 
+        private bool DetectUnfilledFields()
+        {
+            bool isMemberNameNotFilled = _cboxBookingByAircraft_MemberName.SelectedIndex == -1;
+            bool isAircraftNotFilled = _cboxBookingByAircraft_Aircraft.SelectedIndex == -1;
+            bool isRunwayNotFilled = _cboxBookingByAircraft_Runway.SelectedIndex == -1;
+            bool hasError = isMemberNameNotFilled || isAircraftNotFilled || isRunwayNotFilled;
+            return hasError;
+        }
+
         // Ajout d'une réservation
 
         private void _btnFooterBookingByAircraftCreate_Click(object sender, EventArgs e)
@@ -186,33 +195,45 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByAircraft_CreateConfirm_Click(object sender, EventArgs e)
         {
-            try
+            bool hasError = DetectUnfilledFields();
+
+            if (hasError)
             {
-                Booking booking = GetEditedBooking();
-
-                BookingService.CreateOne(booking);
-
-                _bookingBackup = null;
-
-                //RefreshData(_selectedBooking.MemberID);
-                HideErrorMessage();
-                LockControls();
-
-                _panelFooterBookingByAircraft_Create.Visible = false;
-                _panelFooterBookingByAircraftCRUD.Visible = true;
-                _panelBookingByAircraft_Details.Visible = false;
-
-                this.BookingForAircraftCreated();
-
-                ShowCreateBookingConfirmation(_cboxBookingByAircraft_MemberName.Text);
+                MessageBox.Show(
+                    $"Toutes les données doivent être complétées",
+                    "Erreur",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-            catch (BusinessException ex)
+            else
             {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
+                try
+                {
+                    Booking booking = GetEditedBooking();
+                    BookingService.CreateOne(booking);
+
+                    _bookingBackup = null;
+
+                    //RefreshData(_selectedBooking.MemberID);
+                    HideErrorMessage();
+                    LockControls();
+
+                    _panelFooterBookingByAircraft_Create.Visible = false;
+                    _panelFooterBookingByAircraftCRUD.Visible = true;
+                    _panelBookingByAircraft_Details.Visible = false;
+
+                    this.BookingForAircraftCreated();
+
+                    ShowCreateBookingConfirmation(_cboxBookingByAircraft_MemberName.Text);
+                }
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
         }
 

@@ -64,7 +64,7 @@ namespace ULMClubManager.DAL
         {
             get
             {
-                return _bookings ?? (_bookings = new BookingRepository(_unitOfWork, new BookingMapper()));
+                return _bookings ?? (_bookings = new BookingRepository(_unitOfWork));
             }
         }
 
