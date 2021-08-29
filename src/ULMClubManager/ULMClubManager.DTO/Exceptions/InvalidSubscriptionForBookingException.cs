@@ -2,9 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-    public class InvalidSubscriptionForBooking : BusinessException
+    public class InvalidSubscriptionForBookingException : BusinessException
     {
-        public InvalidSubscriptionForBooking()
+        public InvalidSubscriptionForBookingException()
             : base(ContextError.RES, "BS_COTI_INVALID")
         {
         }

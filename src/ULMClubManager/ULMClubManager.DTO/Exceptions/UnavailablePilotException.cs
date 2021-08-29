@@ -2,9 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-    public class UnavailablePilot : BusinessException
+    public class UnavailablePilotException : BusinessException
     {
-        public UnavailablePilot()
+        public UnavailablePilotException()
             : base(ContextError.RES, "BS_RES_PIL_UNAVAILABLE")
         {
         }

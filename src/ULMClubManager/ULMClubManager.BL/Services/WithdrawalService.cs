@@ -26,17 +26,18 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static bool HasWithdrawalToday(int pilotID)
+        public static bool HasWithdrawalByDate(int pilotID, DateTime date)
         {
             List<Withdrawal> withdrawals = ReadAllWithdrawalsByPilotID(pilotID);
-            DateTime today = DateTime.Now;
 
             return withdrawals
-                .Any(w => w.StartDate <= today && w.EndDate >= today);
+                .Any(w => w.StartDate <= date && w.EndDate >= date);
         }
 
         private static void ValidateWithdrawal(Withdrawal withdrawal)
         {
+            if (withdrawal.StartDate >= withdrawal.EndDate)
+                throw new ArgumentException("La date de fin ne peut pas être antérieure à la date du début de retrait de licence.");
         }
     }
 }

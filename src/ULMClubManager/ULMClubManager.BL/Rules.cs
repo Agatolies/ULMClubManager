@@ -47,6 +47,7 @@ namespace ULMClubManager.BL
                 { "BS_RES_PIL_UNAVAILABLE", "Le pilote est indisponible pour ce créneau horaire." },
                 { "BS_RES_PIST_UNAVAILABLE", "La piste est indisponible pour ce créneau horaire." },
                 { "BS_RES_AER_UNAVAILABLE", "L'aéronef est indisponible pour ce créneau horaire." },
+                { "BS_RES_RET", "Le pilote subit un retrait temporaire de licence à cette date." },
                 { "CHK_RES_DTE_NOT_IN_PAST", "La date de réservation ne peut pas être dans le passé." },
                 { "CHK_RES_DTE", "La date de réservation ne peut pas être supérieure à la date d'encodage plus trois mois." },
                 { "CHK_RES_HEU_FIN", "La durée d'une réservation doit être comprise entre 1 et 6 heures." }

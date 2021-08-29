@@ -2,9 +2,10 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-    public class UnavailableAircraft : BusinessException
+
+    public class UnavailableAircraftException : BusinessException
     {
-        public UnavailableAircraft()
+        public UnavailableAircraftException()
             : base(ContextError.RES, "BS_RES_AER_UNAVAILABLE")
         {
         }

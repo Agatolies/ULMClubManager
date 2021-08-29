@@ -2,9 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-    public class ExpiredLicence : BusinessException
+    public class ExpiredLicenceException : BusinessException
     {
-        public ExpiredLicence()
+        public ExpiredLicenceException()
             : base(ContextError.RES, "BS_RES_LIC")
         {
         }

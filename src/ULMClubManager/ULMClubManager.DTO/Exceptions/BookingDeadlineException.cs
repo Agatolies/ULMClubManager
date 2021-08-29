@@ -2,10 +2,10 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-    public class BookingDeadline : BusinessException
+    public class BookingDeadlineException : BusinessException
 
     {
-        public BookingDeadline()
+        public BookingDeadlineException()
             : base(ContextError.RES, "BS_RES_DEADLINE")
         {
 

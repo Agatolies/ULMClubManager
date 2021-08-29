@@ -2,9 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-    public class UnavailableRunway : BusinessException
+    public class UnavailableRunwayException : BusinessException
     {
-        public UnavailableRunway()
+        public UnavailableRunwayException()
             : base(ContextError.RES, "BS_RES_PIST_UNAVAILABLE")
         {
         }

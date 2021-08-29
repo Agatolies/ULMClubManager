@@ -2,9 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-    public class IncorrectQualification : BusinessException
+    public class IncorrectQualificationException : BusinessException
     {
-        public IncorrectQualification()
+        public IncorrectQualificationException()
             : base(ContextError.RES, "BS_RES_QUAL")
         {
         }

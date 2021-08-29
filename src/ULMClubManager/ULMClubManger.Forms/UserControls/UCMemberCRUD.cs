@@ -50,7 +50,7 @@ namespace ULMClubManger.Forms.UserControls
                         _tboxMBRID.Text = _member.ID.Value.ToString();
                         _gboxPIL.Visible = _member.IsPilot;
 
-                        _btnOpenLicenceManagementForm.BackColor = WithdrawalService.HasWithdrawalToday(_member.ID.Value)
+                        _btnOpenLicenceManagementForm.BackColor = WithdrawalService.HasWithdrawalByDate(_member.ID.Value, DateTime.Now)
                             ? Color.FromArgb(204, 41, 54)
                             : Color.FromArgb(0, 117, 162);
                     }

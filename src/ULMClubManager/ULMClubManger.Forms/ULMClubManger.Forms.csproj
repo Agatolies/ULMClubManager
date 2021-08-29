@@ -74,11 +74,11 @@
     <Compile Include="Pages\FormBookingByMember.Designer.cs">
       <DependentUpon>FormBookingByMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FormBookingByRunway.cs">
+    <Compile Include="Pages\FormBookingFuture.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\FormBookingByRunway.Designer.cs">
-      <DependentUpon>FormBookingByRunway.cs</DependentUpon>
+    <Compile Include="Pages\FormBookingFuture.Designer.cs">
+      <DependentUpon>FormBookingFuture.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\FormMembersInfo.cs">
       <SubType>Form</SubType>
@@ -140,12 +140,6 @@
     <Compile Include="UserControls\UCBookingPickerByMember.Designer.cs">
       <DependentUpon>UCBookingPickerByMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCBookingPickerByRunway.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UCBookingPickerByRunway.Designer.cs">
-      <DependentUpon>UCBookingPickerByRunway.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UCMemberCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,8 +179,8 @@
     <EmbeddedResource Include="Pages\FormBookingByMember.resx">
       <DependentUpon>FormBookingByMember.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\FormBookingByRunway.resx">
-      <DependentUpon>FormBookingByRunway.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\FormBookingFuture.resx">
+      <DependentUpon>FormBookingFuture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormMembersInfo.resx">
       <DependentUpon>FormMembersInfo.cs</DependentUpon>
@@ -223,9 +217,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCBookingPickerByMember.resx">
       <DependentUpon>UCBookingPickerByMember.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingPickerByRunway.resx">
-      <DependentUpon>UCBookingPickerByRunway.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCMemberCRUD.resx">
       <DependentUpon>UCMemberCRUD.cs</DependentUpon>
