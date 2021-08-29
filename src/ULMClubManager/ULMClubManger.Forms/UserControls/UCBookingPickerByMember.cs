@@ -14,7 +14,7 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCBookingPickerByMember : UserControl
     {
-        public event delSelect SelectPilot;
+        public event delSelectMember SelectPilot;
 
         private List<Member> _allPilots;
 
@@ -28,7 +28,6 @@ namespace ULMClubManger.Forms.UserControls
             try
             {
                 _allPilots = MemberService.ReadAll().Where(member => member.IsPilot).ToList();
-
                 _lbPilots.DataSource = _allPilots;
             }
             catch (Exception ex)

@@ -41,6 +41,7 @@ namespace ULMClubManger.Forms.Pages
             this._ucBookingByAircraftDetailsForm.Location = new System.Drawing.Point(234, 549);
             this._ucBookingByAircraftDetailsForm.Name = "_ucBookingByAircraftDetailsForm";
             this._ucBookingByAircraftDetailsForm.SelectedBooking = null;
+            this._ucBookingByAircraftDetailsForm.SelectedPilotID = 0;
             this._ucBookingByAircraftDetailsForm.Size = new System.Drawing.Size(857, 320);
             this._ucBookingByAircraftDetailsForm.TabIndex = 2;
             this._ucBookingByAircraftDetailsForm.BookingForAircraftCreating += new ULMClubManger.Forms.delBookingForAircraftCreated(this._ucBookingDetailsForm_BookingForAircraftCreating);
@@ -68,7 +69,7 @@ namespace ULMClubManger.Forms.Pages
             this._ucBookingByAircraftPicker.Name = "_ucBookingByAircraftPicker";
             this._ucBookingByAircraftPicker.Size = new System.Drawing.Size(234, 869);
             this._ucBookingByAircraftPicker.TabIndex = 0;
-            this._ucBookingByAircraftPicker.SelectAircraftCategoryID += new ULMClubManger.Forms.delSelect(this._ucBookingPickerByAircraft_SelectAircraftID);
+            this._ucBookingByAircraftPicker.SelectAircraftCategoryID += new ULMClubManger.Forms.delSelectMember(this._ucBookingPickerByAircraft_SelectAircraftID);
             // 
             // FormBookingByAircraft
             // 
@@ -78,6 +79,7 @@ namespace ULMClubManger.Forms.Pages
             this.Controls.Add(this._ucBookingByAircraftDetailsForm);
             this.Controls.Add(this._ucBookingByAircraftCRUD);
             this.Controls.Add(this._ucBookingByAircraftPicker);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormBookingByAircraft";
             this.Text = "FormBookingByAircraft";
             this.ResumeLayout(false);

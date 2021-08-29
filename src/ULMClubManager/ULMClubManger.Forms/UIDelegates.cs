@@ -8,10 +8,15 @@ using ULMClubManager.DTO;
 namespace ULMClubManger.Forms
 {
     // Délégués pour l'ajout, la modification et la suppression d'un membre
-    public delegate void delSelect(int i);
-    public delegate void delInsert(int i);
-    public delegate void delUpdate(int i);
-    public delegate void delDelete(int i);
+    public delegate void delSelectMember(int i);
+
+    public delegate void delMemberCreating();
+    public delegate void delMemberUpdating();
+    public delegate void delMemberCanceling();
+
+    public delegate void delMemberCreated();
+    public delegate void delMemberUpdated();
+    public delegate void delMemberCanceled();
 
     // Délégués pour l'ajout, la modification et la suppression d'une réservation par membre
     public delegate void delSelectBooking(DetailedBooking booking);

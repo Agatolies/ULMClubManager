@@ -123,6 +123,8 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_TimeSlotStart.SelectedItem = SelectedBooking.StartHour;
             _cboxBookingByMember_TimeSlotEnd.SelectedItem = SelectedBooking.EndHour;
             _cboxBookingByMember_Runway.SelectedValue = SelectedBooking.RunwayID;
+
+            _dtpBookingByMember_Date.MinDate = DateTime.Now;
         }
 
         public void ClearControls()
@@ -131,6 +133,7 @@ namespace ULMClubManger.Forms.UserControls
             _dtpBookingByMember_Date.Value = DateTime.Now;
             _cboxBookingByMember_TimeSlotStart.DataSource = TimeSlot.GetTimeSlots();
             _cboxBookingByMember_Runway.SelectedValue = -1;
+            _tboxBookingByMBR_CancellationReason.Text = "";
         }
 
         public void LockControls()
@@ -166,7 +169,7 @@ namespace ULMClubManger.Forms.UserControls
                 ((Runway)_cboxBookingByMember_Runway.SelectedItem).ID.Value);
         }
 
-        private bool DetectedUnfilledFields()
+        private bool DetectUnfilledFields()
         {
             bool isMemberNameNotFilled = _cboxBookingByMember_MemberName.SelectedIndex == -1;
             bool isAircraftNotFilled = _cboxBookingByMember_Aircraft.SelectedIndex == -1;
@@ -199,14 +202,10 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByMember_CreateConfirm_Click(object sender, EventArgs e)
         {
-            bool hasError = DetectedUnfilledFields();
+            bool hasError = DetectUnfilledFields();
             if (hasError)
             {
-                MessageBox.Show(
-                    $"Toutes les données doivent être complétées",
-                    "Erreur",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBoxHelper.ShowMandatoryDataError();
             }
             else
             {
@@ -281,37 +280,44 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByMember_UpdateConfirm_Click(object sender, EventArgs e)
         {
-            try
+            bool hasError = DetectUnfilledFields();
+            if (hasError)
             {
-                Booking booking = GetEditedBooking();
-
-                BookingService.UpdateOne(booking);
-
-                _bookingBackup = null;
-
-                HideErrorMessage();
-                LockControls();
-                //RefreshData(_selectedBooking.MemberID);
-
-                _panelFooterBookingByMember_Update.Visible = false;
-                _panelFooterBookingByMemberCRUD.Visible = true;
-                _panelBookingByMBR_Details.Visible = false;
-
-                this.BookingForMemberUpdated();
-
-                MessageBox.Show(
-                    $"La réservation pour {SelectedBooking.MemberFullName} a bien été mise à jour.",
-                    "Information",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBoxHelper.ShowMandatoryDataError();
             }
-            catch (BusinessException ex)
+            else
             {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
+                try
+                {
+                    Booking booking = GetEditedBooking();
+
+                    BookingService.UpdateOne(booking);
+
+                    _bookingBackup = null;
+
+                    HideErrorMessage();
+                    LockControls();
+
+                    _panelFooterBookingByMember_Update.Visible = false;
+                    _panelFooterBookingByMemberCRUD.Visible = true;
+                    _panelBookingByMBR_Details.Visible = false;
+
+                    this.BookingForMemberUpdated();
+
+                    MessageBox.Show(
+                        $"La réservation pour {SelectedBooking.MemberFullName} a bien été mise à jour.",
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
         }
 
@@ -368,11 +374,25 @@ namespace ULMClubManger.Forms.UserControls
             }
             else
             {
+                DateTime today = DateTime.Now;
+                bool isToday = SelectedBooking.Date.Year == today.Year
+                    && SelectedBooking.Date.Month == today.Month
+                    && SelectedBooking.Date.Day == today.Day + 1;
+
+                if (isToday && SelectedBooking.StartHour < new TimeSpan(today.Hour + 18, today.Minute, 0))
+                {
+                    MessageBox.Show(
+                        "Une annulation doit normalement se faire au minimum 18 heures à l'avance",
+                        "Attention",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+
                 DialogResult dialogResult = MessageBox.Show(
-                "Voulez-vous vraiment annuler cette réservation ?",
-                "Confirmation",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Warning);
+                    "Voulez-vous vraiment annuler cette réservation ?",
+                    "Confirmation",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning);
 
                 try
                 {

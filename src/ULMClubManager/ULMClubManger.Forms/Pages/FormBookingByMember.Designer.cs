@@ -40,6 +40,7 @@ namespace ULMClubManger.Forms.Pages
             this._ucBookingByMemberDetailsForm.Location = new System.Drawing.Point(234, 549);
             this._ucBookingByMemberDetailsForm.Name = "_ucBookingByMemberDetailsForm";
             this._ucBookingByMemberDetailsForm.SelectedBooking = null;
+            this._ucBookingByMemberDetailsForm.SelectedPilotID = 0;
             this._ucBookingByMemberDetailsForm.Size = new System.Drawing.Size(857, 320);
             this._ucBookingByMemberDetailsForm.TabIndex = 2;
             this._ucBookingByMemberDetailsForm.BookingForMemberCreating += new ULMClubManger.Forms.delBookingForMemberCreating(this._ucBookingDetailsForm_BookingForMemberCreating);
@@ -67,7 +68,7 @@ namespace ULMClubManger.Forms.Pages
             this._ucBookingByMemberPicker.Name = "_ucBookingByMemberPicker";
             this._ucBookingByMemberPicker.Size = new System.Drawing.Size(234, 869);
             this._ucBookingByMemberPicker.TabIndex = 0;
-            this._ucBookingByMemberPicker.SelectPilot += new ULMClubManger.Forms.delSelect(this._ucBookingPickerByPilot_SelectPilot);
+            this._ucBookingByMemberPicker.SelectPilot += new ULMClubManger.Forms.delSelectMember(this._ucBookingPickerByPilot_SelectPilot);
             // 
             // FormBookingByMember
             // 
@@ -77,6 +78,7 @@ namespace ULMClubManger.Forms.Pages
             this.Controls.Add(this._ucBookingByMemberDetailsForm);
             this.Controls.Add(this._ucBookingByMemberCRUD);
             this.Controls.Add(this._ucBookingByMemberPicker);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormBookingByMember";
             this.Text = "FormBookingByMember";
             this.ResumeLayout(false);

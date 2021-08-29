@@ -41,6 +41,12 @@ namespace ULMClubManger.Forms.Pages
             this._ucMemberCRUD.Name = "_ucMemberCRUD";
             this._ucMemberCRUD.Size = new System.Drawing.Size(927, 778);
             this._ucMemberCRUD.TabIndex = 1;
+            this._ucMemberCRUD.MemberCreating += new ULMClubManger.Forms.delMemberCreating(this._ucMemberCRUD_MemberCreating);
+            this._ucMemberCRUD.MemberUpdating += new ULMClubManger.Forms.delMemberUpdating(this._ucMemberCRUD_MemberUpdating);
+            this._ucMemberCRUD.MemberCanceling += new ULMClubManger.Forms.delMemberCanceling(this._ucMemberCRUD_MemberCanceling);
+            this._ucMemberCRUD.MemberCreated += new ULMClubManger.Forms.delMemberCreated(this._ucMemberCRUD_MemberCreated);
+            this._ucMemberCRUD.MemberUpdated += new ULMClubManger.Forms.delMemberUpdated(this._ucMemberCRUD_MemberUpdated);
+            this._ucMemberCRUD.MemberCanceled += new ULMClubManger.Forms.delMemberCanceled(this._ucMemberCRUD_MemberCanceled);
             // 
             // _ucMemberPicker
             // 
@@ -50,7 +56,7 @@ namespace ULMClubManger.Forms.Pages
             this._ucMemberPicker.Name = "_ucMemberPicker";
             this._ucMemberPicker.Size = new System.Drawing.Size(234, 778);
             this._ucMemberPicker.TabIndex = 0;
-            this._ucMemberPicker.SelectMember += new ULMClubManger.Forms.delSelect(this._ucMemberPicker_SelectMember);
+            this._ucMemberPicker.SelectMember += new ULMClubManger.Forms.delSelectMember(this._ucMemberPicker_SelectMember);
             // 
             // FormMembersInfo
             // 

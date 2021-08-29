@@ -61,6 +61,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRUpdate = new System.Windows.Forms.Button();
             this._panelMBR_CRUD_btn = new System.Windows.Forms.Panel();
             this._gboxPIL = new System.Windows.Forms.GroupBox();
+            this._btnOpenLicenceManagementForm = new System.Windows.Forms.Button();
             this._labelLICCountryMandatory = new System.Windows.Forms.Label();
             this._labelLICExpirationDteMandatory = new System.Windows.Forms.Label();
             this._labelLICObtentionDteMandatory = new System.Windows.Forms.Label();
@@ -109,7 +110,6 @@ namespace ULMClubManger.Forms.UserControls
             this._panelMessages = new System.Windows.Forms.Panel();
             this._panelGroupboxes = new System.Windows.Forms.Panel();
             this._panelRelative = new System.Windows.Forms.Panel();
-            this._btnOpenLicenceManagementForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
             this._panelMBR_CRUD_btn.SuspendLayout();
             this._gboxPIL.SuspendLayout();
@@ -491,6 +491,20 @@ namespace ULMClubManger.Forms.UserControls
             this._gboxPIL.TabStop = false;
             this._gboxPIL.Text = "LICENCE ET QUALIFICATIONS";
             // 
+            // _btnOpenLicenceManagementForm
+            // 
+            this._btnOpenLicenceManagementForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
+            this._btnOpenLicenceManagementForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnOpenLicenceManagementForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this._btnOpenLicenceManagementForm.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this._btnOpenLicenceManagementForm.Location = new System.Drawing.Point(636, 177);
+            this._btnOpenLicenceManagementForm.Name = "_btnOpenLicenceManagementForm";
+            this._btnOpenLicenceManagementForm.Size = new System.Drawing.Size(240, 34);
+            this._btnOpenLicenceManagementForm.TabIndex = 57;
+            this._btnOpenLicenceManagementForm.Text = "Gestion de la licence";
+            this._btnOpenLicenceManagementForm.UseVisualStyleBackColor = false;
+            this._btnOpenLicenceManagementForm.Click += new System.EventHandler(this._btnOpenLicenceManagementForm_Click);
+            // 
             // _labelLICCountryMandatory
             // 
             this._labelLICCountryMandatory.AutoSize = true;
@@ -628,6 +642,7 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual6.TabIndex = 5;
             this._cboxMBRQual6.Text = "Classe 6 : Hélicoptères";
             this._cboxMBRQual6.UseVisualStyleBackColor = true;
+            this._cboxMBRQual6.CheckedChanged += new System.EventHandler(this._cboxMBRQual6_CheckedChanged);
             // 
             // _cboxMBRQual5
             // 
@@ -641,6 +656,7 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual5.TabIndex = 4;
             this._cboxMBRQual5.Text = "Classe 5 : Aérostats";
             this._cboxMBRQual5.UseVisualStyleBackColor = true;
+            this._cboxMBRQual5.CheckedChanged += new System.EventHandler(this._cboxMBRQual5_CheckedChanged);
             // 
             // _cboxMBRQual4
             // 
@@ -654,6 +670,7 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual4.TabIndex = 3;
             this._cboxMBRQual4.Text = "Classe 4 : Autogires";
             this._cboxMBRQual4.UseVisualStyleBackColor = true;
+            this._cboxMBRQual4.CheckedChanged += new System.EventHandler(this._cboxMBRQual4_CheckedChanged);
             // 
             // _cboxMBRQual3
             // 
@@ -667,6 +684,7 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual3.TabIndex = 2;
             this._cboxMBRQual3.Text = "Classe 3 : Appareils 3 axes";
             this._cboxMBRQual3.UseVisualStyleBackColor = true;
+            this._cboxMBRQual3.CheckedChanged += new System.EventHandler(this._cboxMBRQual3_CheckedChanged);
             // 
             // _cboxMBRQual1
             // 
@@ -680,6 +698,7 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual1.TabIndex = 1;
             this._cboxMBRQual1.Text = "Classe 1 : Paramoteurs";
             this._cboxMBRQual1.UseVisualStyleBackColor = true;
+            this._cboxMBRQual1.CheckedChanged += new System.EventHandler(this._cboxMBRQual1_CheckedChanged);
             // 
             // _cboxMBRQual2
             // 
@@ -693,6 +712,7 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual2.TabIndex = 0;
             this._cboxMBRQual2.Text = "Classe 2 : Pendulaires";
             this._cboxMBRQual2.UseVisualStyleBackColor = true;
+            this._cboxMBRQual2.CheckedChanged += new System.EventHandler(this._cboxMBRQual2_CheckedChanged);
             // 
             // _panelMBR_Update_btn
             // 
@@ -1086,20 +1106,6 @@ namespace ULMClubManger.Forms.UserControls
             this._panelRelative.Name = "_panelRelative";
             this._panelRelative.Size = new System.Drawing.Size(907, 747);
             this._panelRelative.TabIndex = 52;
-            // 
-            // _btnOpenLicenceManagementForm
-            // 
-            this._btnOpenLicenceManagementForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
-            this._btnOpenLicenceManagementForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btnOpenLicenceManagementForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this._btnOpenLicenceManagementForm.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this._btnOpenLicenceManagementForm.Location = new System.Drawing.Point(636, 177);
-            this._btnOpenLicenceManagementForm.Name = "_btnOpenLicenceManagementForm";
-            this._btnOpenLicenceManagementForm.Size = new System.Drawing.Size(240, 34);
-            this._btnOpenLicenceManagementForm.TabIndex = 57;
-            this._btnOpenLicenceManagementForm.Text = "Gestion de la licence";
-            this._btnOpenLicenceManagementForm.UseVisualStyleBackColor = false;
-            this._btnOpenLicenceManagementForm.Click += new System.EventHandler(this._btnOpenLicenceManagementForm_Click);
             // 
             // UCMemberCRUD
             // 

@@ -93,6 +93,6 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Panel _panelBookingByMember;
         private System.Windows.Forms.Label _labelSearchName;
         private System.Windows.Forms.TextBox _tboxSearchPilot;
-        private System.Windows.Forms.ListBox _lbPilots;
+        public System.Windows.Forms.ListBox _lbPilots;
     }
 }

@@ -197,7 +197,6 @@ namespace ULMClubManger.Forms.UserControls
 
         private System.Windows.Forms.Label _labelSearchName;
         private System.Windows.Forms.TextBox _tboxSearchMember;
-        private System.Windows.Forms.ListBox _lbMembers;
         private System.Windows.Forms.Panel _panelTop;
         private System.Windows.Forms.ComboBox _cboxMemberTypes;
         private System.Windows.Forms.Label _labelPickPILorSYM;
@@ -207,5 +206,6 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel _panelBottom;
+        public System.Windows.Forms.ListBox _lbMembers;
     }
 }

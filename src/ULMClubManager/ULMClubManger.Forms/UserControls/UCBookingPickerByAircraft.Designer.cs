@@ -32,7 +32,7 @@ namespace ULMClubManger.Forms.UserControls
             this._panelBookingByAircraft = new System.Windows.Forms.Panel();
             this._cboxSearchAircraftCategory = new System.Windows.Forms.ComboBox();
             this._labelSearchAircraftCategory = new System.Windows.Forms.Label();
-            this._lbAircraftID = new System.Windows.Forms.ListBox();
+            this._lbAircrafts = new System.Windows.Forms.ListBox();
             this._panelBookingByAircraft.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,20 +64,20 @@ namespace ULMClubManger.Forms.UserControls
             this._labelSearchAircraftCategory.TabIndex = 8;
             this._labelSearchAircraftCategory.Text = "Catégorie";
             // 
-            // _lbAircraftID
+            // _lbAircrafts
             // 
-            this._lbAircraftID.FormattingEnabled = true;
-            this._lbAircraftID.Location = new System.Drawing.Point(3, 73);
-            this._lbAircraftID.Name = "_lbAircraftID";
-            this._lbAircraftID.Size = new System.Drawing.Size(229, 628);
-            this._lbAircraftID.TabIndex = 2;
-            this._lbAircraftID.SelectedIndexChanged += new System.EventHandler(this._lbAircraftID_SelectedIndexChanged);
+            this._lbAircrafts.FormattingEnabled = true;
+            this._lbAircrafts.Location = new System.Drawing.Point(3, 73);
+            this._lbAircrafts.Name = "_lbAircrafts";
+            this._lbAircrafts.Size = new System.Drawing.Size(229, 628);
+            this._lbAircrafts.TabIndex = 2;
+            this._lbAircrafts.SelectedIndexChanged += new System.EventHandler(this._lbAircraftID_SelectedIndexChanged);
             // 
             // UCBookingPickerByAircraft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this._lbAircraftID);
+            this.Controls.Add(this._lbAircrafts);
             this.Controls.Add(this._panelBookingByAircraft);
             this.Name = "UCBookingPickerByAircraft";
             this.Size = new System.Drawing.Size(234, 707);
@@ -92,7 +92,7 @@ namespace ULMClubManger.Forms.UserControls
 
         private System.Windows.Forms.Panel _panelBookingByAircraft;
         private System.Windows.Forms.Label _labelSearchAircraftCategory;
-        private System.Windows.Forms.ListBox _lbAircraftID;
         private System.Windows.Forms.ComboBox _cboxSearchAircraftCategory;
+        public System.Windows.Forms.ListBox _lbAircrafts;
     }
 }

@@ -30,32 +30,47 @@ namespace ULMClubManger.Forms.Pages
 
         private void _ucBookingDetailsForm_BookingForAircraftCreating()
         {
+            _ucBookingByAircraftPicker.Enabled = false;
             _ucBookingByAircraftCRUD.DisableDgvBookingByAircraft();
         }
 
         private void _ucBookingDetailsForm_BookingForAircraftUpdating()
         {
+            _ucBookingByAircraftPicker.Enabled = false;
             _ucBookingByAircraftCRUD.DisableDgvBookingByAircraft();
         }
 
         private void _ucBookingDetailsForm_BookingForAircraftCanceling()
         {
+            _ucBookingByAircraftPicker.Enabled = false;
             _ucBookingByAircraftCRUD.DisableDgvBookingByAircraft();
         }
 
         private void _ucBookingDetailsForm_BookingForAircraftCreated()
         {
+            int index = _ucBookingByAircraftPicker._lbAircrafts.SelectedIndex;
+            _ucBookingByAircraftPicker.InitializeData();
+            _ucBookingByAircraftPicker._lbAircrafts.SelectedIndex = index;
+
             _ucBookingByAircraftCRUD.EnableDgvBookingByAircraft();
+            _ucBookingByAircraftPicker.Enabled = true;
         }
 
         private void _ucBookingDetailsForm_BookingForAircraftUpdated()
         {
+            int index = _ucBookingByAircraftPicker._lbAircrafts.SelectedIndex;
+            _ucBookingByAircraftPicker.InitializeData();
+            _ucBookingByAircraftPicker._lbAircrafts.SelectedIndex = index;
+
             _ucBookingByAircraftCRUD.EnableDgvBookingByAircraft();
+            _ucBookingByAircraftPicker.Enabled = true;
         }
 
         private void _ucBookingDetailsForm_BookingForAircraftCanceled()
         {
+            _ucBookingByAircraftPicker.InitializeData();
             _ucBookingByAircraftCRUD.EnableDgvBookingByAircraft();
+            _ucBookingByAircraftPicker.Enabled = true;
         }
     }
 }

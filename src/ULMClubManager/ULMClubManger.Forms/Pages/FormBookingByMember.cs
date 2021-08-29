@@ -31,32 +31,47 @@ namespace ULMClubManger.Forms.Pages
 
         private void _ucBookingDetailsForm_BookingForMemberCreating()
         {
+            _ucBookingByMemberPicker.Enabled = false;
             _ucBookingByMemberCRUD.DisableDgvBookingByMember();
         }
 
         private void _ucBookingDetailsForm_BookingForMemberUpdating()
         {
+            _ucBookingByMemberPicker.Enabled = false;
             _ucBookingByMemberCRUD.DisableDgvBookingByMember();
         }
 
         private void _ucBookingDetailsForm_BookingForMemberCanceling()
         {
+            _ucBookingByMemberPicker.Enabled = false;
             _ucBookingByMemberCRUD.DisableDgvBookingByMember();
         }
 
         private void _ucBookingDetailsForm_BookingForMemberCreated()
         {
+            int index = _ucBookingByMemberPicker._lbPilots.SelectedIndex;
+            _ucBookingByMemberPicker.InitializeData();
+            _ucBookingByMemberPicker._lbPilots.SelectedIndex = index;
+
             _ucBookingByMemberCRUD.EnableDgvBookingByMember();
+            _ucBookingByMemberPicker.Enabled = true;
         }
 
         private void _ucBookingDetailsForm_BookingForMemberUpdated()
         {
+            int index = _ucBookingByMemberPicker._lbPilots.SelectedIndex;
+            _ucBookingByMemberPicker.InitializeData();
+            _ucBookingByMemberPicker._lbPilots.SelectedIndex = index;
+
             _ucBookingByMemberCRUD.EnableDgvBookingByMember();
+            _ucBookingByMemberPicker.Enabled = true;
         }
 
         private void _ucBookingDetailsForm_BookingForMemberCanceled()
         {
+            _ucBookingByMemberPicker.InitializeData();
             _ucBookingByMemberCRUD.EnableDgvBookingByMember();
+            _ucBookingByMemberPicker.Enabled = true;
         }
     }
 }

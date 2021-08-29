@@ -51,6 +51,27 @@ namespace ULMClubManager.BL.Services
 
             using (DalSession dalSession = new DalSession())
             {
+                int memberID = member.ID.Value;
+                Member oldMember = dalSession.Members.ReadOne(memberID);
+
+                if (oldMember.QualificationType1 && !member.QualificationType1)
+                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 1);
+
+                if (oldMember.QualificationType2 && !member.QualificationType2)
+                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 2);
+
+                if (oldMember.QualificationType3 && !member.QualificationType3)
+                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 3);
+
+                if (oldMember.QualificationType4 && !member.QualificationType4)
+                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 4);
+
+                if (oldMember.QualificationType5 && !member.QualificationType5)
+                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 5);
+
+                if (oldMember.QualificationType6 && !member.QualificationType6)
+                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 6);
+
                 dalSession.Members.UpdateOne(member);
             }
         }
@@ -156,6 +177,9 @@ namespace ULMClubManager.BL.Services
 
         private static void ValidateMember(Member member)
         {
+            if (member.RegistrationDate == DateTime.MinValue)
+                member.RegistrationDate = DateTime.Today;
+
             if (member.FirstName.Length < 3)
                 throw new FirstNameTooShortException();
 
@@ -183,6 +207,23 @@ namespace ULMClubManager.BL.Services
 
                 if (hasLicence && hasNoQualification)
                     throw new LicenceWithoutQualificationsException();
+            }
+        }
+
+        private static void DeleteBookingRelatedToMemberQualification(DalSession dalSession, int memberID, int categoryID)
+        {
+            List<Booking> bookingInFuture = dalSession.Bookings
+                // celles d'un pilote
+                .ReadAllByPilotID(memberID)
+                // qui sont dans le futur
+                .Where(b => b.Date > DateTime.Now)
+                .ToList();
+
+            foreach (Booking b in bookingInFuture)
+            {
+                Aircraft aircraft = dalSession.Aircrafts.ReadOne(b.AircraftID);
+                if (aircraft.CategoryID == categoryID)
+                    dalSession.Bookings.DeleteOne(b.ID.Value);
             }
         }
     }

@@ -20,6 +20,14 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCMemberCRUD : UserControl
     {
+        public event delMemberCreating MemberCreating;
+        public event delMemberUpdating MemberUpdating;
+        public event delMemberCanceling MemberCanceling;
+
+        public event delMemberCreated MemberCreated;
+        public event delMemberUpdated MemberUpdated;
+        public event delMemberCanceled MemberCanceled;
+
         private List<Locality> _localities;
         private Member _member;
         private Member _memberBackup;
@@ -166,6 +174,26 @@ namespace ULMClubManger.Forms.UserControls
             _cboxMBRQual6.Enabled = true;
         }
 
+        private bool DetectUnfilledFields()
+        {
+            bool isLastNameNotFilled = string.IsNullOrWhiteSpace(_tboxMBRLastName.Text);
+            bool isFirstNameNotFilled = string.IsNullOrWhiteSpace(_tboxMBRFirstName.Text);
+            bool isSexNotFilled = _cboxMBRSex.SelectedIndex == -1;
+            bool isEmailNotFilled = string.IsNullOrWhiteSpace(_tboxMBREmailAddress.Text);
+            bool isCellphoneNumberNotFilled = string.IsNullOrWhiteSpace(_tboxMBRCellphoneNumber.Text);
+            bool isPostalAddressNotFilled = string.IsNullOrWhiteSpace(_tboxMBRPostalAddress.Text);
+            bool isBoxNumberNotFilled = string.IsNullOrWhiteSpace(_tboxMBRBoxNumber.Text);
+            bool isZipCodeNotFilled = string.IsNullOrWhiteSpace(_tboxMBRZipCode.Text);
+            bool isLocalityNotFilled = string.IsNullOrWhiteSpace(_cboxMBRLocality.Text);
+            
+            bool hasError = isLastNameNotFilled || isFirstNameNotFilled
+                || isSexNotFilled || isEmailNotFilled || isCellphoneNumberNotFilled
+                || isPostalAddressNotFilled || isBoxNumberNotFilled
+                || isZipCodeNotFilled || isLocalityNotFilled;
+
+            return hasError;
+        }
+
         private void ShowErrorMessage(Exception ex)
         {
             string decoded = Rules.MessageDecoder(ContextError.MBR, ex.Message);
@@ -231,9 +259,9 @@ namespace ULMClubManger.Forms.UserControls
             _dtpLICObtentionDte.Value = DateTime.Now;
             _dtpLICExpirationDte.Value = DateTime.Now;
 
-            
-
             _gboxSubscription.Visible = false;
+
+            this.MemberCreating();
 
             UnlockControls(false);
             ClearControls();
@@ -244,33 +272,45 @@ namespace ULMClubManger.Forms.UserControls
         /// </summary>
         private void _btnMRBCreateConfirm_Click(object sender, EventArgs e)
         {
-            try
+            bool hasError = DetectUnfilledFields();
+            if (hasError)
             {
-                MemberService.CreateOne(Member);
-
-                _memberBackup = null;
-
-                HideErrorMessage();
-                LockControls();
-
-                _panelMBR_CRUD_btn.Visible = true;
-                _panelMBR_Create_btn.Visible = false;
-
-                _gboxSubscription.Visible = true;
-
-                MessageBox.Show(
-                    $"Le membre {_member.FullName} a bien été créé.",
-                    "Information",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBoxHelper.ShowMandatoryDataError();
             }
-            catch (BusinessException ex)
+            else
             {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
+                try
+                {
+                    Member createdMember = MemberService.CreateOne(Member);
+
+                    _memberBackup = null;
+
+                    HideErrorMessage();
+                    LockControls();
+
+                    _panelMBR_CRUD_btn.Visible = true;
+                    _panelMBR_Create_btn.Visible = false;
+
+                    _gboxSubscription.Visible = true;
+
+                    this.MemberCreated();
+
+                    MessageBox.Show(
+                        $"Le membre {createdMember.FullName} a bien été créé.",
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    RefreshData(createdMember.ID.Value);
+                }
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
         }
 
@@ -297,6 +337,8 @@ namespace ULMClubManger.Forms.UserControls
                 _panelMBR_Create_btn.Visible = false;
 
                 _gboxSubscription.Visible = true;
+
+                this.MemberCreated();
             }
         }
 
@@ -304,6 +346,8 @@ namespace ULMClubManger.Forms.UserControls
         {
             _panelMBR_CRUD_btn.Visible = false;
             _panelMBR_Update_btn.Visible = true;
+
+            this.MemberUpdating();
 
             UnlockControls(false);
 
@@ -317,47 +361,57 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnMRBUpdateConfirm_Click(object sender, EventArgs e)
         {
-            try
+            bool hasError = DetectUnfilledFields();
+            if (hasError)
             {
-                if (_dtpPaymentDateSubscription.Visible)
-                    _member.SubscriptionPaiementDate = _dtpPaymentDateSubscription.Value;
-                else
-                    _member.SubscriptionPaiementDate = null;
-
-                if (_member.IsSupporter)
+                MessageBoxHelper.ShowMandatoryDataError();
+            }
+            else
+            {
+                try
                 {
-                    _member.LicenceExpirationDate = null;
-                    _member.LicenceObtentionDate = null;
+                    if (_dtpPaymentDateSubscription.Visible)
+                        _member.SubscriptionPaiementDate = _dtpPaymentDateSubscription.Value;
+                    else
+                        _member.SubscriptionPaiementDate = null;
+
+                    if (_member.IsSupporter)
+                    {
+                        _member.LicenceExpirationDate = null;
+                        _member.LicenceObtentionDate = null;
+                    }
+
+                    MemberService.UpdateOne(_member);
+                    RefreshData(_member.ID.Value);
+
+                    _memberBackup = null;
+
+                    HideErrorMessage();
+                    LockControls();
+
+                    _dtpPaymentDateSubscription.Visible = false;
+
+                    _btnPaiementSubscriptionDate.Visible = false;
+
+                    _panelMBR_CRUD_btn.Visible = true;
+                    _panelMBR_Update_btn.Visible = false;
+
+                    this.MemberUpdated();
+
+                    MessageBox.Show(
+                        $"Le membre {_member.FullName} a bien été mis à jour.",
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
-
-                MemberService.UpdateOne(_member);
-                RefreshData(_member.ID.Value);
-
-                _memberBackup = null;
-
-                HideErrorMessage();
-                LockControls();
-
-                _dtpPaymentDateSubscription.Visible = false;
-
-                _btnPaiementSubscriptionDate.Visible = false;
-
-                _panelMBR_CRUD_btn.Visible = true;
-                _panelMBR_Update_btn.Visible = false;
-
-                MessageBox.Show(
-                    $"Le membre {_member.FullName} a bien été mis à jour.",
-                    "Information",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-            catch (BusinessException ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
         }
 
@@ -380,15 +434,18 @@ namespace ULMClubManger.Forms.UserControls
 
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Update_btn.Visible = false;
+
+                this.MemberUpdated();
             }
         }
 
         /// <summary>
-        /// Commence le processus d'ajout d'un MBR
+        /// Commence le processus de suppression d'un MBR
         /// </summary>
-
         private void _btnMBRDelete_Click(object sender, EventArgs e)
         {
+            this.MemberCanceling();
+
             LockControls();
 
             DialogResult dialogResult = MessageBox.Show(
@@ -400,7 +457,10 @@ namespace ULMClubManger.Forms.UserControls
             try
             {
                 if (dialogResult == DialogResult.OK)
+                {
                     MemberService.DeleteOne(_member.ID.Value);
+                    this.MemberCanceled();
+                }
 
                 ClearControls();
                 HideErrorMessage();
@@ -425,6 +485,42 @@ namespace ULMClubManger.Forms.UserControls
             LicenceManagementForm form = new LicenceManagementForm(_member);
             form.Text = $"Gestion des retraits de licence de {_member.FullName}";
             form.ShowDialog(this);
+        }
+
+        private void _cboxMBRQual1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!((CheckBox)sender).Checked)
+                MessageBoxHelper.ShowDeleteQualificationWarning();
+        }
+
+        private void _cboxMBRQual2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!((CheckBox)sender).Checked)
+                MessageBoxHelper.ShowDeleteQualificationWarning();
+        }
+
+        private void _cboxMBRQual3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!((CheckBox)sender).Checked)
+                MessageBoxHelper.ShowDeleteQualificationWarning();
+        }
+
+        private void _cboxMBRQual4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!((CheckBox)sender).Checked)
+                MessageBoxHelper.ShowDeleteQualificationWarning();
+        }
+
+        private void _cboxMBRQual5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!((CheckBox)sender).Checked)
+                MessageBoxHelper.ShowDeleteQualificationWarning();
+        }
+
+        private void _cboxMBRQual6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!((CheckBox)sender).Checked)
+                MessageBoxHelper.ShowDeleteQualificationWarning();
         }
     }
 }

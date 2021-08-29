@@ -15,7 +15,7 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCMemberPicker : UserControl
     {
-        public event delSelect SelectMember;
+        public event delSelectMember SelectMember;
 
         private List<Member> _allMembers;
         private List<Member> _allPilots;

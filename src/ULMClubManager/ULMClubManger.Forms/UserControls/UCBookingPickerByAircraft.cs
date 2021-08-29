@@ -15,7 +15,7 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCBookingPickerByAircraft : UserControl
     {
-        public event delSelect SelectAircraftCategoryID;
+        public event delSelectMember SelectAircraftCategoryID;
 
         private List<Aircraft> _allAircrafts;
         private List<AircraftCategory> _allAircraftCategories;
@@ -35,7 +35,7 @@ namespace ULMClubManger.Forms.UserControls
                 _allAircrafts = AircraftService.ReadAll();
                 _allAircraftCategories = AircraftService.ReadAllAvailableCategories();
 
-                _lbAircraftID.DataSource = _allAircrafts;
+                _lbAircrafts.DataSource = _allAircrafts;
                 _cboxSearchAircraftCategory.DataSource = _allAircraftCategories;
             }
             catch (Exception ex)
@@ -52,7 +52,7 @@ namespace ULMClubManger.Forms.UserControls
                 .Where(aircraft => aircraft.CategoryID == selectedAircraftCategory.ID)
                 .ToList();
 
-            _lbAircraftID.DataSource = filteredAircrafts;
+            _lbAircrafts.DataSource = filteredAircrafts;
         }
 
         private void UCBookingPickerByAircraft_Load(object sender, EventArgs e)
@@ -62,8 +62,8 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _lbAircraftID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_lbAircraftID.DataSource != null && this.SelectAircraftCategoryID != null)
-                this.SelectAircraftCategoryID(((Aircraft)_lbAircraftID.SelectedItem).ID.Value);
+            if (_lbAircrafts.DataSource != null && this.SelectAircraftCategoryID != null)
+                this.SelectAircraftCategoryID(((Aircraft)_lbAircrafts.SelectedItem).ID.Value);
         }
 
         private void _cboxSearchAircraftType_SelectedIndexChanged(object sender, EventArgs e)

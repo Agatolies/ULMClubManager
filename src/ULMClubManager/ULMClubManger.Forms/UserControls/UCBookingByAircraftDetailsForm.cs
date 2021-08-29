@@ -118,6 +118,8 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_TimeSlotStart.SelectedItem = SelectedBooking.StartHour;
             _cboxBookingByAircraft_TimeSlotEnd.SelectedItem = SelectedBooking.EndHour;
             _cboxBookingByAircraft_Runway.SelectedValue = SelectedBooking.RunwayID;
+
+            _dtpBookingByAircraft_Date.MinDate = DateTime.Now;
         }
 
         public void ClearControls()
@@ -127,6 +129,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_TimeSlotStart.DataSource = TimeSlot.GetTimeSlots();
             _cboxBookingByAircraft_Runway.SelectedValue = -1;
             _cboxBookingByAircraft_MemberName.SelectedValue = -1;
+            _tboxBookingByAircraft_CancellationReason.Text = "";
         }
 
         public void LockControls()
@@ -200,7 +203,7 @@ namespace ULMClubManger.Forms.UserControls
             if (hasError)
             {
                 MessageBox.Show(
-                    $"Toutes les données doivent être complétées",
+                    $"Toutes les données obligatoires doivent être complétées",
                     "Erreur",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -276,37 +279,45 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnFooterBookingByAircraft_UpdateConfirm_Click(object sender, EventArgs e)
         {
-            try
+            bool hasError = DetectUnfilledFields();
+            if (hasError)
             {
-                Booking booking = GetEditedBooking();
-
-                BookingService.UpdateOne(booking);
-
-                _bookingBackup = null;
-
-                HideErrorMessage();
-                LockControls();
-                //RefreshData(_selectedBooking.MemberID);
-
-                _panelFooterBookingByAircraft_Update.Visible = false;
-                _panelFooterBookingByAircraftCRUD.Visible = true;
-                _panelBookingByAircraft_Details.Visible = false;
-
-                this.BookingForAircraftUpdating();
-
-                MessageBox.Show(
-                    $"La réservation pour {SelectedBooking.MemberFullName} a bien été mise à jour.",
-                    "Information",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBoxHelper.ShowMandatoryDataError();
             }
-            catch (BusinessException ex)
+            else
             {
-                ShowErrorMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
+                try
+                {
+                    Booking booking = GetEditedBooking();
+
+                    BookingService.UpdateOne(booking);
+
+                    _bookingBackup = null;
+
+                    HideErrorMessage();
+                    LockControls();
+                    //RefreshData(_selectedBooking.MemberID);
+
+                    _panelFooterBookingByAircraft_Update.Visible = false;
+                    _panelFooterBookingByAircraftCRUD.Visible = true;
+                    _panelBookingByAircraft_Details.Visible = false;
+
+                    this.BookingForAircraftUpdating();
+
+                    MessageBox.Show(
+                        $"La réservation pour {SelectedBooking.MemberFullName} a bien été mise à jour.",
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
         }
 
@@ -364,6 +375,20 @@ namespace ULMClubManger.Forms.UserControls
             }
             else
             {
+                DateTime today = DateTime.Now;
+                bool isToday = SelectedBooking.Date.Year == today.Year
+                    && SelectedBooking.Date.Month == today.Month
+                    && SelectedBooking.Date.Day == today.Day + 1;
+
+                if (isToday && SelectedBooking.StartHour < new TimeSpan(today.Hour + 18, today.Minute, 0))
+                {
+                    MessageBox.Show(
+                        "Une annulation doit normalement se faire au minimum 18 heures à l'avance",
+                        "Attention",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+
                 DialogResult dialogResult = MessageBox.Show(
                 "Voulez-vous vraiment annuler cette réservation ?",
                 "Confirmation",
