@@ -25,7 +25,7 @@ namespace ULMClubManager.DAL.Mappers
             result.RET_DTE_DEB = ret.StartDate;
             result.RET_DTE_FIN = ret.EndDate;
             result.RET_MOTIF = ret.Reason;
-            result.MBR_FK_ID = ret.MbrID;
+            result.MBR_FK_ID = ret.MemberID;
 
             return result;
         }

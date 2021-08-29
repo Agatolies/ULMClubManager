@@ -14,6 +14,7 @@ using ULMClubManager.DTO.Abstractions;
 using ULMClubManager.DTO.Enums;
 using ULMClubManager.DTO.Exceptions;
 using ULMClubManager.DTO.Helpers;
+using ULMClubManger.Forms.SubForms;
 
 namespace ULMClubManger.Forms.UserControls
 {
@@ -48,6 +49,10 @@ namespace ULMClubManger.Forms.UserControls
                         _tboxMBRZipCode.Text = locality.ZipCode;
                         _tboxMBRID.Text = _member.ID.Value.ToString();
                         _gboxPIL.Visible = _member.IsPilot;
+
+                        _btnOpenLicenceManagementForm.BackColor = WithdrawalService.HasWithdrawalToday(_member.ID.Value)
+                            ? Color.FromArgb(204, 41, 54)
+                            : Color.FromArgb(0, 117, 162);
                     }
                     else
                     {
@@ -413,6 +418,13 @@ namespace ULMClubManger.Forms.UserControls
         private void _btnPaiementSubscriptionDate_Click(object sender, EventArgs e)
         {
             _dtpPaymentDateSubscription.Visible = true;
+        }
+
+        private void _btnOpenLicenceManagementForm_Click(object sender, EventArgs e)
+        {
+            LicenceManagementForm form = new LicenceManagementForm(_member);
+            form.Text = $"Gestion des retraits de licence de {_member.FullName}";
+            form.ShowDialog(this);
         }
     }
 }

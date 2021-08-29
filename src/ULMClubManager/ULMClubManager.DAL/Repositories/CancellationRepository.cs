@@ -23,7 +23,7 @@ namespace ULMClubManager.DAL.Repositories
             _cancellationMapper = new CancellationMapper();
         }
 
-        public  List<Cancellation> ReadAllCancellations()
+        public List<Cancellation> ReadAllCancellations()
         {
             IEnumerable<AnnDBRow> models = _unitOfWork.Connection.Query<AnnDBRow>(
                 "sp_select_ANN",
