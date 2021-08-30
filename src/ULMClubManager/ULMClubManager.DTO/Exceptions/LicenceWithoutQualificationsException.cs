@@ -2,6 +2,7 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+
     public class LicenceWithoutQualificationsException : BusinessException
     {
         public LicenceWithoutQualificationsException()

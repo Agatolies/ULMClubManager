@@ -43,7 +43,6 @@ namespace ULMClubManger.Forms
             this.ucLogin1.Name = "ucLogin1";
             this.ucLogin1.Size = new System.Drawing.Size(1384, 868);
             this.ucLogin1.TabIndex = 0;
-            this.ucLogin1.Visible = false;
             // 
             // ucLayout1
             // 

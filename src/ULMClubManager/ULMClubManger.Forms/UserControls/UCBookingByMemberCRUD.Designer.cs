@@ -49,17 +49,19 @@ namespace ULMClubManger.Forms.UserControls
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aircraftRegistrationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RunwayID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AircraftCategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RunwayID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MemberFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AircraftRegistration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cancellationReasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._panelBookingByMember_CRUD_Title.SuspendLayout();
             this._paneldgvBookingMemberCRUD.SuspendLayout();
@@ -136,10 +138,11 @@ namespace ULMClubManger.Forms.UserControls
             this.ID,
             this.MemberFullName,
             this.AircraftRegistration,
-            this.dataGridViewTextBoxColumn2,
+            this.Classe,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn2,
             this.cancellationReasonDataGridViewTextBoxColumn});
             this._dgvCancellationByMember.DataSource = this._bsCancellations;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -200,10 +203,11 @@ namespace ULMClubManger.Forms.UserControls
             this.Column1,
             this.dataGridViewTextBoxColumn1,
             this.aircraftRegistrationDataGridViewTextBoxColumn,
-            this.RunwayID,
+            this.AircraftCategoryID,
             this.Date,
             this.StartHour,
-            this.EndHour});
+            this.EndHour,
+            this.RunwayID});
             this._dgvBookingByMember.DataSource = this._bsBookings;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -241,7 +245,7 @@ namespace ULMClubManger.Forms.UserControls
             this.Column1.DataPropertyName = "ID";
             this.Column1.HeaderText = "Num RES";
             this.Column1.Name = "Column1";
-            this.Column1.Width = 50;
+            this.Column1.Width = 80;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -249,6 +253,7 @@ namespace ULMClubManger.Forms.UserControls
             this.dataGridViewTextBoxColumn1.HeaderText = "Pilote";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 200;
             // 
             // aircraftRegistrationDataGridViewTextBoxColumn
             // 
@@ -256,22 +261,21 @@ namespace ULMClubManger.Forms.UserControls
             this.aircraftRegistrationDataGridViewTextBoxColumn.HeaderText = "ULM";
             this.aircraftRegistrationDataGridViewTextBoxColumn.Name = "aircraftRegistrationDataGridViewTextBoxColumn";
             this.aircraftRegistrationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.aircraftRegistrationDataGridViewTextBoxColumn.Width = 142;
+            this.aircraftRegistrationDataGridViewTextBoxColumn.Width = 80;
             // 
-            // RunwayID
+            // AircraftCategoryID
             // 
-            this.RunwayID.DataPropertyName = "RunwayID";
-            this.RunwayID.HeaderText = "Piste";
-            this.RunwayID.Name = "RunwayID";
-            this.RunwayID.ReadOnly = true;
-            this.RunwayID.Width = 50;
+            this.AircraftCategoryID.DataPropertyName = "AircraftCategoryID";
+            this.AircraftCategoryID.HeaderText = "Classe";
+            this.AircraftCategoryID.Name = "AircraftCategoryID";
+            this.AircraftCategoryID.ReadOnly = true;
+            this.AircraftCategoryID.Width = 80;
             // 
             // Date
             // 
             this.Date.DataPropertyName = "Date";
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
-            this.Date.Width = 143;
             // 
             // StartHour
             // 
@@ -287,13 +291,21 @@ namespace ULMClubManger.Forms.UserControls
             this.EndHour.Name = "EndHour";
             this.EndHour.Width = 143;
             // 
+            // RunwayID
+            // 
+            this.RunwayID.DataPropertyName = "RunwayID";
+            this.RunwayID.HeaderText = "Piste";
+            this.RunwayID.Name = "RunwayID";
+            this.RunwayID.ReadOnly = true;
+            this.RunwayID.Width = 50;
+            // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "Num RES";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 50;
+            this.ID.Width = 80;
             // 
             // MemberFullName
             // 
@@ -301,6 +313,7 @@ namespace ULMClubManger.Forms.UserControls
             this.MemberFullName.HeaderText = "Pilote";
             this.MemberFullName.Name = "MemberFullName";
             this.MemberFullName.ReadOnly = true;
+            this.MemberFullName.Width = 150;
             // 
             // AircraftRegistration
             // 
@@ -310,13 +323,13 @@ namespace ULMClubManger.Forms.UserControls
             this.AircraftRegistration.ReadOnly = true;
             this.AircraftRegistration.Width = 80;
             // 
-            // dataGridViewTextBoxColumn2
+            // Classe
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "RunwayID";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Piste";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 50;
+            this.Classe.DataPropertyName = "AircraftCategoryID";
+            this.Classe.HeaderText = "Classe";
+            this.Classe.Name = "Classe";
+            this.Classe.ReadOnly = true;
+            this.Classe.Width = 80;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -331,7 +344,7 @@ namespace ULMClubManger.Forms.UserControls
             this.dataGridViewTextBoxColumn5.HeaderText = "Heure de fin";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 140;
+            this.dataGridViewTextBoxColumn5.Width = 90;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -339,7 +352,15 @@ namespace ULMClubManger.Forms.UserControls
             this.dataGridViewTextBoxColumn4.HeaderText = "Heure de début";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 140;
+            this.dataGridViewTextBoxColumn4.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "RunwayID";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Piste";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 50;
             // 
             // cancellationReasonDataGridViewTextBoxColumn
             // 
@@ -347,7 +368,7 @@ namespace ULMClubManger.Forms.UserControls
             this.cancellationReasonDataGridViewTextBoxColumn.HeaderText = "Motif";
             this.cancellationReasonDataGridViewTextBoxColumn.Name = "cancellationReasonDataGridViewTextBoxColumn";
             this.cancellationReasonDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cancellationReasonDataGridViewTextBoxColumn.Width = 200;
+            this.cancellationReasonDataGridViewTextBoxColumn.Width = 155;
             // 
             // UCBookingByMemberCRUD
             // 
@@ -378,23 +399,24 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Panel _paneldgvBookingMemberCRUD;
         private System.Windows.Forms.DataGridView _dgvBookingByMember;
         private System.Windows.Forms.BindingSource _bsCancellations;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookingIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label _labelBookingByMember_CancellationTitle;
         private System.Windows.Forms.DataGridView _dgvCancellationByMember;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberFullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn AircraftRegistration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Classe;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cancellationReasonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn aircraftRegistrationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RunwayID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AircraftCategoryID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartHour;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndHour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RunwayID;
     }
 }

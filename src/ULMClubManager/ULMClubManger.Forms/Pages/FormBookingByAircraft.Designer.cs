@@ -38,7 +38,7 @@ namespace ULMClubManger.Forms.Pages
             // 
             this._ucBookingByAircraftDetailsForm.BackColor = System.Drawing.Color.WhiteSmoke;
             this._ucBookingByAircraftDetailsForm.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._ucBookingByAircraftDetailsForm.Location = new System.Drawing.Point(234, 549);
+            this._ucBookingByAircraftDetailsForm.Location = new System.Drawing.Point(0, 549);
             this._ucBookingByAircraftDetailsForm.Name = "_ucBookingByAircraftDetailsForm";
             this._ucBookingByAircraftDetailsForm.SelectedBooking = null;
             this._ucBookingByAircraftDetailsForm.SelectedPilotID = 0;
@@ -55,7 +55,7 @@ namespace ULMClubManger.Forms.Pages
             // 
             this._ucBookingByAircraftCRUD.BackColor = System.Drawing.Color.WhiteSmoke;
             this._ucBookingByAircraftCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._ucBookingByAircraftCRUD.Location = new System.Drawing.Point(234, 0);
+            this._ucBookingByAircraftCRUD.Location = new System.Drawing.Point(0, 0);
             this._ucBookingByAircraftCRUD.Name = "_ucBookingByAircraftCRUD";
             this._ucBookingByAircraftCRUD.Size = new System.Drawing.Size(857, 869);
             this._ucBookingByAircraftCRUD.TabIndex = 1;
@@ -64,8 +64,8 @@ namespace ULMClubManger.Forms.Pages
             // _ucBookingByAircraftPicker
             // 
             this._ucBookingByAircraftPicker.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._ucBookingByAircraftPicker.Dock = System.Windows.Forms.DockStyle.Left;
-            this._ucBookingByAircraftPicker.Location = new System.Drawing.Point(0, 0);
+            this._ucBookingByAircraftPicker.Dock = System.Windows.Forms.DockStyle.Right;
+            this._ucBookingByAircraftPicker.Location = new System.Drawing.Point(857, 0);
             this._ucBookingByAircraftPicker.Name = "_ucBookingByAircraftPicker";
             this._ucBookingByAircraftPicker.Size = new System.Drawing.Size(234, 869);
             this._ucBookingByAircraftPicker.TabIndex = 0;
@@ -75,6 +75,7 @@ namespace ULMClubManger.Forms.Pages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1091, 869);
             this.Controls.Add(this._ucBookingByAircraftDetailsForm);
             this.Controls.Add(this._ucBookingByAircraftCRUD);

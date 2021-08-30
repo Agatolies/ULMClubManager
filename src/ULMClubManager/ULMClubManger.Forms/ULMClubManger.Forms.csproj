@@ -117,12 +117,6 @@
     <Compile Include="UserControls\UCBookingByMemberCRUD.Designer.cs">
       <DependentUpon>UCBookingByMemberCRUD.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCBookingByRunwayReadOnly.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UCBookingByRunwayReadOnly.Designer.cs">
-      <DependentUpon>UCBookingByRunwayReadOnly.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UCBookingByMemberDetailsForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +134,12 @@
     </Compile>
     <Compile Include="UserControls\UCBookingPickerByMember.Designer.cs">
       <DependentUpon>UCBookingPickerByMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCFuturBookingsConsultation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCFuturBookingsConsultation.Designer.cs">
+      <DependentUpon>UCFuturBookingsConsultation.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCMemberCRUD.cs">
       <SubType>UserControl</SubType>
@@ -207,9 +207,6 @@
     <EmbeddedResource Include="UserControls\UCBookingByMemberCRUD.resx">
       <DependentUpon>UCBookingByMemberCRUD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByRunwayReadOnly.resx">
-      <DependentUpon>UCBookingByRunwayReadOnly.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCBookingByMemberDetailsForm.resx">
       <DependentUpon>UCBookingByMemberDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCBookingPickerByMember.resx">
       <DependentUpon>UCBookingPickerByMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCFuturBookingsConsultation.resx">
+      <DependentUpon>UCFuturBookingsConsultation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCMemberCRUD.resx">
       <DependentUpon>UCMemberCRUD.cs</DependentUpon>

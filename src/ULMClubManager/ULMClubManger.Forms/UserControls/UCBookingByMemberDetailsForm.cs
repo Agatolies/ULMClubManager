@@ -123,8 +123,6 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_TimeSlotStart.SelectedItem = SelectedBooking.StartHour;
             _cboxBookingByMember_TimeSlotEnd.SelectedItem = SelectedBooking.EndHour;
             _cboxBookingByMember_Runway.SelectedValue = SelectedBooking.RunwayID;
-
-            _dtpBookingByMember_Date.MinDate = DateTime.Now;
         }
 
         public void ClearControls()

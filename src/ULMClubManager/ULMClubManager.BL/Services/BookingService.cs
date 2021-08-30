@@ -15,7 +15,10 @@ namespace ULMClubManager.BL.Services
         {
             using (DalSession dalSession = new DalSession())
             {
-                List<Booking> bookings = dalSession.Bookings.ReadAllInFuture().ToList();
+                List<Booking> bookings = dalSession.Bookings.ReadAllInFuture()
+                    .Where(b => string.IsNullOrEmpty(b.CancellationReason))
+                    .ToList();
+
                 List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
 
                 return detailedBookings;
@@ -83,7 +86,7 @@ namespace ULMClubManager.BL.Services
                     dalSession.Bookings.DeleteOne(bookingID);
                     dalSession.UnitOfWork.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dalSession.UnitOfWork.Rollback();
                     throw;
@@ -97,7 +100,17 @@ namespace ULMClubManager.BL.Services
 
             using (DalSession dalSession = new DalSession())
             {
-                dalSession.Bookings.CreateOne(booking);
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    dalSession.Bookings.CreateOne(booking);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
             }
         }
 
@@ -107,7 +120,17 @@ namespace ULMClubManager.BL.Services
 
             using (DalSession dalSession = new DalSession())
             {
-                dalSession.Bookings.UpdateOne(booking);
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    dalSession.Bookings.UpdateOne(booking);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
             }
         }
 

@@ -2,6 +2,7 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+
     public class InvalidCountryCodeException : BusinessException
     {
         public InvalidCountryCodeException()

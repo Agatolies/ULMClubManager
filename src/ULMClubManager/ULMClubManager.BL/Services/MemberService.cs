@@ -12,6 +12,8 @@ namespace ULMClubManager.BL.Services
 {
     public static class MemberService
     {
+        // MEMBER
+
         public static List<Member> ReadAll()
         {
             using (DalSession dalSession = new DalSession())
@@ -31,7 +33,21 @@ namespace ULMClubManager.BL.Services
         {
             using (DalSession dalSession = new DalSession())
             {
-                return dalSession.Members.ReadOne(id);
+                Member newMember = new Member();
+
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    newMember = dalSession.Members.ReadOne(id);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
+
+                return newMember;
             }
         }
 
@@ -41,7 +57,21 @@ namespace ULMClubManager.BL.Services
 
             using (DalSession dalSession = new DalSession())
             {
-                return dalSession.Members.CreateOne(member);
+                Member newMember = new Member();
+
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    newMember = dalSession.Members.CreateOne(member);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
+
+                return newMember;
             }
         }
 
@@ -51,28 +81,40 @@ namespace ULMClubManager.BL.Services
 
             using (DalSession dalSession = new DalSession())
             {
-                int memberID = member.ID.Value;
-                Member oldMember = dalSession.Members.ReadOne(memberID);
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
 
-                if (oldMember.QualificationType1 && !member.QualificationType1)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 1);
+                    int memberID = member.ID.Value;
+                    Member oldMember = dalSession.Members.ReadOne(memberID);
 
-                if (oldMember.QualificationType2 && !member.QualificationType2)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 2);
+                    if (oldMember.QualificationType1 && !member.QualificationType1)
+                        DeleteBookingRelatedToMemberQualification(dalSession, memberID, 1);
 
-                if (oldMember.QualificationType3 && !member.QualificationType3)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 3);
+                    if (oldMember.QualificationType2 && !member.QualificationType2)
+                        DeleteBookingRelatedToMemberQualification(dalSession, memberID, 2);
 
-                if (oldMember.QualificationType4 && !member.QualificationType4)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 4);
+                    if (oldMember.QualificationType3 && !member.QualificationType3)
+                        DeleteBookingRelatedToMemberQualification(dalSession, memberID, 3);
 
-                if (oldMember.QualificationType5 && !member.QualificationType5)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 5);
+                    if (oldMember.QualificationType4 && !member.QualificationType4)
+                        DeleteBookingRelatedToMemberQualification(dalSession, memberID, 4);
 
-                if (oldMember.QualificationType6 && !member.QualificationType6)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 6);
+                    if (oldMember.QualificationType5 && !member.QualificationType5)
+                        DeleteBookingRelatedToMemberQualification(dalSession, memberID, 5);
 
-                dalSession.Members.UpdateOne(member);
+                    if (oldMember.QualificationType6 && !member.QualificationType6)
+                        DeleteBookingRelatedToMemberQualification(dalSession, memberID, 6);
+
+                    dalSession.Members.UpdateOne(member);
+
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
             }
         }
 
@@ -80,9 +122,65 @@ namespace ULMClubManager.BL.Services
         {
             using (DalSession dalSession = new DalSession())
             {
-                dalSession.Bookings.CreateOne(booking);
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    dalSession.Bookings.CreateOne(booking);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
             }
         }
+
+        private static void ValidateMember(Member member)
+        {
+            if (member.RegistrationDate == DateTime.MinValue)
+                member.RegistrationDate = DateTime.Today;
+
+            if (member.FirstName.Length < 3)
+                throw new FirstNameTooShortException();
+
+            Regex regEmail = new Regex(
+                @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$",
+                RegexOptions.IgnoreCase);
+
+            if (!regEmail.IsMatch(member.EmailAddress))
+                throw new InvalidEmailAddressException();
+
+            if (member.IsPilot)
+            {
+                if (member.LicenceCountry.Length != 2)
+                    throw new InvalidCountryCodeException();
+
+                bool hasQualification = (
+                    member.QualificationType1
+                    || member.QualificationType2
+                    || member.QualificationType3
+                    || member.QualificationType4
+                    || member.QualificationType5
+                    || member.QualificationType6);
+
+                //bool hasLicence = 
+
+                bool hasLicenceInfo =
+                    member.LicenceNumber != null
+                    || member.LicenceObtentionDate != null
+                    || member.LicenceExpirationDate != null
+                    || member.LicenceCountry != null;
+
+                if (hasLicenceInfo && !hasQualification)
+                    throw new LicenceWithoutQualificationsException();
+
+                if (!hasLicenceInfo && hasQualification)
+                    throw new QualificationWithoutLicenceException();
+            }
+        }
+
+        // BOOKING
 
         public static List<Booking> ReadAllBooking()
         {
@@ -123,7 +221,7 @@ namespace ULMClubManager.BL.Services
 
                     dalSession.UnitOfWork.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dalSession.UnitOfWork.Rollback();
                     throw;
@@ -141,13 +239,15 @@ namespace ULMClubManager.BL.Services
                     dalSession.Members.DeleteOne(memberID);
                     dalSession.UnitOfWork.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dalSession.UnitOfWork.Rollback();
                     throw;
                 }
             }
         }
+
+        // SUBSCRIPTION
 
         public static List<Subscription> ReadAllSubscription(int memberID)
         {
@@ -175,40 +275,6 @@ namespace ULMClubManager.BL.Services
             return lastSubscription.IsPaid && lastSubscription.IsForCurrentYear;
         }
 
-        private static void ValidateMember(Member member)
-        {
-            if (member.RegistrationDate == DateTime.MinValue)
-                member.RegistrationDate = DateTime.Today;
-
-            if (member.FirstName.Length < 3)
-                throw new FirstNameTooShortException();
-
-            Regex regEmail = new Regex(
-                @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$",
-                RegexOptions.IgnoreCase);
-
-            if (!regEmail.IsMatch(member.EmailAddress))
-                throw new InvalidEmailAddressException();
-
-            if (member.IsPilot)
-            {
-                if (member.LicenceCountry.Length != 2)
-                    throw new InvalidCountryCodeException();
-
-                bool hasNoQualification =
-                    !member.QualificationType1
-                    && !member.QualificationType2
-                    && !member.QualificationType3
-                    && !member.QualificationType4
-                    && !member.QualificationType5
-                    && !member.QualificationType6;
-
-                bool hasLicence = member.LicenceNumber != null;
-
-                if (hasLicence && hasNoQualification)
-                    throw new LicenceWithoutQualificationsException();
-            }
-        }
 
         private static void DeleteBookingRelatedToMemberQualification(DalSession dalSession, int memberID, int categoryID)
         {
@@ -222,6 +288,7 @@ namespace ULMClubManager.BL.Services
             foreach (Booking b in bookingInFuture)
             {
                 Aircraft aircraft = dalSession.Aircrafts.ReadOne(b.AircraftID);
+
                 if (aircraft.CategoryID == categoryID)
                     dalSession.Bookings.DeleteOne(b.ID.Value);
             }

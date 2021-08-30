@@ -642,7 +642,6 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual6.TabIndex = 5;
             this._cboxMBRQual6.Text = "Classe 6 : Hélicoptères";
             this._cboxMBRQual6.UseVisualStyleBackColor = true;
-            this._cboxMBRQual6.CheckedChanged += new System.EventHandler(this._cboxMBRQual6_CheckedChanged);
             // 
             // _cboxMBRQual5
             // 
@@ -656,7 +655,6 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual5.TabIndex = 4;
             this._cboxMBRQual5.Text = "Classe 5 : Aérostats";
             this._cboxMBRQual5.UseVisualStyleBackColor = true;
-            this._cboxMBRQual5.CheckedChanged += new System.EventHandler(this._cboxMBRQual5_CheckedChanged);
             // 
             // _cboxMBRQual4
             // 
@@ -670,7 +668,6 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual4.TabIndex = 3;
             this._cboxMBRQual4.Text = "Classe 4 : Autogires";
             this._cboxMBRQual4.UseVisualStyleBackColor = true;
-            this._cboxMBRQual4.CheckedChanged += new System.EventHandler(this._cboxMBRQual4_CheckedChanged);
             // 
             // _cboxMBRQual3
             // 
@@ -684,7 +681,6 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual3.TabIndex = 2;
             this._cboxMBRQual3.Text = "Classe 3 : Appareils 3 axes";
             this._cboxMBRQual3.UseVisualStyleBackColor = true;
-            this._cboxMBRQual3.CheckedChanged += new System.EventHandler(this._cboxMBRQual3_CheckedChanged);
             // 
             // _cboxMBRQual1
             // 
@@ -698,7 +694,6 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual1.TabIndex = 1;
             this._cboxMBRQual1.Text = "Classe 1 : Paramoteurs";
             this._cboxMBRQual1.UseVisualStyleBackColor = true;
-            this._cboxMBRQual1.CheckedChanged += new System.EventHandler(this._cboxMBRQual1_CheckedChanged);
             // 
             // _cboxMBRQual2
             // 
@@ -712,7 +707,6 @@ namespace ULMClubManger.Forms.UserControls
             this._cboxMBRQual2.TabIndex = 0;
             this._cboxMBRQual2.Text = "Classe 2 : Pendulaires";
             this._cboxMBRQual2.UseVisualStyleBackColor = true;
-            this._cboxMBRQual2.CheckedChanged += new System.EventHandler(this._cboxMBRQual2_CheckedChanged);
             // 
             // _panelMBR_Update_btn
             // 

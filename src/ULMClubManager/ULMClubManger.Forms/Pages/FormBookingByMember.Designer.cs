@@ -37,7 +37,7 @@ namespace ULMClubManger.Forms.Pages
             // _ucBookingByMemberDetailsForm
             // 
             this._ucBookingByMemberDetailsForm.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._ucBookingByMemberDetailsForm.Location = new System.Drawing.Point(234, 549);
+            this._ucBookingByMemberDetailsForm.Location = new System.Drawing.Point(0, 549);
             this._ucBookingByMemberDetailsForm.Name = "_ucBookingByMemberDetailsForm";
             this._ucBookingByMemberDetailsForm.SelectedBooking = null;
             this._ucBookingByMemberDetailsForm.SelectedPilotID = 0;
@@ -54,7 +54,7 @@ namespace ULMClubManger.Forms.Pages
             // 
             this._ucBookingByMemberCRUD.BackColor = System.Drawing.Color.WhiteSmoke;
             this._ucBookingByMemberCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._ucBookingByMemberCRUD.Location = new System.Drawing.Point(234, 0);
+            this._ucBookingByMemberCRUD.Location = new System.Drawing.Point(0, 0);
             this._ucBookingByMemberCRUD.Name = "_ucBookingByMemberCRUD";
             this._ucBookingByMemberCRUD.Size = new System.Drawing.Size(857, 869);
             this._ucBookingByMemberCRUD.TabIndex = 1;
@@ -63,8 +63,8 @@ namespace ULMClubManger.Forms.Pages
             // _ucBookingByMemberPicker
             // 
             this._ucBookingByMemberPicker.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._ucBookingByMemberPicker.Dock = System.Windows.Forms.DockStyle.Left;
-            this._ucBookingByMemberPicker.Location = new System.Drawing.Point(0, 0);
+            this._ucBookingByMemberPicker.Dock = System.Windows.Forms.DockStyle.Right;
+            this._ucBookingByMemberPicker.Location = new System.Drawing.Point(857, 0);
             this._ucBookingByMemberPicker.Name = "_ucBookingByMemberPicker";
             this._ucBookingByMemberPicker.Size = new System.Drawing.Size(234, 869);
             this._ucBookingByMemberPicker.TabIndex = 0;
@@ -74,6 +74,7 @@ namespace ULMClubManger.Forms.Pages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1091, 869);
             this.Controls.Add(this._ucBookingByMemberDetailsForm);
             this.Controls.Add(this._ucBookingByMemberCRUD);

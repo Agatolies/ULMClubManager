@@ -38,7 +38,17 @@ namespace ULMClubManager.BL.Services
         {
             using (DalSession dalSession = new DalSession())
             {
-                dalSession.Cancellations.CreateOneCancellation(bookingID, reason);
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    dalSession.Cancellations.CreateOneCancellation(bookingID, reason);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
             }
         }
     }

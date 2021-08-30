@@ -56,11 +56,13 @@
     <Compile Include="Exceptions\InvalidAicraftIDException.cs" />
     <Compile Include="Exceptions\InvalidCountryCodeException.cs" />
     <Compile Include="Exceptions\InvalidEmailAddressException.cs" />
+    <Compile Include="Exceptions\InvalidLicenceDatesException.cs" />
     <Compile Include="Exceptions\InvalidSubscriptionForBookingException.cs" />
     <Compile Include="Exceptions\LicenceWithdrawalException.cs" />
     <Compile Include="Exceptions\LicenceWithoutQualificationsException.cs" />
     <Compile Include="Exceptions\LoginAdminException.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
+    <Compile Include="Exceptions\QualificationWithoutLicenceException.cs" />
     <Compile Include="Exceptions\UnavailableAircraftException.cs" />
     <Compile Include="Exceptions\UnavailablePilotException.cs" />
     <Compile Include="Exceptions\UnavailableRunwayException.cs" />

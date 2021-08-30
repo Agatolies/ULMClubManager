@@ -41,7 +41,6 @@ namespace ULMClubManger.Forms.UserControls
             this._btnBookingMember = new System.Windows.Forms.Button();
             this._btnClubManagement = new System.Windows.Forms.Button();
             this._panelClubManagementSubmenu = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
             this._btnFutureBookings = new System.Windows.Forms.Button();
             this._panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -210,32 +209,13 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _panelClubManagementSubmenu
             // 
-            this._panelClubManagementSubmenu.Controls.Add(this.button6);
             this._panelClubManagementSubmenu.Controls.Add(this._btnFutureBookings);
             this._panelClubManagementSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this._panelClubManagementSubmenu.Location = new System.Drawing.Point(0, 364);
             this._panelClubManagementSubmenu.Margin = new System.Windows.Forms.Padding(2);
             this._panelClubManagementSubmenu.Name = "_panelClubManagementSubmenu";
-            this._panelClubManagementSubmenu.Size = new System.Drawing.Size(225, 73);
+            this._panelClubManagementSubmenu.Size = new System.Drawing.Size(225, 37);
             this._panelClubManagementSubmenu.TabIndex = 8;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this.button6.Location = new System.Drawing.Point(0, 37);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(225, 37);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "button6";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = false;
             // 
             // _btnFutureBookings
             // 
@@ -292,7 +272,6 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.Button _btnBookingMember;
         private System.Windows.Forms.Button _btnClubManagement;
         private System.Windows.Forms.Panel _panelClubManagementSubmenu;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button _btnFutureBookings;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

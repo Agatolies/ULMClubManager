@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ULMClubManger.Forms.UserControls
 {
-    public partial class UCBookingByRunwayReadOnly : UserControl
+    public partial class UCFuturBookingsConsultation : UserControl
     {
-        public UCBookingByRunwayReadOnly()
+        public UCFuturBookingsConsultation()
         {
             InitializeComponent();
         }

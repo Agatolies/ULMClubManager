@@ -25,12 +25,14 @@ namespace ULMClubManager.BL
             {
                 { "BS_MBR_EMAIL", "L'adresse email est invalide." },
                 { "BS_MBR_PRN", "Le prénom doit avoir au minimum 3 caractères." },
+                { "BS_PIL_QUAL_LIC", "Veuillez encoder les informations concernant la licence du pilote." },
                 { "BS_PIL_LIC_QUAL", "Une licence doit être associée à au moins une qualification de type." },
                 { "CHK_MBR_DTE_NAI", "Un membre doit avoir au moins 16 ans." },
                 { "CHK_MBR_NOM", "Le nom de famille doit avoir au minimum 3 caractères." },
                 { "CHK_PIL_LIC_PAYS", "Le code pays doit avoir 2 caractères." },
                 { "ERR_LOGIN", "Administrateur ? Le nom d'utilisateur ou le mot de passe est incorrect." },
                 { "ERR_ADMIN", "YOU SHALL NOT PAAAAAAAAASS! Vous n'êtes pas administrateur." },
+                { "PIL_LIC_DTE_INVALID", "La date de fin ne peut pas être antérieure à la date du début de retrait de licence." },
                 { "UC_PIL_NUM_LIC", "Il existe déjà une licence avec ce numéro." }
             };
         }

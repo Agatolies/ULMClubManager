@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ULMClubManager.DAL;
 using ULMClubManager.DTO;
+using ULMClubManager.DTO.Exceptions;
 
 namespace ULMClubManager.BL.Services
 {
@@ -22,7 +23,17 @@ namespace ULMClubManager.BL.Services
 
             using (DalSession dalSession = new DalSession())
             {
-                dalSession.Withdrawals.CreateOne(withdrawal);
+                try
+                {
+                    dalSession.UnitOfWork.Begin();
+                    dalSession.Withdrawals.CreateOne(withdrawal);
+                    dalSession.UnitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    dalSession.UnitOfWork.Rollback();
+                    throw;
+                }
             }
         }
 
@@ -37,7 +48,7 @@ namespace ULMClubManager.BL.Services
         private static void ValidateWithdrawal(Withdrawal withdrawal)
         {
             if (withdrawal.StartDate >= withdrawal.EndDate)
-                throw new ArgumentException("La date de fin ne peut pas être antérieure à la date du début de retrait de licence.");
+                throw new InvalidLicenceDatesException();
         }
     }
 }

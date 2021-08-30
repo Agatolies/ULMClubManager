@@ -9,22 +9,22 @@ namespace ULMClubManger.Forms
 {
     public static class MessageBoxHelper
     {
-        public static void ShowMandatoryDataError()
+        public static DialogResult ShowMandatoryDataError()
         {
-            MessageBox.Show(
+            return MessageBox.Show(
                 $"Toutes les données obligatoires doivent être complétées.",
                 "Erreur",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
         }
 
-        public static void ShowDeleteQualificationWarning()
+        public static DialogResult ShowDeleteQualificationWarning()
         {
-            MessageBox.Show(
+            return MessageBox.Show(
                 "La suppression d'une qualification entraine automatiquement " +
                     "la suppression des réservations pour les ULM qui y sont liés.",
                 "Attention",
-                MessageBoxButtons.OK,
+                MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning);
         }
     }

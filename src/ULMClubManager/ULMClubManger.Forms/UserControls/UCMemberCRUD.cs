@@ -368,49 +368,54 @@ namespace ULMClubManger.Forms.UserControls
             }
             else
             {
-                try
-                {
-                    if (_dtpPaymentDateSubscription.Visible)
-                        _member.SubscriptionPaiementDate = _dtpPaymentDateSubscription.Value;
-                    else
-                        _member.SubscriptionPaiementDate = null;
+                DialogResult result = MessageBoxHelper.ShowDeleteQualificationWarning();
 
-                    if (_member.IsSupporter)
+                if (result == DialogResult.OK)
+                {
+                    try
                     {
-                        _member.LicenceExpirationDate = null;
-                        _member.LicenceObtentionDate = null;
+                        if (_dtpPaymentDateSubscription.Visible)
+                            _member.SubscriptionPaiementDate = _dtpPaymentDateSubscription.Value;
+                        else
+                            _member.SubscriptionPaiementDate = null;
+
+                        if (_member.IsSupporter)
+                        {
+                            _member.LicenceExpirationDate = null;
+                            _member.LicenceObtentionDate = null;
+                        }
+
+                        MemberService.UpdateOne(_member);
+                        RefreshData(_member.ID.Value);
+
+                        _memberBackup = null;
+
+                        HideErrorMessage();
+                        LockControls();
+
+                        _dtpPaymentDateSubscription.Visible = false;
+
+                        _btnPaiementSubscriptionDate.Visible = false;
+
+                        _panelMBR_CRUD_btn.Visible = true;
+                        _panelMBR_Update_btn.Visible = false;
+
+                        this.MemberUpdated();
+
+                        MessageBox.Show(
+                            $"Le membre {_member.FullName} a bien été mis à jour.",
+                            "Information",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
                     }
-
-                    MemberService.UpdateOne(_member);
-                    RefreshData(_member.ID.Value);
-
-                    _memberBackup = null;
-
-                    HideErrorMessage();
-                    LockControls();
-
-                    _dtpPaymentDateSubscription.Visible = false;
-
-                    _btnPaiementSubscriptionDate.Visible = false;
-
-                    _panelMBR_CRUD_btn.Visible = true;
-                    _panelMBR_Update_btn.Visible = false;
-
-                    this.MemberUpdated();
-
-                    MessageBox.Show(
-                        $"Le membre {_member.FullName} a bien été mis à jour.",
-                        "Information",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-                catch (BusinessException ex)
-                {
-                    ShowErrorMessage(ex);
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex);
+                    catch (BusinessException ex)
+                    {
+                        ShowErrorMessage(ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex);
+                    }
                 }
             }
         }
@@ -485,42 +490,6 @@ namespace ULMClubManger.Forms.UserControls
             LicenceManagementForm form = new LicenceManagementForm(_member);
             form.Text = $"Gestion des retraits de licence de {_member.FullName}";
             form.ShowDialog(this);
-        }
-
-        private void _cboxMBRQual1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!((CheckBox)sender).Checked)
-                MessageBoxHelper.ShowDeleteQualificationWarning();
-        }
-
-        private void _cboxMBRQual2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!((CheckBox)sender).Checked)
-                MessageBoxHelper.ShowDeleteQualificationWarning();
-        }
-
-        private void _cboxMBRQual3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!((CheckBox)sender).Checked)
-                MessageBoxHelper.ShowDeleteQualificationWarning();
-        }
-
-        private void _cboxMBRQual4_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!((CheckBox)sender).Checked)
-                MessageBoxHelper.ShowDeleteQualificationWarning();
-        }
-
-        private void _cboxMBRQual5_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!((CheckBox)sender).Checked)
-                MessageBoxHelper.ShowDeleteQualificationWarning();
-        }
-
-        private void _cboxMBRQual6_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!((CheckBox)sender).Checked)
-                MessageBoxHelper.ShowDeleteQualificationWarning();
         }
     }
 }
