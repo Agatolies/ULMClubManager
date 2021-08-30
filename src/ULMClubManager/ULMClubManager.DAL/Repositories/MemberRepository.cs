@@ -163,7 +163,7 @@ namespace ULMClubManager.DAL.Repositories
                         COTI_DTE_PAI = param.COTI_DTE_PAI,
                         LOC_FK_ID = param.LOC_FK_ID,
                         PIL_NUM_LIC = param.PIL_NUM_LIC,
-                        PIL_LIC_DTE_OBT = param.PIL_LIC_DTE_EXP,
+                        PIL_LIC_DTE_OBT = param.PIL_LIC_DTE_OBT,
                         PIL_LIC_DTE_EXP = param.PIL_LIC_DTE_EXP,
                         PIL_LIC_PAYS = param.PIL_LIC_PAYS,
                         MBR_QUAL_TYP_1 = param.MBR_QUAL_TYP_1,

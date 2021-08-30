@@ -107,7 +107,7 @@ namespace ULMClubManager.BL.Services
                         DeleteBookingRelatedToMemberQualification(dalSession, memberID, 6);
 
                     if (oldMember.LicenceExpirationDate > member.LicenceExpirationDate)
-                        DeleteBookingRelatedToMemberLicenceExpirationDate(dalSession, memberID);
+                        DeleteBookingRelatedToMemberLicenceExpirationDate(dalSession, memberID, member.LicenceExpirationDate.Value);
 
                     dalSession.Members.UpdateOne(member);
 
@@ -288,11 +288,11 @@ namespace ULMClubManager.BL.Services
                 Aircraft aircraft = dalSession.Aircrafts.ReadOne(b.AircraftID);
 
                 if (aircraft.CategoryID == categoryID)
-                    dalSession.Bookings.DeleteOne(b.ID.Value);
+                    dalSession.Cancellations.CreateOneCancellation(b.ID.Value, "Licence supprimée.");
             }
         }
 
-        private static void DeleteBookingRelatedToMemberLicenceExpirationDate(DalSession dalSession, int memberID)
+        private static void DeleteBookingRelatedToMemberLicenceExpirationDate(DalSession dalSession, int memberID, DateTime newExpirationDate)
         {
             List<Booking> bookingInFuture = ReadAllFutureBookingsByPilotID(memberID, dalSession);
 
@@ -301,8 +301,8 @@ namespace ULMClubManager.BL.Services
                 Member member = dalSession.Members.ReadOne(memberID);
 
                 // Supprimer toutes les RES dont la date est supérieure à la nouvelle date de fin de la LIC
-                if (b.Date > member.LicenceExpirationDate)
-                    dalSession.Bookings.DeleteOne(b.ID.Value);
+                if (b.Date > newExpirationDate)
+                    dalSession.Cancellations.CreateOneCancellation(b.ID.Value, "Modification de la date d'expiration de la licence.");
             }
 
         }
