@@ -53,6 +53,7 @@
     <Compile Include="Mappers\MemberMapper.cs" />
     <Compile Include="Repositories\CancellationRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
+    <Compile Include="Repositories\QualificationRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="DBRowModels\AerDBRow.cs" />
     <Compile Include="DBRowModels\CotiDBRow.cs" />

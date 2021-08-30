@@ -368,7 +368,7 @@ namespace ULMClubManger.Forms.UserControls
             }
             else
             {
-                DialogResult result = MessageBoxHelper.ShowDeleteQualificationWarning();
+                    DialogResult result = MessageBoxHelper.ShowDeleteQualificationWarning();
 
                 if (result == DialogResult.OK)
                 {

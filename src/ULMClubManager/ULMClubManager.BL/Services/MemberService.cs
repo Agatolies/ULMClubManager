@@ -106,6 +106,9 @@ namespace ULMClubManager.BL.Services
                     if (oldMember.QualificationType6 && !member.QualificationType6)
                         DeleteBookingRelatedToMemberQualification(dalSession, memberID, 6);
 
+                    if (oldMember.LicenceExpirationDate > member.LicenceExpirationDate)
+                        DeleteBookingRelatedToMemberLicenceExpirationDate(dalSession, memberID);
+
                     dalSession.Members.UpdateOne(member);
 
                     dalSession.UnitOfWork.Commit();
@@ -278,12 +281,7 @@ namespace ULMClubManager.BL.Services
 
         private static void DeleteBookingRelatedToMemberQualification(DalSession dalSession, int memberID, int categoryID)
         {
-            List<Booking> bookingInFuture = dalSession.Bookings
-                // celles d'un pilote
-                .ReadAllByPilotID(memberID)
-                // qui sont dans le futur
-                .Where(b => b.Date > DateTime.Now)
-                .ToList();
+            List<Booking> bookingInFuture = ReadAllFutureBookingsByPilotID(memberID, dalSession);
 
             foreach (Booking b in bookingInFuture)
             {
@@ -292,6 +290,31 @@ namespace ULMClubManager.BL.Services
                 if (aircraft.CategoryID == categoryID)
                     dalSession.Bookings.DeleteOne(b.ID.Value);
             }
+        }
+
+        private static void DeleteBookingRelatedToMemberLicenceExpirationDate(DalSession dalSession, int memberID)
+        {
+            List<Booking> bookingInFuture = ReadAllFutureBookingsByPilotID(memberID, dalSession);
+
+            foreach (Booking b in bookingInFuture)
+            {
+                Member member = dalSession.Members.ReadOne(memberID);
+
+                // Supprimer toutes les RES dont la date est supérieure à la nouvelle date de fin de la LIC
+                if (b.Date > member.LicenceExpirationDate)
+                    dalSession.Bookings.DeleteOne(b.ID.Value);
+            }
+
+        }
+
+        private static List<Booking> ReadAllFutureBookingsByPilotID(int memberID, DalSession dalSession)
+        {
+            return dalSession.Bookings
+                // celles d'un pilote
+                .ReadAllByPilotID(memberID)
+                // qui sont dans le futur
+                .Where(b => b.Date > DateTime.Now)
+                .ToList();
         }
     }
 }
