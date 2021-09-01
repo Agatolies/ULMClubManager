@@ -8,5 +8,20 @@ namespace ULMClubManager.DTO.Exceptions
             : base(ContextError.MBR, "ERR_ADMIN")
         {
         }
+
+        protected LoginAdminException(ContextError context, string tokenError)
+            : base(context, tokenError)
+        {
+        }
+
+        public LoginAdminException(string message)
+            : base(message)
+        {
+        }
+
+        public LoginAdminException(string message, System.Exception innerException)
+            : base(message, innerException)
+        {
+        }
     }
 }

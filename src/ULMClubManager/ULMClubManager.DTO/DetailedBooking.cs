@@ -1,5 +1,4 @@
 ﻿using System;
-using ULMClubManager.DTO;
 
 namespace ULMClubManager.DTO
 {
@@ -19,7 +18,6 @@ namespace ULMClubManager.DTO
 
             AircraftID = booking.AircraftID;
             AircraftRegistration = aircraft.Registration;
-            AircraftType = aircraft.Type;
             AircraftCategoryID = aircraft.CategoryID;
 
             RunwayID = booking.RunwayID;

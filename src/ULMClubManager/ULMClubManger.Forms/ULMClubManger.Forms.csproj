@@ -96,6 +96,7 @@
       <DependentUpon>LicenceManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UIDelegates.cs" />
+    <Compile Include="UserControls\IUCBooking.cs" />
     <Compile Include="UserControls\UCBookingBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -273,6 +274,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Common.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Core.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.Workspaces.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Common.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Core.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

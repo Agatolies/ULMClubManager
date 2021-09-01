@@ -10,5 +10,20 @@ namespace ULMClubManager.DTO.Exceptions
         {
 
         }
+
+        protected BookingDeadlineException(ContextError context, string tokenError)
+            : base(context, tokenError)
+        {
+        }
+
+        public BookingDeadlineException(string message)
+            : base(message)
+        {
+        }
+
+        public BookingDeadlineException(string message, System.Exception innerException)
+            : base(message, innerException)
+        {
+        }
     }
 }

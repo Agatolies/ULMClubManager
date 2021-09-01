@@ -8,5 +8,20 @@ namespace ULMClubManager.DTO.Exceptions
             : base(ContextError.RES, "BS_RES_PIST_UNAVAILABLE")
         {
         }
+
+        protected UnavailableRunwayException(ContextError context, string tokenError)
+            : base(context, tokenError)
+        {
+        }
+
+        public UnavailableRunwayException(string message)
+            : base(message)
+        {
+        }
+
+        public UnavailableRunwayException(string message, System.Exception innerException)
+            : base(message, innerException)
+        {
+        }
     }
 }

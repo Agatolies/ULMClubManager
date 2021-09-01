@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ULMClubManager.DTO.Enums;
+﻿using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
@@ -11,6 +6,21 @@ namespace ULMClubManager.DTO.Exceptions
     {
         public LoginException() 
             : base(ContextError.MBR, "ERR_LOGIN")
+        {
+        }
+
+        protected LoginException(ContextError context, string tokenError)
+            : base(context, tokenError)
+        {
+        }
+
+        public LoginException(string message)
+            : base(message)
+        {
+        }
+
+        public LoginException(string message, System.Exception innerException)
+            : base(message, innerException)
         {
         }
     }

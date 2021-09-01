@@ -8,5 +8,20 @@ namespace ULMClubManager.DTO.Exceptions
             : base(ContextError.RES, "BS_RES_QUAL")
         {
         }
+
+        protected IncorrectQualificationException(ContextError context, string tokenError)
+            : base(context, tokenError)
+        {
+        }
+
+        public IncorrectQualificationException(string message)
+            : base(message)
+        {
+        }
+
+        public IncorrectQualificationException(string message, System.Exception innerException)
+            : base(message, innerException)
+        {
+        }
     }
 }

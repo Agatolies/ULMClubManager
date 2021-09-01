@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ULMClubManager.BL;
 using ULMClubManager.BL.Services;
@@ -119,7 +113,7 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_TimeSlotEnd.SelectedItem = SelectedBooking.EndHour;
             _cboxBookingByAircraft_Runway.SelectedValue = SelectedBooking.RunwayID;
 
-            _dtpBookingByAircraft_Date.MinDate = DateTime.Now;
+            //_dtpBookingByAircraft_Date.MinDate = DateTime.Now;
         }
 
         public void ClearControls()
@@ -150,7 +144,21 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_Runway.Enabled = true;
         }
 
-        public Booking GetEditedBooking()
+        public Booking GetCreatingBooking()
+        {
+            return new Booking(
+                _dtpBookingByAircraft_Date.Value,
+                (TimeSpan)_cboxBookingByAircraft_TimeSlotStart.SelectedItem,
+                (TimeSpan)_cboxBookingByAircraft_TimeSlotEnd.SelectedItem,
+                null,
+                null,
+                null,
+                ((Member)_cboxBookingByAircraft_MemberName.SelectedItem).ID.Value,
+                ((Aircraft)_cboxBookingByAircraft_Aircraft.SelectedItem).ID.Value,
+                ((Runway)_cboxBookingByAircraft_Runway.SelectedItem).ID.Value);
+        }
+
+        public Booking GetUpdatingBooking()
         {
             return new Booking(
                 SelectedBooking.ID,
@@ -212,7 +220,7 @@ namespace ULMClubManger.Forms.UserControls
             {
                 try
                 {
-                    Booking booking = GetEditedBooking();
+                    Booking booking = GetCreatingBooking();
                     BookingService.CreateOne(booking);
 
                     _bookingBackup = null;
@@ -288,8 +296,7 @@ namespace ULMClubManger.Forms.UserControls
             {
                 try
                 {
-                    Booking booking = GetEditedBooking();
-
+                    Booking booking = GetUpdatingBooking();
                     BookingService.UpdateOne(booking);
 
                     _bookingBackup = null;

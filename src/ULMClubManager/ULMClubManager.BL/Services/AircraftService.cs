@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ULMClubManager.DAL;
 using ULMClubManager.DTO;
 
 namespace ULMClubManager.BL.Services
 {
-    public class AircraftService
+    public static class AircraftService
     {
         public static List<Aircraft> ReadAll()
         {

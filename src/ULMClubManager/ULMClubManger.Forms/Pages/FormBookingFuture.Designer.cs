@@ -64,6 +64,7 @@ namespace ULMClubManger.Forms.Pages
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
             this._dgvBookings.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this._dgvBookings.AutoGenerateColumns = false;
+            this._dgvBookings.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this._dgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dgvBookings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,

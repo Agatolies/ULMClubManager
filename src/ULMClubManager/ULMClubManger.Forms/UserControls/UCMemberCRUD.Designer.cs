@@ -110,6 +110,8 @@ namespace ULMClubManger.Forms.UserControls
             this._panelMessages = new System.Windows.Forms.Panel();
             this._panelGroupboxes = new System.Windows.Forms.Panel();
             this._panelRelative = new System.Windows.Forms.Panel();
+            this._labelMemberCRUDMandatoryIfPilot = new System.Windows.Forms.Label();
+            this._labelQUALMandatory = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
             this._panelMBR_CRUD_btn.SuspendLayout();
             this._gboxPIL.SuspendLayout();
@@ -234,7 +236,6 @@ namespace ULMClubManger.Forms.UserControls
             this._dtpMBRDteOfBirth.Enabled = false;
             this._dtpMBRDteOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._dtpMBRDteOfBirth.Location = new System.Drawing.Point(187, 228);
-            this._dtpMBRDteOfBirth.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
             this._dtpMBRDteOfBirth.Name = "_dtpMBRDteOfBirth";
             this._dtpMBRDteOfBirth.Size = new System.Drawing.Size(240, 20);
             this._dtpMBRDteOfBirth.TabIndex = 9;
@@ -462,6 +463,7 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _gboxPIL
             // 
+            this._gboxPIL.Controls.Add(this._labelQUALMandatory);
             this._gboxPIL.Controls.Add(this._btnOpenLicenceManagementForm);
             this._gboxPIL.Controls.Add(this._labelLICCountryMandatory);
             this._gboxPIL.Controls.Add(this._labelLICExpirationDteMandatory);
@@ -490,6 +492,7 @@ namespace ULMClubManger.Forms.UserControls
             this._gboxPIL.TabIndex = 33;
             this._gboxPIL.TabStop = false;
             this._gboxPIL.Text = "LICENCE ET QUALIFICATIONS";
+            this._gboxPIL.Visible = false;
             // 
             // _btnOpenLicenceManagementForm
             // 
@@ -509,45 +512,49 @@ namespace ULMClubManger.Forms.UserControls
             // 
             this._labelLICCountryMandatory.AutoSize = true;
             this._labelLICCountryMandatory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelLICCountryMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelLICCountryMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(162)))));
             this._labelLICCountryMandatory.Location = new System.Drawing.Point(268, 177);
             this._labelLICCountryMandatory.Name = "_labelLICCountryMandatory";
             this._labelLICCountryMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelLICCountryMandatory.TabIndex = 54;
             this._labelLICCountryMandatory.Text = "*";
+            this._labelLICCountryMandatory.Visible = false;
             // 
             // _labelLICExpirationDteMandatory
             // 
             this._labelLICExpirationDteMandatory.AutoSize = true;
             this._labelLICExpirationDteMandatory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelLICExpirationDteMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelLICExpirationDteMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(162)))));
             this._labelLICExpirationDteMandatory.Location = new System.Drawing.Point(433, 136);
             this._labelLICExpirationDteMandatory.Name = "_labelLICExpirationDteMandatory";
             this._labelLICExpirationDteMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelLICExpirationDteMandatory.TabIndex = 53;
             this._labelLICExpirationDteMandatory.Text = "*";
+            this._labelLICExpirationDteMandatory.Visible = false;
             // 
             // _labelLICObtentionDteMandatory
             // 
             this._labelLICObtentionDteMandatory.AutoSize = true;
             this._labelLICObtentionDteMandatory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelLICObtentionDteMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelLICObtentionDteMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(162)))));
             this._labelLICObtentionDteMandatory.Location = new System.Drawing.Point(433, 92);
             this._labelLICObtentionDteMandatory.Name = "_labelLICObtentionDteMandatory";
             this._labelLICObtentionDteMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelLICObtentionDteMandatory.TabIndex = 52;
             this._labelLICObtentionDteMandatory.Text = "*";
+            this._labelLICObtentionDteMandatory.Visible = false;
             // 
             // _labelLICNumMandatory
             // 
             this._labelLICNumMandatory.AutoSize = true;
             this._labelLICNumMandatory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelLICNumMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
+            this._labelLICNumMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(162)))));
             this._labelLICNumMandatory.Location = new System.Drawing.Point(433, 50);
             this._labelLICNumMandatory.Name = "_labelLICNumMandatory";
             this._labelLICNumMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelLICNumMandatory.TabIndex = 51;
             this._labelLICNumMandatory.Text = "*";
+            this._labelLICNumMandatory.Visible = false;
             // 
             // _tboxLICCountry
             // 
@@ -843,7 +850,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelError.AutoSize = true;
             this._labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._labelError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
-            this._labelError.Location = new System.Drawing.Point(46, 24);
+            this._labelError.Location = new System.Drawing.Point(46, 21);
             this._labelError.Name = "_labelError";
             this._labelError.Size = new System.Drawing.Size(231, 16);
             this._labelError.TabIndex = 42;
@@ -859,6 +866,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRLastNameMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRLastNameMandatory.TabIndex = 43;
             this._labelMBRLastNameMandatory.Text = "*";
+            this._labelMBRLastNameMandatory.Visible = false;
             // 
             // _labelMBRFirstNameMandatory
             // 
@@ -870,6 +878,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRFirstNameMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRFirstNameMandatory.TabIndex = 44;
             this._labelMBRFirstNameMandatory.Text = "*";
+            this._labelMBRFirstNameMandatory.Visible = false;
             // 
             // _labelMBRSexMandatory
             // 
@@ -881,6 +890,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRSexMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRSexMandatory.TabIndex = 45;
             this._labelMBRSexMandatory.Text = "*";
+            this._labelMBRSexMandatory.Visible = false;
             // 
             // _labelMBRCellphoneMandatory
             // 
@@ -892,6 +902,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRCellphoneMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRCellphoneMandatory.TabIndex = 47;
             this._labelMBRCellphoneMandatory.Text = "*";
+            this._labelMBRCellphoneMandatory.Visible = false;
             // 
             // _labelMBRStreetMandatory
             // 
@@ -903,6 +914,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRStreetMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRStreetMandatory.TabIndex = 46;
             this._labelMBRStreetMandatory.Text = "*";
+            this._labelMBRStreetMandatory.Visible = false;
             // 
             // _labelMBRBoxMandatory
             // 
@@ -914,6 +926,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRBoxMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRBoxMandatory.TabIndex = 48;
             this._labelMBRBoxMandatory.Text = "*";
+            this._labelMBRBoxMandatory.Visible = false;
             // 
             // _labelMBRLocalityMandatory
             // 
@@ -925,6 +938,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRLocalityMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRLocalityMandatory.TabIndex = 49;
             this._labelMBRLocalityMandatory.Text = "*";
+            this._labelMBRLocalityMandatory.Visible = false;
             // 
             // _labelMBRRegistrationDteMandatory
             // 
@@ -936,6 +950,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRRegistrationDteMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRRegistrationDteMandatory.TabIndex = 50;
             this._labelMBRRegistrationDteMandatory.Text = "*";
+            this._labelMBRRegistrationDteMandatory.Visible = false;
             // 
             // _labelMBREmailMandatory
             // 
@@ -947,6 +962,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBREmailMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBREmailMandatory.TabIndex = 46;
             this._labelMBREmailMandatory.Text = "*";
+            this._labelMBREmailMandatory.Visible = false;
             // 
             // _labelMBRDteOfBirthMandatory
             // 
@@ -958,6 +974,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMBRDteOfBirthMandatory.Size = new System.Drawing.Size(13, 15);
             this._labelMBRDteOfBirthMandatory.TabIndex = 51;
             this._labelMBRDteOfBirthMandatory.Text = "*";
+            this._labelMBRDteOfBirthMandatory.Visible = false;
             // 
             // _labelMemberCRUDMandatory
             // 
@@ -969,6 +986,7 @@ namespace ULMClubManger.Forms.UserControls
             this._labelMemberCRUDMandatory.Size = new System.Drawing.Size(120, 15);
             this._labelMemberCRUDMandatory.TabIndex = 52;
             this._labelMemberCRUDMandatory.Text = "* Donnée obligatoire";
+            this._labelMemberCRUDMandatory.Visible = false;
             // 
             // _labelSubscription
             // 
@@ -1071,6 +1089,7 @@ namespace ULMClubManger.Forms.UserControls
             // 
             // _panelMessages
             // 
+            this._panelMessages.Controls.Add(this._labelMemberCRUDMandatoryIfPilot);
             this._panelMessages.Controls.Add(this._labelError);
             this._panelMessages.Controls.Add(this._labelMemberCRUDMandatory);
             this._panelMessages.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1100,6 +1119,30 @@ namespace ULMClubManger.Forms.UserControls
             this._panelRelative.Name = "_panelRelative";
             this._panelRelative.Size = new System.Drawing.Size(907, 747);
             this._panelRelative.TabIndex = 52;
+            // 
+            // _labelMemberCRUDMandatoryIfPilot
+            // 
+            this._labelMemberCRUDMandatoryIfPilot.AutoSize = true;
+            this._labelMemberCRUDMandatoryIfPilot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelMemberCRUDMandatoryIfPilot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            this._labelMemberCRUDMandatoryIfPilot.Location = new System.Drawing.Point(325, 52);
+            this._labelMemberCRUDMandatoryIfPilot.Name = "_labelMemberCRUDMandatoryIfPilot";
+            this._labelMemberCRUDMandatoryIfPilot.Size = new System.Drawing.Size(165, 15);
+            this._labelMemberCRUDMandatoryIfPilot.TabIndex = 53;
+            this._labelMemberCRUDMandatoryIfPilot.Text = "* Donnée obligatoire si pilote";
+            this._labelMemberCRUDMandatoryIfPilot.Visible = false;
+            // 
+            // _labelQUALMandatory
+            // 
+            this._labelQUALMandatory.AutoSize = true;
+            this._labelQUALMandatory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelQUALMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(162)))));
+            this._labelQUALMandatory.Location = new System.Drawing.Point(803, 50);
+            this._labelQUALMandatory.Name = "_labelQUALMandatory";
+            this._labelQUALMandatory.Size = new System.Drawing.Size(13, 15);
+            this._labelQUALMandatory.TabIndex = 58;
+            this._labelQUALMandatory.Text = "*";
+            this._labelQUALMandatory.Visible = false;
             // 
             // UCMemberCRUD
             // 
@@ -1213,5 +1256,7 @@ namespace ULMClubManger.Forms.UserControls
         private System.Windows.Forms.DateTimePicker _dtpPaymentDateSubscription;
         private System.Windows.Forms.Button _btnPaiementSubscriptionDate;
         private System.Windows.Forms.Button _btnOpenLicenceManagementForm;
+        private System.Windows.Forms.Label _labelMemberCRUDMandatoryIfPilot;
+        private System.Windows.Forms.Label _labelQUALMandatory;
     }
 }

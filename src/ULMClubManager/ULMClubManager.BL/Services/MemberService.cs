@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using ULMClubManager.DAL;
 using ULMClubManager.DTO;
 using ULMClubManager.DTO.Exceptions;
@@ -193,7 +191,6 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-
         public static List<Booking> ReadAllBookingInFuture()
         {
             using (DalSession dalSession = new DalSession())
@@ -277,7 +274,6 @@ namespace ULMClubManager.BL.Services
             Subscription lastSubscription = GetLastSubscription(memberID);
             return lastSubscription.IsPaid && lastSubscription.IsForCurrentYear;
         }
-
 
         private static void DeleteBookingRelatedToMemberQualification(DalSession dalSession, int memberID, int categoryID)
         {

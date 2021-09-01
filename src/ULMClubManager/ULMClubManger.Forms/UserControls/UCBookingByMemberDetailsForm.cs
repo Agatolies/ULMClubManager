@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ULMClubManager.BL;
 using ULMClubManager.BL.Services;
@@ -152,7 +148,21 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_Runway.Enabled = true;
         }
 
-        public Booking GetEditedBooking()
+        public Booking GetCreatingBooking()
+        {
+            return new Booking(
+                _dtpBookingByMember_Date.Value,
+                (TimeSpan)_cboxBookingByMember_TimeSlotStart.SelectedItem,
+                (TimeSpan)_cboxBookingByMember_TimeSlotEnd.SelectedItem,
+                null,
+                null,
+                null,
+                SelectedPilotID,
+                ((Aircraft)_cboxBookingByMember_Aircraft.SelectedItem).ID.Value,
+                ((Runway)_cboxBookingByMember_Runway.SelectedItem).ID.Value);
+        }
+
+        public Booking GetUpdatingBooking()
         {
             return new Booking(
                 SelectedBooking.ID,
@@ -209,7 +219,7 @@ namespace ULMClubManger.Forms.UserControls
             {
                 try
                 {
-                    Booking booking = GetEditedBooking();
+                    Booking booking = GetCreatingBooking();
                     BookingService.CreateOne(booking);
 
                     _bookingBackup = null;
@@ -287,8 +297,7 @@ namespace ULMClubManger.Forms.UserControls
             {
                 try
                 {
-                    Booking booking = GetEditedBooking();
-
+                    Booking booking = GetUpdatingBooking();
                     BookingService.UpdateOne(booking);
 
                     _bookingBackup = null;

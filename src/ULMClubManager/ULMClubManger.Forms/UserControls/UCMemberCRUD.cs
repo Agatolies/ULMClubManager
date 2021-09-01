@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ULMClubManager.BL;
 using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
-using ULMClubManager.DTO.Abstractions;
 using ULMClubManager.DTO.Enums;
 using ULMClubManager.DTO.Exceptions;
 using ULMClubManager.DTO.Helpers;
@@ -185,13 +181,75 @@ namespace ULMClubManger.Forms.UserControls
             bool isBoxNumberNotFilled = string.IsNullOrWhiteSpace(_tboxMBRBoxNumber.Text);
             bool isZipCodeNotFilled = string.IsNullOrWhiteSpace(_tboxMBRZipCode.Text);
             bool isLocalityNotFilled = string.IsNullOrWhiteSpace(_cboxMBRLocality.Text);
-            
-            bool hasError = isLastNameNotFilled || isFirstNameNotFilled
+
+            bool isLicenceNumberNotFilled = string.IsNullOrWhiteSpace(_tboxLICNum.Text);
+            bool isLicenceStartDateNotFilled = string.IsNullOrWhiteSpace(_dtpLICObtentionDte.Text);
+            bool isLicenceEndDateNotFilled = string.IsNullOrWhiteSpace(_dtpLICExpirationDte.Text);
+            bool isLicenceCountryNotFilled = string.IsNullOrWhiteSpace(_tboxLICCountry.Text);
+
+
+            bool isAtLeastOnePilotFieldFilled =
+                !isLicenceNumberNotFilled || !isLicenceStartDateNotFilled
+                || !isLicenceEndDateNotFilled || !isLicenceCountryNotFilled;
+
+            bool isAllLicenceFieldsNotFilled =
+                isLicenceNumberNotFilled || isLicenceStartDateNotFilled
+                || isLicenceEndDateNotFilled || isLicenceCountryNotFilled;
+
+            bool isLicenceDatasIncomplete = isAtLeastOnePilotFieldFilled && isAllLicenceFieldsNotFilled;
+
+            bool hasError = 
+                isLastNameNotFilled || isFirstNameNotFilled
                 || isSexNotFilled || isEmailNotFilled || isCellphoneNumberNotFilled
                 || isPostalAddressNotFilled || isBoxNumberNotFilled
-                || isZipCodeNotFilled || isLocalityNotFilled;
+                || isZipCodeNotFilled || isLocalityNotFilled
+                || isLicenceDatasIncomplete;
 
             return hasError;
+        }
+
+        private void ShowMandatoryAsterisks()
+        {
+            _labelMBRLastNameMandatory.Visible = true;
+            _labelMBRFirstNameMandatory.Visible = true;
+            _labelMBRSexMandatory.Visible = true;
+            _labelMBRDteOfBirthMandatory.Visible = true;
+            _labelMBREmailMandatory.Visible = true;
+            _labelMBRCellphoneMandatory.Visible = true;
+            _labelMBRStreetMandatory.Visible = true;
+            _labelMBRBoxMandatory.Visible = true;
+            _labelMBRLocalityMandatory.Visible = true;
+            _labelMBRRegistrationDteMandatory.Visible = true;
+            _labelLICNumMandatory.Visible = true;
+            _labelLICObtentionDteMandatory.Visible = true;
+            _labelLICExpirationDteMandatory.Visible = true;
+            _labelLICCountryMandatory.Visible = true;
+            _labelQUALMandatory.Visible = true;
+
+            _labelMemberCRUDMandatory.Visible = true;
+            _labelMemberCRUDMandatoryIfPilot.Visible = true;
+        }
+
+        private void HideMandatoryAsterisks()
+        {
+            _labelMBRLastNameMandatory.Visible = false;
+            _labelMBRFirstNameMandatory.Visible = false;
+            _labelMBRSexMandatory.Visible = false;
+            _labelMBRDteOfBirthMandatory.Visible = false;
+            _labelMBREmailMandatory.Visible = false;
+            _labelMBRCellphoneMandatory.Visible = false;
+            _labelMBRStreetMandatory.Visible = false;
+            _labelMBRBoxMandatory.Visible = false;
+            _labelMBRLocalityMandatory.Visible = false;
+            _labelMBRRegistrationDteMandatory.Visible = false;
+            _labelLICNumMandatory.Visible = false;
+            _labelLICObtentionDteMandatory.Visible = false;
+            _labelLICExpirationDteMandatory.Visible = false;
+            _labelLICCountryMandatory.Visible = false;
+            _labelQUALMandatory.Visible = false;
+
+            _labelMemberCRUDMandatory.Visible = false;
+            _labelMemberCRUDMandatoryIfPilot.Visible = false;
         }
 
         private void ShowErrorMessage(Exception ex)
@@ -251,6 +309,8 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnMBRCreate_Click(object sender, EventArgs e)
         {
+            _btnOpenLicenceManagementForm.Visible = false;
+
             _panelMBR_CRUD_btn.Visible = false;
             _panelMBR_Create_btn.Visible = true;
 
@@ -265,6 +325,8 @@ namespace ULMClubManger.Forms.UserControls
 
             UnlockControls(false);
             ClearControls();
+            ShowMandatoryAsterisks();
+
         }
 
         /// <summary>
@@ -288,6 +350,8 @@ namespace ULMClubManger.Forms.UserControls
                     HideErrorMessage();
                     LockControls();
 
+                    _btnOpenLicenceManagementForm.Visible = true;
+
                     _panelMBR_CRUD_btn.Visible = true;
                     _panelMBR_Create_btn.Visible = false;
 
@@ -302,6 +366,7 @@ namespace ULMClubManger.Forms.UserControls
                         MessageBoxIcon.Information);
 
                     RefreshData(createdMember.ID.Value);
+                    HideMandatoryAsterisks();
                 }
                 catch (BusinessException ex)
                 {
@@ -332,6 +397,9 @@ namespace ULMClubManger.Forms.UserControls
 
                 LockControls();
                 HideErrorMessage();
+                HideMandatoryAsterisks();
+
+                _btnOpenLicenceManagementForm.Visible = true;
 
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Create_btn.Visible = false;
@@ -350,6 +418,7 @@ namespace ULMClubManger.Forms.UserControls
             this.MemberUpdating();
 
             UnlockControls(false);
+            ShowMandatoryAsterisks();
 
             _memberBackup = _member.CreateDeepCopy();
 
@@ -392,6 +461,7 @@ namespace ULMClubManger.Forms.UserControls
 
                         HideErrorMessage();
                         LockControls();
+                        HideMandatoryAsterisks();
 
                         _dtpPaymentDateSubscription.Visible = false;
 
@@ -432,6 +502,7 @@ namespace ULMClubManger.Forms.UserControls
             {
                 LockControls();
                 HideErrorMessage();
+                HideMandatoryAsterisks();
 
                 _dtpPaymentDateSubscription.Visible = false;
 

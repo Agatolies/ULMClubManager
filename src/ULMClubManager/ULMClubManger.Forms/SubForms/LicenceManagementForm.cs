@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
@@ -23,8 +17,8 @@ namespace ULMClubManger.Forms.SubForms
             InitializeComponent();
             InitializeData();
 
-            _tboxMemberName.Text = member.FullName;
-            _tboxMemberName.ReadOnly = true;
+            _tboxWithdrawalMemberName.Text = member.FullName;
+            _tboxWithdrawalMemberName.ReadOnly = true;
         }
 
         private void InitializeData()
@@ -37,9 +31,9 @@ namespace ULMClubManger.Forms.SubForms
         private Withdrawal ExtractWithdrawalFromForm()
         {
             return new Withdrawal(
-                _dtpStartDate.Value,
-                _dtpEndDate.Value,
-                _rtbReason.Text,
+                _dtpWithdrawalStartDate.Value,
+                _dtpWithdrawalEndDate.Value,
+                _rtbWithdrawalReason.Text,
                 _member.ID.Value);
         }
 

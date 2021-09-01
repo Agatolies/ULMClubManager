@@ -5,7 +5,6 @@ using ULMClubManager.DTO;
 using Dapper;
 using System.Data;
 using System.Collections.Generic;
-using System;
 
 namespace ULMClubManager.DAL.Repositories
 {

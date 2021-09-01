@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ULMClubManager.DTO;
 using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
@@ -15,7 +10,21 @@ namespace ULMClubManager.DTO.Exceptions
             Context = context;
             TokenError = tokenError;
         }
-        
+
+        public BusinessException()
+        {
+        }
+
+        public BusinessException(string message)
+            : base(message)
+        {
+        }
+
+        public BusinessException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
+
         public ContextError Context { get; }
 
         public string TokenError { get;  }

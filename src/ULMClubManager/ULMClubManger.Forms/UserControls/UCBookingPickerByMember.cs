@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
@@ -41,8 +37,7 @@ namespace ULMClubManger.Forms.UserControls
             string searchLetters = _tboxSearchPilot.Text;
 
             List<Member> filteredPilots = _allPilots
-                .Where(member => member.FullName.ToUpper()
-                .Contains(searchLetters.ToUpper()))
+                .Where(member => member.FullName.IndexOf(searchLetters, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
 
             _lbPilots.DataSource = filteredPilots;

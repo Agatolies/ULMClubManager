@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
-using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManger.Forms.UserControls
 {
@@ -68,8 +63,7 @@ namespace ULMClubManger.Forms.UserControls
             }
 
             filteredMembers = filteredMembers
-                .Where(member => member.FullName.ToUpper()
-                .Contains(searchLetters.ToUpper()))
+                .Where(member => member.FullName.IndexOf(searchLetters, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
 
             _lbMembers.DataSource = filteredMembers;
