@@ -2,7 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-
+    /// <summary>
+    /// Représente une exception pour un ULM non disponible
+    /// </summary>
     public class InvalidAicraftIDException : BusinessException
     {
         public InvalidAicraftIDException()

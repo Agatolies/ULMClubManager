@@ -15,12 +15,11 @@ namespace ULMClubManager.DAL
     {
         private static IDbConnection GetConnection()
         {
-            string connectionString = "Data Source=localhost;Initial Catalog=ULMClubManager;Persist Security Info=True;User ID=sa;Password=<YourStrong@Passw0rd>";
+            const string connectionString = "Data Source=localhost;Initial Catalog=ULMClubManager;Persist Security Info=True;User ID=sa;Password=<YourStrong@Passw0rd>";
             return new SqlConnection(connectionString);
         }
 
         private readonly IDbConnection _connection;
-        private readonly IUnitOfWork _unitOfWork;
 
         private AircraftRepository _aircrafts;
         private BookingRepository _bookings;
@@ -35,21 +34,19 @@ namespace ULMClubManager.DAL
 
         public DalSession()
         {
-            _connection = DalSession.GetConnection();
+            _connection = GetConnection();
             _connection.Open();
-            _unitOfWork = new UnitOfWork(_connection);
+
+            UnitOfWork = new UnitOfWork(_connection);
         }
 
-        public IUnitOfWork UnitOfWork
+        public IUnitOfWork UnitOfWork { get; }
+
+        public AircraftRepository Aircrafts
         {
-            get { return _unitOfWork; }
-        }
-
-        public AircraftRepository Aircrafts 
-        { 
             get
             {
-                return _aircrafts ?? (_aircrafts = new AircraftRepository(_unitOfWork, new AircraftMapper()));
+                return _aircrafts ?? (_aircrafts = new AircraftRepository(UnitOfWork, new AircraftMapper()));
 
                 // La ligne au-dessus est identique au code ci-dessous
                 // if (_aircrafts == null)
@@ -60,77 +57,32 @@ namespace ULMClubManager.DAL
             }
         }
 
-        public BookingRepository Bookings
-        {
-            get
-            {
-                return _bookings ?? (_bookings = new BookingRepository(_unitOfWork));
-            }
-        }
+        public BookingRepository Bookings =>
+            _bookings ?? (_bookings = new BookingRepository(UnitOfWork));
 
-        public AircraftCategoryRepository AircraftCategories
-        {
-            get
-            {
-                return _categories ?? (_categories = new AircraftCategoryRepository(_unitOfWork, new CategoryMapper()));
-            }
-        }
+        public AircraftCategoryRepository AircraftCategories =>
+            _categories ?? (_categories = new AircraftCategoryRepository(UnitOfWork, new CategoryMapper()));
 
-        public LocalityRepository Localities
-        {
-            get
-            {
-                return _localities ?? (_localities = new LocalityRepository(_unitOfWork, new LocalityMapper()));
-            }
-        }
+        public LocalityRepository Localities =>
+            _localities ?? (_localities = new LocalityRepository(UnitOfWork, new LocalityMapper()));
 
-        public RunwayRepository Runways
-        {
-            get
-            {
-                return _runways ?? (_runways = new RunwayRepository(_unitOfWork, new RunwayMapper()));
-            }
-        }
+        public RunwayRepository Runways =>
+            _runways ?? (_runways = new RunwayRepository(UnitOfWork, new RunwayMapper()));
 
-        public SubscriptionRepository Subscriptions
-        {
-            get
-            {
-                return _subscriptions ?? (_subscriptions = new SubscriptionRepository(_unitOfWork, new SubscriptionMapper()));
-            }
-        }
+        public SubscriptionRepository Subscriptions =>
+            _subscriptions ?? (_subscriptions = new SubscriptionRepository(UnitOfWork, new SubscriptionMapper()));
 
-        public UnavailabilityRepository Unavailabilities
-        {
-            get
-            {
-                return _unavailabilities ?? (_unavailabilities = new UnavailabilityRepository(_unitOfWork, new UnavailabilityMapper()));
-            }
-        }
+        public UnavailabilityRepository Unavailabilities =>
+            _unavailabilities ?? (_unavailabilities = new UnavailabilityRepository(UnitOfWork, new UnavailabilityMapper()));
 
-        public WithdrawalRepository Withdrawals
-        {
-            get
-            {
-                return _withdrawals ?? (_withdrawals = new WithdrawalRepository(_unitOfWork, new WithdrawalMapper()));
-            }
-        }
+        public WithdrawalRepository Withdrawals =>
+            _withdrawals ?? (_withdrawals = new WithdrawalRepository(UnitOfWork, new WithdrawalMapper()));
 
-        public MemberRepository Members
-        {
-            get
-            {
-                return _members ?? (_members = new MemberRepository(_unitOfWork));
-            }
-        }
+        public MemberRepository Members =>
+            _members ?? (_members = new MemberRepository(UnitOfWork));
 
-        public CancellationRepository Cancellations
-        {
-            get
-            {
-                return _cancellations ?? (_cancellations = new CancellationRepository(_unitOfWork));
-            }
-        }
+        public CancellationRepository Cancellations =>
+            _cancellations ?? (_cancellations = new CancellationRepository(UnitOfWork));
 
         public void Dispose()
         {
@@ -144,7 +96,7 @@ namespace ULMClubManager.DAL
             _unavailabilities = null;
             _withdrawals = null;
 
-            _unitOfWork.Dispose();
+            UnitOfWork.Dispose();
             _connection.Dispose();
         }
     }

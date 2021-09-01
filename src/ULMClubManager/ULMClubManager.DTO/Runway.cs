@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente une piste
+    /// </summary>
     public class Runway : IDomainModel
     {
         public Runway(int? id, bool availability)

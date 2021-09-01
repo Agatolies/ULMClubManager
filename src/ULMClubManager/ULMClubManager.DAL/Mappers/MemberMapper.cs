@@ -7,7 +7,8 @@ namespace ULMClubManager.DAL.Mappers
 {
     public class MemberMapper
     {
-        public Member From(MbrDBRow mbr) {
+        public Member From(MbrDBRow mbr)
+        {
             return new Member(
                 mbr.MBR_ID,
                 mbr.PIL_NUM_LIC,

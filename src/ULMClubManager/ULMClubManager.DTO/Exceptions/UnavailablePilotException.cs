@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour un pilote indisponible
+    /// </summary>
     public class UnavailablePilotException : BusinessException
     {
         public UnavailablePilotException()

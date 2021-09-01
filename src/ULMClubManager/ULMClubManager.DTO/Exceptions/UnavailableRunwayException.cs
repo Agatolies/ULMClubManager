@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour une piste indisponible
+    /// </summary>
     public class UnavailableRunwayException : BusinessException
     {
         public UnavailableRunwayException()

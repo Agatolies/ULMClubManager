@@ -2,6 +2,10 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour indiquer que seul l'administrateur 
+    /// peut se connecter à l'application pour l'instant
+    /// </summary>
     public class LoginAdminException : BusinessException
     {
         public LoginAdminException()

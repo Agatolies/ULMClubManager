@@ -37,7 +37,7 @@ namespace ULMClubManager.DAL.Repositories
                 param: new { PIL_ID = pilotID },
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
-                
+
             return _bookingMapper.From(models);
         }
 
@@ -62,7 +62,7 @@ namespace ULMClubManager.DAL.Repositories
 
             return _bookingMapper.From(models);
         }
-                
+
         public List<Booking> ReadAllInFuture()
         {
             IEnumerable<ResDBRow> models = _unitOfWork.Connection.Query<ResDBRow>(

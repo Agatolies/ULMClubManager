@@ -58,7 +58,7 @@ namespace ULMClubManager.DAL.Repositories
             if (domainModel.IsPilot)
             {
                 CreateOnePilot(domainModel);
-            } 
+            }
             else if (domainModel.IsSupporter)
             {
                 CreateOneSupporter(domainModel);
@@ -177,7 +177,8 @@ namespace ULMClubManager.DAL.Repositories
             {
                 _unitOfWork.Connection.Execute(
                     "sp_update_SYM",
-                    param: new { 
+                    param: new
+                    {
                         MBR_ID = param.MBR_ID,
                         MBR_NOM = param.MBR_NOM,
                         MBR_PRN = param.MBR_PRN,
@@ -224,30 +225,14 @@ namespace ULMClubManager.DAL.Repositories
             }
         }
 
-        //public void DeleteOnePilot(int id)
-        //{
-        //    _unitOfWork.Connection.Execute(
-        //        "sp_delete_PIL",
-        //        param: new { PIL_ID = id },
-        //        commandType: CommandType.StoredProcedure);
-        //}
-
-        //public void DeleteOneSupporter(int id)
-        //{
-        //    _unitOfWork.Connection.Execute(
-        //            "sp_delete_SYM",
-        //            param: new { SYM_ID = id },
-        //            commandType: CommandType.StoredProcedure);
-        //}
-
         public int Match(string userName, string password)
         {
-            string sql = $"SELECT * FROM MBR WHERE MBR_USR_PSD = @USERNAME";
+            const string sql = "SELECT * FROM MBR WHERE MBR_USR_PSD = @USERNAME";
 
             var member = _unitOfWork.Connection
                 .Query(
                     sql,
-                    param: new { USERNAME = userName }, 
+                    param: new { USERNAME = userName },
                     transaction: _unitOfWork.Transaction)
                 .FirstOrDefault();
 

@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour une adresse email invalide
+    /// </summary>
     public class InvalidEmailAddressException : BusinessException
     {
         public InvalidEmailAddressException()

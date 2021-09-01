@@ -2,7 +2,6 @@
 
 namespace ULMClubManager.DAL.Abstractions
 {
-
     public interface IGenericRepository<TDomain, TKey>
     {
         TDomain CreateOne(TDomain domainModel);

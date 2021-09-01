@@ -2,7 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-
+    /// <summary>
+    /// Représente une exception pour un ULM indisponible
+    /// </summary>
     public class UnavailableAircraftException : BusinessException
     {
         public UnavailableAircraftException()

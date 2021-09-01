@@ -4,10 +4,9 @@ using ULMClubManager.DTO.Exceptions;
 
 namespace ULMClubManager.BL
 {
-
     public static class Rules
     {
-        private static Dictionary<ContextError, Dictionary<string, string>> dic;
+        private static readonly Dictionary<ContextError, Dictionary<string, string>> dic;
 
         static Rules()
         {
@@ -60,11 +59,13 @@ namespace ULMClubManager.BL
             string msg = message;
 
             foreach (string clé in Rules.dic[context].Keys)
+            {
                 if (message.Contains(clé))
                 {
                     msg = Rules.dic[context][clé];
                     break;
                 }
+            }
 
             return msg;
         }

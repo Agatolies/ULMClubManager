@@ -2,7 +2,10 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-
+    /// <summary>
+    /// Représente une exception pour la taille 
+    /// d'un code pays d'obtention de licence incorrect
+    /// </summary>
     public class InvalidCountryCodeException : BusinessException
     {
         public InvalidCountryCodeException()

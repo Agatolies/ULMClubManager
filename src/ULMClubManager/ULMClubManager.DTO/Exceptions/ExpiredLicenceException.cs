@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour une licence expirée
+    /// </summary>
     public class ExpiredLicenceException : BusinessException
     {
         public ExpiredLicenceException()

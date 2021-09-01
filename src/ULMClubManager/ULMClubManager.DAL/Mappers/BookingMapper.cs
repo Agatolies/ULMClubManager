@@ -8,7 +8,7 @@ namespace ULMClubManager.DAL.Mappers
         public override Booking From(ResDBRow res)
         {
             return new Booking(
-                res.RES_ID, res.RES_DTE, res.RES_HEU_DEB, res.RES_HEU_FIN, 
+                res.RES_ID, res.RES_DTE, res.RES_HEU_DEB, res.RES_HEU_FIN,
                 res.ANN_MOTIF, res.ANN_DTE, res.ANN_HEU, res.MBR_FK_ID,
                 res.AER_FK_ID, res.PIST_FK_ID);
         }

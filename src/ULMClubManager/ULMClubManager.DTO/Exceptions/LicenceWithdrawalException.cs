@@ -2,6 +2,10 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour une réservation impossible
+    /// à cause d'un retrait de licence
+    /// </summary>
     public class LicenceWithdrawalException : BusinessException
     {
         public LicenceWithdrawalException()

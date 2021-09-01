@@ -19,7 +19,7 @@ namespace ULMClubManager.DAL.Repositories
         {
             IEnumerable<CotiDBRow> models = _unitOfWork.Connection.Query<CotiDBRow>(
                 "sp_select_COTI_BY_MBR_ID",
-                param: new { MBR_ID = memberID},
+                param: new { MBR_ID = memberID },
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
 

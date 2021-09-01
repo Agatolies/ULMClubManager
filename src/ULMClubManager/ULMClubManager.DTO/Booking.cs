@@ -3,6 +3,9 @@ using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente une réservation
+    /// </summary>
     public class Booking : IDomainModel
     {
         public Booking( 

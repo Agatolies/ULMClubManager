@@ -3,6 +3,9 @@ using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Classe abstraite dont les exceptions en héritant sont levées dans la Data Access Layer
+    /// </summary>
     public abstract class DataAccessException : Exception
     {
         protected DataAccessException(ContextError context, string tokenError)

@@ -3,8 +3,10 @@ using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {
-    // Nécessaire pour faire fonctionner CloneHelper
-    [Serializable]
+    /// <summary>
+    /// Représente un membre du club
+    /// </summary>
+    [Serializable] // Nécessaire pour faire fonctionner CloneHelper
 
     public class Member : IDomainModel
     {

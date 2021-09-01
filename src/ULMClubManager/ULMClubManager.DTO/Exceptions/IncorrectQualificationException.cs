@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour une qualification incompatible avec la réservation
+    /// </summary>
     public class IncorrectQualificationException : BusinessException
     {
         public IncorrectQualificationException()

@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour une date de validité de licence incorrecte
+    /// </summary>
     public class InvalidLicenceDatesException : BusinessException
     {
         public InvalidLicenceDatesException()

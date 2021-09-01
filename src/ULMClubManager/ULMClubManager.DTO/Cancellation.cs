@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente une annulation de réservation
+    /// </summary>
     public class Cancellation : IDomainModel
     {
         public Cancellation(

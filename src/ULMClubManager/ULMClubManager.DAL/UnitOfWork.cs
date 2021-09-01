@@ -29,8 +29,8 @@ namespace ULMClubManager.DAL
 
         public void Begin()
         {
-            _transaction = _connection.BeginTransaction();
             // La méthode BeginTransaction fait partie de l'interface IDbConnection (using System.Data)
+            _transaction = _connection.BeginTransaction();
         }
 
         public void Commit()
@@ -52,6 +52,5 @@ namespace ULMClubManager.DAL
 
             _transaction = null;
         }
-
     }
 }

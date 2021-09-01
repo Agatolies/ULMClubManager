@@ -3,6 +3,9 @@ using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente une indisponibilité
+    /// </summary>
     public class Unavailability : IDomainModel
     {
         public Unavailability(

@@ -11,10 +11,19 @@ using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DAL.Abstractions
 {
-    public abstract class GenericRepository<TDBRow, TKey, TDomain> 
-        :  IGenericRepository<TDomain, TKey> 
+    /// <summary>
+    /// Classe générique permettant un accès aux données de notre base de données SQL
+    /// </summary>
+    /// <typeparam name="TDBRow">La classe représentant un enregistrement d'une table SQL</typeparam>
+    /// <typeparam name="TKey">Le type de la clé d'un enregistrement</typeparam>
+    /// <typeparam name="TDomain">Le classe représentant un modèle du domaine</typeparam>
+    public abstract class GenericRepository<TDBRow, TKey, TDomain>
+        : IGenericRepository<TDomain, TKey>
         where TDomain : class, IDomainModel
     {
+        /// <summary>
+        /// Utilise le mécanisme de "reflection" pour obtenir la liste des propriété d'une classe
+        /// </summary>
         private static List<string> GenerateListOfProperties(IEnumerable<PropertyInfo> listOfProperties)
         {
             // TODO revoir la logique Linq
@@ -105,6 +114,9 @@ namespace ULMClubManager.DAL.Abstractions
                 throw new KeyNotFoundException($"La table {_tableName} avec l'id [{domainModel.ID}] n'existe pas.");
         }
 
+        /// <summary>
+        /// Utilise un string builder pour générer un requête d'insertion en base de données;
+        /// </summary>
         protected virtual string GenerateInsertQuery()
         {
             StringBuilder query = new StringBuilder($"INSERT INTO {_tableName} ");
@@ -124,7 +136,7 @@ namespace ULMClubManager.DAL.Abstractions
 
             foreach (string prop in properties)
             {
-                if (!prop.Equals($"{_keyPrefix}_ID")) 
+                if (!prop.Equals($"{_keyPrefix}_ID"))
                     query.Append($"@{prop},");
             }
 
@@ -134,6 +146,9 @@ namespace ULMClubManager.DAL.Abstractions
             return query.ToString();
         }
 
+        /// <summary>
+        /// Utilise un string builder pour générer un requête de mise à jour en base de données;
+        /// </summary>
         protected virtual string GenerateUpdateQuery()
         {
             StringBuilder query = new StringBuilder($"UPDATE {_tableName} SET ");

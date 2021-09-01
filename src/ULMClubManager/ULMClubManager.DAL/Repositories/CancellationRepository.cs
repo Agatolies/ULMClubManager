@@ -8,7 +8,7 @@ using ULMClubManager.DTO;
 
 namespace ULMClubManager.DAL.Repositories
 {
-    public class CancellationRepository 
+    public class CancellationRepository
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly CancellationMapper _cancellationMapper;
@@ -39,7 +39,7 @@ namespace ULMClubManager.DAL.Repositories
             return _cancellationMapper.From(models);
         }
 
-        
+
 
         public List<Cancellation> ReadAllCancellationsByAircraftID(int aircraftID)
         {
@@ -79,7 +79,7 @@ namespace ULMClubManager.DAL.Repositories
                 transaction: _unitOfWork.Transaction);
         }
 
-        
+
 
         //public Booking DeleteOneCancellation(int bookingID)
         //{

@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour un prénom trop court
+    /// </summary>
 
     public class FirstNameTooShortException : BusinessException
     {

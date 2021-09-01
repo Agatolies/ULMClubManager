@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour un membre qui n'est pas en ordre de cotisation
+    /// </summary>
     public class InvalidSubscriptionForBookingException : BusinessException
     {
         public InvalidSubscriptionForBookingException()

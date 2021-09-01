@@ -2,6 +2,10 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception pour une mauvaise 
+    /// combinaison nom d'utilisateur / mot de passe
+    /// </summary>
     public class LoginException : DataAccessException
     {
         public LoginException() 

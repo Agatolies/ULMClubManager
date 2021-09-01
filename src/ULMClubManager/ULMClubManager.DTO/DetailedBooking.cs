@@ -2,8 +2,10 @@
 
 namespace ULMClubManager.DTO
 {
-    // Nécessaire pour faire fonctionner CloneHelper
-    [Serializable]
+    /// <summary>
+    /// Représente une réservation de manière détaillée
+    /// </summary>
+    [Serializable] // Nécessaire pour faire fonctionner CloneHelper
     public class DetailedBooking
     {
         public DetailedBooking(Booking booking, Aircraft aircraft, Runway runway, Member pilot)

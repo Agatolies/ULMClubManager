@@ -9,8 +9,8 @@ namespace ULMClubManager.DAL.Mappers
         {
             return new Subscription(
                 coti.COTI_ID,
-                coti.COTI_DTE_PAI, 
-                coti.COTI_PERIODE, 
+                coti.COTI_DTE_PAI,
+                coti.COTI_PERIODE,
                 coti.MBR_FK_ID);
         }
 

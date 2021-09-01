@@ -3,6 +3,9 @@ using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente un retrait temporaire de la licence d'un pilote
+    /// </summary>
     public class Withdrawal : IDomainModel
     {
         public Withdrawal(int? id, DateTime startDate, DateTime endDate, string reason, int memberID)

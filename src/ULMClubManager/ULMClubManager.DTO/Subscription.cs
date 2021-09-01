@@ -3,6 +3,9 @@ using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente une cotisation au club
+    /// </summary>
     public class Subscription : IDomainModel
     {
         public Subscription(int? id, DateTime? paymentDate, int timePeriod, int memberID)

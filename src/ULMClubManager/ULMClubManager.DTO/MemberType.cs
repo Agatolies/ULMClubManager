@@ -2,8 +2,14 @@
 
 namespace ULMClubManager.DTO
 {
-    public enum MemberTypeKey { Member, Pilot, Supporter}
+    /// <summary>
+    /// Enumération du type de membre
+    /// </summary>
+    public enum MemberTypeKey { Member, Pilot, Supporter }
 
+    /// <summary>
+    /// Représente un type de membre (Pilote ou Sympathisant)
+    /// </summary>
     public class MemberType
     {
         public MemberType(MemberTypeKey key, string description)

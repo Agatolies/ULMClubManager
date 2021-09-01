@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente un créneau horaire pour une réservation
+    /// </summary>
     public class TimeSlot
     {
         public TimeSlot(TimeSpan value)

@@ -3,8 +3,10 @@ using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {
-    // Nécessaire pour faire fonctionner CloneHelper
-    [Serializable]
+    /// <summary>
+    /// Représente un ULM
+    /// </summary>
+    [Serializable] // Nécessaire pour faire fonctionner CloneHelper
     public class Aircraft : IDomainModel
     {
         public Aircraft(int? id, string registration, int typeID)

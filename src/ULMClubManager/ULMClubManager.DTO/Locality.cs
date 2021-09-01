@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente une localité Belge (Liègeoise ou Namuroise)
+    /// </summary>
     public class Locality : IDomainModel
     {
         public Locality(int? id, string zipCode, string name)

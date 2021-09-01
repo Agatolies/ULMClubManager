@@ -2,7 +2,10 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
-
+    /// <summary>
+    /// Représente une exception pour signaler 
+    /// qu'une licence doit avoir au minimum une qualification
+    /// </summary>
     public class LicenceWithoutQualificationsException : BusinessException
     {
         public LicenceWithoutQualificationsException()

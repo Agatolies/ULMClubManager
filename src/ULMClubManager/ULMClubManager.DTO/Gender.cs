@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente le genre d'un être humain
+    /// </summary>
     public class Gender
     {
         public Gender(string key, string description)

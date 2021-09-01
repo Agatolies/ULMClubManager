@@ -2,6 +2,10 @@
 
 namespace ULMClubManager.DTO.Exceptions
 {
+    /// <summary>
+    /// Représente une exception qui indique qu'une réservation
+    /// ne peut pas être enregistrée après février de l'année suivante
+    /// </summary>
     public class BookingDeadlineException : BusinessException
 
     {

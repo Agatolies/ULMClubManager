@@ -2,6 +2,9 @@
 
 namespace ULMClubManager.DTO
 {
+    /// <summary>
+    /// Représente une classe d'ULM
+    /// </summary>
     public class AircraftCategory : IDomainModel
     {
         public AircraftCategory(int? id, string name, string description)
