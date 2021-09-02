@@ -28,7 +28,7 @@ namespace ULMClubManger.Forms.UserControls
             try
             {
                 UserService.Login(userName, password);
-                this.Visible = false;
+                Visible = false;
             }
             catch (LoginException ex)
             {

@@ -81,8 +81,8 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _lbMembers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_lbMembers.DataSource != null && this.SelectMember != null)
-                this.SelectMember(((Member)_lbMembers.SelectedItem).ID.Value);
+            if (_lbMembers.DataSource != null && SelectMember != null)
+                SelectMember(((Member)_lbMembers.SelectedItem).ID.Value);
         }
 
         private void _cboxMemberTypes_SelectedIndexChanged(object sender, EventArgs e)

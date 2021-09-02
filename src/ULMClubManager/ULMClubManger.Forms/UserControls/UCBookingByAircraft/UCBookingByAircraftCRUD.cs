@@ -73,27 +73,22 @@ namespace ULMClubManger.Forms.UserControls
                 Bookings.Remove(can);
         }
 
-        private void ClearData()
-        {
-            _bsBookings.Clear();
-        }
-
         private void OnSelectBooking()
         {
             // Utilisation du délégué pour notifier le UCBookingByAircraftDetailsForm
             // J'envoie le message "j'ai selectionne la reservation dont tu as besoin"
 
-            if (this.SelectAircraft != null && _bsBookings.Current != null)
+            if (SelectAircraft != null && _bsBookings.Current != null)
             {
                 DetailedBooking selectedAircraft = (DetailedBooking)_bsBookings.Current;
-                this.SelectAircraft(selectedAircraft);
+                SelectAircraft(selectedAircraft);
 
-                this.BookingID = selectedAircraft.ID.Value;
-                this.MemberID = selectedAircraft.MemberID;
+                BookingID = selectedAircraft.ID.Value;
+                MemberID = selectedAircraft.MemberID;
             }
             else
             {
-                this.SelectAircraft(null);
+                SelectAircraft(null);
             }
         }
 

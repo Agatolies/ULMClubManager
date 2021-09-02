@@ -77,6 +77,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MessageBoxHelper.cs" />
     <Compile Include="Pages\FormBookingByAircraft.cs">
       <SubType>Form</SubType>
@@ -115,64 +116,58 @@
     <Compile Include="UserControls\UCBookingBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByAircraftCRUD.cs">
+    <Compile Include="UserControls\UCBookingByAircraft\UCBookingByAircraftCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByAircraftCRUD.Designer.cs">
+    <Compile Include="UserControls\UCBookingByAircraft\UCBookingByAircraftCRUD.Designer.cs">
       <DependentUpon>UCBookingByAircraftCRUD.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCBookingByAircraftDetailsForm.cs">
+    <Compile Include="UserControls\UCBookingByAircraft\UCBookingByAircraftDetailsForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByAircraftDetailsForm.Designer.cs">
+    <Compile Include="UserControls\UCBookingByAircraft\UCBookingByAircraftDetailsForm.Designer.cs">
       <DependentUpon>UCBookingByAircraftDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCBookingByMemberCRUD.cs">
+    <Compile Include="UserControls\UCBookingByMember\UCBookingByMemberCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByMemberCRUD.Designer.cs">
+    <Compile Include="UserControls\UCBookingByMember\UCBookingByMemberCRUD.Designer.cs">
       <DependentUpon>UCBookingByMemberCRUD.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCBookingByMemberDetailsForm.cs">
+    <Compile Include="UserControls\UCBookingByMember\UCBookingByMemberDetailsForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByMemberDetailsForm.Designer.cs">
+    <Compile Include="UserControls\UCBookingByMember\UCBookingByMemberDetailsForm.Designer.cs">
       <DependentUpon>UCBookingByMemberDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCBookingPickerByAircraft.cs">
+    <Compile Include="UserControls\UCBookingByAircraft\UCBookingPickerByAircraft.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingPickerByAircraft.Designer.cs">
+    <Compile Include="UserControls\UCBookingByAircraft\UCBookingPickerByAircraft.Designer.cs">
       <DependentUpon>UCBookingPickerByAircraft.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCBookingPickerByMember.cs">
+    <Compile Include="UserControls\UCBookingByMember\UCBookingPickerByMember.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingPickerByMember.Designer.cs">
+    <Compile Include="UserControls\UCBookingByMember\UCBookingPickerByMember.Designer.cs">
       <DependentUpon>UCBookingPickerByMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCFuturBookingsConsultation.cs">
+    <Compile Include="UserControls\UCMember\UCMemberCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCFuturBookingsConsultation.Designer.cs">
-      <DependentUpon>UCFuturBookingsConsultation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCMemberCRUD.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UCMemberCRUD.Designer.cs">
+    <Compile Include="UserControls\UCMember\UCMemberCRUD.Designer.cs">
       <DependentUpon>UCMemberCRUD.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCMemberPicker.cs">
+    <Compile Include="UserControls\UCMember\UCMemberPicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCMemberPicker.Designer.cs">
+    <Compile Include="UserControls\UCMember\UCMemberPicker.Designer.cs">
       <DependentUpon>UCMemberPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCLayout.cs">
+    <Compile Include="UserControls\Layout\UCLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCLayout.Designer.cs">
+    <Compile Include="UserControls\Layout\UCLayout.Designer.cs">
       <DependentUpon>UCLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCLogin.cs">
@@ -181,10 +176,10 @@
     <Compile Include="UserControls\UCLogin.Designer.cs">
       <DependentUpon>UCLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCSideBar.cs">
+    <Compile Include="UserControls\Layout\UCSideBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCSideBar.Designer.cs">
+    <Compile Include="UserControls\Layout\UCSideBar.Designer.cs">
       <DependentUpon>UCSideBar.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
@@ -214,40 +209,37 @@
     <EmbeddedResource Include="SubForms\LicenceManagementForm.resx">
       <DependentUpon>LicenceManagementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByAircraftCRUD.resx">
+    <EmbeddedResource Include="UserControls\UCBookingByAircraft\UCBookingByAircraftCRUD.resx">
       <DependentUpon>UCBookingByAircraftCRUD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByAircraftDetailsForm.resx">
+    <EmbeddedResource Include="UserControls\UCBookingByAircraft\UCBookingByAircraftDetailsForm.resx">
       <DependentUpon>UCBookingByAircraftDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByMemberCRUD.resx">
+    <EmbeddedResource Include="UserControls\UCBookingByMember\UCBookingByMemberCRUD.resx">
       <DependentUpon>UCBookingByMemberCRUD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByMemberDetailsForm.resx">
+    <EmbeddedResource Include="UserControls\UCBookingByMember\UCBookingByMemberDetailsForm.resx">
       <DependentUpon>UCBookingByMemberDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingPickerByAircraft.resx">
+    <EmbeddedResource Include="UserControls\UCBookingByAircraft\UCBookingPickerByAircraft.resx">
       <DependentUpon>UCBookingPickerByAircraft.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingPickerByMember.resx">
+    <EmbeddedResource Include="UserControls\UCBookingByMember\UCBookingPickerByMember.resx">
       <DependentUpon>UCBookingPickerByMember.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCFuturBookingsConsultation.resx">
-      <DependentUpon>UCFuturBookingsConsultation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCMemberCRUD.resx">
+    <EmbeddedResource Include="UserControls\UCMember\UCMemberCRUD.resx">
       <DependentUpon>UCMemberCRUD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCMemberPicker.resx">
+    <EmbeddedResource Include="UserControls\UCMember\UCMemberPicker.resx">
       <DependentUpon>UCMemberPicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCLayout.resx">
+    <EmbeddedResource Include="UserControls\Layout\UCLayout.resx">
       <DependentUpon>UCLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCLogin.resx">
       <DependentUpon>UCLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCSideBar.resx">
+    <EmbeddedResource Include="UserControls\Layout\UCSideBar.resx">
       <DependentUpon>UCSideBar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

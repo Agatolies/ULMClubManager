@@ -21,12 +21,12 @@ namespace ULMClubManger.Forms.UserControls
             InitializeData();
         }
 
-        public List<DetailedBooking> Bookings 
+        public List<DetailedBooking> Bookings
         {
-            get 
-            { 
+            get
+            {
                 return _bookings;
-            } 
+            }
             private set
             {
                 _bookings = value;
@@ -60,7 +60,7 @@ namespace ULMClubManger.Forms.UserControls
         public void RefreshData(int memberID)
         {
             List<DetailedBooking> detailedBookings = BookingService.ReadAllBookingByPilotID(memberID);
-            
+
             Bookings = detailedBookings
                 .Where(booking => string.IsNullOrEmpty(booking.CancellationReason))
                 .ToList();
@@ -78,17 +78,17 @@ namespace ULMClubManger.Forms.UserControls
             // Utilisation du délégué pour notifier le UCBookingByMemberDetailsForm
             // J'envoie le message "j'ai selectionne la reservation dont tu as besoin"
 
-            if (this.SelectBooking != null && _bsBookings.Current != null)
+            if (SelectBooking != null && _bsBookings.Current != null)
             {
                 DetailedBooking selectedBooking = (DetailedBooking)_bsBookings.Current;
-                this.SelectBooking(selectedBooking);
+                SelectBooking(selectedBooking);
 
-                this.BookingID = selectedBooking.ID.Value;
-                this.MemberID = selectedBooking.MemberID;
+                BookingID = selectedBooking.ID.Value;
+                MemberID = selectedBooking.MemberID;
             }
             else
             {
-                this.SelectBooking(null);
+                SelectBooking(null);
             }
         }
 

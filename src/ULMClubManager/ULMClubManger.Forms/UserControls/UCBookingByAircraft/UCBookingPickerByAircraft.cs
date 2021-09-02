@@ -57,8 +57,8 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _lbAircraftID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_lbAircrafts.DataSource != null && this.SelectAircraftCategoryID != null)
-                this.SelectAircraftCategoryID(((Aircraft)_lbAircrafts.SelectedItem).ID.Value);
+            if (_lbAircrafts.DataSource != null && SelectAircraftCategoryID != null)
+                SelectAircraftCategoryID(((Aircraft)_lbAircrafts.SelectedItem).ID.Value);
         }
 
         private void _cboxSearchAircraftType_SelectedIndexChanged(object sender, EventArgs e)

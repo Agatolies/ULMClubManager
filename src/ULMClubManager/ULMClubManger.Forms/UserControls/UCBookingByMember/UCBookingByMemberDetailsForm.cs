@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using ULMClubManager.BL;
 using ULMClubManager.BL.Services;
@@ -58,7 +57,6 @@ namespace ULMClubManger.Forms.UserControls
 
             _cboxBookingByMember_TimeSlotStart.DataSource = _timeSlotsStart;
             _cboxBookingByMember_TimeSlotEnd.DataSource = _timeSlotsEnd;
-            _cboxBookingByMember_Runway.DataSource = _allRunways;
 
             _cboxBookingByMember_Aircraft.DisplayMember = "Registration";
             _cboxBookingByMember_Aircraft.ValueMember = "ID";
@@ -67,8 +65,8 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByMember_MemberName.DisplayMember = "FullName";
             _cboxBookingByMember_MemberName.ValueMember = "ID";
 
-            _bsPilots.DataSource = _allPilots;
             _bsAircrafts.DataSource = _allAircrafts;
+            _bsPilots.DataSource = _allPilots;
             _bsRunways.DataSource = _allRunways;
 
             _panelBookingByMBR_Details.Visible = false;
@@ -83,17 +81,13 @@ namespace ULMClubManger.Forms.UserControls
 
         public void ShowErrorMessage(BusinessException ex)
         {
-            string decoded = Rules.MessageDecoder(ex);
-
-            _labelBookingByMBR_ErrorMessage.Text = decoded;
+            _labelBookingByMBR_ErrorMessage.Text = Rules.MessageDecoder(ex);
             _labelBookingByMBR_ErrorMessage.Visible = true;
         }
 
         public void ShowErrorMessage(Exception ex)
         {
-            string decoded = Rules.MessageDecoder(ContextError.RES, ex.Message);
-
-            _labelBookingByMBR_ErrorMessage.Text = decoded;
+            _labelBookingByMBR_ErrorMessage.Text = Rules.MessageDecoder(ContextError.RES, ex.Message);
             _labelBookingByMBR_ErrorMessage.Visible = true;
         }
 
@@ -107,9 +101,7 @@ namespace ULMClubManger.Forms.UserControls
         {
             // On récupère l'heure de début
             TimeSpan startTimeSlot = (TimeSpan)_cboxBookingByMember_TimeSlotStart.SelectedValue;
-            List<TimeSpan> timeSlots = GetMaximumBookingHours(startTimeSlot);
-
-            _cboxBookingByMember_TimeSlotEnd.DataSource = timeSlots;
+            _cboxBookingByMember_TimeSlotEnd.DataSource = GetMaximumBookingHours(startTimeSlot);
         }
 
         public void RefreshDetailsForm()
@@ -157,7 +149,7 @@ namespace ULMClubManger.Forms.UserControls
                 null,
                 null,
                 null,
-                SelectedPilotID,
+                ((Member)_cboxBookingByMember_MemberName.SelectedItem).ID.Value,
                 ((Aircraft)_cboxBookingByMember_Aircraft.SelectedItem).ID.Value,
                 ((Runway)_cboxBookingByMember_Runway.SelectedItem).ID.Value);
         }
@@ -172,7 +164,7 @@ namespace ULMClubManger.Forms.UserControls
                 null,
                 null,
                 null,
-                SelectedPilotID,
+                ((Member)_cboxBookingByMember_MemberName.SelectedItem).ID.Value,
                 ((Aircraft)_cboxBookingByMember_Aircraft.SelectedItem).ID.Value,
                 ((Runway)_cboxBookingByMember_Runway.SelectedItem).ID.Value);
         }
@@ -182,8 +174,7 @@ namespace ULMClubManger.Forms.UserControls
             bool isMemberNameNotFilled = _cboxBookingByMember_MemberName.SelectedIndex == -1;
             bool isAircraftNotFilled = _cboxBookingByMember_Aircraft.SelectedIndex == -1;
             bool isRunwayNotFilled = _cboxBookingByMember_Runway.SelectedIndex == -1;
-            bool hasError = isMemberNameNotFilled || isAircraftNotFilled || isRunwayNotFilled;
-            return hasError;
+            return isMemberNameNotFilled || isAircraftNotFilled || isRunwayNotFilled;
         }
 
         // Ajout d'une réservation
@@ -202,7 +193,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _dtpBookingByMember_Date.Value = DateTime.Now;
 
-            this.BookingForMemberCreating();
+            BookingForMemberCreating();
 
             UnlockControls();
             ClearControls();
@@ -211,6 +202,7 @@ namespace ULMClubManger.Forms.UserControls
         private void _btnFooterBookingByMember_CreateConfirm_Click(object sender, EventArgs e)
         {
             bool hasError = DetectUnfilledFields();
+
             if (hasError)
             {
                 MessageBoxHelper.ShowMandatoryDataError();
@@ -224,17 +216,17 @@ namespace ULMClubManger.Forms.UserControls
 
                     _bookingBackup = null;
 
-                    //RefreshData(_selectedBooking.MemberID);
                     HideErrorMessage();
                     LockControls();
+
+                    Member member = (Member)_cboxBookingByMember_MemberName.SelectedItem;
+                    ShowCreateBookingConfirmation(SelectedPilot.FullName);
 
                     _panelFooterBookingByMember_Create.Visible = false;
                     _panelFooterBookingByMemberCRUD.Visible = true;
                     _panelBookingByMBR_Details.Visible = false;
 
-                    this.BookingForMemberCreated();
-
-                    ShowCreateBookingConfirmation(SelectedPilot.FullName);
+                    BookingForMemberCreated();
                 }
                 catch (BusinessException ex)
                 {
@@ -263,7 +255,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByMemberCRUD.Visible = true;
                 _panelBookingByMBR_Details.Visible = false;
 
-                this.BookingForMemberCreated();
+                BookingForMemberCreated();
             }
         }
 
@@ -279,7 +271,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _cboxBookingByMember_MemberName.SelectedItem = SelectedPilot;
 
-            this.BookingForMemberUpdating();
+            BookingForMemberUpdating();
 
             UnlockControls();
 
@@ -309,13 +301,9 @@ namespace ULMClubManger.Forms.UserControls
                     _panelFooterBookingByMemberCRUD.Visible = true;
                     _panelBookingByMBR_Details.Visible = false;
 
-                    this.BookingForMemberUpdated();
+                    BookingForMemberUpdated();
 
-                    MessageBox.Show(
-                        $"La réservation pour {SelectedBooking.MemberFullName} a bien été mise à jour.",
-                        "Information",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    MessageBoxHelper.ShowBookingUpdateSuccess(SelectedBooking.MemberFullName);
                 }
                 catch (BusinessException ex)
                 {
@@ -345,7 +333,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByMemberCRUD.Visible = true;
                 _panelBookingByMBR_Details.Visible = false;
 
-                this.BookingForMemberUpdated();
+                BookingForMemberUpdated();
             }
         }
 
@@ -362,7 +350,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _tboxBookingByMBR_CancellationReason.Visible = true;
 
-            this.BookingForMemberCanceling();
+            BookingForMemberCanceling();
 
             LockControls();
 
@@ -395,11 +383,7 @@ namespace ULMClubManger.Forms.UserControls
                         MessageBoxIcon.Warning);
                 }
 
-                DialogResult dialogResult = MessageBox.Show(
-                    "Voulez-vous vraiment annuler cette réservation ?",
-                    "Confirmation",
-                    MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBoxHelper.ShowBookingCancel();
 
                 try
                 {
@@ -409,7 +393,6 @@ namespace ULMClubManger.Forms.UserControls
 
                         _bookingBackup = null;
 
-                        //RefreshData(_selectedBooking.MemberID);
                         HideErrorMessage();
 
                         _labelBookingByMBR_CancellationReason.Visible = false;
@@ -420,7 +403,7 @@ namespace ULMClubManger.Forms.UserControls
 
                         _tboxBookingByMBR_CancellationReason.Visible = false;
 
-                        this.BookingForMemberCanceled();
+                        BookingForMemberCanceled();
                     }
                 }
                 catch (BusinessException ex)
@@ -459,7 +442,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 _tboxBookingByMBR_CancellationReason.Visible = false;
 
-                this.BookingForMemberCanceled();
+                BookingForMemberCanceled();
             }
         }
 
@@ -467,6 +450,5 @@ namespace ULMClubManger.Forms.UserControls
         {
             RefreshTimeSlotsEnd();
         }
-
     }
 }

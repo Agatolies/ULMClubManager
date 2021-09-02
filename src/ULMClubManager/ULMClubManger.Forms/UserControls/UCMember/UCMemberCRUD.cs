@@ -37,7 +37,7 @@ namespace ULMClubManger.Forms.UserControls
         public Member Member
         {
             get { return _member; }
-            private set 
+            private set
             {
                 _member = value;
 
@@ -48,13 +48,18 @@ namespace ULMClubManger.Forms.UserControls
                     if (_member.ID.HasValue)
                     {
                         Locality locality = _localities
-                            .FirstOrDefault(l => l.ID == _member.LocalityID);
+                            .Find(l => l.ID == _member.LocalityID);
 
                         _tboxMBRZipCode.Text = locality.ZipCode;
                         _tboxMBRID.Text = _member.ID.Value.ToString();
                         _gboxPIL.Visible = _member.IsPilot;
 
-                        _btnOpenLicenceManagementForm.BackColor = WithdrawalService.HasWithdrawalByDate(_member.ID.Value, DateTime.Now)
+                        _labelLICExpirationDte.ForeColor = _member.IsPilot && !_member.HasValidLicence(DateTime.Now)
+                            ? Color.Red
+                            : Color.Black;
+
+                        _btnOpenLicenceManagementForm.BackColor =
+                            WithdrawalService.HasWithdrawalByDate(_member.ID.Value, DateTime.Now)
                             ? Color.FromArgb(204, 41, 54)
                             : Color.FromArgb(0, 117, 162);
                     }
@@ -80,8 +85,6 @@ namespace ULMClubManger.Forms.UserControls
 
             _panelMBR_Update_btn.Visible = false;
             _panelMBR_Create_btn.Visible = false;
-
-            
 
             _labelError.Visible = false;
 
@@ -149,7 +152,7 @@ namespace ULMClubManger.Forms.UserControls
             _tboxMBREmailAddress.ReadOnly = false;
             _tboxMBRPhoneNumber.ReadOnly = false;
             _tboxMBRCellphoneNumber.ReadOnly = false;
-            _tboxMBRPostalAddress.ReadOnly = false; 
+            _tboxMBRPostalAddress.ReadOnly = false;
             _tboxMBRBoxNumber.ReadOnly = false;
             _tboxMBRResidenceName.ReadOnly = false;
             _tboxMBRBuildingNumber.ReadOnly = false;
@@ -187,7 +190,6 @@ namespace ULMClubManger.Forms.UserControls
             bool isLicenceEndDateNotFilled = string.IsNullOrWhiteSpace(_dtpLICExpirationDte.Text);
             bool isLicenceCountryNotFilled = string.IsNullOrWhiteSpace(_tboxLICCountry.Text);
 
-
             bool isAtLeastOnePilotFieldFilled =
                 !isLicenceNumberNotFilled || !isLicenceStartDateNotFilled
                 || !isLicenceEndDateNotFilled || !isLicenceCountryNotFilled;
@@ -198,14 +200,11 @@ namespace ULMClubManger.Forms.UserControls
 
             bool isLicenceDatasIncomplete = isAtLeastOnePilotFieldFilled && isAllLicenceFieldsNotFilled;
 
-            bool hasError = 
-                isLastNameNotFilled || isFirstNameNotFilled
+            return isLastNameNotFilled || isFirstNameNotFilled
                 || isSexNotFilled || isEmailNotFilled || isCellphoneNumberNotFilled
                 || isPostalAddressNotFilled || isBoxNumberNotFilled
                 || isZipCodeNotFilled || isLocalityNotFilled
                 || isLicenceDatasIncomplete;
-
-            return hasError;
         }
 
         private void ShowMandatoryAsterisks()
@@ -321,12 +320,11 @@ namespace ULMClubManger.Forms.UserControls
 
             _gboxSubscription.Visible = false;
 
-            this.MemberCreating();
+            MemberCreating();
 
             UnlockControls(false);
             ClearControls();
             ShowMandatoryAsterisks();
-
         }
 
         /// <summary>
@@ -357,7 +355,7 @@ namespace ULMClubManger.Forms.UserControls
 
                     _gboxSubscription.Visible = true;
 
-                    this.MemberCreated();
+                    MemberCreated();
 
                     MessageBox.Show(
                         $"Le membre {createdMember.FullName} a bien été créé.",
@@ -406,7 +404,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 _gboxSubscription.Visible = true;
 
-                this.MemberCreated();
+                MemberCreated();
             }
         }
 
@@ -415,7 +413,7 @@ namespace ULMClubManger.Forms.UserControls
             _panelMBR_CRUD_btn.Visible = false;
             _panelMBR_Update_btn.Visible = true;
 
-            this.MemberUpdating();
+            MemberUpdating();
 
             UnlockControls(false);
             ShowMandatoryAsterisks();
@@ -423,7 +421,7 @@ namespace ULMClubManger.Forms.UserControls
             _memberBackup = _member.CreateDeepCopy();
 
             bool ok = MemberService.IsInOrderOfPaiement(_member.ID.Value);
-            
+
             if (!ok)
                 _btnPaiementSubscriptionDate.Visible = true;
         }
@@ -437,55 +435,50 @@ namespace ULMClubManger.Forms.UserControls
             }
             else
             {
-                    DialogResult result = MessageBoxHelper.ShowDeleteQualificationWarning();
-
-                if (result == DialogResult.OK)
+                try
                 {
-                    try
+                    if (_dtpPaymentDateSubscription.Visible)
+                        _member.SubscriptionPaiementDate = _dtpPaymentDateSubscription.Value;
+                    else
+                        _member.SubscriptionPaiementDate = null;
+
+                    if (_member.IsSupporter)
                     {
-                        if (_dtpPaymentDateSubscription.Visible)
-                            _member.SubscriptionPaiementDate = _dtpPaymentDateSubscription.Value;
-                        else
-                            _member.SubscriptionPaiementDate = null;
-
-                        if (_member.IsSupporter)
-                        {
-                            _member.LicenceExpirationDate = null;
-                            _member.LicenceObtentionDate = null;
-                        }
-
-                        MemberService.UpdateOne(_member);
-                        RefreshData(_member.ID.Value);
-
-                        _memberBackup = null;
-
-                        HideErrorMessage();
-                        LockControls();
-                        HideMandatoryAsterisks();
-
-                        _dtpPaymentDateSubscription.Visible = false;
-
-                        _btnPaiementSubscriptionDate.Visible = false;
-
-                        _panelMBR_CRUD_btn.Visible = true;
-                        _panelMBR_Update_btn.Visible = false;
-
-                        this.MemberUpdated();
-
-                        MessageBox.Show(
-                            $"Le membre {_member.FullName} a bien été mis à jour.",
-                            "Information",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        _member.LicenceExpirationDate = null;
+                        _member.LicenceObtentionDate = null;
                     }
-                    catch (BusinessException ex)
-                    {
-                        ShowErrorMessage(ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowErrorMessage(ex);
-                    }
+
+                    MemberService.UpdateOne(_member);
+                    RefreshData(_member.ID.Value);
+
+                    _memberBackup = null;
+
+                    HideErrorMessage();
+                    LockControls();
+                    HideMandatoryAsterisks();
+
+                    _dtpPaymentDateSubscription.Visible = false;
+
+                    _btnPaiementSubscriptionDate.Visible = false;
+
+                    _panelMBR_CRUD_btn.Visible = true;
+                    _panelMBR_Update_btn.Visible = false;
+
+                    MemberUpdated();
+
+                    MessageBox.Show(
+                        $"Le membre {_member.FullName} a bien été mis à jour.",
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                catch (BusinessException ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
                 }
             }
         }
@@ -511,7 +504,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelMBR_CRUD_btn.Visible = true;
                 _panelMBR_Update_btn.Visible = false;
 
-                this.MemberUpdated();
+                MemberUpdated();
             }
         }
 
@@ -520,7 +513,7 @@ namespace ULMClubManger.Forms.UserControls
         /// </summary>
         private void _btnMBRDelete_Click(object sender, EventArgs e)
         {
-            this.MemberCanceling();
+            MemberCanceling();
 
             LockControls();
 
@@ -535,7 +528,7 @@ namespace ULMClubManger.Forms.UserControls
                 if (dialogResult == DialogResult.OK)
                 {
                     MemberService.DeleteOne(_member.ID.Value);
-                    this.MemberCanceled();
+                    MemberCanceled();
                 }
 
                 ClearControls();
@@ -558,8 +551,11 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _btnOpenLicenceManagementForm_Click(object sender, EventArgs e)
         {
-            LicenceManagementForm form = new LicenceManagementForm(_member);
-            form.Text = $"Gestion des retraits de licence de {_member.FullName}";
+            LicenceManagementForm form = new LicenceManagementForm(_member)
+            {
+                Text = $"Gestion des retraits de licence de {_member.FullName}"
+            };
+
             form.ShowDialog(this);
         }
     }

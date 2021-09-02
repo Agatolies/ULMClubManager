@@ -61,6 +61,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMBRUpdate = new System.Windows.Forms.Button();
             this._panelMBR_CRUD_btn = new System.Windows.Forms.Panel();
             this._gboxPIL = new System.Windows.Forms.GroupBox();
+            this._labelQUALMandatory = new System.Windows.Forms.Label();
             this._btnOpenLicenceManagementForm = new System.Windows.Forms.Button();
             this._labelLICCountryMandatory = new System.Windows.Forms.Label();
             this._labelLICExpirationDteMandatory = new System.Windows.Forms.Label();
@@ -108,10 +109,9 @@ namespace ULMClubManger.Forms.UserControls
             this._btnPaiementSubscriptionDate = new System.Windows.Forms.Button();
             this._dtpPaymentDateSubscription = new System.Windows.Forms.DateTimePicker();
             this._panelMessages = new System.Windows.Forms.Panel();
+            this._labelMemberCRUDMandatoryIfPilot = new System.Windows.Forms.Label();
             this._panelGroupboxes = new System.Windows.Forms.Panel();
             this._panelRelative = new System.Windows.Forms.Panel();
-            this._labelMemberCRUDMandatoryIfPilot = new System.Windows.Forms.Label();
-            this._labelQUALMandatory = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._bsMember)).BeginInit();
             this._panelMBR_CRUD_btn.SuspendLayout();
             this._gboxPIL.SuspendLayout();
@@ -494,6 +494,18 @@ namespace ULMClubManger.Forms.UserControls
             this._gboxPIL.Text = "LICENCE ET QUALIFICATIONS";
             this._gboxPIL.Visible = false;
             // 
+            // _labelQUALMandatory
+            // 
+            this._labelQUALMandatory.AutoSize = true;
+            this._labelQUALMandatory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelQUALMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(162)))));
+            this._labelQUALMandatory.Location = new System.Drawing.Point(803, 50);
+            this._labelQUALMandatory.Name = "_labelQUALMandatory";
+            this._labelQUALMandatory.Size = new System.Drawing.Size(13, 15);
+            this._labelQUALMandatory.TabIndex = 58;
+            this._labelQUALMandatory.Text = "*";
+            this._labelQUALMandatory.Visible = false;
+            // 
             // _btnOpenLicenceManagementForm
             // 
             this._btnOpenLicenceManagementForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(162)))));
@@ -737,7 +749,7 @@ namespace ULMClubManger.Forms.UserControls
             this._btnMRBUpdateConfirm.Name = "_btnMRBUpdateConfirm";
             this._btnMRBUpdateConfirm.Size = new System.Drawing.Size(150, 61);
             this._btnMRBUpdateConfirm.TabIndex = 29;
-            this._btnMRBUpdateConfirm.Text = "  Confirmer      la modification";
+            this._btnMRBUpdateConfirm.Text = "  Confirmer les modifications";
             this._btnMRBUpdateConfirm.UseVisualStyleBackColor = false;
             this._btnMRBUpdateConfirm.Click += new System.EventHandler(this._btnMRBUpdateConfirm_Click);
             // 
@@ -1098,6 +1110,18 @@ namespace ULMClubManger.Forms.UserControls
             this._panelMessages.Size = new System.Drawing.Size(925, 84);
             this._panelMessages.TabIndex = 56;
             // 
+            // _labelMemberCRUDMandatoryIfPilot
+            // 
+            this._labelMemberCRUDMandatoryIfPilot.AutoSize = true;
+            this._labelMemberCRUDMandatoryIfPilot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._labelMemberCRUDMandatoryIfPilot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
+            this._labelMemberCRUDMandatoryIfPilot.Location = new System.Drawing.Point(325, 52);
+            this._labelMemberCRUDMandatoryIfPilot.Name = "_labelMemberCRUDMandatoryIfPilot";
+            this._labelMemberCRUDMandatoryIfPilot.Size = new System.Drawing.Size(165, 15);
+            this._labelMemberCRUDMandatoryIfPilot.TabIndex = 53;
+            this._labelMemberCRUDMandatoryIfPilot.Text = "* Donnée obligatoire si pilote";
+            this._labelMemberCRUDMandatoryIfPilot.Visible = false;
+            // 
             // _panelGroupboxes
             // 
             this._panelGroupboxes.Controls.Add(this._panelRelative);
@@ -1119,30 +1143,6 @@ namespace ULMClubManger.Forms.UserControls
             this._panelRelative.Name = "_panelRelative";
             this._panelRelative.Size = new System.Drawing.Size(907, 747);
             this._panelRelative.TabIndex = 52;
-            // 
-            // _labelMemberCRUDMandatoryIfPilot
-            // 
-            this._labelMemberCRUDMandatoryIfPilot.AutoSize = true;
-            this._labelMemberCRUDMandatoryIfPilot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelMemberCRUDMandatoryIfPilot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(102)))));
-            this._labelMemberCRUDMandatoryIfPilot.Location = new System.Drawing.Point(325, 52);
-            this._labelMemberCRUDMandatoryIfPilot.Name = "_labelMemberCRUDMandatoryIfPilot";
-            this._labelMemberCRUDMandatoryIfPilot.Size = new System.Drawing.Size(165, 15);
-            this._labelMemberCRUDMandatoryIfPilot.TabIndex = 53;
-            this._labelMemberCRUDMandatoryIfPilot.Text = "* Donnée obligatoire si pilote";
-            this._labelMemberCRUDMandatoryIfPilot.Visible = false;
-            // 
-            // _labelQUALMandatory
-            // 
-            this._labelQUALMandatory.AutoSize = true;
-            this._labelQUALMandatory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelQUALMandatory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(162)))));
-            this._labelQUALMandatory.Location = new System.Drawing.Point(803, 50);
-            this._labelQUALMandatory.Name = "_labelQUALMandatory";
-            this._labelQUALMandatory.Size = new System.Drawing.Size(13, 15);
-            this._labelQUALMandatory.TabIndex = 58;
-            this._labelQUALMandatory.Text = "*";
-            this._labelQUALMandatory.Visible = false;
             // 
             // UCMemberCRUD
             // 

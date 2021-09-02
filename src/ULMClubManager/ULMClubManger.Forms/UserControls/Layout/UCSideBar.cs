@@ -14,7 +14,7 @@ namespace ULMClubManger.Forms.UserControls
             CustomizeDesign();
         }
 
-        public UCLayout ParentLayout => this.Parent as UCLayout;
+        public UCLayout ParentLayout => Parent as UCLayout;
         public Form1 OverallWindow => ParentLayout.Parent as Form1;
 
         private void CustomizeDesign()

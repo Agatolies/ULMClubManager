@@ -22,7 +22,7 @@ namespace ULMClubManager.BL.Services
                 return detailedBookings;
             }
         }
-        
+
         public static List<DetailedBooking> ReadAllBookingByPilotID(int pilotID)
         {
             using (DalSession dalSession = new DalSession())
@@ -134,7 +134,7 @@ namespace ULMClubManager.BL.Services
 
         public static void ValidateBooking(Booking booking)
         {
-            // VERIFICATION DATE LIMITE 
+            // VERIFICATION DATE LIMITE AVANT MARS DE L'ANNEE SUIVANTE
             int nextYear = booking.Date.AddYears(1).Year;
             DateTime bookingDeadline = new DateTime(nextYear, 3, 1);
 
@@ -148,11 +148,12 @@ namespace ULMClubManager.BL.Services
             // VERIFICATION POUR UN PILOTE, UNE PISTE ET UN AERONEF
             using (DalSession dalSession = new DalSession())
             {
-                // Récupèration de tous les bookings existants pour la date souhaitée
+                // Récupèration de tous les bookings existants non annulés pour la date souhaitée
                 List<Booking> allBookings = dalSession.Bookings.ReadAll();
 
                 List<Booking> existingBookingsToCheck = allBookings
-                    .Where(b => b.Date.Year == booking.Date.Year 
+                    .Where(b => string.IsNullOrEmpty(b.CancellationReason)
+                                && b.Date.Year == booking.Date.Year
                                 && b.Date.Month == booking.Date.Month
                                 && b.Date.Day == booking.Date.Day)
                     .ToList();
@@ -176,6 +177,8 @@ namespace ULMClubManager.BL.Services
                 throw new LicenceWithdrawalException();
         }
 
+        // PILOT INFO
+
         private static void ValidatePilotAvailability(Booking booking, List<Booking> existingBookingsToCheck)
         {
             // Sélection de celles qui concernent le pilote qu'on souhaite...
@@ -185,8 +188,12 @@ namespace ULMClubManager.BL.Services
 
             // ...Pour lesquels on vérifie les heures
             foreach (Booking b in bookingsForPilot)
+            {
                 if (IsOverlapse(booking, b))
+                {
                     throw new UnavailablePilotException();
+                }
+            }
         }
 
         private static void ValidateRunwayAvailability(Booking booking, List<Booking> existingBookingsToCheck)
@@ -198,8 +205,12 @@ namespace ULMClubManager.BL.Services
 
             // ...Pour lesquels on vérifie les heures
             foreach (Booking b in bookingsForRunway)
+            {
                 if (IsOverlapse(booking, b))
+                {
                     throw new UnavailableRunwayException();
+                }
+            }
         }
 
         private static void ValidateAircraftAvailability(Booking booking, List<Booking> existingBookingsToCheck)
@@ -211,8 +222,12 @@ namespace ULMClubManager.BL.Services
 
             // ...Pour lesquels on vérifie les heures
             foreach (Booking b in bookingsForAircraft)
+            {
                 if (IsOverlapse(booking, b))
+                {
                     throw new UnavailableAircraftException();
+                }
+            }
         }
 
         private static bool IsOverlapse(Booking newBooking, Booking existingBooking)

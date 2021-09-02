@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using ULMClubManager.BL;
 using ULMClubManager.BL.Services;
@@ -75,17 +74,13 @@ namespace ULMClubManger.Forms.UserControls
 
         public void ShowErrorMessage(BusinessException ex)
         {
-            string decoded = Rules.MessageDecoder(ex);
-
-            _labelBookingByAircraft_ErrorMessage.Text = decoded;
+            _labelBookingByAircraft_ErrorMessage.Text = Rules.MessageDecoder(ex);
             _labelBookingByAircraft_ErrorMessage.Visible = true;
         }
 
         public void ShowErrorMessage(Exception ex)
         {
-            string decoded = Rules.MessageDecoder(ContextError.RES, ex.Message);
-
-            _labelBookingByAircraft_ErrorMessage.Text = decoded;
+            _labelBookingByAircraft_ErrorMessage.Text = Rules.MessageDecoder(ContextError.RES, ex.Message);
             _labelBookingByAircraft_ErrorMessage.Visible = true;
         }
 
@@ -99,9 +94,7 @@ namespace ULMClubManger.Forms.UserControls
         {
             // On récupère l'heure de début
             TimeSpan startTimeSlot = (TimeSpan)_cboxBookingByAircraft_TimeSlotStart.SelectedValue;
-            List<TimeSpan> timeSlots = GetMaximumBookingHours(startTimeSlot);
-
-            _cboxBookingByAircraft_TimeSlotEnd.DataSource = timeSlots;
+            _cboxBookingByAircraft_TimeSlotEnd.DataSource = GetMaximumBookingHours(startTimeSlot);
         }
 
         public void RefreshDetailsForm()
@@ -112,8 +105,6 @@ namespace ULMClubManger.Forms.UserControls
             _cboxBookingByAircraft_TimeSlotStart.SelectedItem = SelectedBooking.StartHour;
             _cboxBookingByAircraft_TimeSlotEnd.SelectedItem = SelectedBooking.EndHour;
             _cboxBookingByAircraft_Runway.SelectedValue = SelectedBooking.RunwayID;
-
-            //_dtpBookingByAircraft_Date.MinDate = DateTime.Now;
         }
 
         public void ClearControls()
@@ -178,8 +169,7 @@ namespace ULMClubManger.Forms.UserControls
             bool isMemberNameNotFilled = _cboxBookingByAircraft_MemberName.SelectedIndex == -1;
             bool isAircraftNotFilled = _cboxBookingByAircraft_Aircraft.SelectedIndex == -1;
             bool isRunwayNotFilled = _cboxBookingByAircraft_Runway.SelectedIndex == -1;
-            bool hasError = isMemberNameNotFilled || isAircraftNotFilled || isRunwayNotFilled;
-            return hasError;
+            return isMemberNameNotFilled || isAircraftNotFilled || isRunwayNotFilled;
         }
 
         // Ajout d'une réservation
@@ -198,7 +188,7 @@ namespace ULMClubManger.Forms.UserControls
 
             _dtpBookingByAircraft_Date.Value = DateTime.Now;
 
-            this.BookingForAircraftCreating();
+            BookingForAircraftCreating();
 
             UnlockControls();
             ClearControls();
@@ -210,11 +200,7 @@ namespace ULMClubManger.Forms.UserControls
 
             if (hasError)
             {
-                MessageBox.Show(
-                    $"Toutes les données obligatoires doivent être complétées",
-                    "Erreur",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBoxHelper.ShowMandatoryDataError();
             }
             else
             {
@@ -225,17 +211,17 @@ namespace ULMClubManger.Forms.UserControls
 
                     _bookingBackup = null;
 
-                    //RefreshData(_selectedBooking.MemberID);
                     HideErrorMessage();
                     LockControls();
+
+                    Member member = (Member)_cboxBookingByAircraft_MemberName.SelectedItem;
+                    ShowCreateBookingConfirmation(member.FullName);
 
                     _panelFooterBookingByAircraft_Create.Visible = false;
                     _panelFooterBookingByAircraftCRUD.Visible = true;
                     _panelBookingByAircraft_Details.Visible = false;
 
-                    this.BookingForAircraftCreated();
-
-                    ShowCreateBookingConfirmation(_cboxBookingByAircraft_MemberName.Text);
+                    BookingForAircraftCreated();
                 }
                 catch (BusinessException ex)
                 {
@@ -264,7 +250,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByAircraftCRUD.Visible = true;
                 _panelBookingByAircraft_Details.Visible = false;
 
-                this.BookingForAircraftCreated();
+                BookingForAircraftCreated();
             }
         }
 
@@ -278,7 +264,7 @@ namespace ULMClubManger.Forms.UserControls
             _panelFooterBookingByAircraft_Update.Visible = true;
             _panelBookingByAircraft_Details.Visible = true;
 
-            this.BookingForAircraftUpdating();
+            BookingForAircraftUpdating();
 
             UnlockControls();
 
@@ -303,19 +289,14 @@ namespace ULMClubManger.Forms.UserControls
 
                     HideErrorMessage();
                     LockControls();
-                    //RefreshData(_selectedBooking.MemberID);
 
                     _panelFooterBookingByAircraft_Update.Visible = false;
                     _panelFooterBookingByAircraftCRUD.Visible = true;
                     _panelBookingByAircraft_Details.Visible = false;
 
-                    this.BookingForAircraftUpdating();
+                    BookingForAircraftUpdated();
 
-                    MessageBox.Show(
-                        $"La réservation pour {SelectedBooking.MemberFullName} a bien été mise à jour.",
-                        "Information",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    MessageBoxHelper.ShowBookingUpdateSuccess(SelectedBooking.MemberFullName);
                 }
                 catch (BusinessException ex)
                 {
@@ -345,7 +326,7 @@ namespace ULMClubManger.Forms.UserControls
                 _panelFooterBookingByAircraftCRUD.Visible = true;
                 _panelBookingByAircraft_Details.Visible = false;
 
-                this.BookingForAircraftUpdated();
+                BookingForAircraftUpdated();
             }
         }
 
@@ -356,14 +337,13 @@ namespace ULMClubManger.Forms.UserControls
             _labelBookingByAircraft_CancellationReason.Visible = true;
             _labelBookingByAircraft_DetailsTitle.Text = "ANNULATION DE LA RESERVATION";
 
-
             _panelBookingByAircraft_Details.Visible = true;
             _panelFooterBookingByAircraft_Cancel.Visible = true;
             _panelFooterBookingByAircraftCRUD.Visible = false;
 
             _tboxBookingByAircraft_CancellationReason.Visible = true;
 
-            this.BookingForAircraftCanceling();
+            BookingForAircraftCanceling();
 
             LockControls();
 
@@ -396,11 +376,7 @@ namespace ULMClubManger.Forms.UserControls
                         MessageBoxIcon.Warning);
                 }
 
-                DialogResult dialogResult = MessageBox.Show(
-                "Voulez-vous vraiment annuler cette réservation ?",
-                "Confirmation",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBoxHelper.ShowBookingCancel();
 
                 try
                 {
@@ -410,7 +386,6 @@ namespace ULMClubManger.Forms.UserControls
 
                         _bookingBackup = null;
 
-                        //RefreshData(_selectedBooking.MemberID);
                         HideErrorMessage();
 
                         _panelBookingByAircraft_Details.Visible = false;
@@ -419,7 +394,7 @@ namespace ULMClubManger.Forms.UserControls
 
                         _tboxBookingByAircraft_CancellationReason.Visible = false;
 
-                        this.BookingForAircraftCanceled();
+                        BookingForAircraftCanceled();
                     }
                 }
                 catch (BusinessException ex)
@@ -443,11 +418,11 @@ namespace ULMClubManger.Forms.UserControls
 
             if (dialogResult == DialogResult.Yes)
             {
-                SelectedBooking = _bookingBackup;
-                _bookingBackup = null;
-
                 LockControls();
                 HideErrorMessage();
+
+                SelectedBooking = _bookingBackup;
+                _bookingBackup = null;
 
                 _panelBookingByAircraft_Details.Visible = false;
                 _panelFooterBookingByAircraft_Cancel.Visible = false;
@@ -455,7 +430,7 @@ namespace ULMClubManger.Forms.UserControls
 
                 _tboxBookingByAircraft_CancellationReason.Visible = false;
 
-                this.BookingForAircraftCanceled();
+                BookingForAircraftCanceled();
             }
         }
 

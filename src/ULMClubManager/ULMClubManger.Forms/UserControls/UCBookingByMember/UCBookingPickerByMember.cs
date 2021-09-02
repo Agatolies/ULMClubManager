@@ -55,8 +55,8 @@ namespace ULMClubManger.Forms.UserControls
 
         private void _lbPilots_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_lbPilots.DataSource != null && this.SelectPilot != null)
-                this.SelectPilot(((Member)_lbPilots.SelectedItem).ID.Value);
+            if (_lbPilots.DataSource != null && SelectPilot != null)
+                SelectPilot(((Member)_lbPilots.SelectedItem).ID.Value);
         }
     }
 }
