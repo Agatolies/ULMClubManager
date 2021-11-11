@@ -8,7 +8,8 @@ namespace ULMClubManager.DAL.Mappers
     /// </summary>
     /// <typeparam name="TDBRow">La classe représentant un enregistrement d'une table SQL</typeparam>
     /// <typeparam name="TDomain">Le classe représentant un modèle du domaine</typeparam>
-    public abstract class GenericMapper<TDBRow, TDomain> where TDomain : class, IDomainModel
+    public abstract class GenericMapper<TDBRow, TDomain> 
+        where TDomain : class, IDomainModel
     {
         /// <summary>
         /// Convertis un enregistrement d'une table SQL en une entité métier

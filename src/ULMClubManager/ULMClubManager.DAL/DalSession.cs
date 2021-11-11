@@ -13,7 +13,7 @@ namespace ULMClubManager.DAL
     /// </summary>
     public class DalSession : IDisposable
     {
-        private static IDbConnection GetConnection()
+        private static IDbConnection CreateConnection()
         {
             const string connectionString = "Data Source=localhost;Initial Catalog=ULMClubManager;Persist Security Info=True;User ID=sa;Password=<YourStrong@Passw0rd>";
             return new SqlConnection(connectionString);
@@ -34,7 +34,7 @@ namespace ULMClubManager.DAL
 
         public DalSession()
         {
-            _connection = GetConnection();
+            _connection = CreateConnection();
             _connection.Open();
 
             UnitOfWork = new UnitOfWork(_connection);
