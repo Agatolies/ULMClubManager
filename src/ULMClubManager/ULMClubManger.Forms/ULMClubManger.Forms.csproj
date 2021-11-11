@@ -104,9 +104,6 @@
 	<ItemGroup>
 		<PackageReference Include="MetroFramework" Version="1.2.0.3" />
 		<PackageReference Include="MetroModernUI" Version="1.4.0.0" />
-		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.255803">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
 		<PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
 	</ItemGroup>
 </Project>
