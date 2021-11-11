@@ -22,6 +22,12 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<NoWarn>$(NoWarn);CA1062;1591</NoWarn>
+		<Nullable>enable</Nullable>
+		<NullableReferenceTypes>true</NullableReferenceTypes>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
 	
 	<ItemGroup>
