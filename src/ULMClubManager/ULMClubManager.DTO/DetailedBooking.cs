@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ULMClubManager.DTO
+﻿namespace ULMClubManager.DTO
 {
     /// <summary>
     /// Représente une réservation de manière détaillée

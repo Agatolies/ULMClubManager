@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace ULMClubManger.Forms
+﻿namespace ULMClubManger.Forms
 {
     public static class MessageBoxHelper
     {

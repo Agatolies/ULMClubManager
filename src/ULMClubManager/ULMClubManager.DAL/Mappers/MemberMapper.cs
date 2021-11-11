@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ULMClubManager.DAL.DBRowModels;
+﻿using ULMClubManager.DAL.DBRowModels;
 using ULMClubManager.DTO;
 
 namespace ULMClubManager.DAL.Mappers

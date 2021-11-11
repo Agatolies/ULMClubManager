@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using System.Collections.Generic;
 using System.Data;
 using ULMClubManager.DAL.Abstractions;
 using ULMClubManager.DAL.DBRowModels;

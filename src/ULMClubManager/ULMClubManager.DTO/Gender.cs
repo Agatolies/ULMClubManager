@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ULMClubManager.DTO
+﻿namespace ULMClubManager.DTO
 {
     /// <summary>
     /// Représente le genre d'un être humain

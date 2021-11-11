@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ULMClubManager.DAL.DBRowModels
+﻿namespace ULMClubManager.DAL.DBRowModels
 {
     public class MbrDBRow
     {

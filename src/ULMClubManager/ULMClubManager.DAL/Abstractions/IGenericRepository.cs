@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ULMClubManager.DAL.Abstractions
+﻿namespace ULMClubManager.DAL.Abstractions
 {
     public interface IGenericRepository<TDomain, TKey>
     {

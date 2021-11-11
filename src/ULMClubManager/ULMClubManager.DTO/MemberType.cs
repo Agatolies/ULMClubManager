@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ULMClubManager.DTO
+﻿namespace ULMClubManager.DTO
 {
     /// <summary>
     /// Enumération du type de membre

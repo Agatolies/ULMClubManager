@@ -1,5 +1,4 @@
-﻿using System;
-using ULMClubManager.DTO.Abstractions;
+﻿using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DTO
 {

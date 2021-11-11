@@ -1,7 +1,5 @@
 ﻿using Dapper;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using ULMClubManager.DAL.Abstractions;
 using ULMClubManager.DAL.DBRowModels;
 using ULMClubManager.DAL.Mappers;

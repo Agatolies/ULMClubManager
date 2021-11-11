@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace ULMClubManger.Forms.UserControls
+﻿namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCLayout : UserControl
     {

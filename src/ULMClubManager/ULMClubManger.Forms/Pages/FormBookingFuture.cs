@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
-using ULMClubManager.BL.Services;
+﻿using ULMClubManager.BL.Services;
 using ULMClubManager.DTO;
 
 namespace ULMClubManger.Forms.Pages

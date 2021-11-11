@@ -1,5 +1,4 @@
-﻿using System;
-using ULMClubManager.DTO;
+﻿using ULMClubManager.DTO;
 using ULMClubManager.DTO.Exceptions;
 
 namespace ULMClubManger.Forms.UserControls

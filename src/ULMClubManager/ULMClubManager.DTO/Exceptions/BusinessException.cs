@@ -1,5 +1,4 @@
-﻿using System;
-using ULMClubManager.DTO.Enums;
+﻿using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {

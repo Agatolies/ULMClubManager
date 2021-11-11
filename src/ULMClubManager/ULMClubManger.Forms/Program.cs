@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace ULMClubManger.Forms
+﻿namespace ULMClubManger.Forms
 {
     static class Program
     {

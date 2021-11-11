@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace ULMClubManger.Forms.Pages
+﻿namespace ULMClubManger.Forms.Pages
 {
     public partial class FormMembersInfo : Form
     {

@@ -4,7 +4,6 @@ using ULMClubManager.DAL.Mappers;
 using ULMClubManager.DTO;
 using Dapper;
 using System.Data;
-using System.Collections.Generic;
 
 namespace ULMClubManager.DAL.Repositories
 {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using ULMClubManger.Forms.Pages;
+﻿using ULMClubManger.Forms.Pages;
 
 namespace ULMClubManger.Forms.UserControls
 {

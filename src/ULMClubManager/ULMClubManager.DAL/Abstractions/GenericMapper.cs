@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using ULMClubManager.DTO.Abstractions;
+﻿using ULMClubManager.DTO.Abstractions;
 
 namespace ULMClubManager.DAL.Mappers
 {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ULMClubManager.DAL;
+﻿using ULMClubManager.DAL;
 using ULMClubManager.DTO;
 
 namespace ULMClubManager.BL.Services
