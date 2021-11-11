@@ -13,10 +13,6 @@ namespace ULMClubManager.BL.Services
             }
         }
 
-        public static bool IsAvailable()
-        {
-
-            return false;
-        }
+        public static readonly bool IsAvailable = false;
     }
 }

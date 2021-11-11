@@ -6,14 +6,14 @@ namespace ULMClubManger.Forms.UserControls
 {
     public  class UCBookingBase : UserControl
     {
-        protected List<TimeSpan> _timeSlotsStart;
-        protected List<TimeSpan> _timeSlotsEnd;
-        protected List<Member> _allPilots;
-        protected List<Runway> _allRunways;
-        protected List<Aircraft> _allAircrafts;
+        protected List<TimeSpan>? _timeSlotsStart;
+        protected List<TimeSpan>? _timeSlotsEnd;
+        protected List<Member>? _allPilots;
+        protected List<Runway>? _allRunways;
+        protected List<Aircraft>? _allAircrafts;
 
-        protected DetailedBooking _bookingBackup;
-        protected DetailedBooking _selectedBooking;
+        protected DetailedBooking? _bookingBackup;
+        protected DetailedBooking? _selectedBooking;
 
         public UCBookingBase()
         {
@@ -21,9 +21,8 @@ namespace ULMClubManger.Forms.UserControls
 
         public int SelectedPilotID { get; set; }
 
-        public Member SelectedPilot => _allPilots
-                .Where(pilot => pilot.ID == SelectedPilotID)
-                .FirstOrDefault();
+        public Member? SelectedPilot => _allPilots?
+            .FirstOrDefault(pilot => pilot.ID == SelectedPilotID);
 
         protected List<TimeSpan> GetTimeSlotsStart()
         {

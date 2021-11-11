@@ -8,7 +8,7 @@ namespace ULMClubManager.DAL.Abstractions
     public interface IUnitOfWork : IDisposable
     {
         IDbConnection Connection { get; }
-        IDbTransaction Transaction { get; }
+        IDbTransaction? Transaction { get; }
 
         /// <summary>
         /// Démarre une transaction SQL

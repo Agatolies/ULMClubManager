@@ -201,12 +201,9 @@ namespace ULMClubManager.BL.Services
                 .ToList();
 
             // ...Pour lesquels on vérifie les heures
-            foreach (Booking b in bookingsForRunway)
+            if (bookingsForRunway.Any(b => IsOverlapse(booking, b)))
             {
-                if (IsOverlapse(booking, b))
-                {
-                    throw new UnavailableRunwayException();
-                }
+                throw new UnavailableRunwayException();
             }
         }
 
@@ -218,12 +215,9 @@ namespace ULMClubManager.BL.Services
                 .ToList();
 
             // ...Pour lesquels on vérifie les heures
-            foreach (Booking b in bookingsForAircraft)
+            if (bookingsForAircraft.Any(b => IsOverlapse(booking, b)))
             {
-                if (IsOverlapse(booking, b))
-                {
-                    throw new UnavailableAircraftException();
-                }
+                throw new UnavailableAircraftException();
             }
         }
 

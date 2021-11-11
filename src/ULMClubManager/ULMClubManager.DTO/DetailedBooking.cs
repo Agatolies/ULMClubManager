@@ -33,14 +33,14 @@
         public DateTime Date { get; set; }
         public TimeSpan StartHour { get; set; }
         public TimeSpan EndHour { get; set; }
-        public string CancellationReason { get; }
+        public string? CancellationReason { get; }
         public DateTime? CancellationDate { get; }
         public TimeSpan? CancellationHour { get; }
 
         // Aircraft
         public int AircraftID { get; }
         public string AircraftRegistration { get; }
-        public string AircraftType { get; }
+        public string? AircraftType { get; }
         public int AircraftCategoryID { get; }
 
         // Runway
@@ -49,8 +49,8 @@
 
         // Pilot
         public int MemberID { get; }
-        public string MemberLastName { get; }
-        public string MemberFirstName { get; }
-        public string MemberFullName => $"{MemberLastName.ToUpper()} {MemberFirstName}";
+        public string? MemberLastName { get; }
+        public string? MemberFirstName { get; }
+        public string MemberFullName => $"{MemberLastName?.ToUpper()} {MemberFirstName}";
     }
 }

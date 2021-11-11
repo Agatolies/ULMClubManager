@@ -6,11 +6,11 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCMemberPicker : UserControl
     {
-        public event delSelectMember SelectMember;
+        public event delSelectMember? SelectMember;
 
-        private List<Member> _allMembers;
-        private List<Member> _allPilots;
-        private List<Member> _allSupporters;
+        private List<Member>? _allMembers;
+        private List<Member>? _allPilots;
+        private List<Member>? _allSupporters;
 
         public UCMemberPicker()
         {

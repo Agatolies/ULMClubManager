@@ -1,4 +1,5 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
@@ -13,22 +14,27 @@ namespace ULMClubManager.DTO.Exceptions
             TokenError = tokenError;
         }
 
-        public BusinessException()
+        protected BusinessException()
         {
         }
 
-        public BusinessException(string message)
+        protected BusinessException(string message)
             : base(message)
         {
         }
 
-        public BusinessException(string message, Exception innerException)
+        protected BusinessException(string message, Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected BusinessException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
 
         public ContextError Context { get; }
 
-        public string TokenError { get;  }
+        public string? TokenError { get;  }
     }
 }

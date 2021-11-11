@@ -14,7 +14,7 @@ namespace ULMClubManger.Forms
     public delegate void delMemberCanceled();
 
     // Délégués pour l'ajout, la modification et la suppression d'une réservation par membre
-    public delegate void delSelectBooking(DetailedBooking booking);
+    public delegate void delSelectBooking(DetailedBooking? booking);
     public delegate void delUpdatePropertyEnabledOfDgvBookingByMember(bool enabled);
 
     public delegate void delBookingForMemberCreating();
@@ -26,7 +26,7 @@ namespace ULMClubManger.Forms
     public delegate void delBookingForMemberCanceled();
 
     // Délégués pour l'ajout, la modification et la suppression d'une réservation par ULM
-    public delegate void delSelectAircraft(DetailedBooking booking);
+    public delegate void delSelectAircraft(DetailedBooking? booking);
     public delegate void delUpdatePropertyEnabledOfDgvBookingByAircraft(bool enabled);
 
     public delegate void delBookingForAircraftCreating();

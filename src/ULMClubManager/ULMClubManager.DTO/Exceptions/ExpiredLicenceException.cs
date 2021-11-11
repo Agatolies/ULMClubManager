@@ -1,10 +1,12 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
     /// <summary>
     /// Représente une exception pour une licence expirée
     /// </summary>
+    [Serializable]
     public class ExpiredLicenceException : BusinessException
     {
         public ExpiredLicenceException()
@@ -24,6 +26,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public ExpiredLicenceException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected ExpiredLicenceException(SerializationInfo info, StreamingContext context)
+           : base(info, context)
         {
         }
     }

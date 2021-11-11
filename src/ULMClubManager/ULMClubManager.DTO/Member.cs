@@ -79,27 +79,27 @@ namespace ULMClubManager.DTO
         }
 
         public int? ID { get; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string Sex { get; set; }
+        public string? LastName { get; set; }
+        public string? FirstName { get; set; }
+        public string? Sex { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime RegistrationDate { get; set; }
-        public string Street { get; set; }
-        public string ResidenceName { get; set; }
-        public string BuildingNumber { get; set; }
-        public string BoxNumber { get; set; }
-        public string PhoneNumber { get; set; }
-        public string CellphoneNumber { get; set; }
-        public string EmailAddress { get; set; }
+        public string? Street { get; set; }
+        public string? ResidenceName { get; set; }
+        public string? BuildingNumber { get; set; }
+        public string? BoxNumber { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? CellphoneNumber { get; set; }
+        public string? EmailAddress { get; set; }
         public bool Administrator { get; set; }
-        public string UserName { get; set; }
-        public string UserPWD { get; set; }
+        public string? UserName { get; set; }
+        public string? UserPWD { get; set; }
         public int LocalityID { get; set; }
-        public string LicenceNumber { get; set; }
+        public string? LicenceNumber { get; set; }
 
         public DateTime? LicenceObtentionDate { get; set; }
         public DateTime? LicenceExpirationDate { get; set; }
-        public string LicenceCountry { get; set; }
+        public string? LicenceCountry { get; set; }
 
         public bool QualificationType1 { get; set; }
         public bool QualificationType2 { get; set; }
@@ -114,10 +114,7 @@ namespace ULMClubManager.DTO
         public bool IsPilot => LicenceNumber != null;
         public bool IsSupporter => !IsPilot;
 
-        public string FullName
-        {
-            get { return $"{LastName.ToUpper()} {FirstName}"; }
-        }
+        public string FullName => $"{LastName?.ToUpper()} {FirstName}";
 
         public string MemberCategory
         {

@@ -1,4 +1,5 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
@@ -6,6 +7,7 @@ namespace ULMClubManager.DTO.Exceptions
     /// Représente une exception pour la taille 
     /// d'un code pays d'obtention de licence incorrect
     /// </summary>
+    [Serializable]
     public class InvalidCountryCodeException : BusinessException
     {
         public InvalidCountryCodeException()
@@ -25,6 +27,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public InvalidCountryCodeException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected InvalidCountryCodeException(SerializationInfo info, StreamingContext context)
+           : base(info, context)
         {
         }
     }

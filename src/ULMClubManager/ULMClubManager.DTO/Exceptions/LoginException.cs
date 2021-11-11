@@ -1,4 +1,5 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
@@ -6,6 +7,7 @@ namespace ULMClubManager.DTO.Exceptions
     /// Représente une exception pour une mauvaise 
     /// combinaison nom d'utilisateur / mot de passe
     /// </summary>
+    [Serializable]
     public class LoginException : DataAccessException
     {
         public LoginException() 
@@ -25,6 +27,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public LoginException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected LoginException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
     }

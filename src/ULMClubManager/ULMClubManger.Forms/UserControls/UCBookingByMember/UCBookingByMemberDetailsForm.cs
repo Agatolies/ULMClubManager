@@ -9,13 +9,13 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCBookingByMemberDetailsForm : UCBookingBase, IUCBooking
     {
-        public event delBookingForMemberCreating BookingForMemberCreating;
-        public event delBookingForMemberUpdating BookingForMemberUpdating;
-        public event delBookingForMemberCanceling BookingForMemberCanceling;
+        public event delBookingForMemberCreating? BookingForMemberCreating;
+        public event delBookingForMemberUpdating? BookingForMemberUpdating;
+        public event delBookingForMemberCanceling? BookingForMemberCanceling;
 
-        public event delBookingForMemberCreated BookingForMemberCreated;
-        public event delBookingForMemberUpdated BookingForMemberUpdated;
-        public event delBookingForMemberCanceled BookingForMemberCanceled;
+        public event delBookingForMemberCreated? BookingForMemberCreated;
+        public event delBookingForMemberUpdated? BookingForMemberUpdated;
+        public event delBookingForMemberCanceled? BookingForMemberCanceled;
 
         public UCBookingByMemberDetailsForm()
         {
@@ -23,7 +23,7 @@ namespace ULMClubManger.Forms.UserControls
             InitializeData();
         }
 
-        public DetailedBooking SelectedBooking
+        public DetailedBooking? SelectedBooking
         {
             get { return _selectedBooking; }
             set
@@ -69,12 +69,6 @@ namespace ULMClubManger.Forms.UserControls
 
             _panelBookingByMBR_Details.Visible = false;
             _panelBookingByMember_Details.Visible = false;
-
-            //if (BookingService.ReadAllBookingByPilotID(SelectedPilotID) == null)
-            //{
-            //    _btnFooterBookingByMemberUpdate.Visible = false;
-            //    _btnFooterBookingByMemberCancel.Visible = false;
-            //}
         }
 
         public void ShowErrorMessage(BusinessException ex)
@@ -104,11 +98,14 @@ namespace ULMClubManger.Forms.UserControls
 
         public void RefreshDetailsForm()
         {
-            _cboxBookingByMember_Aircraft.SelectedValue = SelectedBooking.AircraftID;
-            _dtpBookingByMember_Date.Value = SelectedBooking.Date;
-            _cboxBookingByMember_TimeSlotStart.SelectedItem = SelectedBooking.StartHour;
-            _cboxBookingByMember_TimeSlotEnd.SelectedItem = SelectedBooking.EndHour;
-            _cboxBookingByMember_Runway.SelectedValue = SelectedBooking.RunwayID;
+            if (SelectedBooking is not null)
+            {
+                _cboxBookingByMember_Aircraft.SelectedValue = SelectedBooking.AircraftID;
+                _dtpBookingByMember_Date.Value = SelectedBooking.Date;
+                _cboxBookingByMember_TimeSlotStart.SelectedItem = SelectedBooking.StartHour;
+                _cboxBookingByMember_TimeSlotEnd.SelectedItem = SelectedBooking.EndHour;
+                _cboxBookingByMember_Runway.SelectedValue = SelectedBooking.RunwayID;
+            }
         }
 
         public void ClearControls()
@@ -191,7 +188,8 @@ namespace ULMClubManger.Forms.UserControls
 
             _dtpBookingByMember_Date.Value = DateTime.Now;
 
-            BookingForMemberCreating();
+            if (BookingForMemberCreating is not null)
+                BookingForMemberCreating();
 
             UnlockControls();
             ClearControls();
@@ -217,14 +215,15 @@ namespace ULMClubManger.Forms.UserControls
                     HideErrorMessage();
                     LockControls();
 
-                    Member member = (Member)_cboxBookingByMember_MemberName.SelectedItem;
-                    ShowCreateBookingConfirmation(SelectedPilot.FullName);
+                    if (SelectedPilot is not null)
+                        ShowCreateBookingConfirmation(SelectedPilot.FullName);
 
                     _panelFooterBookingByMember_Create.Visible = false;
                     _panelFooterBookingByMemberCRUD.Visible = true;
                     _panelBookingByMBR_Details.Visible = false;
 
-                    BookingForMemberCreated();
+                    if (BookingForMemberCreated is not null)
+                        BookingForMemberCreated();
                 }
                 catch (BusinessException ex)
                 {

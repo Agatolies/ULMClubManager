@@ -1,10 +1,12 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
     /// <summary>
     /// Représente une exception pour un ULM indisponible
     /// </summary>
+    [Serializable]
     public class UnavailableAircraftException : BusinessException
     {
         public UnavailableAircraftException()
@@ -24,6 +26,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public UnavailableAircraftException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected UnavailableAircraftException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
     }

@@ -5,16 +5,11 @@ namespace ULMClubManager.BL
 {
     public static class Rules
     {
-        private static readonly Dictionary<ContextError, Dictionary<string, string>> dic;
-
-        static Rules()
+        private static readonly Dictionary<ContextError, Dictionary<string, string>> dic = new Dictionary<ContextError, Dictionary<string, string>>
         {
-            Rules.dic = new Dictionary<ContextError, Dictionary<string, string>>
-            {
-                { ContextError.MBR, GetMbrDic() },
-                { ContextError.RES, GetResDic() }
-            };
-        }
+            { ContextError.MBR, GetMbrDic() },
+            { ContextError.RES, GetResDic() }
+        };
 
         private static Dictionary<string, string> GetMbrDic()
         {

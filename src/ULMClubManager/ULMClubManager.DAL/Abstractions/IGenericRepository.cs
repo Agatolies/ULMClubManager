@@ -7,6 +7,6 @@
         List<TDomain> ReadAll();
         TDomain ReadOne(TKey id);
         TDomain ReadLast();
-        void UpdateOne(TDomain loc);
+        void UpdateOne(TDomain domainModel);
     }
 }

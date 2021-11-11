@@ -1,10 +1,12 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
     /// <summary>
     /// Représente une exception pour un ULM non disponible
     /// </summary>
+    [Serializable]
     public class InvalidAicraftIDException : BusinessException
     {
         public InvalidAicraftIDException()
@@ -24,6 +26,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public InvalidAicraftIDException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected InvalidAicraftIDException(SerializationInfo info, StreamingContext context)
+           : base(info, context)
         {
         }
     }

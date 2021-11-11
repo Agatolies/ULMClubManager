@@ -11,17 +11,17 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCMemberCRUD : UserControl
     {
-        public event delMemberCreating MemberCreating;
-        public event delMemberUpdating MemberUpdating;
-        public event delMemberCanceling MemberCanceling;
+        public event delMemberCreating? MemberCreating;
+        public event delMemberUpdating? MemberUpdating;
+        public event delMemberCanceling? MemberCanceling;
 
-        public event delMemberCreated MemberCreated;
-        public event delMemberUpdated MemberUpdated;
-        public event delMemberCanceled MemberCanceled;
+        public event delMemberCreated? MemberCreated;
+        public event delMemberUpdated? MemberUpdated;
+        public event delMemberCanceled? MemberCanceled;
 
-        private List<Locality> _localities;
-        private Member _member;
-        private Member _memberBackup;
+        private List<Locality>? _localities;
+        private Member? _member;
+        private Member? _memberBackup;
 
         public UCMemberCRUD()
         {
@@ -42,7 +42,7 @@ namespace ULMClubManger.Forms.UserControls
 
                     if (_member.ID.HasValue)
                     {
-                        Locality locality = _localities
+                        Locality? locality = _localities
                             .Find(l => l.ID == _member.LocalityID);
 
                         _tboxMBRZipCode.Text = locality.ZipCode;

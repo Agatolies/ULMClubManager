@@ -9,7 +9,7 @@ namespace ULMClubManager.DTO
     {
         public Booking( 
             int? id, DateTime date, TimeSpan startHour,
-            TimeSpan endHour, string cancellationReason, DateTime? cancellationDate,
+            TimeSpan endHour, string? cancellationReason, DateTime? cancellationDate,
             TimeSpan? cancellationHour, int memberID, int aircraftID, int runwayID)
         {
             ID = id;
@@ -26,7 +26,7 @@ namespace ULMClubManager.DTO
 
         public Booking(
             DateTime date, TimeSpan startHour, TimeSpan endHour,
-            string cancellationReason, DateTime? cancellationDate, TimeSpan? cancellationHour,
+            string? cancellationReason, DateTime? cancellationDate, TimeSpan? cancellationHour,
             int memberID, int aircraftID, int runwayID)
             : this(
                   null, date, startHour, endHour, cancellationReason, 
@@ -39,7 +39,7 @@ namespace ULMClubManager.DTO
         public DateTime Date { get; set; }
         public TimeSpan StartHour { get; set; }
         public TimeSpan EndHour { get; set; }
-        public string CancellationReason { get; }
+        public string? CancellationReason { get; }
         public DateTime? CancellationDate { get; }
         public TimeSpan? CancellationHour { get; }
         public int MemberID { get; set; }

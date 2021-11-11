@@ -6,9 +6,9 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCBookingPickerByMember : UserControl
     {
-        public event delSelectMember SelectPilot;
+        public event delSelectMember? SelectPilot;
 
-        private List<Member> _allPilots;
+        private List<Member>? _allPilots;
 
         public UCBookingPickerByMember()
         {

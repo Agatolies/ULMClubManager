@@ -1,10 +1,12 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
     /// <summary>
     /// Représente une exception pour une date de validité de licence incorrecte
     /// </summary>
+    [Serializable]
     public class InvalidLicenceDatesException : BusinessException
     {
         public InvalidLicenceDatesException()
@@ -24,6 +26,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public InvalidLicenceDatesException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected InvalidLicenceDatesException(SerializationInfo info, StreamingContext context)
+           : base(info, context)
         {
         }
     }

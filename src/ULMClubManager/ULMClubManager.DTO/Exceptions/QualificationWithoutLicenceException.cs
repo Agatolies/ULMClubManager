@@ -1,4 +1,5 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
@@ -6,6 +7,7 @@ namespace ULMClubManager.DTO.Exceptions
     /// Représente une exception qu'on ne peut 
     /// pas avoir de qualification sans licence
     /// </summary>
+    [Serializable]
     public class QualificationWithoutLicenceException : BusinessException
     {
         public QualificationWithoutLicenceException()
@@ -25,6 +27,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public QualificationWithoutLicenceException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected QualificationWithoutLicenceException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
     }

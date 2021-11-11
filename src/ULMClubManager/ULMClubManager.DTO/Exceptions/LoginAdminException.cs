@@ -1,4 +1,5 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
@@ -6,6 +7,7 @@ namespace ULMClubManager.DTO.Exceptions
     /// Représente une exception pour indiquer que seul l'administrateur 
     /// peut se connecter à l'application pour l'instant
     /// </summary>
+    [Serializable]
     public class LoginAdminException : BusinessException
     {
         public LoginAdminException()
@@ -25,6 +27,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public LoginAdminException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected LoginAdminException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
     }

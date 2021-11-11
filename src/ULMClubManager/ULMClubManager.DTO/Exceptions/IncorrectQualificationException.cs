@@ -1,10 +1,12 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
     /// <summary>
     /// Représente une exception pour une qualification incompatible avec la réservation
     /// </summary>
+    [Serializable]
     public class IncorrectQualificationException : BusinessException
     {
         public IncorrectQualificationException()
@@ -24,6 +26,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public IncorrectQualificationException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected IncorrectQualificationException(SerializationInfo info, StreamingContext context)
+           : base(info, context)
         {
         }
     }

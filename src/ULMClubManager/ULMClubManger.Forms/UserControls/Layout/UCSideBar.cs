@@ -4,7 +4,7 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCSideBar : UserControl
     {
-        private Form _activeForm = null;
+        private Form? _activeForm = null;
 
         public UCSideBar()
         {

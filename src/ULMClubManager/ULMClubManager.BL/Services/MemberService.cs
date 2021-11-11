@@ -139,6 +139,9 @@ namespace ULMClubManager.BL.Services
             if (member.RegistrationDate == DateTime.MinValue)
                 member.RegistrationDate = DateTime.Today;
 
+            if (member.FirstName is null)
+                throw new Exception("Le prénom ne peut pas être null.");
+
             if (member.FirstName.Length < 3)
                 throw new FirstNameTooShortException();
 
@@ -291,8 +294,6 @@ namespace ULMClubManager.BL.Services
 
             foreach (Booking b in bookingInFuture)
             {
-                Member member = dalSession.Members.ReadOne(memberID);
-
                 // Supprimer toutes les RES dont la date est supérieure à la nouvelle date de fin de la LIC
                 if (b.Date > newExpirationDate)
                     dalSession.Cancellations.CreateOneCancellation(b.ID.Value, "Modification de la date d'expiration de la licence.");

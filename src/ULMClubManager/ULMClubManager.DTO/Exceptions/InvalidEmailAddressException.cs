@@ -1,10 +1,12 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
     /// <summary>
     /// Représente une exception pour une adresse email invalide
     /// </summary>
+    [Serializable]
     public class InvalidEmailAddressException : BusinessException
     {
         public InvalidEmailAddressException()
@@ -24,6 +26,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public InvalidEmailAddressException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected InvalidEmailAddressException(SerializationInfo info, StreamingContext context)
+           : base(info, context)
         {
         }
     }

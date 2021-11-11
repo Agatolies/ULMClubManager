@@ -19,40 +19,5 @@ namespace ULMClubManager.BL.Services
                     throw new LoginAdminException();
             }
         }
-
-        //public static List<IMember> ReadAll()
-        //{
-        //    List<IMember> members = new List<IMember>();
-
-        //    using (DalSession dalSession = new DalSession())
-        //    {
-        //        List<Pilot> pilots = dalSession.Pilots.ReadAll();
-        //        List<Supporter> supporters = dalSession.Supporters.ReadAll();
-
-        //        members.AddRange(pilots);
-        //        members.AddRange(supporters);
-        //    }
-
-        //    return members.OrderBy(member => member.LastName).ToList();
-        //}
-
-        //public static IMember ReadOne(int memberID)
-        //{
-        //    IMember member;
-
-        //    using (DalSession dalSession = new DalSession())
-        //    {
-        //        try
-        //        {
-        //            member = dalSession.Pilots.ReadOne(memberID);
-        //        }
-        //        catch (Exception)
-        //        {
-        //            member = dalSession.Supporters.ReadOne(memberID);
-        //        }
-        //    }
-
-        //    return member;
-        //}
     }
 }

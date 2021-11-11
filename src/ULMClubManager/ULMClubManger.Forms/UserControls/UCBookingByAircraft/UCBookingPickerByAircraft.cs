@@ -6,10 +6,10 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCBookingPickerByAircraft : UserControl
     {
-        public event delSelectMember SelectAircraftCategoryID;
+        public event delSelectMember? SelectAircraftCategoryID;
 
-        private List<Aircraft> _allAircrafts;
-        private List<AircraftCategory> _allAircraftCategories;
+        private List<Aircraft>? _allAircrafts;
+        private List<AircraftCategory>? _allAircraftCategories;
 
         public UCBookingPickerByAircraft()
         {

@@ -6,10 +6,10 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCBookingByMemberCRUD : UserControl
     {
-        public event delSelectBooking SelectBooking;
+        public event delSelectBooking? SelectBooking;
 
-        private List<DetailedBooking> _bookings;
-        private List<DetailedBooking> _cancellations;
+        private List<DetailedBooking>? _bookings;
+        private List<DetailedBooking>? _cancellations;
 
         public UCBookingByMemberCRUD()
         {
@@ -17,7 +17,7 @@ namespace ULMClubManger.Forms.UserControls
             InitializeData();
         }
 
-        public List<DetailedBooking> Bookings
+        public List<DetailedBooking>? Bookings
         {
             get
             {
@@ -30,7 +30,7 @@ namespace ULMClubManger.Forms.UserControls
             }
         }
 
-        public List<DetailedBooking> Cancellations
+        public List<DetailedBooking>? Cancellations
         {
             get
             {

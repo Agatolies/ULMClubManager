@@ -77,18 +77,5 @@ namespace ULMClubManager.DAL.Repositories
                 commandType: CommandType.StoredProcedure,
                 transaction: _unitOfWork.Transaction);
         }
-
-
-
-        //public Booking DeleteOneCancellation(int bookingID)
-        //{
-        //    _unitOfWork.Connection.QueryFirstOrDefault<ResDBRow>(
-        //        "sp_delete_ANN",
-        //        param: new { bookingID },
-        //        commandType: CommandType.StoredProcedure,
-        //        transaction: _unitOfWork.Transaction);
-
-        //    return ReadOne(bookingID);
-        //}
     }
 }

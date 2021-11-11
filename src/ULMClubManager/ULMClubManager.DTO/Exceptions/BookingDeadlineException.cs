@@ -1,4 +1,5 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
@@ -6,6 +7,7 @@ namespace ULMClubManager.DTO.Exceptions
     /// Représente une exception qui indique qu'une réservation
     /// ne peut pas être enregistrée après février de l'année suivante
     /// </summary>
+    [Serializable]
     public class BookingDeadlineException : BusinessException
 
     {
@@ -27,6 +29,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public BookingDeadlineException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected BookingDeadlineException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
     }

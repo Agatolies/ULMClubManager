@@ -1,11 +1,12 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
     /// <summary>
     /// Représente une exception pour un prénom trop court
     /// </summary>
-
+    [Serializable]
     public class FirstNameTooShortException : BusinessException
     {
         public FirstNameTooShortException()
@@ -25,6 +26,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public FirstNameTooShortException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected FirstNameTooShortException(SerializationInfo info, StreamingContext context)
+           : base(info, context)
         {
         }
     }

@@ -1,4 +1,5 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
@@ -6,6 +7,7 @@ namespace ULMClubManager.DTO.Exceptions
     /// Représente une exception pour une réservation impossible
     /// à cause d'un retrait de licence
     /// </summary>
+    [Serializable]
     public class LicenceWithdrawalException : BusinessException
     {
         public LicenceWithdrawalException()
@@ -25,6 +27,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public LicenceWithdrawalException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected LicenceWithdrawalException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
     }

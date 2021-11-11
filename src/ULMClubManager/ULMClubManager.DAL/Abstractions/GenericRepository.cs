@@ -34,7 +34,7 @@ namespace ULMClubManager.DAL.Abstractions
         protected readonly string _keyPrefix;
         protected readonly GenericMapper<TDBRow, TDomain> _mapper;
 
-        public GenericRepository(IUnitOfWork unitOfWork, string tableName, string keyPrefix, GenericMapper<TDBRow, TDomain> mapper)
+        protected GenericRepository(IUnitOfWork unitOfWork, string tableName, string keyPrefix, GenericMapper<TDBRow, TDomain> mapper)
         {
             _unitOfWork = unitOfWork;
             _tableName = tableName;
@@ -42,7 +42,7 @@ namespace ULMClubManager.DAL.Abstractions
             _mapper = mapper;
         }
 
-        public GenericRepository(IUnitOfWork unitOfWork, string tableName, GenericMapper<TDBRow, TDomain> mapper)
+        protected GenericRepository(IUnitOfWork unitOfWork, string tableName, GenericMapper<TDBRow, TDomain> mapper)
             : this(unitOfWork, tableName, tableName, mapper)
         {
         }

@@ -9,13 +9,13 @@ namespace ULMClubManger.Forms.UserControls
 {
     public partial class UCBookingByAircraftDetailsForm : UCBookingBase, IUCBooking
     {
-        public event delBookingForAircraftCreated BookingForAircraftCreating;
-        public event delBookingForAircraftUpdated BookingForAircraftUpdating;
-        public event delBookingForAircraftCanceled BookingForAircraftCanceling;
+        public event delBookingForAircraftCreated? BookingForAircraftCreating;
+        public event delBookingForAircraftUpdated? BookingForAircraftUpdating;
+        public event delBookingForAircraftCanceled? BookingForAircraftCanceling;
 
-        public event delBookingForAircraftCreated BookingForAircraftCreated;
-        public event delBookingForAircraftUpdated BookingForAircraftUpdated;
-        public event delBookingForAircraftCanceled BookingForAircraftCanceled;
+        public event delBookingForAircraftCreated? BookingForAircraftCreated;
+        public event delBookingForAircraftUpdated? BookingForAircraftUpdated;
+        public event delBookingForAircraftCanceled? BookingForAircraftCanceled;
 
         public UCBookingByAircraftDetailsForm()
         {
@@ -23,7 +23,7 @@ namespace ULMClubManger.Forms.UserControls
             InitializeData();
         }
 
-        public DetailedBooking SelectedBooking
+        public DetailedBooking? SelectedBooking
         {
             get { return _selectedBooking; }
             set

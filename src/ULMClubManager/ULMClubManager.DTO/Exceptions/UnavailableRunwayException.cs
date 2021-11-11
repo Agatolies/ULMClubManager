@@ -1,10 +1,12 @@
-﻿using ULMClubManager.DTO.Enums;
+﻿using System.Runtime.Serialization;
+using ULMClubManager.DTO.Enums;
 
 namespace ULMClubManager.DTO.Exceptions
 {
     /// <summary>
     /// Représente une exception pour une piste indisponible
     /// </summary>
+    [Serializable]
     public class UnavailableRunwayException : BusinessException
     {
         public UnavailableRunwayException()
@@ -24,6 +26,11 @@ namespace ULMClubManager.DTO.Exceptions
 
         public UnavailableRunwayException(string message, System.Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        protected UnavailableRunwayException(SerializationInfo info, StreamingContext context) 
+            : base(info, context)
         {
         }
     }

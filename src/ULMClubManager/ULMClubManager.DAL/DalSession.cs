@@ -10,7 +10,7 @@ namespace ULMClubManager.DAL
     /// Responsable d'instancier la connexion à la DB et de fournir 
     /// un point d'accès unique à tous les Respositories de la DAL.
     /// </summary>
-    public class DalSession : IDisposable
+    public sealed class DalSession : IDisposable
     {
         private static IDbConnection CreateConnection()
         {
@@ -20,16 +20,16 @@ namespace ULMClubManager.DAL
 
         private readonly IDbConnection _connection;
 
-        private AircraftRepository _aircrafts;
-        private BookingRepository _bookings;
-        private AircraftCategoryRepository _categories;
-        private LocalityRepository _localities;
-        private RunwayRepository _runways;
-        private SubscriptionRepository _subscriptions;
-        private UnavailabilityRepository _unavailabilities;
-        private WithdrawalRepository _withdrawals;
-        private MemberRepository _members;
-        private CancellationRepository _cancellations;
+        private AircraftRepository? _aircrafts;
+        private BookingRepository? _bookings;
+        private AircraftCategoryRepository? _categories;
+        private LocalityRepository? _localities;
+        private RunwayRepository? _runways;
+        private SubscriptionRepository? _subscriptions;
+        private UnavailabilityRepository? _unavailabilities;
+        private WithdrawalRepository? _withdrawals;
+        private MemberRepository? _members;
+        private CancellationRepository? _cancellations;
 
         public DalSession()
         {
@@ -41,47 +41,35 @@ namespace ULMClubManager.DAL
 
         public IUnitOfWork UnitOfWork { get; }
 
-        public AircraftRepository Aircrafts
-        {
-            get
-            {
-                return _aircrafts ?? (_aircrafts = new AircraftRepository(UnitOfWork, new AircraftMapper()));
-
-                // La ligne au-dessus est identique au code ci-dessous
-                // if (_aircrafts == null)
-                // {
-                //     _aircrafts = new AircraftRepository(_unitOfWork, new AircraftMapper());
-                // }
-                // return _aircrafts;
-            }
-        }
+        public AircraftRepository Aircrafts => 
+            _aircrafts ??= new AircraftRepository(UnitOfWork, new AircraftMapper());
 
         public BookingRepository Bookings =>
-            _bookings ?? (_bookings = new BookingRepository(UnitOfWork));
+            _bookings ??= new BookingRepository(UnitOfWork);
 
         public AircraftCategoryRepository AircraftCategories =>
-            _categories ?? (_categories = new AircraftCategoryRepository(UnitOfWork, new CategoryMapper()));
+            _categories ??= new AircraftCategoryRepository(UnitOfWork, new CategoryMapper());
 
         public LocalityRepository Localities =>
-            _localities ?? (_localities = new LocalityRepository(UnitOfWork, new LocalityMapper()));
+            _localities ??= new LocalityRepository(UnitOfWork, new LocalityMapper());
 
         public RunwayRepository Runways =>
-            _runways ?? (_runways = new RunwayRepository(UnitOfWork, new RunwayMapper()));
+            _runways ??= new RunwayRepository(UnitOfWork, new RunwayMapper());
 
         public SubscriptionRepository Subscriptions =>
-            _subscriptions ?? (_subscriptions = new SubscriptionRepository(UnitOfWork, new SubscriptionMapper()));
+            _subscriptions ??= new SubscriptionRepository(UnitOfWork, new SubscriptionMapper());
 
         public UnavailabilityRepository Unavailabilities =>
-            _unavailabilities ?? (_unavailabilities = new UnavailabilityRepository(UnitOfWork, new UnavailabilityMapper()));
+            _unavailabilities ??= new UnavailabilityRepository(UnitOfWork, new UnavailabilityMapper());
 
         public WithdrawalRepository Withdrawals =>
-            _withdrawals ?? (_withdrawals = new WithdrawalRepository(UnitOfWork, new WithdrawalMapper()));
+            _withdrawals ??= new WithdrawalRepository(UnitOfWork, new WithdrawalMapper());
 
         public MemberRepository Members =>
-            _members ?? (_members = new MemberRepository(UnitOfWork));
+            _members ??= new MemberRepository(UnitOfWork);
 
         public CancellationRepository Cancellations =>
-            _cancellations ?? (_cancellations = new CancellationRepository(UnitOfWork));
+            _cancellations ??= new CancellationRepository(UnitOfWork);
 
         public void Dispose()
         {
