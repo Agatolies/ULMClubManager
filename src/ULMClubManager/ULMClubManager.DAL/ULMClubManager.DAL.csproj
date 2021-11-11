@@ -1,27 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <OutputType>Library</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.dll" />
-    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Common.dll" />
-    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Core.dll" />
-    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.dll" />
-    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.Workspaces.dll" />
-    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Common.dll" />
-    <Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Core.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.90" />
-    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.255803">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>10.0</LangVersion>
+		<OutputType>Library</OutputType>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.CodeFixes.dll" />
+		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.dll" />
+		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Common.dll" />
+		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Core.dll" />
+		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.dll" />
+		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.Workspaces.dll" />
+		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Common.dll" />
+		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Core.dll" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.0.90" />
+		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.255803">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+	</ItemGroup>
 </Project>
