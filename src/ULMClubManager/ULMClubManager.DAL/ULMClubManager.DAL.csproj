@@ -20,7 +20,7 @@
 		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Core.dll" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Dapper" Version="2.0.90" />
+		<PackageReference Include="Dapper" Version="2.0.123" />
 		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.255803">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
