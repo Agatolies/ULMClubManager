@@ -8,49 +8,41 @@ public static class BookingService
 {
     public static List<DetailedBooking> ReadAllFutureBooking()
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            List<Booking> bookings = dalSession.Bookings.ReadAllInFuture()
-                .Where(b => string.IsNullOrEmpty(b.CancellationReason))
-                .ToList();
+        using DalSession dalSession = new DalSession();
+        List<Booking> bookings = dalSession.Bookings.ReadAllInFuture()
+            .Where(b => string.IsNullOrEmpty(b.CancellationReason))
+            .ToList();
 
-            List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
+        List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
 
-            return detailedBookings;
-        }
+        return detailedBookings;
     }
 
     public static List<DetailedBooking> ReadAllBookingByPilotID(int pilotID)
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            List<Booking> bookings = dalSession.Bookings.ReadAllByPilotID(pilotID).ToList();
-            List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
+        using DalSession dalSession = new DalSession();
+        List<Booking> bookings = dalSession.Bookings.ReadAllByPilotID(pilotID).ToList();
+        List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
 
-            return detailedBookings;
-        }
+        return detailedBookings;
     }
 
     public static List<DetailedBooking> ReadAllBookingByAircraftID(int aircraftID)
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            List<Booking> bookings = dalSession.Bookings.ReadAllByAircraftID(aircraftID).ToList();
-            List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
+        using DalSession dalSession = new DalSession();
+        List<Booking> bookings = dalSession.Bookings.ReadAllByAircraftID(aircraftID).ToList();
+        List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
 
-            return detailedBookings;
-        }
+        return detailedBookings;
     }
 
     public static List<DetailedBooking> ReadAllBookingByRunwayID(int runwayID)
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            List<Booking> bookings = dalSession.Bookings.ReadAllByRunwayID(runwayID).ToList();
-            List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
+        using DalSession dalSession = new DalSession();
+        List<Booking> bookings = dalSession.Bookings.ReadAllByRunwayID(runwayID).ToList();
+        List<DetailedBooking> detailedBookings = GetRelatedData(dalSession, bookings);
 
-            return detailedBookings;
-        }
+        return detailedBookings;
     }
 
     private static List<DetailedBooking> GetRelatedData(DalSession dalSession, List<Booking> bookingList)
@@ -73,19 +65,17 @@ public static class BookingService
 
     public static void DeleteOneBooking(int bookingID)
     {
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        try
         {
-            try
-            {
-                dalSession.UnitOfWork.Begin();
-                dalSession.Bookings.DeleteOne(bookingID);
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
+            dalSession.UnitOfWork.Begin();
+            dalSession.Bookings.DeleteOne(bookingID);
+            dalSession.UnitOfWork.Commit();
+        }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
         }
     }
 
@@ -93,19 +83,17 @@ public static class BookingService
     {
         ValidateBooking(booking);
 
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        try
         {
-            try
-            {
-                dalSession.UnitOfWork.Begin();
-                dalSession.Bookings.CreateOne(booking);
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
+            dalSession.UnitOfWork.Begin();
+            dalSession.Bookings.CreateOne(booking);
+            dalSession.UnitOfWork.Commit();
+        }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
         }
     }
 
@@ -113,19 +101,17 @@ public static class BookingService
     {
         ValidateBooking(booking);
 
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        try
         {
-            try
-            {
-                dalSession.UnitOfWork.Begin();
-                dalSession.Bookings.UpdateOne(booking);
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
+            dalSession.UnitOfWork.Begin();
+            dalSession.Bookings.UpdateOne(booking);
+            dalSession.UnitOfWork.Commit();
+        }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
         }
     }
 

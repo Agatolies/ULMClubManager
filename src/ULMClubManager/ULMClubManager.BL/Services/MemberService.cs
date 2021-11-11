@@ -11,10 +11,8 @@ public static class MemberService
 
     public static List<Member> ReadAll()
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            return dalSession.Members.ReadAll().ToList();
-        }
+        using DalSession dalSession = new DalSession();
+        return dalSession.Members.ReadAll().ToList();
     }
 
     public static List<Member> ReadAllPilots()
@@ -26,111 +24,103 @@ public static class MemberService
 
     public static Member ReadOne(int id)
     {
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        Member newMember = new Member();
+
+        try
         {
-            Member newMember = new Member();
-
-            try
-            {
-                dalSession.UnitOfWork.Begin();
-                newMember = dalSession.Members.ReadOne(id);
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
-
-            return newMember;
+            dalSession.UnitOfWork.Begin();
+            newMember = dalSession.Members.ReadOne(id);
+            dalSession.UnitOfWork.Commit();
         }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
+        }
+
+        return newMember;
     }
 
     public static Member CreateOne(Member member)
     {
         ValidateMember(member);
 
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        Member newMember = new Member();
+
+        try
         {
-            Member newMember = new Member();
-
-            try
-            {
-                dalSession.UnitOfWork.Begin();
-                newMember = dalSession.Members.CreateOne(member);
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
-
-            return newMember;
+            dalSession.UnitOfWork.Begin();
+            newMember = dalSession.Members.CreateOne(member);
+            dalSession.UnitOfWork.Commit();
         }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
+        }
+
+        return newMember;
     }
 
     public static void UpdateOne(Member member)
     {
         ValidateMember(member);
 
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        try
         {
-            try
-            {
-                dalSession.UnitOfWork.Begin();
+            dalSession.UnitOfWork.Begin();
 
-                int memberID = member.ID.Value;
-                Member oldMember = dalSession.Members.ReadOne(memberID);
+            int memberID = member.ID.Value;
+            Member oldMember = dalSession.Members.ReadOne(memberID);
 
-                if (oldMember.QualificationType1 && !member.QualificationType1)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 1);
+            if (oldMember.QualificationType1 && !member.QualificationType1)
+                DeleteBookingRelatedToMemberQualification(dalSession, memberID, 1);
 
-                if (oldMember.QualificationType2 && !member.QualificationType2)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 2);
+            if (oldMember.QualificationType2 && !member.QualificationType2)
+                DeleteBookingRelatedToMemberQualification(dalSession, memberID, 2);
 
-                if (oldMember.QualificationType3 && !member.QualificationType3)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 3);
+            if (oldMember.QualificationType3 && !member.QualificationType3)
+                DeleteBookingRelatedToMemberQualification(dalSession, memberID, 3);
 
-                if (oldMember.QualificationType4 && !member.QualificationType4)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 4);
+            if (oldMember.QualificationType4 && !member.QualificationType4)
+                DeleteBookingRelatedToMemberQualification(dalSession, memberID, 4);
 
-                if (oldMember.QualificationType5 && !member.QualificationType5)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 5);
+            if (oldMember.QualificationType5 && !member.QualificationType5)
+                DeleteBookingRelatedToMemberQualification(dalSession, memberID, 5);
 
-                if (oldMember.QualificationType6 && !member.QualificationType6)
-                    DeleteBookingRelatedToMemberQualification(dalSession, memberID, 6);
+            if (oldMember.QualificationType6 && !member.QualificationType6)
+                DeleteBookingRelatedToMemberQualification(dalSession, memberID, 6);
 
-                if (oldMember.LicenceExpirationDate > member.LicenceExpirationDate)
-                    DeleteBookingRelatedToMemberLicenceExpirationDate(dalSession, memberID, member.LicenceExpirationDate.Value);
+            if (oldMember.LicenceExpirationDate > member.LicenceExpirationDate)
+                DeleteBookingRelatedToMemberLicenceExpirationDate(dalSession, memberID, member.LicenceExpirationDate.Value);
 
-                dalSession.Members.UpdateOne(member);
+            dalSession.Members.UpdateOne(member);
 
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
+            dalSession.UnitOfWork.Commit();
+        }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
         }
     }
 
     public static void CreateBooking(Booking booking)
     {
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        try
         {
-            try
-            {
-                dalSession.UnitOfWork.Begin();
-                dalSession.Bookings.CreateOne(booking);
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
+            dalSession.UnitOfWork.Begin();
+            dalSession.Bookings.CreateOne(booking);
+            dalSession.UnitOfWork.Commit();
+        }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
         }
     }
 
@@ -185,65 +175,55 @@ public static class MemberService
 
     public static List<Booking> ReadAllBooking()
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            return dalSession.Bookings.ReadAll().ToList();
-        }
+        using DalSession dalSession = new DalSession();
+        return dalSession.Bookings.ReadAll().ToList();
     }
 
     public static List<Booking> ReadAllBookingInFuture()
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            return dalSession.Bookings.ReadAllInFuture().ToList();
-        }
+        using DalSession dalSession = new DalSession();
+        return dalSession.Bookings.ReadAllInFuture().ToList();
     }
 
     public static Booking ReadOneBooking(int bookingID)
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            return dalSession.Bookings.ReadOne(bookingID);
-        }
+        using DalSession dalSession = new DalSession();
+        return dalSession.Bookings.ReadOne(bookingID);
     }
 
     public static void UpdateOneBooking()
     {
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        try
         {
-            try
-            {
-                dalSession.UnitOfWork.Begin();
+            dalSession.UnitOfWork.Begin();
 
-                Booking booking = dalSession.Bookings.ReadOne(29);
-                booking.AircraftID = 3;
-                dalSession.Bookings.UpdateOne(booking);
+            Booking booking = dalSession.Bookings.ReadOne(29);
+            booking.AircraftID = 3;
+            dalSession.Bookings.UpdateOne(booking);
 
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
+            dalSession.UnitOfWork.Commit();
+        }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
         }
     }
 
     public static void DeleteOne(int memberID)
     {
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        try
         {
-            try
-            {
-                dalSession.UnitOfWork.Begin();
-                dalSession.Members.DeleteOne(memberID);
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
+            dalSession.UnitOfWork.Begin();
+            dalSession.Members.DeleteOne(memberID);
+            dalSession.UnitOfWork.Commit();
+        }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
         }
     }
 
@@ -251,10 +231,8 @@ public static class MemberService
 
     public static List<Subscription> ReadAllSubscription(int memberID)
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            return dalSession.Subscriptions.ReadAllByMemberID(memberID);
-        }
+        using DalSession dalSession = new DalSession();
+        return dalSession.Subscriptions.ReadAllByMemberID(memberID);
     }
 
     public static string GetSubscriptionStatus(int memberID)

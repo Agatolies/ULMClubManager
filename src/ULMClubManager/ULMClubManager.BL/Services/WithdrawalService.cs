@@ -8,29 +8,25 @@ public static class WithdrawalService
 {
     public static List<Withdrawal> ReadAllWithdrawalsByPilotID(int pilotID)
     {
-        using (DalSession dalSession = new DalSession())
-        {
-            return dalSession.Withdrawals.ReadAllWithdrawalsByPilotID(pilotID).ToList();
-        }
+        using DalSession dalSession = new DalSession();
+        return dalSession.Withdrawals.ReadAllWithdrawalsByPilotID(pilotID).ToList();
     }
 
     public static void CreateOne(Withdrawal withdrawal)
     {
         ValidateWithdrawal(withdrawal);
 
-        using (DalSession dalSession = new DalSession())
+        using DalSession dalSession = new DalSession();
+        try
         {
-            try
-            {
-                dalSession.UnitOfWork.Begin();
-                dalSession.Withdrawals.CreateOne(withdrawal);
-                dalSession.UnitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                dalSession.UnitOfWork.Rollback();
-                throw;
-            }
+            dalSession.UnitOfWork.Begin();
+            dalSession.Withdrawals.CreateOne(withdrawal);
+            dalSession.UnitOfWork.Commit();
+        }
+        catch (Exception)
+        {
+            dalSession.UnitOfWork.Rollback();
+            throw;
         }
     }
 

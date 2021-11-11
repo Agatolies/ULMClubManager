@@ -5,7 +5,7 @@ namespace ULMClubManager.BL;
 
 public static class Rules
 {
-    private static readonly Dictionary<ContextError, Dictionary<string, string>> dic = new Dictionary<ContextError, Dictionary<string, string>>
+    private static readonly Dictionary<ContextError, Dictionary<string, string>> Dic = new()
     {
         { ContextError.MBR, GetMbrDic() },
         { ContextError.RES, GetResDic() }
@@ -48,15 +48,15 @@ public static class Rules
         };
     }
 
-    public static string MessageDecoder(ContextError context, string message)
+    public static string MessageDecoder(ContextError context, string? message)
     {
-        string msg = message;
+        string? msg = message;
 
-        foreach (string clé in Rules.dic[context].Keys)
+        foreach (string clé in Rules.Dic[context].Keys)
         {
             if (message.Contains(clé))
             {
-                msg = Rules.dic[context][clé];
+                msg = Rules.Dic[context][clé];
                 break;
             }
         }
