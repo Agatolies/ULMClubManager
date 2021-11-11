@@ -23,6 +23,7 @@
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
+	
 	<ItemGroup>
 		<Compile Update="UserControls\UCBookingBase.cs">
 			<SubType>UserControl</SubType>
@@ -61,23 +62,32 @@
 			<SubType>UserControl</SubType>
 		</Compile>
 	</ItemGroup>
+	
 	<ItemGroup>
 		<ProjectReference Include="..\ULMClubManager.BL\ULMClubManager.BL.csproj" />
 		<ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj" />
 	</ItemGroup>
+	
 	<ItemGroup>
 		<WCFMetadata Include="Connected Services\" />
 	</ItemGroup>
+
 	<ItemGroup>
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.CodeFixes.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Common.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Core.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.Workspaces.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Common.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Core.dll" />
+		<!-- Code Analyzers -->
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.31.0.39249">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="SecurityCodeScan.VS2019" Version="5.2.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
+	
 	<ItemGroup>
 		<BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
 			<Visible>False</Visible>
@@ -90,6 +100,7 @@
 			<Install>false</Install>
 		</BootstrapperPackage>
 	</ItemGroup>
+	
 	<ItemGroup>
 		<PackageReference Include="MetroFramework" Version="1.2.0.3" />
 		<PackageReference Include="MetroModernUI" Version="1.4.0.0" />

@@ -6,20 +6,28 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="..\ULMClubManager.DAL\ULMClubManager.DAL.csproj" />
 		<ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj" />
 	</ItemGroup>
+
 	<ItemGroup>
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.CodeFixes.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Common.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Core.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.CSharp.Workspaces.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Common.dll" />
-		<Analyzer Include="..\packages\Roslynator.Analyzers.3.2.2\analyzers\dotnet\cs\Roslynator_Analyzers_Roslynator.Workspaces.Core.dll" />
+		<!-- Code Analyzers -->
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="8.31.0.39249">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="SecurityCodeScan.VS2019" Version="5.2.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.255803">
 			<PrivateAssets>all</PrivateAssets>
