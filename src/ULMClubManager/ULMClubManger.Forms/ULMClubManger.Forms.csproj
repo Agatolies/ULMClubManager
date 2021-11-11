@@ -1,17 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9FEFAC36-EA71-44FB-B6DC-1E217C64E3C4}</ProjectGuid>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ULMClubManger.Forms</RootNamespace>
-    <AssemblyName>ULMClubManger.Forms</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,257 +17,51 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="MessageBoxHelper.cs" />
-    <Compile Include="Pages\FormBookingByAircraft.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pages\FormBookingByAircraft.Designer.cs">
-      <DependentUpon>FormBookingByAircraft.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FormBookingByMember.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pages\FormBookingByMember.Designer.cs">
-      <DependentUpon>FormBookingByMember.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FormBookingFuture.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pages\FormBookingFuture.Designer.cs">
-      <DependentUpon>FormBookingFuture.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FormMembersInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pages\FormMembersInfo.Designer.cs">
-      <DependentUpon>FormMembersInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubForms\LicenceManagementForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SubForms\LicenceManagementForm.Designer.cs">
-      <DependentUpon>LicenceManagementForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UIDelegates.cs" />
-    <Compile Include="UserControls\IUCBooking.cs" />
-    <Compile Include="UserControls\UCBookingBase.cs">
+    <Compile Update="UserControls\UCBookingBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByAircraft\UCBookingByAircraftCRUD.cs">
+    <Compile Update="UserControls\UCBookingByAircraft\UCBookingByAircraftCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByAircraft\UCBookingByAircraftCRUD.Designer.cs">
-      <DependentUpon>UCBookingByAircraftCRUD.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCBookingByAircraft\UCBookingByAircraftDetailsForm.cs">
+    <Compile Update="UserControls\UCBookingByAircraft\UCBookingByAircraftDetailsForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByAircraft\UCBookingByAircraftDetailsForm.Designer.cs">
-      <DependentUpon>UCBookingByAircraftDetailsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCBookingByMember\UCBookingByMemberCRUD.cs">
+    <Compile Update="UserControls\UCBookingByMember\UCBookingByMemberCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByMember\UCBookingByMemberCRUD.Designer.cs">
-      <DependentUpon>UCBookingByMemberCRUD.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCBookingByMember\UCBookingByMemberDetailsForm.cs">
+    <Compile Update="UserControls\UCBookingByMember\UCBookingByMemberDetailsForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByMember\UCBookingByMemberDetailsForm.Designer.cs">
-      <DependentUpon>UCBookingByMemberDetailsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCBookingByAircraft\UCBookingPickerByAircraft.cs">
+    <Compile Update="UserControls\UCBookingByAircraft\UCBookingPickerByAircraft.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByAircraft\UCBookingPickerByAircraft.Designer.cs">
-      <DependentUpon>UCBookingPickerByAircraft.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCBookingByMember\UCBookingPickerByMember.cs">
+    <Compile Update="UserControls\UCBookingByMember\UCBookingPickerByMember.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCBookingByMember\UCBookingPickerByMember.Designer.cs">
-      <DependentUpon>UCBookingPickerByMember.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCMember\UCMemberCRUD.cs">
+    <Compile Update="UserControls\UCMember\UCMemberCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCMember\UCMemberCRUD.Designer.cs">
-      <DependentUpon>UCMemberCRUD.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCMember\UCMemberPicker.cs">
+    <Compile Update="UserControls\UCMember\UCMemberPicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCMember\UCMemberPicker.Designer.cs">
-      <DependentUpon>UCMemberPicker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Layout\UCLayout.cs">
+    <Compile Update="UserControls\Layout\UCLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Layout\UCLayout.Designer.cs">
-      <DependentUpon>UCLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCLogin.cs">
+    <Compile Update="UserControls\UCLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCLogin.Designer.cs">
-      <DependentUpon>UCLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Layout\UCSideBar.cs">
+    <Compile Update="UserControls\Layout\UCSideBar.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Layout\UCSideBar.Designer.cs">
-      <DependentUpon>UCSideBar.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\FormBookingByAircraft.resx">
-      <DependentUpon>FormBookingByAircraft.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\FormBookingByMember.resx">
-      <DependentUpon>FormBookingByMember.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\FormBookingFuture.resx">
-      <DependentUpon>FormBookingFuture.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\FormMembersInfo.resx">
-      <DependentUpon>FormMembersInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="SubForms\LicenceManagementForm.resx">
-      <DependentUpon>LicenceManagementForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByAircraft\UCBookingByAircraftCRUD.resx">
-      <DependentUpon>UCBookingByAircraftCRUD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByAircraft\UCBookingByAircraftDetailsForm.resx">
-      <DependentUpon>UCBookingByAircraftDetailsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByMember\UCBookingByMemberCRUD.resx">
-      <DependentUpon>UCBookingByMemberCRUD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByMember\UCBookingByMemberDetailsForm.resx">
-      <DependentUpon>UCBookingByMemberDetailsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByAircraft\UCBookingPickerByAircraft.resx">
-      <DependentUpon>UCBookingPickerByAircraft.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCBookingByMember\UCBookingPickerByMember.resx">
-      <DependentUpon>UCBookingPickerByMember.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCMember\UCMemberCRUD.resx">
-      <DependentUpon>UCMemberCRUD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCMember\UCMemberPicker.resx">
-      <DependentUpon>UCMemberPicker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Layout\UCLayout.resx">
-      <DependentUpon>UCLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCLogin.resx">
-      <DependentUpon>UCLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Layout\UCSideBar.resx">
-      <DependentUpon>UCSideBar.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Aircraft.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Booking.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Cancellation.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.DetailedBooking.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Gender.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Locality.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Member.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.MemberType.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Runway.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Subscription.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.TimeSlot.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Unavailability.datasource" />
-    <None Include="Properties\DataSources\ULMClubManager.DTO.Withdrawal.datasource" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ULMClubManager.BL\ULMClubManager.BL.csproj">
-      <Project>{55203555-09b9-44b7-ba75-20922f7f4a33}</Project>
-      <Name>ULMClubManager.BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj">
-      <Project>{30e75ab0-a051-41d1-b602-880535c65da7}</Project>
-      <Name>ULMClubManager.DTO</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\ULMClubManager.BL\ULMClubManager.BL.csproj" />
+    <ProjectReference Include="..\ULMClubManager.DTO\ULMClubManager.DTO.csproj" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -304,5 +88,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="MetroFramework" Version="1.2.0.3" />
+    <PackageReference Include="MetroModernUI" Version="1.4.0.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.255803">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+  </ItemGroup>
 </Project>
