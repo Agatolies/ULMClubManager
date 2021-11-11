@@ -1,8 +1,7 @@
-﻿namespace ULMClubManager.DAL.DBRowModels
+﻿namespace ULMClubManager.DAL.DBRowModels;
+
+public class PistDBRow
 {
-    public class PistDBRow
-    {
-        public int PIST_ID { get; set; }
-        public bool PIST_DISPO { get; set; }
-    }
+    public int PIST_ID { get; set; }
+    public bool PIST_DISPO { get; set; }
 }

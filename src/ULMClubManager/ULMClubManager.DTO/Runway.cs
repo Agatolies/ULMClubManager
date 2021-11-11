@@ -1,29 +1,28 @@
 ﻿using ULMClubManager.DTO.Abstractions;
 
-namespace ULMClubManager.DTO
+namespace ULMClubManager.DTO;
+
+/// <summary>
+/// Représente une piste
+/// </summary>
+public class Runway : IDomainModel
 {
-    /// <summary>
-    /// Représente une piste
-    /// </summary>
-    public class Runway : IDomainModel
+    public Runway(int? id, bool availability)
     {
-        public Runway(int? id, bool availability)
-        {
-            ID = id;
-            Availability = availability;
-        }
+        ID = id;
+        Availability = availability;
+    }
 
-        public Runway(bool availability)
-            : this(null, availability)
-        {
-        }
+    public Runway(bool availability)
+        : this(null, availability)
+    {
+    }
 
-        public int? ID { get; }
-        public bool Availability { get; set; }
+    public int? ID { get; }
+    public bool Availability { get; set; }
 
-        public override string ToString()
-        {
-            return $"Piste {ID}";
-        }
+    public override string ToString()
+    {
+        return $"Piste {ID}";
     }
 }

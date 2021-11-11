@@ -1,49 +1,48 @@
 ﻿using ULMClubManager.DAL;
 using ULMClubManager.DTO;
 
-namespace ULMClubManager.BL.Services
+namespace ULMClubManager.BL.Services;
+
+public static class CancellationService
 {
-    public static class CancellationService
+    public static List<Cancellation> ReadAllCancellations()
     {
-        public static List<Cancellation> ReadAllCancellations()
+        using (DalSession dalSession = new DalSession())
         {
-            using (DalSession dalSession = new DalSession())
-            {
-                return dalSession.Cancellations.ReadAllCancellations().ToList();
-            }
+            return dalSession.Cancellations.ReadAllCancellations().ToList();
         }
+    }
 
-        public static List<Cancellation> ReadAllCancellationByPilotID(int pilotID)
+    public static List<Cancellation> ReadAllCancellationByPilotID(int pilotID)
+    {
+        using (DalSession dalSession = new DalSession())
         {
-            using (DalSession dalSession = new DalSession())
-            {
-                return dalSession.Cancellations.ReadAllCancellationsByPilotID(pilotID).ToList();
-            }
+            return dalSession.Cancellations.ReadAllCancellationsByPilotID(pilotID).ToList();
         }
+    }
 
-        public static List<Cancellation> ReadAllCancellationsByAircraftID(int aircraftID)
+    public static List<Cancellation> ReadAllCancellationsByAircraftID(int aircraftID)
+    {
+        using (DalSession dalSession = new DalSession())
         {
-            using (DalSession dalSession = new DalSession())
-            {
-                return dalSession.Cancellations.ReadAllCancellationsByAircraftID(aircraftID).ToList();
-            }
+            return dalSession.Cancellations.ReadAllCancellationsByAircraftID(aircraftID).ToList();
         }
+    }
 
-        public static void CreateOneCancellation(int bookingID, string reason)
+    public static void CreateOneCancellation(int bookingID, string reason)
+    {
+        using (DalSession dalSession = new DalSession())
         {
-            using (DalSession dalSession = new DalSession())
+            try
             {
-                try
-                {
-                    dalSession.UnitOfWork.Begin();
-                    dalSession.Cancellations.CreateOneCancellation(bookingID, reason);
-                    dalSession.UnitOfWork.Commit();
-                }
-                catch (Exception)
-                {
-                    dalSession.UnitOfWork.Rollback();
-                    throw;
-                }
+                dalSession.UnitOfWork.Begin();
+                dalSession.Cancellations.CreateOneCancellation(bookingID, reason);
+                dalSession.UnitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                dalSession.UnitOfWork.Rollback();
+                throw;
             }
         }
     }

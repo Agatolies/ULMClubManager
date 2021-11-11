@@ -1,37 +1,36 @@
 ﻿using System.Runtime.Serialization;
 using ULMClubManager.DTO.Enums;
 
-namespace ULMClubManager.DTO.Exceptions
+namespace ULMClubManager.DTO.Exceptions;
+
+/// <summary>
+/// Représente une exception pour une date de validité de licence incorrecte
+/// </summary>
+[Serializable]
+public class InvalidLicenceDatesException : BusinessException
 {
-    /// <summary>
-    /// Représente une exception pour une date de validité de licence incorrecte
-    /// </summary>
-    [Serializable]
-    public class InvalidLicenceDatesException : BusinessException
+    public InvalidLicenceDatesException()
+        : base(ContextError.MBR, "PIL_LIC_DTE_INVALID")
     {
-        public InvalidLicenceDatesException()
-            : base(ContextError.MBR, "PIL_LIC_DTE_INVALID")
-        {
-        }
+    }
 
-        protected InvalidLicenceDatesException(ContextError context, string tokenError)
-            : base(context, tokenError)
-        {
-        }
+    protected InvalidLicenceDatesException(ContextError context, string tokenError)
+        : base(context, tokenError)
+    {
+    }
 
-        public InvalidLicenceDatesException(string message) 
-            : base(message)
-        {
-        }
+    public InvalidLicenceDatesException(string message) 
+        : base(message)
+    {
+    }
 
-        public InvalidLicenceDatesException(string message, System.Exception innerException)
-            : base(message, innerException)
-        {
-        }
+    public InvalidLicenceDatesException(string message, System.Exception innerException)
+        : base(message, innerException)
+    {
+    }
 
-        protected InvalidLicenceDatesException(SerializationInfo info, StreamingContext context)
-           : base(info, context)
-        {
-        }
+    protected InvalidLicenceDatesException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
+    {
     }
 }
